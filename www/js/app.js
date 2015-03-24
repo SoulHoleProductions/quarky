@@ -6,6 +6,7 @@ angular.module('quarky', ['ionic',
     'quarky.guru',
     'quarky.home',
     'places.controllers',
+    'ngCordova',
     'auth0',
     'angular-storage',
     'angular-jwt'])

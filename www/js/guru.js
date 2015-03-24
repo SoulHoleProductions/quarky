@@ -8,15 +8,25 @@
 var QuarkyGuru = angular.module("quarky.guru", ["ionic"]);
 
 QuarkyGuru.controller("QuarkyGuruCtrl",
-    ["$scope", "$sce", "$ionicLoading", "QuarkyGuruService", "$log", "$ionicModal", QuarkyGuruCtrl]);
+    ["$scope", "$sce", "$ionicLoading", "QuarkyGuruService", "$log", "$ionicModal", "$cordovaSocialSharing", QuarkyGuruCtrl]);
 
 QuarkyGuru.service("QuarkyGuruService",
     [ "$http", "$log", QuarkyGuruService ]);
 
-function QuarkyGuruCtrl($scope, $sce, $ionicLoading, QuarkyGuruService, $log, $ionicModal) {
+function QuarkyGuruCtrl($scope, $sce, $ionicLoading, QuarkyGuruService, $log, $ionicModal, $cordovaSocialSharing) {
     $scope.posts = [];
     $scope.pagenum = null;
     $scope.infiniteLoad = false;
+
+    $scope.shareNative = function() {
+        $cordovaSocialSharing.share(
+            "This is your message",
+            "This is your subject",
+            "www/imagefile.png",
+            "http://quarkyapp.com"
+        );
+    }
+
     $scope.viewBlog = function(url) {
         window.open(url, "_blank", "location=no");
     }
