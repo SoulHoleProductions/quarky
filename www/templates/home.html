@@ -16,17 +16,17 @@
                             <i data-ng-class="categoryIcon(posts[$index].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index].title)">
                             </div>
-                            <div data-ng-repeat="cat in posts[$index].terms.category">
-                                <button class="button button-small button-stable">
-                                    {{cat.name}}
-                                </button>
-                            </div>
                             <i class="tab-item icon ion-share"></i>
                         </div>
                         <div class="item item-body">
                             <img class="full-image" data-ng-src="{{posts[$index].featured_image.source}}" alt="">
-                            <p><div data-ng-bind-html="toTrusted(posts[$index].excerpt)">
-                        </div></p>
+                            <p>
+                                <div data-ng-bind-html="toTrusted(posts[$index].excerpt)">
+                                </div>
+                            </p>
+                            <div data-ng-repeat="cat in posts[$index].terms.category">
+                                ( {{cat.name}}{{$last ? ' ' : ', '}} )
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,17 +37,15 @@
                             <i data-ng-class="categoryIcon(posts[$index + 1].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index + 1].title)">
                             </div>
-                            <div data-ng-repeat="cat in posts[$index + 1].terms.category">
-                                <button class="button button-small button-stable">
-                                    {{cat.name}}
-                                </button>
-                            </div>
                             <i class="tab-item icon ion-share"></i>
                         </div>
                         <div class="item item-body">
                             <img class="full-image" data-ng-src="{{posts[$index + 1].featured_image.source}}" alt="">
                             <p><div data-ng-bind-html="toTrusted(posts[$index + 1].excerpt)">
                         </div></p>
+                            <div data-ng-repeat="cat in posts[$index + 1].terms.category">
+                                ( {{cat.name}}{{$last ? ' ' : ', '}} )
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,17 +56,15 @@
                             <i data-ng-class="categoryIcon(posts[$index + 2].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index + 2].title)">
                             </div>
-                            <div data-ng-repeat="cat in posts[$index + 2].terms.category">
-                                <button class="button button-small button-stable">
-                                    {{cat.name}}
-                                </button>
-                            </div>
                             <i class="tab-item icon ion-share"></i>
                         </div>
                         <div class="item item-body">
                             <img class="full-image" data-ng-src="{{posts[$index + 2].featured_image.source}}" alt="">
                             <p><div data-ng-bind-html="toTrusted(posts[$index + 2].excerpt)">
                         </div></p>
+                            <div data-ng-repeat="cat in posts[$index + 2].terms.category">
+                                ( {{cat.name}}{{$last ? ' ' : ', '}} )
+                            </div>
                         </div>
                     </div>
                 </div>

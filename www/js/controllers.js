@@ -1,14 +1,43 @@
 /*
-These are the core controllers used by the app.
-There are other controllers too. They are contained in the features:
-eguru,
+ These are the core controllers used by the app.
+ There are other controllers too. They are contained in the features:
+ eguru,
 
  */
 
 angular.module('quarky.controllers', [])
 
-    .controller('MenuCtrl', function(store, $scope, $location, auth, $ionicActionSheet){
+    .controller('LoginCtrl', function($scope, auth, $state, store) {
+        function doAuth() {
+            auth.signin({
+                //closable: false,
+                // This asks for the refresh token
+                // So that the user never has to log in again
+                authParams: {
+                    scope: 'openid offline_access'
+                }
+            }, function(profile, idToken, accessToken, state, refreshToken) {
+                store.set('profile', profile);
+                store.set('token', idToken);
+                store.set('refreshToken', refreshToken);
+                //$state.go('login');
+                $location.path('/');
+            }, function(error) {
+                console.log("There was an error logging in", error);
+            });
+        }
+
+        $scope.$on('$ionic.reconnectScope', function() {
+            doAuth();
+        });
+
+        doAuth();
+
+    })
+
+    .controller('MenuCtrl', function(store, $scope, $location, $state, auth, $ionicActionSheet){
         $scope.auth = auth;
+
         $scope.login = function() {
             auth.signin({
                 socialBigButtons: true,
@@ -24,10 +53,12 @@ angular.module('quarky.controllers', [])
                 store.set('token', token);
                 store.set('refreshToken', refreshToken);
                 $location.path('/');
-            }, function() {
+            }, function(error) {
                 // Error callback
+                console.log("There was an error logging in", error);
             });
         }
+
         $scope.logout = function() {
             auth.signout();
             store.remove('token');

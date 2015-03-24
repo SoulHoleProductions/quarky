@@ -10,28 +10,6 @@ angular.module('quarky', ['ionic',
     'angular-storage',
     'angular-jwt'])
 
-    .run(function($rootScope, auth, store, jwtHelper, $location) {
-        // the following is used by the Places feature
-        $rootScope.goHome = function() {
-            $location.path('/app/places-servicelist');
-        };
-
-        // This events gets triggered on refresh or URL change
-        $rootScope.$on('$locationChangeStart', function() {
-            if (!auth.isAuthenticated) {
-                var token = store.get('token');
-                if (token) {
-                    if (!jwtHelper.isTokenExpired(token)) {
-                        auth.authenticate(store.get('profile'), token);
-                    } else {
-                        // Either show Login page or use the refresh token to get a new idToken
-                        $location.path('/');
-                    }
-                }
-            }
-        });
-    })
-
     .run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -45,6 +23,14 @@ angular.module('quarky', ['ionic',
             }
         });
     })
+
+    .run(function($rootScope, $location) {
+        // the following is used by the Places feature
+        $rootScope.goHome = function() {
+            $location.path('/app/places-servicelist');
+        };
+    })
+
 
     .config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvider,
                      jwtInterceptorProvider) {
@@ -61,6 +47,12 @@ angular.module('quarky', ['ionic',
                     requiresLogin: false
                 }
             })
+            .state('login', {
+                url: "/login",
+                templateUrl: "templates/login.html",
+                controller: "LoginCtrl"
+            })
+
             .state('app.home', {
                 url: "/home",
                 views: {
@@ -157,18 +149,41 @@ angular.module('quarky', ['ionic',
                 }
             });
 
+        // Configure Auth0
         authProvider.init({
-            domain: 'quarky.auth0.com',
-            clientID: 'DoMMtmruuSqicU4qjeyvZTXEB0TImsqy',
-            loginState: 'app'
+            domain: AUTH0_DOMAIN,
+            clientID: AUTH0_CLIENT_ID,
+            loginState: 'app.home'
         });
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home');
 
-    })
+        jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
+            var idToken = store.get('token');
+            var refreshToken = store.get('refreshToken');
+            if (!idToken || !refreshToken) {
+                return null;
+            }
+            if (jwtHelper.isTokenExpired(idToken)) {
+                return auth.refreshIdToken(refreshToken).then(function(idToken) {
+                    store.set('token', idToken);
+                    return idToken;
+                });
+            } else {
+                return idToken;
+            }
+        }
 
-    .run(function(auth) {
-        // This hooks all auth events to check everything as soon as the app starts
-        auth.hookEvents();
+        $httpProvider.interceptors.push('jwtInterceptor');
+    }).run(function($rootScope, auth, store) {
+        $rootScope.$on('$locationChangeStart', function() {
+            if (!auth.isAuthenticated) {
+                var token = store.get('token');
+                if (token) {
+                    auth.authenticate(store.get('profile'), token);
+                }
+            }
+
+        });
     });
