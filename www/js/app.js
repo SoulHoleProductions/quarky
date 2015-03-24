@@ -73,6 +73,18 @@ angular.module('quarky', ['ionic',
                     requiresLogin: false
                 }
             })
+            .state('app.about', {
+                url: "/about",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/about.html"
+                        //controller: 'AboutCtrl'   ---> no controller needed yet
+                    }
+                },
+                data: {
+                    requiresLogin: false
+                }
+            })
             .state('app.profile', {
                 url: "/profile",
                 views: {
@@ -90,30 +102,6 @@ angular.module('quarky', ['ionic',
                     'menuContent': {
                         templateUrl: "templates/guru.html",
                         controller: 'QuarkyGuruCtrl'
-                    }
-                },
-                data: {
-                    requiresLogin: false
-                }
-            })
-            .state('app.resources', {
-                url: "/resources",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/resources.html",
-                        controller: 'ResourcesCtrl'
-                    }
-                },
-                data: {
-                    requiresLogin: false
-                }
-            })
-            .state('app.single', {
-                url: "/resources/:playlistId",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/resource.html",
-                        controller: 'ResourceCtrl'
                     }
                 },
                 data: {

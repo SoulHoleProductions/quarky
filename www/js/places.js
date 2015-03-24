@@ -2,7 +2,7 @@
 /* global window,angular
 *
 *
-*  places-home
+*  places-home (deprecated)
 *  places-servicelist
 *  places-servicedetail
 *  places-card

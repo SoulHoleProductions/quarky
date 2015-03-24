@@ -35,11 +35,10 @@
                     </ion-slide-box>
 
                 </div>
-
                 <p ng-show="!hasPhotos">
-                    <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{place.position.latitude}},{{place.position.longitude}}&zoom=14&markers=color:blue%7C{{place.position.latitude}},{{place.position.longitude}}&size=310x310&sensor=true" width="310" height="310" class="full-image" />
+                    <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{place.position.latitude}},{{place.position.longitude}}&zoom=14&markers=color:blue%7C{{place.position.latitude}},{{place.position.longitude}}&size=310x310&sensor=true"  />
+                    <!--<img class="full-image" width="310" height="310" ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{place.position.latitude}},{{place.position.longitude}}&zoom=14&markers=color:blue%7C{{place.position.latitude}},{{place.position.longitude}}&size=310x310&sensor=true"  />-->
                 </p>
-
 
             </div>
 

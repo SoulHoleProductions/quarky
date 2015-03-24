@@ -67,15 +67,3 @@ angular.module('quarky.controllers', [])
 
     })
 
-    .controller('ResourcesCtrl', function($scope) {
-        $scope.resources = [
-            { title: 'NKCH', id: 1 },
-            { title: 'Marc', id: 2 },
-            { title: 'United Way', id: 3 },
-            { title: 'Osanam', id: 4 },
-            { title: 'Monkey Bizness', id: 5 }
-        ];
-    })
-
-    .controller('ResourceCtrl', function($scope, $stateParams) {
-    });
