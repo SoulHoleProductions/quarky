@@ -8,12 +8,12 @@
 var QuarkyGuru = angular.module("quarky.guru", ["ionic"]);
 
 QuarkyGuru.controller("QuarkyGuruCtrl",
-    ["$scope", "$sce", "$ionicLoading", "QuarkyGuruService", "$log", QuarkyGuruCtrl]);
+    ["$scope", "$sce", "$ionicLoading", "QuarkyGuruService", "$log", "$ionicModal", QuarkyGuruCtrl]);
 
 QuarkyGuru.service("QuarkyGuruService",
     [ "$http", "$log", QuarkyGuruService ]);
 
-function QuarkyGuruCtrl($scope, $sce, $ionicLoading, QuarkyGuruService, $log) {
+function QuarkyGuruCtrl($scope, $sce, $ionicLoading, QuarkyGuruService, $log, $ionicModal) {
     $scope.posts = [];
     $scope.pagenum = null;
     $scope.infiniteLoad = false;
@@ -45,6 +45,28 @@ function QuarkyGuruCtrl($scope, $sce, $ionicLoading, QuarkyGuruService, $log) {
     $scope.toTrusted = function(text) {
         return ($sce.trustAsHtml(text));
     }
+
+    // Load the modal from the given template URL
+    $ionicModal.fromTemplateUrl('templates/guru-card.html', function($ionicModal) {
+        $scope.modal = $ionicModal;
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });
+    $scope.openModal = function(aPost) {
+        $scope.aPost = aPost;
+        $scope.modal.show()
+    }
+
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
+
+    $scope.$on('$destroy', function() {
+        $scope.modal.remove();
+    });
 }
 
 function QuarkyGuruService($http, $log) {
@@ -55,7 +77,7 @@ function QuarkyGuruService($http, $log) {
             "filter[posts_per_page]": 6, // 6 results per page
             "page": pagenum
         };
-        console.log(params);
+        //console.log(params);
         var quarkyGuru = "http://quarkyapp.com/wp-json/posts/";
 
         return ($http.get(quarkyGuru, {

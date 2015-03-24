@@ -31,6 +31,31 @@ function QuarkyHomeCtrl($scope, $sce, $ionicLoading, QuarkyHomeService, $log) {
     $scope.toTrusted = function(text) {
         return ($sce.trustAsHtml(text));
     }
+
+    // return the right ionic icon for the given category
+    $scope.categoryIcon = function(cat) {
+        var catIcon = "icon ion-quote";
+        switch (cat.name) {
+            case "Quarky News":
+                catIcon = "icon ion-information-circled";
+                break;
+            case "Quotables":
+                catIcon = "icon ion-quote";
+                break;
+            case "Notification":
+                catIcon = "icon ion-speakerphone";
+                break;
+            case "Life Tip":
+                catIcon = "icon ion-lightbulb";
+                break;
+            case "Home":
+                catIcon = "icon ion-home";
+                break;
+            default:
+                catIcon = "icon ion-quote";
+        }
+        return catIcon;
+    }
 }
 
 function QuarkyHomeService($http, $log) {

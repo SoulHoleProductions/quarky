@@ -26,7 +26,7 @@
                 <i class="icon ion-log-in"></i>
                 </ion-item>
                 <ion-item class="item-avatar" ng-if="auth.profile">
-                    <img src="{{auth.profile.picture}}">
+                    <img data-ng-src="{{auth.profile.picture}}">
                     <h4>{{ auth.profile.name }}</h4>
                     <h4>{{auth.profile.email}}</h4>
                 </ion-item>

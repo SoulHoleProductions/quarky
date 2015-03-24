@@ -35,7 +35,7 @@ placesControllers.controller('PlacesHomeCtrl', ['$scope', '$rootScope', '$locati
 
 placesControllers.controller('ServiceListCtrl', ['$scope', '$rootScope', '$ionicLoading', '$location', '$http', function($scope, $rootScope, $ionicLoading, $location, $http) {
 
-    console.log('Running ServiceListCtrl controller');
+    //console.log('Running ServiceListCtrl controller');
     //$scope.status = 'Getting position...';
 
     $ionicLoading.show({
@@ -45,7 +45,7 @@ placesControllers.controller('ServiceListCtrl', ['$scope', '$rootScope', '$ionic
     //TODO: Create location service like this codepen: http://codepen.io/calendee/pen/xgJse
     navigator.geolocation.getCurrentPosition(function(result) {
         $rootScope.position = result.coords;
-        console.log("position is: "+result.coords);
+        //console.log("position is: "+result.coords);
         //$location.path('/app/places-servicelist');
         $scope.$apply();
         $ionicLoading.show({
@@ -100,7 +100,7 @@ placesControllers.controller('ServiceDetailCtrl', ['$scope','$stateParams', '$ro
         });
         $scope.matches = matches;
         $ionicScrollDelegate.resize();
-        console.log("Matches", $scope.matches.length);
+        //console.log("Matches", $scope.matches.length);
         if(matches.length === 0) {
             $scope.noresult = "Sorry, there are no matches.";
         }
@@ -120,7 +120,7 @@ placesControllers.controller('PlaceDetailCtrl', ['$scope', '$stateParams', '$roo
 
     var service = new google.maps.places.PlacesService(document.createElement("div"));
     service.getDetails({reference:$scope.placeId}, function(res) {
-        console.dir(res);
+        //console.dir(res);
         //modify res so we can use loc easier
         res.position = {longitude:res.geometry.location.lng(), latitude:res.geometry.location.lat()};
 

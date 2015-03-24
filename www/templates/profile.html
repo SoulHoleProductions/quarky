@@ -1,7 +1,7 @@
 <ion-view view-title="Profile" ng-style="{'background-image':'url(img/section-background.jpg)'}">
     <ion-content class="has-header padding">
         <div id="profile-info" ng-if="auth.profile">
-            <img id="profile-image" src="{{auth.profile.picture}}">
+            <img id="profile-image" data-ng-src="{{auth.profile.picture}}">
             <h3 id="profile-name">{{ auth.profile.name }}</h3>
             <h3 id="profile-name">( {{ auth.profile.nickname }} )</h3>
             <span id="profile-description">Email: {{auth.profile.email}} </span>

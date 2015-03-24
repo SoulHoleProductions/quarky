@@ -22,10 +22,9 @@
                 Pull down to load
             </center>
         </div>
-
         <div class="list" data-ng-if="posts.length">
+               <a class="item item-thumbnail-left" data-ng-repeat="p in posts" data-ng-click="openModal(p)" href="#">
 
-            <a class="item item-thumbnail-left" data-ng-repeat="p in posts" data-ng-click="viewBlog(p.link)" href="#">
                 <img data-ng-src="{{p.featured_image.source}}" alt="">
                 <h2><div data-ng-bind-html="toTrusted(p.title)">
                 </div></h2>
