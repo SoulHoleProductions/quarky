@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="664bda5d-0333-48b4-b4b8-f479426ea7f3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/guru-card.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/guru.html" afterPath="$PROJECT_DIR$/www/templates/guru.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/guru.js" afterPath="$PROJECT_DIR$/www/js/guru.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/home.html" afterPath="$PROJECT_DIR$/www/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/home.js" afterPath="$PROJECT_DIR$/www/js/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/menu.html" afterPath="$PROJECT_DIR$/www/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/places.js" afterPath="$PROJECT_DIR$/www/js/places.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/profile.html" afterPath="$PROJECT_DIR$/www/templates/profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="quarky.iws" />
@@ -290,7 +282,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427208827795</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="content shown as cards for eGuru">
+      <created>1427223638523</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1427223638523</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -357,7 +355,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="implemented about this app" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented about this app" />
+    <MESSAGE value="content shown as cards for eGuru" />
+    <option name="LAST_COMMIT_MESSAGE" value="content shown as cards for eGuru" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
