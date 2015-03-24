@@ -1,0 +1,15 @@
+<ion-view title="Quarky Service List">
+
+    <ion-content>
+        <div class="list list-inset">
+            <ion-list class="list list-inset">
+
+                <ion-item ng-repeat="service in services" href="#/app/places-servicedetail/{{service.id}}">
+                    {{service.label}}
+                </ion-item>
+
+            </ion-list>
+        </div>
+    </ion-content>
+
+</ion-view>

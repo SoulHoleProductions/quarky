@@ -1,0 +1,48 @@
+<ion-view ng-style="{'background-image':'url(img/parallax-bg2.png)'}">
+    <ion-nav-title>
+<!--        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="eGuru Search">
+            </label>
+            <button class="button button-clear">
+                Cancel
+            </button>
+        </div>-->
+        eGuru
+    </ion-nav-title>
+    <ion-content class="has-header padding" ng-controller="QuarkyGuruCtrl">
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="loadBlogs()">
+        </ion-refresher>
+        <div data-ng-if="!posts.length">
+            <center>
+                <br>
+                Pull down to load
+            </center>
+        </div>
+
+        <div class="list" data-ng-if="posts.length">
+
+            <a class="item item-thumbnail-left" data-ng-repeat="p in posts" data-ng-click="viewBlog(p.link)" href="#">
+                <img data-ng-src="{{p.featured_image.source}}" alt="">
+                <h2><div data-ng-bind-html="toTrusted(p.title)">
+                </div></h2>
+                <div data-ng-bind-html="toTrusted(p.excerpt)">
+                </div>
+                <div data-ng-repeat="cat in p.terms.category">
+                    <button class="button button-small button-light">
+                        {{cat.name}}
+                    </button>
+                </div>
+            </a>
+
+        </div>
+
+        <ion-infinite-scroll on-infinite="moreBlogs()"
+                             data-ng-if="infiniteLoad" icon="">
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

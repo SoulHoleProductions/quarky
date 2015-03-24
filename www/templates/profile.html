@@ -1,0 +1,16 @@
+<ion-view view-title="Profile" ng-style="{'background-image':'url(img/section-background.jpg)'}">
+    <ion-content class="has-header padding">
+        <div id="profile-info" ng-if="auth.profile">
+            <img id="profile-image" src="{{auth.profile.picture}}">
+            <h3 id="profile-name">{{ auth.profile.name }}</h3>
+            <h3 id="profile-name">( {{ auth.profile.nickname }} )</h3>
+            <span id="profile-description">Email: {{auth.profile.email}} </span>
+<!--            <button class="button button-small button-assertive" ng-click="logout()">
+                Logout
+            </button>-->
+        </div>
+        <div ng-if="!auth.profile">
+            There is no profile available right now, you shouldn't be seeing this!
+            </div>
+   </ion-content>
+</ion-view>

@@ -1,0 +1,103 @@
+<ion-view ng-style="{'background-image':'url(img/section-background.jpg)'}">
+    <ion-nav-title>
+        Quarky
+    </ion-nav-title>
+    <ion-content class="has-header padding" scroll="true" scrollbar-y="false" ng-controller="QuarkyHomeCtrl" ng-init="loadBlogs()">
+        <div data-ng-if="!posts.length">
+            <p style="text-align:center"><br>No connection right now...</p>
+        </div>
+
+        <div data-ng-if="posts[0]">
+            <div class="row responsive-sm" data-ng-repeat="p in posts" ng-if="$index % 3 === 0">
+                <div class="col col-33" ng-if="$index < posts.length">
+                    <div class="list card">
+                        <div class="item item-avatar">
+                            <img data-ng-src="{{posts[$index].featured_image.source}}" alt="">
+                            <h2><div data-ng-bind-html="toTrusted(posts[$index].title)">
+                            </div></h2>
+                            <p>{{posts[$index].date}}</p>
+                        </div>
+
+                        <div class="item item-body">
+                            <p><div data-ng-bind-html="toTrusted(posts[$index].excerpt)">
+                        </div></p>
+                        </div>
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsup"></i>
+                                Like
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-chatbox"></i>
+                                Comment
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-share"></i>
+                                Share
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-33" ng-if="$index + 1 < posts.length">
+                    <div class="list card">
+                        <div class="item item-avatar">
+                            <img data-ng-src="{{posts[$index + 1].featured_image.source}}" alt="">
+                            <h2><div data-ng-bind-html="toTrusted(posts[$index + 1].title)">
+                            </div></h2>
+                            <p>{{posts[$index + 1].date}}</p>
+                        </div>
+
+                        <div class="item item-body">
+                            <p><div data-ng-bind-html="toTrusted(posts[$index + 1].excerpt)">
+                        </div></p>
+                        </div>
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsup"></i>
+                                Like
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-chatbox"></i>
+                                Comment
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-share"></i>
+                                Share
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-33" ng-if="$index + 2 < posts.length">
+                    <div class="list card">
+                        <div class="item item-avatar">
+                            <img data-ng-src="{{posts[$index + 2].featured_image.source}}" alt="">
+                            <h2><div data-ng-bind-html="toTrusted(posts[$index + 2].title)">
+                            </div></h2>
+                            <p>{{posts[$index + 2].date}}</p>
+                        </div>
+
+                        <div class="item item-body">
+                            <p><div data-ng-bind-html="toTrusted(posts[$index + 2].excerpt)">
+                        </div></p>
+                        </div>
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsup"></i>
+                                Like
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-chatbox"></i>
+                                Comment
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-share"></i>
+                                Share
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
