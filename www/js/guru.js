@@ -18,13 +18,12 @@ function QuarkyGuruCtrl($scope, $sce, $ionicLoading, QuarkyGuruService, $log, $i
     $scope.pagenum = null;
     $scope.infiniteLoad = false;
 
-    $scope.shareNative = function() {
-        $cordovaSocialSharing.share(
-            "This is your message",
-            "This is your subject",
-            "www/imagefile.png",
-            "http://quarkyapp.com"
-        );
+    $scope.shareNative = function(message, subject, image, url) {
+        if(!message) message = "I am using QuarkyApp, maybe you should too :)";
+        if(!subject) subject = "Found this on QuarkyApp!";
+        if(!image) image = "http://quarkyapp.com/wp-content/uploads/2015/03/quarkycon.png";
+        if(!url) url = "http://quarkyapp.com";
+        $cordovaSocialSharing.share(message, subject, image, url);
     }
 
     $scope.viewBlog = function(url) {

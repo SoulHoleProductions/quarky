@@ -16,7 +16,7 @@
                             <i data-ng-class="categoryIcon(posts[$index].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index].title)">
                             </div>
-                            <i class="tab-item icon ion-share"></i>
+                            <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index].excerpt, posts[$index].title, posts[$index].featured_image.source, posts[$index].link)"></i>
                         </div>
                         <div class="item item-body">
                             <img class="full-image" data-ng-src="{{posts[$index].featured_image.source}}" alt="">
@@ -37,7 +37,7 @@
                             <i data-ng-class="categoryIcon(posts[$index + 1].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index + 1].title)">
                             </div>
-                            <i class="tab-item icon ion-share"></i>
+                            <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index + 1].excerpt, posts[$index + 1].title, posts[$index + 1].featured_image.source, posts[$index + 1].link)"></i>
                         </div>
                         <div class="item item-body">
                             <img class="full-image" data-ng-src="{{posts[$index + 1].featured_image.source}}" alt="">
@@ -56,7 +56,7 @@
                             <i data-ng-class="categoryIcon(posts[$index + 2].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index + 2].title)">
                             </div>
-                            <i class="tab-item icon ion-share"></i>
+                            <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index + 2].excerpt, posts[$index + 2].title, posts[$index + 2].featured_image.source, posts[$index + 2].link)"></i>
                         </div>
                         <div class="item item-body">
                             <img class="full-image" data-ng-src="{{posts[$index + 2].featured_image.source}}" alt="">

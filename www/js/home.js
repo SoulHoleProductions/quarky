@@ -10,12 +10,12 @@
 var QuarkyHome = angular.module("quarky.home", ["ionic"]);
 
 QuarkyHome.controller("QuarkyHomeCtrl",
-    ["$scope", "$sce", "$ionicLoading", "QuarkyHomeService", "$log", QuarkyHomeCtrl]);
+    ["$scope", "$sce", "$ionicLoading", "QuarkyHomeService", "$log", "$cordovaSocialSharing", QuarkyHomeCtrl]);
 
 QuarkyHome.service("QuarkyHomeService",
     [ "$http", "$log", QuarkyHomeService ]);
 
-function QuarkyHomeCtrl($scope, $sce, $ionicLoading, QuarkyHomeService, $log) {
+function QuarkyHomeCtrl($scope, $sce, $ionicLoading, QuarkyHomeService, $log, $cordovaSocialSharing) {
     $scope.posts = [];
 
     $scope.loadBlogs = function() {
@@ -55,6 +55,14 @@ function QuarkyHomeCtrl($scope, $sce, $ionicLoading, QuarkyHomeService, $log) {
                 catIcon = "icon ion-quote";
         }
         return catIcon;
+    }
+
+    $scope.shareNative = function(message, subject, image, url) {
+        if(!message) message = "I am using QuarkyApp, maybe you should too :)";
+        if(!subject) subject = "Checkout QuarkyApp!";
+        if(!image) image = "http://quarkyapp.com/wp-content/uploads/2015/03/quarkycon.png";
+        if(!url) url = "http://quarkyapp.com";
+        $cordovaSocialSharing.share(message, subject, image, url);
     }
 }
 
