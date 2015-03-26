@@ -86,7 +86,7 @@ angular.module('quarky', ['ionic',
                     }
                 },
                 data: {
-                    requiresLogin: true
+                    requiresLogin: false
                 }
             })
             .state('app.guru', {

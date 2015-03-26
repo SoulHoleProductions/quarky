@@ -181,8 +181,7 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
     global.window.Auth0.script_tags[this.$options.clientID] = script;
 
     // Insert script in DOM head
-    var firstScript = document.getElementsByTagName('script')[0];
-    firstScript.parentNode.insertBefore(script, firstScript);
+    document.getElementsByTagName('head')[0].appendChild(script);
   }
 
   // Handle load and error for client config
@@ -798,6 +797,9 @@ Auth0Lock.prototype.setPanel = function(panel, name) {
   var el = 'function' === typeof panel.render ? panel.render() : panel;
   var pname = 'function' === typeof panel.render ? panel.name : (name || 'signin');
 
+  //Removes error messages on new views.
+  this._showError();
+  
   this.query('.a0-mode-container').html(el);
   this.emit('%s ready'.replace('%s', pname));
 };
@@ -1179,6 +1181,8 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
     } else if (err.message === 'access_denied') {
       // Permissions not granted
       self._showError(self.options.i18n.t('signin:userConsentFailed'));
+    } else if (err.status === 0) {
+      self._showError(self.options.i18n.t('networkError'));
     } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else {

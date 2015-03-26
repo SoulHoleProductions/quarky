@@ -8,7 +8,7 @@
 angular.module('quarky.controllers', [])
 
     .controller('LoginCtrl', function($scope, auth, $state, store) {
-        function doAuth() {
+/*        function doAuth() {
             auth.signin({
                 //closable: false,
                 // This asks for the refresh token
@@ -31,7 +31,7 @@ angular.module('quarky.controllers', [])
             doAuth();
         });
 
-        doAuth();
+        doAuth();*/
 
     })
 
@@ -64,7 +64,7 @@ angular.module('quarky.controllers', [])
             store.remove('token');
             store.remove('profile');
             store.remove('refreshToken');
-            $state.go('login');
+            $state.go('app.home');
         }
         $scope.showHotlineActionsheet = function() {
 

@@ -1,3 +1,31 @@
+## 7.2.0 - (March 16, 2015)
+
+### Changed
+
+ - [jsonp] Make `getClientConfiguration` JSONP script insertion into DOM more reliable (Use `<head>` instead of last `<script>` tag) (`barneycarroll`)
+  https://github.com/auth0/lock/commit/0f2c0f8ae700d6eca0df226a7eac5c8589bf763a
+
+### Fixed
+
+ - [errors] Fixed [#141](https://github.com/auth0/lock/issues/141): Clear errors when the view has changed. (`cristiandouce - tehsis`)
+  https://github.com/auth0/lock/commit/72057654d4f69c768d54ce2037fd58ebf79dbef3
+  https://github.com/auth0/lock/commit/5ac3abad9862f1e830df0fade4524ce82dbddbe4
+
+### Added
+
+ - [general] Add `footerText` to signin and reset views (`cristiandouce - rolodato`)
+  https://github.com/auth0/lock/commit/adf0390b6612f45f73965060e34420c52fa3c2c2
+  https://github.com/auth0/lock/commit/68dcd672f7f8ff9ac94e6f8854c1cc627aadb7ff
+
+## 7.1.8 - (March 06, 2015)
+
+### Changed
+
+ - [lock] Changed console.log's calls with debug module. Fixes https://github.com/auth0/lock/issues/106 (`tehsis`)
+  https://github.com/auth0/lock/commit/8f84b883ea19a4acd1ef820304ed849c27972edb
+   https://github.com/auth0/lock/commit/bb88ffc9dcd0ed76f199485eb095b122a457a3a0
+   https://github.com/auth0/lock/commit/c00b483dd54b5cfc57b7f63185461273ef92bf01
+
 ## 7.1.7 - (March 04, 2015)
 
 ### Fixed

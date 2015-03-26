@@ -1,6 +1,6 @@
 {
-  "name": "quarkyapp",
-  "version": "1.0.0",
+  "name": "Quarky",
+  "version": "0.0.1",
   "description": "QuarkyApp: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
