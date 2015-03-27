@@ -1,0 +1,60 @@
+<ion-view view-title=" ">
+<ion-nav-bar>
+    <ion-nav-buttons side="left">
+        <button class="button button-positive button-clear no-animation"
+                ng-click="startApp()" ng-show="!slideIndex">
+            Skip Intro
+        </button>
+        <button class="button button-positive button-clear no-animation"
+                ng-click="previous()" ng-show="slideIndex > 0">
+            Previous
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-positive button-clear no-animation"
+                ng-click="next()" ng-show="slideIndex != 2">
+            Next
+        </button>
+        <button class="button button-positive button-clear no-animation"
+                ng-click="startApp()" ng-show="slideIndex == 2">
+            Start using Quarky
+        </button>
+    </ion-nav-buttons>
+</ion-nav-bar>
+    <ion-slide-box on-slide-changed="slideChanged(index)">
+        <ion-slide>
+            <h3>Thank you for choosing Quarky!</h3>
+            <div id="logo">
+                <img src="img/quarkycon.png">
+            </div>
+            <p>
+                We've worked super hard to make you happy.
+            </p>
+            <p>
+                But if you are angry, too bad.
+            </p>
+        </ion-slide>
+        <ion-slide>
+            <h3>About Quarky</h3>
+
+            <div id="list">
+                <h5>A creation of Soul Hole Productions, with support from North Kansas City Hospital.</h5>
+                <h6>Partners include:</h6>
+                <ol>
+                    <li>The Healthy Transitions Initiative (HTI) of Jackson County</li>
+                    <li>Northland Center for Advanced Professional Studies (CAPS)</li>
+                    <li>Connect the Dottes for a Better KCK</li>
+                    <li>The Metro KC Youth Collaborative</li>
+                    <li>Youth with Vision and Mid-America Regional Council</li>
+                </ol>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div id="list">
+                    <h3>Important Legal Information</h3>
+
+                    <p>This Quarky App and website concerns youth-oriented problems.  It is not intended to take the place of professional advice. The information in the app or on this website is intended to provide only support and general information. It is for information purposes only and offers you suggestions on where to get started when you need help.  It should not be used or relied upon to replace counseling or therapy. We hope it is also a reminder that you are not alone. There are people who care. </p>
+            </div>
+        </ion-slide>
+    </ion-slide-box>
+</ion-view>

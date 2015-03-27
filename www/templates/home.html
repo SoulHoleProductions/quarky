@@ -2,9 +2,9 @@
     <ion-nav-title>
         News, Quotes and more
     </ion-nav-title>
-    <ion-content class="has-header padding" scroll="true" scrollbar-y="false" ng-controller="QuarkyHomeCtrl" ng-init="loadBlogs()">
+    <ion-content class="has-header" scroll="true" scrollbar-y="false" ng-controller="QuarkyHomeCtrl" ng-init="loadBlogs()">
         <div data-ng-if="!posts.length">
-            <p style="text-align:center"><br>No connection right now...</p>
+            <p style="text-align:center"><br>Waiting for internet...</p>
         </div>
 
         <div data-ng-if="posts[0]">
@@ -18,54 +18,56 @@
                             </div>
                             <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index].excerpt, posts[$index].title, posts[$index].featured_image.source, posts[$index].link)"></i>
                         </div>
-                        <div class="item item-body">
-                            <img class="full-image" data-ng-src="{{posts[$index].featured_image.source}}" alt="">
-                            <p>
+                            <ion-scroll class="item item-body card-item-height">
+
+                                <img class="full-image" data-ng-src="{{posts[$index].featured_image.source}}" alt="">
+                                <p>
                                 <div data-ng-bind-html="toTrusted(posts[$index].excerpt)">
                                 </div>
-                            </p>
-                            <div data-ng-repeat="cat in posts[$index].terms.category">
-                                ( {{cat.name}}{{$last ? ' ' : ', '}} )
-                            </div>
-                        </div>
+                                </p>
+                                <div data-ng-repeat="cat in posts[$index].terms.category">
+                                    ( {{cat.name}}{{$last ? ' ' : ', '}} )
+                                </div>
+
+                            </ion-scroll>
                     </div>
                 </div>
 
                 <div class="col col-33" ng-if="$index + 1 < posts.length">
-                    <div class="list card">
+                    <div class="list card card-height">
                         <div class="item item-stable item-icon-left item-icon-right">
                             <i data-ng-class="categoryIcon(posts[$index + 1].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index + 1].title)">
                             </div>
                             <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index + 1].excerpt, posts[$index + 1].title, posts[$index + 1].featured_image.source, posts[$index + 1].link)"></i>
                         </div>
-                        <div class="item item-body">
+                        <ion-scroll class="item item-body card-item-height">
                             <img class="full-image" data-ng-src="{{posts[$index + 1].featured_image.source}}" alt="">
                             <p><div data-ng-bind-html="toTrusted(posts[$index + 1].excerpt)">
                         </div></p>
                             <div data-ng-repeat="cat in posts[$index + 1].terms.category">
                                 ( {{cat.name}}{{$last ? ' ' : ', '}} )
                             </div>
-                        </div>
+                        </ion-scroll>
                     </div>
                 </div>
 
                 <div class="col col-33" ng-if="$index + 2 < posts.length">
-                    <div class="list card">
+                    <div class="list card card-height">
                         <div class="item item-stable item-icon-left item-icon-right">
                             <i data-ng-class="categoryIcon(posts[$index + 2].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index + 2].title)">
                             </div>
                             <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index + 2].excerpt, posts[$index + 2].title, posts[$index + 2].featured_image.source, posts[$index + 2].link)"></i>
                         </div>
-                        <div class="item item-body">
+                        <ion-scroll class="item item-body card-item-height">
                             <img class="full-image" data-ng-src="{{posts[$index + 2].featured_image.source}}" alt="">
                             <p><div data-ng-bind-html="toTrusted(posts[$index + 2].excerpt)">
                         </div></p>
                             <div data-ng-repeat="cat in posts[$index + 2].terms.category">
                                 ( {{cat.name}}{{$last ? ' ' : ', '}} )
                             </div>
-                        </div>
+                        </ion-scroll>
                     </div>
                 </div>
 

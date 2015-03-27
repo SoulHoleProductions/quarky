@@ -34,9 +34,30 @@ angular.module('quarky.controllers', [])
         doAuth();*/
 
     })
+    .controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
 
+        // Called to navigate to the main app
+        $scope.startApp = function() {
+            $state.go('app.home');
+        };
+        $scope.next = function() {
+            $ionicSlideBoxDelegate.next();
+        };
+        $scope.previous = function() {
+            $ionicSlideBoxDelegate.previous();
+        };
+
+        // Called each time the slide changes
+        $scope.slideChanged = function(index) {
+            $scope.slideIndex = index;
+        };
+    })
     .controller('MenuCtrl', function(store, $scope, $location, $state, auth, $ionicActionSheet){
         $scope.auth = auth;
+
+        $scope.toIntro = function(){
+            $state.go('intro');
+        }
 
         $scope.login = function() {
             auth.signin({

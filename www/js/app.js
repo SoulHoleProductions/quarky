@@ -53,7 +53,11 @@ angular.module('quarky', ['ionic',
                 templateUrl: "templates/login.html",
                 controller: "LoginCtrl"
             })
-
+            .state('intro', {
+                url: '/intro',
+                templateUrl: 'templates/intro.html',
+                controller: 'IntroCtrl'
+            })
             .state('app.home', {
                 url: "/home",
                 views: {
