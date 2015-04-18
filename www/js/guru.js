@@ -87,7 +87,7 @@ function QuarkyGuruService($http, $log) {
             "page": pagenum
         };
         //console.log(params);
-        var quarkyGuru = "http://quarkyapp.com/wp-json/posts/";
+        var quarkyGuru = GURU_ARTICLE_API;
 
         return ($http.get(quarkyGuru, {
             params: params

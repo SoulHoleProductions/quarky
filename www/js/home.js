@@ -17,8 +17,21 @@ QuarkyHome.service("QuarkyHomeService",
 
 function QuarkyHomeCtrl($scope, $sce, $ionicLoading, QuarkyHomeService, $log, $cordovaSocialSharing) {
     $scope.posts = [];
+    $scope.pagenum = null;
+    $scope.infiniteLoad = false;
 
     $scope.loadBlogs = function() {
+        $scope.infiniteLoad = false;
+        $scope.pagenum = 1;
+        if ($scope.posts.length) {
+            $scope.posts = [];
+            $scope.moreBlogs();
+        }
+        $scope.$broadcast("scroll.refreshComplete");
+        $scope.infiniteLoad = true;
+    }
+
+ /*   $scope.loadBlogs = function() {
         $ionicLoading.show({ template: "Loading..."});
         QuarkyHomeService.loadBlogs()
             .success(function(result) {
@@ -27,7 +40,21 @@ function QuarkyHomeCtrl($scope, $sce, $ionicLoading, QuarkyHomeService, $log, $c
                 $ionicLoading.hide();
 
             });
+    }*/
+
+    $scope.moreBlogs = function() {
+        $ionicLoading.show({ template: "Loading..."});
+        QuarkyHomeService.loadBlogs($scope.pagenum)
+            .success(function(result) {
+                //console.log(result);
+                (result.length == 6) ? $scope.pagenum++ : $scope.pagenum = 1; // 6 results per page
+                $scope.posts = $scope.posts.concat(result);
+                $scope.$broadcast("scroll.infiniteScrollComplete");
+                $ionicLoading.hide();
+
+            });
     }
+
     $scope.toTrusted = function(text) {
         return ($sce.trustAsHtml(text));
     }
@@ -66,13 +93,19 @@ function QuarkyHomeCtrl($scope, $sce, $ionicLoading, QuarkyHomeService, $log, $c
     }
 }
 
+
+// TODO: tell wordpress to give more items per page
+// limited to 10 right now
+// "filter[posts_per_page]":100
 function QuarkyHomeService($http, $log) {
-    this.loadBlogs = function() {
+    this.loadBlogs = function(pagenum) {
         var params = {
-            "filter[category_name]":"Home"
+            "filter[category_name]":"Home",
+            "filter[posts_per_page]": 6, // 6 results per page
+            "page": pagenum
         };
         //console.log(params);
-        var quarkyHome = "http://quarkyapp.com/wp-json/posts/";
+        var quarkyHome = HOME_ARTICLE_API;
 
         return ($http.get(quarkyHome, {
             params: params

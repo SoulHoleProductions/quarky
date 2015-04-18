@@ -1,9 +1,13 @@
 /*
 To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file.
+*/
 
-For example, you might change some of the default colors:
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
 
+// Colors
+// -------------------------------
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #387ef5 !default;
@@ -13,11 +17,158 @@ $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
-*/
+/*$dark:                            #6e6c6c !default; //username
+$positive:                        #457cfa !default; //facebook
+$calm:                            #87acff !default; //twitter
+$assertive:                       #ff7959 !default; //google
+$balanced:                        #66cc33 !default;*/
 
-// The path for our ionicons font files, relative to the built CSS in www/css
-$ionicons-font-path: "../lib/ionic/fonts" !default;
+// Base
+// -------------------------------
+
+$font-family-sans-serif:          'Source Sans Pro', Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-light-sans-serif:    'Source Sans Pro', "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-serif:               Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:           Monaco, Menlo, Consolas, "Courier New", monospace !default;
+
+$font-size-base:                  17px !default;
+$font-size-large:                 ($font-size-base + 4) !default;
+$font-size-small:                 ($font-size-base - 4) !default;
+
+// Fonts
+// -------------------------------
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,400,500,600);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@font-face {
+  font-family: 'gloriahallelujah';
+  src: url('../fonts/gloriahallelujah/gloriahallelujah.eot');
+  src: url('../fonts/gloriahallelujah/gloriahallelujah.eot') format('embedded-opentype'),
+  url('../fonts/gloriahallelujah/gloriahallelujah.woff2') format('woff2'),
+  url('../fonts/gloriahallelujah/gloriahallelujah.woff') format('woff'),
+  url('../fonts/gloriahallelujah/gloriahallelujah.ttf') format('truetype'),
+  url('../fonts/gloriahallelujah/gloriahallelujah.svg#gloriahallelujah') format('svg');
+  font-style:   normal;
+  font-weight:  400;
+}
+
+// Styles
+// -------------------------------
+
+body, p, h1, h2, h3, h4, h5 {
+  font-family: 'Source Sans Pro' , sans-serif;
+}
+
+.ubuntu {
+  font-family: 'Ubuntu', sans-serif !important;
+}
+
+.gloria-h {
+  font-family: 'gloriahallelujah' !important;
+  //font-size: 17px;
+  //text-shadow: 3px 3px 0px rgba($assertive, 0.6);
+}
+
+$big-bg:      '../img/grey-bg.jpg';
+.scroll-bg {
+  background: url($big-bg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+// IONIC CARDS
+// --------------------------------
+.card{
+  margin-bottom: -20px !important;
+}
+.card-item-height {
+  /* height: 50vh; */
+  height: 300px;
+}
+
+// PROFILE
+// ---------------------------------
+#profile-info {
+  position: absolute;
+  /*top: -95px;*/
+  width: 100%;
+  z-index: 2;
+  text-align: center;
+}
+#profile-name {
+  color: #444;
+  font-size: 26px;
+}
+#profile-description {
+  font-size: 15px;
+  color: #888;
+}
+
+#profile-image {
+  display: block;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  width: 128px;
+  height: 128px;
+  margin: 30px auto 0;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+}
+
+.avatar {
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  margin: 0 auto;
+  text-align: center;
+  display:block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+// APP INTRO
+// ----------------------------------------
+/* App Intro */
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000000;
+  background-color: #ffffff;
+  text-align: center;
+
+  font-family: "Ubuntu", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+#logo {
+  margin: 30px 0px;
+}
+
+#list {
+  width: 80%;
+  margin: 30px auto;
+  font-size: 15px;
+}
+#list ol {
+  margin-top: 30px;
+}
+#list ol li {
+  text-align: left;
+  list-style: decimal;
+  margin: 10px 0px;
+}
+
+.button.ng-hide{
+  display:none;
+}
+
+
+
+
 
 // Include all of Ionic
+// -----------------------------------------
 @import "www/lib/ionic/scss/ionic";
 

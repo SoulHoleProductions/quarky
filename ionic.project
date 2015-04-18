@@ -1,4 +1,12 @@
 {
   "name": "Quarky",
-  "app_id": "625c375d"
+  "app_id": "625c375d",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }

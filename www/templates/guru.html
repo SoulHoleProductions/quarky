@@ -1,4 +1,4 @@
-<ion-view ng-style="{'background-image':'url(img/parallax-bg2.png)'}">
+<ion-view>
     <ion-nav-title>
 <!--        <div class="bar bar-header item-input-inset">
             <label class="item-input-wrapper">
@@ -11,7 +11,7 @@
         </div>-->
         eGuru
     </ion-nav-title>
-    <ion-content class="has-header padding" ng-controller="QuarkyGuruCtrl">
+    <ion-content class="has-header padding scroll-bg" ng-controller="QuarkyGuruCtrl">
         <ion-refresher
                 pulling-text="Pull to refresh..."
                 on-refresh="loadBlogs()">

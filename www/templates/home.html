@@ -1,8 +1,8 @@
-<ion-view ng-style="{'background-image':'url(img/section-background.jpg)'}">
+<ion-view>
     <ion-nav-title>
-        News, Quotes and more
+        Quarky
     </ion-nav-title>
-    <ion-content class="has-header" scroll="true" scrollbar-y="false" ng-controller="QuarkyHomeCtrl" ng-init="loadBlogs()">
+    <ion-content class="has-header scroll-bg" scroll="true" scrollbar-y="false" ng-controller="QuarkyHomeCtrl" ng-init="loadBlogs()">
         <div data-ng-if="!posts.length">
             <p style="text-align:center"><br>Waiting for internet...</p>
         </div>
@@ -12,11 +12,10 @@
             <div class="row responsive-sm" data-ng-repeat="p in posts" ng-if="$index % 3 === 0">
                 <div class="col col-33" ng-if="$index < posts.length">
                     <div class="list card">
-                        <div class="item item-stable item-icon-left item-icon-right">
+                        <div class="item item-stable item-icon-left">
                             <i data-ng-class="categoryIcon(posts[$index].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index].title)">
                             </div>
-                            <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index].excerpt, posts[$index].title, posts[$index].featured_image.source, posts[$index].link)"></i>
                         </div>
                             <ion-scroll class="item item-body card-item-height">
 
@@ -25,54 +24,88 @@
                                 <div data-ng-bind-html="toTrusted(posts[$index].excerpt)">
                                 </div>
                                 </p>
-                                <div data-ng-repeat="cat in posts[$index].terms.category">
-                                    ( {{cat.name}}{{$last ? ' ' : ', '}} )
-                                </div>
-
                             </ion-scroll>
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsup"></i>
+                                Like
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-chatbox"></i>
+                                Comment
+                            </a>
+                            <a class="tab-item"  data-ng-click="shareNative(posts[$index].excerpt, posts[$index].title, posts[$index].featured_image.source, posts[$index].link)" href="#">
+                                <i class="icon ion-share"></i>
+                                Share
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col col-33" ng-if="$index + 1 < posts.length">
                     <div class="list card card-height">
-                        <div class="item item-stable item-icon-left item-icon-right">
+                        <div class="item item-stable item-icon-left">
                             <i data-ng-class="categoryIcon(posts[$index + 1].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index + 1].title)">
                             </div>
-                            <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index + 1].excerpt, posts[$index + 1].title, posts[$index + 1].featured_image.source, posts[$index + 1].link)"></i>
                         </div>
                         <ion-scroll class="item item-body card-item-height">
                             <img class="full-image" data-ng-src="{{posts[$index + 1].featured_image.source}}" alt="">
                             <p><div data-ng-bind-html="toTrusted(posts[$index + 1].excerpt)">
                         </div></p>
-                            <div data-ng-repeat="cat in posts[$index + 1].terms.category">
-                                ( {{cat.name}}{{$last ? ' ' : ', '}} )
-                            </div>
                         </ion-scroll>
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsup"></i>
+                                Like
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-chatbox"></i>
+                                Comment
+                            </a>
+                            <a class="tab-item" data-ng-click="shareNative(posts[$index + 1].excerpt, posts[$index].title, posts[$index + 1].featured_image.source, posts[$index + 1].link)" href="#">
+                                <i class="icon ion-share"></i>
+                                Share
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col col-33" ng-if="$index + 2 < posts.length">
                     <div class="list card card-height">
-                        <div class="item item-stable item-icon-left item-icon-right">
+                        <div class="item item-stable item-icon-left">
                             <i data-ng-class="categoryIcon(posts[$index + 2].terms.category[0])"></i>
                             <div data-ng-bind-html="toTrusted(posts[$index + 2].title)">
                             </div>
-                            <i class="tab-item icon ion-share" data-ng-click="shareNative(posts[$index + 2].excerpt, posts[$index + 2].title, posts[$index + 2].featured_image.source, posts[$index + 2].link)"></i>
                         </div>
                         <ion-scroll class="item item-body card-item-height">
                             <img class="full-image" data-ng-src="{{posts[$index + 2].featured_image.source}}" alt="">
                             <p><div data-ng-bind-html="toTrusted(posts[$index + 2].excerpt)">
                         </div></p>
-                            <div data-ng-repeat="cat in posts[$index + 2].terms.category">
-                                ( {{cat.name}}{{$last ? ' ' : ', '}} )
-                            </div>
                         </ion-scroll>
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-thumbsup"></i>
+                                Like
+                            </a>
+                            <a class="tab-item" href="#">
+                                <i class="icon ion-chatbox"></i>
+                                Comment
+                            </a>
+                            <a class="tab-item" data-ng-click="shareNative(posts[$index + 2].excerpt, posts[$index + 2].title, posts[$index + 2].featured_image.source, posts[$index + 2].link)" href="#">
+                                <i class="icon ion-share"></i>
+                                Share
+                            </a>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
+
+        <ion-infinite-scroll on-infinite="moreBlogs()"
+                             data-ng-if="infiniteLoad" icon="">
+        </ion-infinite-scroll>
 
     </ion-content>
 </ion-view>

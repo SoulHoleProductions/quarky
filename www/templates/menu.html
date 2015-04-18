@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
-        <ion-nav-bar class="bar-dark">
+        <ion-nav-bar class="bar-dark gloria-h" align-title="left">
             <ion-nav-back-button>
             </ion-nav-back-button>
 
@@ -9,7 +9,16 @@
                 </button>
             </ion-nav-buttons>
             <ion-nav-buttons side="right">
-                <button class="button button-icon icon ion-alert-circled" ng-click="showHotlineActionsheet()"></button>
+                <a nav-clear menu-close href="#/app/home">
+                    <button class="button button-icon icon ion-home"></button>
+                </a>
+                <a nav-clear menu-close href="#/app/guru">
+                    <button class="button button-icon icon ion-university"></button>
+                </a>
+                <a nav-clear menu-close href="#/app/places-servicelist">
+                    <button class="button button-icon icon ion-location"></button>
+                </a>
+                <i class="icon button-icon ion-alert-circled assertive" ng-click="showHotlineActionsheet()"></i>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
@@ -42,10 +51,10 @@
                     Places
                     <i class="icon ion-location"></i>
                 </ion-item>
-                <ion-item class="item-dark item-icon-right" nav-clear menu-close ng-click="toIntro()">
+ <!--               <ion-item class="item-dark item-icon-right" nav-clear menu-close ng-click="toIntro()">
                     Introduction
                     <i class="icon ion-information"></i>
-                </ion-item>
+                </ion-item>-->
                 <ion-item class="item-dark item-icon-right" nav-clear menu-close href="#/app/about">
                     About This App
                     <i class="icon ion-information-circled"></i>
