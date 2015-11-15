@@ -1,3 +1,23 @@
+
+# 4.0.X
+
+## 4.0.3 & 4.0.4
+* Added loginAfterSignup support
+
+## 4.0.2
+* Fixed bug with SSO
+
+## 4.0.1
+* Fixed minification problem with `auth0-angular` and `Lock`
+
+## 4.0.0
+
+* `getToken` method now returns the full delegation object instead of just the `id_token`. This **breaks backward compatibility** with the previous version. It lets you use `auth0-angular` for other delegations besides Auth0 like Amazon which doesn't return an `id_token`
+* Post install script has been removed. It forced people using this library to have `bower` installed.
+* This library can now be configured from both the `config` method via the `authProvider.init` as well as anywhere else in the app via the `auth.init` method.
+* Bumped auth0.js version. When using `refresh_token` and getting a new `id_token`, now original scopes are remembered.
+* `SSO` method has been fixed. `name` is now sent instead of `strategy`
+
 # 3.0.X
 
 ## 3.0.6

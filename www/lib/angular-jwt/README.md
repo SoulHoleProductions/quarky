@@ -22,7 +22,7 @@ npm install angular-jwt
 ````
 
 ````html
-<script type="text/javascript" src="https://rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
 ````
 
 ## jwtHelper
@@ -85,7 +85,7 @@ angular.module('app', ['angular-jwt'])
     url: '/hola',
     method: 'GET'
   });
-}
+})
 ````
 
 ### Not sending the JWT for specific requests
@@ -108,7 +108,29 @@ angular.module('app', ['angular-jwt'])
     skipAuthorization: true
     method: 'GET'
   });
-}
+})
+````
+
+### Not sending the JWT for template requests
+
+By default the interceptor will send the JWT for all HTTP requests. This includes any `ng-include` directives or 
+`templateUrls` defined in a `state` in the `stateProvider`. If you want to avoid sending the JWT for these requests you
+should adapt your `tokenGetter` method to fit your needs. For example:
+
+````js
+angular.module('app', ['angular-jwt'])
+.config(function Config($httpProvider, jwtInterceptorProvider) {
+  jwtInterceptorProvider.tokenGetter = ['config', function(config) {
+    // Skip authentication for any requests ending in .html
+    if (config.url.substr(config.url.length - 5) == '.html') {
+      return null;
+    }
+    
+    return localStorage.getItem('id_token');
+  }];
+  
+  $httpProvider.interceptors.push('jwtInterceptor');
+})
 ````
 
 ### Sending different tokens based on URLs
@@ -129,7 +151,7 @@ angular.module('app', ['angular-jwt'])
   // This request will send the auth0.id_token since URL matches
   $http({
     url: 'http://auth0.com/hola',
-    skipAuthentication: true
+    skipAuthorization: true
     method: 'GET'
   });
 }
@@ -151,7 +173,11 @@ angular.module('app', ['angular-jwt'])
         url: '/delegation',
         // This makes it so that this request doesn't send the JWT
         skipAuthorization: true,
-        method: 'POST'
+        method: 'POST',
+        data: { 
+            grant_type: 'refresh_token',
+            refresh_token: refreshToken 
+        }
       }).then(function(response) {
         var id_token = response.data.id_token;
         localStorage.setItem('id_token', id_token);
@@ -166,6 +192,30 @@ angular.module('app', ['angular-jwt'])
 .controller('Controller', function Controller($http) {
   // Authorization: Bearer [yourToken] will be sent. 
   // That token might be a new one which was got from the refresh token
+  $http({
+    url: '/hola',
+    method: 'GET'
+  });
+})
+````
+
+### Sending the token as a URL Param
+
+````js
+angular.module('app', ['angular-jwt'])
+.config(function Config($httpProvider, jwtInterceptorProvider) {
+  jwtInterceptorProvider.urlParam = 'access_token';
+  // Please note we're annotating the function so that the $injector works when the file is minified
+  jwtInterceptorProvider.tokenGetter = ['myService', function(myService) {
+    myService.doSomething();
+    return localStorage.getItem('id_token');
+  }];
+  
+  $httpProvider.interceptors.push('jwtInterceptor');
+})
+.controller('Controller', function Controller($http) {
+  // If localStorage contains the id_token it will be sent in the request
+  // url will contain access_token=[yourToken]
   $http({
     url: '/hola',
     method: 'GET'
@@ -217,6 +267,13 @@ Auth0 helps you to:
 1. Go to [Auth0](https://auth0.com) and click Sign Up.
 2. Use Google, GitHub or Microsoft Account to login.
 
+## Author
+
+[Auth0](https://auth0.com)
+
 ## License
 
-MIT
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
+
+
+

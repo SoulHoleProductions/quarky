@@ -7,6 +7,8 @@ var minor_version = pkg.version.replace(/\.(\d)*$/, '');
 var major_version = pkg.version.replace(/\.(\d)*\.(\d)*$/, '');
 var path = require('path');
 
+var font_version = 1;
+
 function  rename_release (v) {
   return function (d, f) {
     var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + '$1.js').replace('auth0-', ''));
@@ -25,20 +27,20 @@ module.exports = function (grunt) {
         options: {
           // base: 'test',
           hostname: '*',
-          base: ['.', 'example', 'example/build', 'build'],
+          base: ['.', 'support/development-demo', 'support/development-demo/build', 'build'],
           port: 9999
         }
       },
-      example: {
+      demo: {
         options: {
           hostname: '*',
-          base: ['example', 'example/build', 'build'],
+          base: ['support/development-demo', 'support/development-demo/build', 'build'],
           port: 3000
         }
       },
-      'example-https': {
+      'demo-https': {
         options: {
-          base: ['example', 'example/build', 'build'],
+          base: ['support/development-demo', 'support/development-demo/build', 'build'],
           port:  3000,
           protocol: 'https',
           hostname: '*',
@@ -85,9 +87,9 @@ module.exports = function (grunt) {
           'lib/css/main.css': 'lib/css/main.less'
         }
       },
-      example: {
+      demo: {
         files: {
-          'example/build/index.css': 'example/index.less'
+          'support/development-demo/build/index.css': 'support/development-demo/index.less'
         }
       }
     },
@@ -118,10 +120,10 @@ module.exports = function (grunt) {
       }
     },
     copy: {
-      example: {
+      demo: {
         files: {
-          'example/auth0-lock.min.js': 'build/auth0-lock.min.js',
-          'example/auth0-lock.js':     'build/auth0-lock.js'
+          'support/development-demo/auth0-lock.min.js': 'build/auth0-lock.min.js',
+          'support/development-demo/auth0-lock.js':     'build/auth0-lock.js'
         }
       },
       release: {
@@ -156,7 +158,7 @@ module.exports = function (grunt) {
     },
     clean: {
       css: ['lib/css/main.css', 'lib/css/main.min.css'],
-      js: ['release/', 'build/', 'example/auth0-lock.js']
+      js: ['release/', 'build/', 'support/development-demo/auth0-lock.js']
     },
     watch: {
       js: {
@@ -175,9 +177,9 @@ module.exports = function (grunt) {
           livereload: true
         },
       },
-      example: {
-        files: ['example/*'],
-        tasks: ['less:example'],
+      demo: {
+        files: ['support/development-demo/*'],
+        tasks: ['less:demo'],
         options: {
           livereload: true
         },
@@ -188,6 +190,7 @@ module.exports = function (grunt) {
         accessKeyId:     process.env.S3_KEY,
         secretAccessKey: process.env.S3_SECRET,
         bucket:          process.env.S3_BUCKET,
+        region:          process.env.S3_REGION,
         uploadConcurrency: 5,
         params: {
           CacheControl: 'public, max-age=300'
@@ -204,6 +207,15 @@ module.exports = function (grunt) {
           { action: 'delete', dest: 'js/lock-' + minor_version + '.min.js' }
         ]
       },
+      clean_fonts: {
+        files: [
+          { action: 'delete', dest: 'lock/fonts/' + font_version + '/' }
+          // { action: 'delete', dest: 'lock/font/' + font_version + '/zocial.eot' },
+          // { action: 'delete', dest: 'lock/font/' + font_version + '/zocial.svg' },
+          // { action: 'delete', dest: 'lock/font/' + font_version + '/zocial.ttf' },
+          // { action: 'delete', dest: 'lock/font/' + font_version + '/zocial.woff' }
+        ]
+      },
       publish: {
         files: [
           {
@@ -213,6 +225,16 @@ module.exports = function (grunt) {
             dest:   'js/'
           }
         ]
+      },
+      publish_fonts: {
+        files: [
+          {
+            expand: true,
+            cwd:    'support/fonts/src/',
+            src:    ['**'],
+            dest:   'lock/fonts/' + font_version + '/'
+          }
+        ]
       }
     },
     /* Checks for outdated npm dependencies before release. */
@@ -220,25 +242,6 @@ module.exports = function (grunt) {
       release: {
         development: false
       }
-    },
-    /* Purge FASTLY cache. */
-    fastly: {
-      options: {
-        key:  process.env.FASTLY_KEY,
-        host: process.env.FASTLY_HOST
-      },
-      purge: {
-        options: {
-          urls: [
-            'js/lock-' + pkg.version + '.js',
-            'js/lock-' + pkg.version + '.min.js',
-            'js/lock-' + major_version + '.js',
-            'js/lock-' + major_version + '.min.js',
-            'js/lock-' + minor_version + '.js',
-            'js/lock-' + minor_version + '.min.js',
-          ]
-        },
-      },
     },
     http: {
       purge_js: {
@@ -276,6 +279,12 @@ module.exports = function (grunt) {
           url: process.env.CDN_ROOT + '/js/lock-' + minor_version + '.min.js',
           method: 'DELETE'
         }
+      },
+      purge_fonts: {
+        options: {
+          url: process.env.CDN_ROOT + '/lock/fonts/' + font_version + '/',
+          method: 'DELETE'
+        }
       }
     }
   });
@@ -299,18 +308,17 @@ module.exports = function (grunt) {
   }
 
   grunt.registerTask('css',           ['clean:css', 'less:dist', 'prefix:css', 'autoprefixer:main', 'cssmin:minify']);
-
   grunt.registerTask('js',            ['clean:js', 'browserify:debug', 'exec:uglify']);
   grunt.registerTask('build',         ['css', 'js']);
 
-  grunt.registerTask('example',       ['less:example', 'connect:example', 'build', 'watch']);
-  grunt.registerTask('example-https', ['less:example', 'connect:example-https', 'build', 'watch']);
+  grunt.registerTask('demo',          ['less:demo', 'connect:demo', 'build', 'watch']);
+  grunt.registerTask('demo-https',    ['less:demo', 'connect:demo-https', 'build', 'watch']);
 
-  grunt.registerTask('dev',           ['connect:test', 'build', 'watch']);
+  grunt.registerTask('dev',           ['less:demo', 'connect:test', 'build', 'watch']);
   grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
   grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
-  grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min']);
-
-  grunt.registerTask('cdn',           ['build', 'copy:release', 'aws_s3:clean', 'aws_s3:publish', 'purge_cdn']);
+  grunt.registerTask('publish_s3',    ['aws_s3:clean', 'aws_s3:clean_fonts', 'aws_s3:publish', 'aws_s3:publish_fonts']);
+  grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min', 'http:purge_fonts']);
+  grunt.registerTask('cdn',           ['build', 'copy:release', 'publish_s3', 'purge_cdn']);
 };

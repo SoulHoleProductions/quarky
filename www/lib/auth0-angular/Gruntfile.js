@@ -186,31 +186,53 @@ module.exports = function (grunt) {
         }]
       }
     },
-    maxcdn: {
-      purgeCache: {
+    http: {
+      purge_js: {
         options: {
-          companyAlias:   process.env.MAXCDN_COMPANY_ALIAS,
-          consumerKey:    process.env.MAXCDN_CONSUMER_KEY,
-          consumerSecret: process.env.MAXCDN_CONSUMER_SECRET,
-          zone_id:        process.env.MAXCDN_ZONE_ID,
-          method:         'delete'
-        },
-        files: [
-          { dest:     'w2/auth0-angular-' + pkg.version + '.min.js' },
-          { dest:     'w2/auth0-angular-' + pkg.version + '.js' },
-          { dest:     'w2/auth0-angular-' + majorVersion + '.js', },
-          { dest:     'w2/auth0-angular-' + majorVersion + '.min.js', },
-          { dest:     'w2/auth0-angular-' + minorVersion + '.js', },
-          { dest:     'w2/auth0-angular-' + minorVersion + '.min.js', }
-        ],
+          url: process.env.CDN_ROOT + '/w2/auth0-angular-' + pkg.version + '.js',
+          method: 'DELETE'
+        }
       },
+      purge_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-angular-' + pkg.version + '.min.js',
+          method: 'DELETE'
+        }
+      },
+      purge_major_js: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-angular-' + majorVersion + '.js',
+          method: 'DELETE'
+        }
+      },
+      purge_major_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-angular-' + majorVersion + '.min.js',
+          method: 'DELETE'
+        }
+      },
+      purge_minor_js: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-angular-' + minorVersion + '.js',
+          method: 'DELETE'
+        }
+      },
+      purge_minor_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-angular-' + minorVersion + '.min.js',
+          method: 'DELETE'
+        }
+      }
     }
   });
 
   grunt.registerTask('build', ['clean', 'jshint', 'ngmin', 'concat', 'uglify', 'karma', 'copy']);
   grunt.registerTask('test', ['build', 'karma']);
   grunt.registerTask('scenario', ['build', 'connect:scenario_custom_login', 'protractor:local']);
-  grunt.registerTask('cdn', ['build', 's3', 'maxcdn']);
+
+  grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min']);
+  grunt.registerTask('cdn', ['build', 's3', 'purge_cdn']);
+
   grunt.registerTask('default', ['build', 'watch']);
 
 };

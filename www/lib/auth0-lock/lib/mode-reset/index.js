@@ -12,6 +12,7 @@ var bind = require('../bind');
 var template = require('./reset.ejs');
 var regex = require('../regex');
 var PasswordStrength = require('../password-strength');
+var ValidationError = require('../errors/ValidationError');
 var empty = regex.empty;
 var trim = require('trim');
 var email_parser = regex.email_parser;
@@ -130,11 +131,37 @@ ResetPanel.prototype.bindAll = function() {
   this.query('.a0-options .a0-cancel')
     .a0_on('click', bind(this.oncancel, this));
 
+  this.query('input[name=email]')
+    .a0_on('input', bind(this.onemailinput, this));
+
   var passwordStrength = new PasswordStrength(this.query('.a0-password_policy'),
                                               this.query('#a0-reset_easy_password'),
                                               this.options);
 
   return this;
+};
+
+/**
+ * Handler for email input event
+ *
+ * @param {Event} e
+ * @private
+ */
+ResetPanel.prototype.onemailinput = function() {
+  var mailField = this.query('input[name=email]');
+  var email = mailField.val();
+
+  if (this.options._isConnectionEmail(email)) {
+
+    var widget = this.widget;
+    widget._setPreviousPanel('reset');
+    widget._showSuccess();
+    widget._showError();
+    widget._focusError();
+    widget._signinPanel();
+    widget._setEmail(email);
+    return;
+  }
 };
 
 /**
@@ -195,34 +222,42 @@ ResetPanel.prototype.valid = function () {
   widget._focusError();
 
   if (email_empty) {
+    var error_message = validate_username ? 'username empty' : 'email empty';
+    widget.emit('reset error', new ValidationError(error_message));
     widget._focusError(email_input);
     ok = false;
   }
 
   if (!email_parsed && !email_empty) {
-    if(validate_username && !username_parsed) {
-      ok = false || (validate_username && username_parsed);
-      if(!ok) widget._focusError(email_input, widget.options.i18n.t('invalid'));
+    ok = false || (validate_username && username_parsed);
+
+    if (!ok) {
+      var invalid_error = validate_username ? 'username invalid' : 'email invalid';
+      widget.emit('reset error', new ValidationError(invalid_error));
+      widget._focusError(email_input, widget.options.i18n.t('invalid'));
     }
   }
 
   if (password_empty) {
+    widget.emit('reset error', new ValidationError('password empty'));
     widget._focusError(password_input);
     ok = false;
   }
 
   if (repeat_password_empty) {
+    widget.emit('reset error', new ValidationError('repeat password empty'));
     widget._focusError(repeat_password_input);
     ok = false;
   }
 
   if (repeat_password_input.val() !== password_input.val()) {
+    widget.emit('reset error', new ValidationError('password missmatch'));
     widget._focusError(repeat_password_input, widget.options.i18n.t('mustMatch'));
     ok = false;
   }
 
   return ok;
-}
+};
 
 /**
  * Submit validated form to Auth0 for password reset
@@ -242,6 +277,8 @@ ResetPanel.prototype.submit = function () {
   var callback = panel.options.popupCallback;
 
   widget._loadingPanel({ mode: 'reset' });
+
+  widget.emit('reset submit', widget.options);
 
   widget.$auth0.changePassword({
     connection: connection.name,
@@ -268,9 +305,11 @@ ResetPanel.prototype.submit = function () {
       email_input.val('');
       widget._signinPanel(panel.options);
       widget._showSuccess(widget.options.i18n.t('reset:successText'));
-
+      widget.emit('reset success');
       return 'function' === typeof callback ? callback.apply(widget, args) : null;
     }
+
+    widget.emit('reset error', err);
 
     widget.setPanel(panel);
 
@@ -290,4 +329,4 @@ ResetPanel.prototype.submit = function () {
 
   });
 
-}
+};

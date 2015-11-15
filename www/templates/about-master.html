@@ -1,0 +1,16 @@
+<ion-view title="About">
+    <ion-content class="flex-gallery text-center padding category-bg">
+ <!--       <button class="button button-positive" ng-click="makePost()">
+            create new post
+        </button>
+        <button class="button button-positive" ng-click="oauthPost()">
+            test oauth post
+        </button>
+        Result: {{res}}
+ -->       <span ng-repeat="post in posts">
+            <a ui-sref='app.about-list({postId: post.slug})'>
+                <img data-ng-src="{{post.localImage}}" width="300px" alt="">
+            </a>
+        </span>
+    </ion-content>
+</ion-view>

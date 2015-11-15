@@ -1,16 +1,65 @@
-<ion-view view-title="Profile" ng-style="{'background-image':'url(img/section-background.jpg)'}">
-    <ion-content class="has-header padding">
-        <div id="profile-info" ng-if="auth.profile">
+<ion-view title="Your Profile">
+    <ion-content padding="true" class="scroll-bg">
+
+        <div>
             <img id="profile-image" data-ng-src="{{auth.profile.picture}}">
-            <h3 id="profile-name">{{ auth.profile.name }}</h3>
-            <h3 id="profile-name">( {{ auth.profile.nickname }} )</h3>
-            <span id="profile-description">Email: {{auth.profile.email}} </span>
-<!--            <button class="button button-small button-assertive" ng-click="logout()">
-                Logout
-            </button>-->
+            <div id="profile-name" class="text-center padding-top">{{ auth.profile.name }}</div>
         </div>
-        <div ng-if="!auth.profile">
-            There is no profile available right now, you shouldn't be seeing this!
+
+        <div class="list card dark-bg">
+            <div class="item-dark item-body">
+                <ion-item ng-show="auth.profile.can_add_places" class="item-positive item-icon-left">
+                    <i class="icon ion-ribbon-a"></i>
+                    You can add places!
+
+                </ion-item>
+                <ion-item ng-hide="auth.profile.can_add_places" class="item-positive item-icon-left">
+                    <i class="icon ion-ribbon-a"></i>
+                    Volunteer to add places?
+                </ion-item>
+                <label ng-hide="auth.profile.can_add_places" class="item item-positive item-select item-icon-left">
+                    <div class="input-label">
+                    </div>
+                    <select name="selectVolForPlaces"
+                            ng-model="selectVolForPlaces"
+                            ng-change="updateVolForPlaces(selectVolForPlaces)">
+                        <option value="Yes">Yes, I volunteer!</option>
+                        <option value="No">No thanks</option>
+                        <option value="" selected>---Please select---</option>
+                    </select>
+                </label>
+                    <label class="item item-dark item-select item-icon-left">
+                        <i class="icon ion-person"></i>
+                        <div class="input-label">
+                            Gender:
+                        </div>
+                        <select name="selectGender"
+                                ng-model="selectGender"
+                                ng-change="updateGender(selectGender)">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="" selected>---Please select---</option>
+                        </select>
+                    </label>
+                <ion-item class="item-dark item-icon-left">
+                    <ionic-datepicker input-obj="datepickerObject">
+                        <i class="icon ion-edit"></i>
+                    </ionic-datepicker></i>
+                    Birthday: {{datepickerObject.inputDate | date:'MMM d, y'}}
+                </ion-item>
+                <ion-item class="item-dark item-icon-left">
+                    <i class="icon ion-email"></i>
+                    {{auth.profile.email || 'not on file'}}
+                </ion-item>
+
+                <ion-item class="item-dark item-icon-left" ng-show="currentPlatform">
+                    <i class="icon ion-iphone"></i>
+                    {{currentPlatform}} version {{currentPlatformVersion}}
+                </ion-item>
+                <ion-item class="item-dark">
+                    <button class="button button-outline button-block button-small icon-right ion-log-out" ng-click="logout()">Logout</button>
+                </ion-item>
             </div>
-   </ion-content>
+        </div>
+    </ion-content>
 </ion-view>

@@ -31,13 +31,25 @@ The only difference with the example on the `angular-jwt` guide is that now you'
 ````js
 angular.module('myApp', ['auth0', 'angular-jwt'])
   .config(function($httpProvider, jwtInterceptorProvider) {
+    var refreshingToken = null;
     jwtInterceptorProvider.tokenGetter = function(store, $http, jwtHelper) {
-      var idToken = store.get('token');
+      
+      var token = store.get('token');
       var refreshToken = store.get('refreshToken');
-      if (jwtHelper.isTokenExpired(idToken)) {
-        return auth.refreshIdToken(refreshToken);
-      } else {
-        return idToken;
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          return store.get('token');
+        } else {
+          if (refreshingToken === null) {
+            refreshingToken =  auth.refreshIdToken(refreshToken).then(function(idToken) {
+              store.set('token', idToken);
+              return idToken;
+            }).finally(function() {
+                refreshingToken = null;
+            });
+          }
+          return refreshingToken;
+        }
       }
     }
 
@@ -52,22 +64,28 @@ Once the page is refreshed, you want the user to stay logged in. For that, if th
 ````js
 angular.module('myApp', ['auth0', 'angular-jwt', 'angular-storage'])
 .run(function($rootScope, auth, store, jwtHelper, $location) {
+  var refreshingToken = null;
   $rootScope.$on('$locationChangeStart', function() {
-    if (!auth.isAuthenticated) {
-      var token = store.get('token');
-      var refreshToken = store.get('refreshToken');
-      if (token) {
-        if (!jwtHelper.isTokenExpired(token)) {
+    var token = store.get('token');
+    var refreshToken = store.get('refreshToken');
+    if (token) {
+      if (!jwtHelper.isTokenExpired(token)) {
+        if (!auth.isAuthenticated) {
           auth.authenticate(store.get('profile'), token);
-        } else {
-          if (refreshToken) {
-            return auth.refreshIdToken(refreshToken).then(function(idToken) {
-              store.set('token', idToken);
-              auth.authenticate(store.get('profile'), idToken);
-            });
-          } else {
-            $location.path('/login');
+        }
+      } else {
+        if (refreshToken) {
+          if (refreshingToken === null) {
+              refreshingToken =  auth.refreshIdToken(refreshToken).then(function(idToken) {
+                store.set('token', idToken);
+                auth.authenticate(store.get('profile'), idToken);
+              }).finally(function() {
+                  refreshingToken = null;
+              });
           }
+          return refreshingToken;
+        } else {
+          $location.path('/login');
         }
       }
     }

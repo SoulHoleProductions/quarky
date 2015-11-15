@@ -1,0 +1,35 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-dark">
+        <h1 class="title">{{aPost.title}}</h1>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list card">
+            <div class="item item-body">
+                <div data-ng-if="aPost.featured_image.source">
+                    <img class="full-image" data-ng-src="{{aPost.featured_image.source}}">
+                </div>
+                <div data-ng-bind-html="toTrusted(aPost.content)"></div>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar>
+        <div class="tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+                <i class="icon ion-thumbsup"></i>
+                Like
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-chatbox"></i>
+                Comment
+            </a>
+            <a class="tab-item"  data-ng-click="shareNative(aPost.excerpt, aPost.title, aPost.featured_image.source, aPost.link)" href="#">
+                <i class="icon ion-share"></i>
+                Share
+            </a>
+        </div>
+
+    </ion-footer-bar>
+
+</ion-modal-view>

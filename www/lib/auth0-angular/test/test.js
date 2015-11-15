@@ -138,7 +138,7 @@ describe('Auth0 Angular', function () {
 
 
   describe('Token store', function () {
-    var auth, $rootScope, $timeout, getDelegationToken, hasTokenExpiredOriginal, refreshToken, renewIdToken;
+    var auth, $rootScope, $timeout, getDelegationToken, hasTokenExpiredOriginal, refreshToken, renewIdToken, originalToken;
 
     beforeEach(initAuth0);
 
@@ -153,7 +153,7 @@ describe('Auth0 Angular', function () {
         'eyJleHAiOjEzOTQ2OTk4OTIsImlhdCI6MTM5NDY2Mzg5Mn0',
         'X6wKtHdkf06U2XIAUaxx0UXT6EYjNqB3uktJcuxHim4'
       ];
-      token = token.join('.');
+      originalToken = token = token.join('.');
       getDelegationToken = sinon.stub();
       getDelegationToken.onCall(0).callsArgWith(1, null, {id_token: token});
 
@@ -174,8 +174,8 @@ describe('Auth0 Angular', function () {
     });
 
     it('should get the token using the API on the first time', function (done) {
-      auth.getToken('client-id').then(function (token) {
-        expect(token).to.be.ok;
+      auth.getToken('client-id').then(function (localToken) {
+        expect(localToken.id_token).to.equal(originalToken);
       })
       .then(done);
 

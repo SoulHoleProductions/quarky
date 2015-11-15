@@ -30,8 +30,8 @@ npm install auth0-angular
 ### CDN
 
 ````html
-<script type="text/javascript" src="//cdn.auth0.com/js/lock-6.js"></script>
-<script type="text/javascript" src="//cdn.auth0.com/w2/auth0-angular-3.js"></script>
+<script type="text/javascript" src="//cdn.auth0.com/js/lock-7.js"></script>
+<script type="text/javascript" src="//cdn.auth0.com/w2/auth0-angular-4.js"></script>
 ````
 
 > **Warning**: If you use a CDN or get the script manually, please be sure to include `auth0-lock` or `auth0.js` that matches the versions [specified on the `bower.json`](https://github.com/auth0/auth0-angular/blob/master/bower.json#L7-L8)
@@ -68,7 +68,7 @@ angular.module('myCoolApp').controller('LoginCtrl', function(auth) {
       authParams: {
         scope: 'openid profile' // This is if you want the full JWT
       }
-    }, function() {
+    }, function(profile, idToken, accessToken, state, refreshToken) {
       $location.path('/user-info')
     }, function(err) {
       console.log("Error :(", err);
@@ -142,10 +142,10 @@ This method does the signin for you. If you're using `auth0-lock`, it'll display
 The most important thing to **check is if we're setting the callbacks or not**. **If set**, popup mode will be used and as the Angular page will not reload **the callbacks will be used to handle the sigin success and failure**. **We don't use promises since once the widget is opened, the user can enter the password incorrectly several times and then enter it ok. We cannot fulfill a promise (with success or failure) more than once unfortunately**.
 
 ````js
-auth.signin({}, function(
+auth.signin({}, function(profile, idToken, accessToken, state, refreshToken) {
   // All good
   $location.path('/');
-), function(error) {
+}, function(error) {
   // Error
 })
 ````
@@ -158,10 +158,10 @@ auth.signin({
   username: $scope.username,
   password: $scope.password,
   connection: ['Username-Password-Authentication']
-}, function(
+}, function() {
   // All good
   $location.path('/');
-), function(error) {
+}, function(error) {
   // Error
 })
 ````
@@ -171,7 +171,11 @@ auth.signin({
 ````js
 // app.js
 module.config(function(authProvider) {
-  authProvider.on('loginSuccess', function($location) {
+  authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
+    profilePromise.then(function(profile) {
+      store.set('profile', profile);
+      store.set('token', idToken);
+    });
     $location.path('/');
   });
 
@@ -189,8 +193,6 @@ module.config(function(authProvider) {
 // LoginCtrl.js
 auth.signin();
 ````
-
-You can read **a more extensive tutorial on how to use auth0-angular with [popup mode here](docs/widget-popup.md) and with [redirect mode here](docs/widget-redirect.md)**.
 
 The rest of the **options that can be sent can be [checked here](https://github.com/auth0/lock/wiki/Auth0Lock-customization)**.
 
@@ -332,9 +334,9 @@ For example, let's imagine you have a token valid for 10 hours. After 9 hours, y
 
 Given a **expired** `id_token`, you can use the `refresh_token` to get a new and valid `id_token`.
 
-#### authProvider.init(options)
+#### authProvider.init(options) || auth.init(options)
 
-You use this method to configure the auth service. You must set the following options:
+You use this method to configure the auth service. It can be used either from the provider in the `config` method of your app, or anywhere else in the application from the `auth` service by calling `auth.init`. You can set the following options:
 
 * **domain**: The domain you have from your Auth0 account.
 * **clientId**: The identifier for the application you've created. This can be found in the settings for your app on Auth0.

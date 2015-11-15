@@ -1,0 +1,22 @@
+<ion-view title="{{postTitle}}">
+    <ion-content lazy-scroll padding="true" class="has-header category-bg" ng-init="loadPostList(post.slug)">
+
+        <div ng-if="!postlist.length && !noItems" class="text-center color:white">
+            <h3 class="gloria-h">Getting content...</h3>
+            <ion-spinner></ion-spinner>
+        </div>
+        <div ng-if="noItems" class="text-center color:white">
+            <h3 class="gloria-h">There are no articles</h3>
+            <h3 class="gloria-h">Check back soon!</h3>
+        </div>
+
+        <ion-list>
+            <ion-item class="item-thumbnail-left" ng-repeat="post in postlist" data-ng-click="openModal(post)">
+                <img image-lazy-src="{{post.featured_image.source || 'img/coming-soon.png'}}" image-lazy-loader="lines">
+                <h2>{{post.title}}</h2>
+                <div data-ng-bind-html="toTrusted(post.excerpt)"></div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+

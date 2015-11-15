@@ -1,0 +1,41 @@
+<!--
+app.place-ohana-detail
+Shows the details of any given place using a card
+The card shows available details
+Enables the user to open the website of the place, in-app
+Enables the user to call the place, in-app
+Enables user to open the Place separately in a google map webpage
+-->
+
+<ion-view title="{{name}}">
+	
+	<ion-content scroll=true class="category-bg">
+		
+		<div class="list card">
+
+			<div class="item item-avatar">
+				<img data-ng-src="{{icon}}">
+				<h2>{{name}}</h2>
+				<p>{{formatted_address}}</p>
+			</div>
+
+			<div class="item item-body">
+                <div class="item item-text-wrap">
+                    {{description}}
+                </div>
+				<img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{latitude}},{{longitude}}&zoom=14&markers=color:blue%7C{{latitude}},{{longitude}}&size=310x310&sensor=true" width="300" height="300" />
+			</div>
+			<div class="item tabs tabs-secondary tabs-icon-left">
+				<a ng-show="hasPhones" class="tab-item" href="tel:{{phones[0].number}}">
+					<i class="icon ion-ios7-telephone"></i> {{phones[0].number}}
+				</a>	
+				<a ng-show="hasWebsite" class="tab-item" ng-click="showPage(website)">
+					<i class="icon ion-link"></i> Visit Website
+				</a>	
+				<a class="tab-item" ng-click="showPage('https://maps.google.com/maps?z=12&t=m&q=loc:'+latitude+'+'+longitude+'')">
+					<i class="icon ion-map"></i> View Map
+				</a>	
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

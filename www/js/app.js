@@ -1,46 +1,146 @@
-// QuarkyApp by Derek Baron
-
 angular.module('quarky', ['ionic',
-    'quarky.controllers',
-    'quarky.filters',
-    'quarky.guru',
-    'quarky.home',
-    'places.controllers',
-    'ngCordova',
+    'ionic.service.core',
+    'ionic.service.analytics',
+    'ngIOS9UIWebViewPatch',
+    'about-module',
+    'home-module',
+    'menu',
+    'profile',
+    'guru',
+    'places',
     'auth0',
     'angular-storage',
-    'angular-jwt'])
+    'angular-jwt',
+    'ngResource'
+])
 
-    .run(function($ionicPlatform) {
-        $ionicPlatform.ready(function() {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
-            if (window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    .run(function ($ionicPlatform, $ionicAnalytics, auth, $rootScope, store, jwtHelper, $location, $ionicLoading) {
+
+        $ionicPlatform.ready(function () {
+            $ionicAnalytics.register();
+
+            try {
+                if (window.cordova && window.cordova.plugins.Keyboard) {
+                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                }
+                if (window.StatusBar) {
+                    // org.apache.cordova.statusbar required
+                    StatusBar.styleDefault();
+                }
+                if (window.cordova && window.cordova.plugins.inAppBrowser) {
+                    window.open = cordova.InAppBrowser.open;
+                }
             }
-            if (window.StatusBar) {
-                // org.apache.cordova.statusbar required
-                StatusBar.styleDefault();
+            catch (e) {
+                alert(e)
+            }
+
+        });
+
+        //-------------- global http loading
+        $rootScope.$on('loading:show', function () {
+            $ionicLoading.show({template: 'Loading...'})
+        });
+        $rootScope.$on('loading:hide', function () {
+            $ionicLoading.hide()
+        });
+
+        //-------------- auth0
+        //This hooks all auth events
+        auth.hookEvents();
+        //This event gets triggered on URL change
+        var refreshingToken = null;
+        $rootScope.$on('$locationChangeStart', function() {
+            var token = store.get('token');
+            var refreshToken = store.get('refreshToken');
+            if (token) {
+                if (!jwtHelper.isTokenExpired(token)) {
+                    if (!auth.isAuthenticated) {
+                        auth.authenticate(store.get('profile'), token);
+                    }
+                } else {
+                    if (refreshToken) {
+                        if (refreshingToken === null) {
+                            refreshingToken = auth.refreshIdToken(refreshToken).then(function(idToken) {
+                                store.set('token', idToken);
+                                auth.authenticate(store.get('profile'), idToken);
+                            }).finally(function() {
+                                refreshingToken = null;
+                            });
+                        }
+                        return refreshingToken;
+                    } else {
+                        $location.path('/login');// Notice: this url must be the one defined
+                    }                          // in your login state. Refer to step 5.
+                }
             }
         });
+
+
     })
 
-    .run(function($rootScope, $location) {
-        // the following is used by the Places feature
-        $rootScope.goHome = function() {
-            $location.path('/app/places-servicelist');
-        };
-    })
-
-
-    .config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvider,
-                     jwtInterceptorProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, authProvider, $httpProvider,
+                      jwtInterceptorProvider) {
         $stateProvider
+
+            .state('login', {
+                url: '/login',
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
+            })
             .state('app', {
                 url: "/app",
                 abstract: true,
                 templateUrl: "templates/menu.html",
-                controller: 'MenuCtrl',
+                controller: 'MenuCtrl'
+            })
+            .state('app.profile', {
+                url: "/profile",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile.html",
+                        controller: 'ProfileCtrl'
+                    }
+                },
+                data: {
+                    // This tells Auth0 that this state requires the user to be logged in.
+                    // If the user isn't logged in and he tries to access this state
+                    // he'll be redirected to the login page
+                    requiresLogin: true
+                }
+            })
+            .state('app.guru', {
+                url: "/guru",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/guru-nav.html",
+                        controller: 'GuruCtrl'
+                    }
+                },
+                data: {
+                    // This tells Auth0 that this state requires the user to be logged in.
+                    // If the user isn't logged in and he tries to access this state
+                    // he'll be redirected to the login page
+                    requiresLogin: true
+                }
+            })
+            .state('app.guru-list', {
+                url: "/guru/list/:id",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/guru-list.html",
+                        controller: 'GuruListCtrl'
+                    }
+                }
+            })
+            .state('app.guru-detail', {
+                url: "/guru/detail/:id",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/guru-detail.html",
+                        controller: 'GuruDetailCtrl'
+                    }
+                },
                 data: {
                     // This tells Auth0 that this state requires the user to be logged in.
                     // If the user isn't logged in and he tries to access this state
@@ -48,130 +148,169 @@ angular.module('quarky', ['ionic',
                     requiresLogin: false
                 }
             })
-            .state('login', {
-                url: "/login",
-                templateUrl: "templates/login.html",
-                controller: "LoginCtrl"
-            })
-            .state('intro', {
-                url: '/intro',
-                templateUrl: 'templates/intro.html',
-                controller: 'IntroCtrl'
-            })
-            .state('app.home', {
-                url: "/home",
+            .state('app.home-list', {
+                url: "/home-list",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/home.html",
-                        controller: 'QuarkyHomeCtrl'
+                        templateUrl: "templates/home-list.html",
+                        controller: 'HomeListCtrl'
                     }
                 },
                 data: {
-                    requiresLogin: false
+                    // This tells Auth0 that this state requires the user to be logged in.
+                    // If the user isn't logged in and he tries to access this state
+                    // he'll be redirected to the login page
+                    requiresLogin: true
                 }
             })
-            .state('app.about', {
-                url: "/about",
+            .state('app.about-master', {
+                url: "/about-master",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/about.html"
-                        //controller: 'AboutCtrl'   ---> no controller needed yet
+                        templateUrl: "templates/about-master.html",
+                        controller: 'AboutMasterCtrl'
                     }
                 },
                 data: {
-                    requiresLogin: false
+                    // This tells Auth0 that this state requires the user to be logged in.
+                    // If the user isn't logged in and he tries to access this state
+                    // he'll be redirected to the login page
+                    requiresLogin: true
+                },
+                resolve: {
+                    posts: function (AboutService2) {
+                        return AboutService2.getPosts();
+                    }
                 }
             })
-            .state('app.profile', {
-                url: "/profile",
+            .state('app.about-list', {
+                url: "/about-list/:postId",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/profile.html"
+                        templateUrl: "templates/about-list.html",
+                        controller: 'AboutListCtrl'
                     }
                 },
-                data: {
-                    requiresLogin: false
+                resolve: {
+                    post: function ($stateParams, AboutService2) {
+                        return AboutService2.getPost($stateParams.postId);
+                    }
                 }
             })
-            .state('app.guru', {
-                url: "/guru",
+            .state('app.places-master', {
+                url: "/places-master",
+                cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/guru.html",
-                        controller: 'QuarkyGuruCtrl'
+                        templateUrl: "templates/places-master.html",
+                        controller: 'PlacesMasterCtrl'
                     }
                 },
                 data: {
+                    // This tells Auth0 that this state requires the user to be logged in.
+                    // If the user isn't logged in and he tries to access this state
+                    // he'll be redirected to the login page
+                    requiresLogin: true
+                }
+            })
+            .state('app.places-articles', {
+                url: "/places-articles",
+                cache: false,
+                params: {searchParams: null},
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/places-articles.html",
+                        controller: 'PlacesArticlesCtrl'
+                    }
+                },
+                data: {
+                    // This tells Auth0 that this state requires the user to be logged in.
+                    // If the user isn't logged in and he tries to access this state
+                    // he'll be redirected to the login page
                     requiresLogin: false
                 }
             })
-            .state('app.places-home', {
-                url: '/places-home',
+            .state('app.places-gallery', {
+                url: "/places/gallery",
+                cache: false,
+                params: {galleryParams: null},
                 views: {
-                    'menuContent':{
-                        controller: 'PlacesHomeCtrl',
-                        templateUrl: 'templates/places-home.html'
+                    'menuContent': {
+                        templateUrl: "templates/places-gallery.html",
+                        controller: 'PlacesGalleryCtrl'
                     }
                 },
                 data: {
+                    // This tells Auth0 that this state requires the user to be logged in.
+                    // If the user isn't logged in and he tries to access this state
+                    // he'll be redirected to the login page
                     requiresLogin: false
                 }
             })
-            .state('app.places-servicelist', {
-                url: '/places-servicelist',
+            .state('app.place-detail', {
+                cache: false,
+                url: "/place-detail/:placeId",
                 views: {
-                    'menuContent':{
-                        controller: 'ServiceListCtrl',
-                        templateUrl: 'templates/places-servicelist.html'
+                    'menuContent': {
+                        templateUrl: "templates/place-detail.html",
+                        controller: 'PlacesDetailCtrl'
                     }
-                },
-                data: {
-                    requiresLogin: false
                 }
             })
-            .state('app.places-servicedetail', {
-                url: '/places-servicedetail/:serviceId',
+            .state('app.place-ohana-detail', {
+                cache: false,
+                url: "/place-ohana-detail/:placeId",
                 views: {
-                    'menuContent':{
-                        controller: 'ServiceDetailCtrl',
-                        templateUrl: 'templates/places-servicedetail.html'
+                    'menuContent': {
+                        templateUrl: "templates/place-ohana-detail.html",
+                        controller: 'PlacesOhanaDetailCtrl'
                     }
-                },
-                data: {
-                    requiresLogin: false
                 }
             })
-            .state('app.places-card', {
-                url: '/place/:placeId',
-                views: {
-                    'menuContent':{
-                        controller: 'PlaceDetailCtrl',
-                        templateUrl: 'templates/places-card.html'
-                    }
-                },
-                data: {
-                    requiresLogin: false
-                }
-            });
 
-        // Configure Auth0
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/login');
+
+
+        //-------------- auth0
         authProvider.init({
             domain: AUTH0_DOMAIN,
             clientID: AUTH0_CLIENT_ID,
-            loginState: 'app.home'
+            loginState: 'login'
         });
+        authProvider.on('loginSuccess', function($location, profilePromise, idToken, store, refreshToken) {
+            console.log('got loginSuccess ');
 
-        // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/home');
+            profilePromise.then(function(profile) {
+                console.log('loginSuccess profile: ', profile);
+                console.log('loginSuccess token: ', idToken);
+                console.log('loginSuccess refreshToken: ', refreshToken);
 
-        jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
+                store.set('profile', profile);
+                store.set('token', idToken);
+                store.set('refreshToken', refreshToken);
+                $location.path('/app/home-list');
+            });
+        });
+        authProvider.on('authenticated', function($location) {
+            console.log('got authenticated ');
+            $location.path('/app/home-list');
+        });
+        authProvider.on('loginFailure', function($location, error) {
+            // Error callback
+            console.log('loginFailure: ', error);
+            $location.path('/login');
+        });
+        jwtInterceptorProvider.tokenGetter = function (store, jwtHelper, auth) {
             var idToken = store.get('token');
             var refreshToken = store.get('refreshToken');
+            // If no token return null
             if (!idToken || !refreshToken) {
                 return null;
             }
+            // If token is expired, get a new one
             if (jwtHelper.isTokenExpired(idToken)) {
-                return auth.refreshIdToken(refreshToken).then(function(idToken) {
+                return auth.refreshIdToken(refreshToken).then(function (idToken) {
                     store.set('token', idToken);
                     return idToken;
                 });
@@ -179,16 +318,20 @@ angular.module('quarky', ['ionic',
                 return idToken;
             }
         }
-
         $httpProvider.interceptors.push('jwtInterceptor');
-    }).run(function($rootScope, auth, store) {
-        $rootScope.$on('$locationChangeStart', function() {
-            if (!auth.isAuthenticated) {
-                var token = store.get('token');
-                if (token) {
-                    auth.authenticate(store.get('profile'), token);
+
+        //-------------- global http loading
+        $httpProvider.interceptors.push(function ($rootScope) {
+            return {
+                request: function (config) {
+                    $rootScope.$broadcast('loading:show')
+                    return config
+                },
+                response: function (response) {
+                    $rootScope.$broadcast('loading:hide')
+                    return response
                 }
             }
-
         });
+
     });

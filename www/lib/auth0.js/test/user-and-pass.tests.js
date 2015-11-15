@@ -17,17 +17,18 @@ describe('Auth0 - User And Passwords', function () {
   });
 
   describe('Login', function () {
-
     describe('with resource owner', function () {
 
       it('should call the callback when user/pass is wrong', function (done) {
         auth0.login({
           connection: 'tests',
           username: 'testttt@wrong.com',
-          password: '12345'
+          password: '12345',
+          sso: false
         }, function (err, profile) {
           expect(err.status).to.equal(401);
           expect(err.details.code).to.equal('invalid_user_password');
+          expect(profile).not.to.be.ok();
           done();
         });
       });
@@ -38,10 +39,12 @@ describe('Auth0 - User And Passwords', function () {
         auth0.login({
           connection: 'testsw3eeasdsadsa',
           username: 'testttt@wrong.com',
-          password: '12345'
+          password: '12345',
+          sso:      false
         }, function (err, profile) {
           expect(err.status).to.equal(400);
           expect(err.message).to.equal('invalid_connection');
+          expect(profile).not.to.be.ok();
           done();
         });
       });
@@ -50,7 +53,8 @@ describe('Auth0 - User And Passwords', function () {
         auth0.login({
           connection: 'tests',
           username: 'johnfoo@gmail.com',
-          password: '12345'
+          password: '12345',
+          sso: false
         }, function (err, profile, id_token, access_token) {
           expect(profile.name).to.eql('John Foo');
           expect(profile.foo).to.eql('bar');
@@ -66,13 +70,30 @@ describe('Auth0 - User And Passwords', function () {
           connection: 'tests',
           username: 'johnfoo@gmail.com',
           password: '12345',
-          offline_mode: true
+          offline_mode: true,
+          sso: false
         }, function (err, profile, id_token, access_token, state, refresh_token) {
           expect(profile.name).to.eql('John Foo');
           expect(profile.foo).to.eql('bar');
           expect(profile.identities.length).to.eql(1);
           expect(id_token).to.exist;
           expect(refresh_token).to.exist;
+          expect(access_token).to.exist;
+          done();
+        });
+      });
+
+      it('should trim username before login', function (done) {
+        auth0.login({
+          connection: 'tests',
+          username: '    johnfoo@gmail.com     ',
+          password: '12345',
+          sso:      false
+        }, function (err, profile, id_token, access_token) {
+          expect(profile.name).to.eql('John Foo');
+          expect(profile.foo).to.eql('bar');
+          expect(profile.identities.length).to.eql(1);
+          expect(id_token).to.exist;
           expect(access_token).to.exist;
           done();
         });
@@ -120,25 +141,9 @@ describe('Auth0 - User And Passwords', function () {
       });
 
     });
-
-    it('should trim username before login', function (done) {
-      auth0.login({
-        connection: 'tests',
-        username: '    johnfoo@gmail.com     ',
-        password: '12345'
-      }, function (err, profile, id_token, access_token) {
-        expect(profile.name).to.eql('John Foo');
-        expect(profile.foo).to.eql('bar');
-        expect(profile.identities.length).to.eql(1);
-        expect(id_token).to.exist;
-        expect(access_token).to.exist;
-        done();
-      });
-    });
   });
 
   describe('Signup', function () {
-
     it('should fail when the username is null', function (done) {
       auth0.signup({
         connection: 'tests',
@@ -156,9 +161,10 @@ describe('Auth0 - User And Passwords', function () {
       auth0.signup({
         connection: 'tests',
         username:   'pepo@example.com',
-        password:   '12345'
+        password:   '12345',
+        auto_login: false
       }, function (err) {
-        expect(err.status).to.equal(500);
+        expect(err.status).to.equal(401);
         expect(err.message).to.exist;
         expect(err.details).to.exist;
         done();
@@ -171,7 +177,8 @@ describe('Auth0 - User And Passwords', function () {
         auth0.signup({
           connection: 'tests',
           username:   'johnfoo@gmail.com',
-          password:   '12345'
+          password:   '12345',
+          sso:        false
         }, function (err, profile, id_token, access_token) {
           expect(profile.name).to.eql('John Foo');
           expect(profile.identities.length).to.eql(1);
@@ -182,7 +189,7 @@ describe('Auth0 - User And Passwords', function () {
       });
 
       it('should not return profile after successfull signup if auto_login is false', function (done) {
-        auth0._renderAndSubmitWSFedForm = function (options, htmlForm) {
+        auth0._renderAndSubmitWSFedForm = function () {
           done(new Error('this should not be called'));
         };
 
@@ -190,9 +197,42 @@ describe('Auth0 - User And Passwords', function () {
           connection: 'tests',
           username:   'johnfoo@gmail.com',
           password:   '12345',
-          auto_login: false
+          auto_login: false,
+          sso: false
         }, function (err, profile) {
           done(profile);
+        });
+      });
+
+      it('should trim username before signup', function (done) {
+        auth0.signup({
+          connection: 'tests',
+          username:   'johnfoo@gmail.com',
+          password:   '12345',
+          sso:        false
+        }, function (err, profile) {
+          expect(err).to.be(null);
+          expect(profile).to.be.ok();
+          done();
+        });
+      });
+
+      it('should handle username and email when requires_username enabled', function (done) {
+        var username = makeUsername(15);
+
+        auth0.signup({
+          connection: 'requires-username',
+          username:   username,
+          email: username + '@gmail.com',
+          password:   '12345',
+          sso: false
+        }, function (err, profile) {
+          expect(err).to.be(null);
+          expect(profile).to.have.property('username');
+          expect(profile).to.have.property('email');
+          expect(profile.username).to.be(username);
+          expect(profile.email).to.be(username + '@gmail.com');
+          done();
         });
       });
 
@@ -232,20 +272,28 @@ describe('Auth0 - User And Passwords', function () {
 
     });
 
-    it('should trim username before signup', function (done) {
+    it('should error when username is missing when requires_username enabled', function (done) {
+      var username = makeUsername(15);
+
       auth0.signup({
-        connection: 'tests',
-        username:   'johnfoo@gmail.com',
+        connection: 'requires-username',
+        email: username + '@gmail.com',
         password:   '12345'
       }, function (err, profile) {
-        expect(err).to.be(null);
+        expect(err).to.not.be(null);
+        expect(err.status).to.be(400);
+        expect(err).to.have.property('message');
+        expect(err).to.have.property('details');
+        expect(err.message).to.match(/missing username/ig);
+        expect(profile).not.to.be.ok();
         done();
       });
     });
-
   });
 
   describe('Change Password', function () {
+    // TODO: add a test to check that the user can provide a username or email, when `requires_username` is enabled
+
     it('should fail when the username is null', function (done) {
       auth0.changePassword({
         connection: 'tests',
@@ -281,11 +329,9 @@ describe('Auth0 - User And Passwords', function () {
         done();
       });
     });
-
   });
 
   describe('Validate User', function () {
-
     it('should return "true" if the credentials are valid', function (done) {
       auth0.validateUser({
         connection:   'tests',
@@ -298,10 +344,49 @@ describe('Auth0 - User And Passwords', function () {
       });
     });
 
+    it('should return "true" if the credentials with username and email are valid', function (done) {
+      auth0.validateUser({
+        connection:   'tests',
+        username:     'johnfoo',
+        email:        'johnfoo@gmail.com',
+        password:     '12345'
+      }, function (err, valid) {
+        expect(err).to.be(null);
+        expect(valid).to.equal(false);
+        done();
+      });
+    });
+
     it('should return "false" if username is invalid', function (done) {
       auth0.validateUser({
         connection:   'tests',
         username:     'invalid-user@gmail.com',
+        password:     '12345'
+      }, function (err, valid) {
+        expect(err).to.be(null);
+        expect(valid).to.equal(false);
+        done();
+      });
+    });
+
+    it('should return "false" if email is valid and username is invalid', function (done) {
+      auth0.validateUser({
+        connection:   'tests',
+        username:     'invalid-user',
+        email:        'johnfoo@gmail.com',
+        password:     '12345'
+      }, function (err, valid) {
+        expect(err).to.be(null);
+        expect(valid).to.equal(false);
+        done();
+      });
+    });
+
+    it('should return "false" if email is invalid and username is valid', function (done) {
+      auth0.validateUser({
+        connection:   'tests',
+        username:     'johnfoo',
+        email:        'invalid#email@gmail.com',
         password:     '12345'
       }, function (err, valid) {
         expect(err).to.be(null);
@@ -344,7 +429,18 @@ describe('Auth0 - User And Passwords', function () {
         done();
       });
     });
-
   });
 
 });
+
+
+function makeUsername(size) {
+  var uname = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  for( var i=0; i < size; i++ ) {
+    uname += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+
+  return uname.toLowerCase();
+}

@@ -1,6 +1,18 @@
 /*
 To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
 */
 
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -16,30 +28,30 @@ $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #444 !default;
-/*$dark:                            #6e6c6c !default; //username
-$positive:                        #457cfa !default; //facebook
+$dark:                            #000000 !default;
+//$dark:                            #6e6c6c !default; //username
+/*$positive:                        #457cfa !default; //facebook
 $calm:                            #87acff !default; //twitter
 $assertive:                       #ff7959 !default; //google
 $balanced:                        #66cc33 !default;*/
 
-// Base
-// -------------------------------
-
-$font-family-sans-serif:          'Source Sans Pro', Helvetica, Arial, "Lucida Grande", sans-serif !default;
-$font-family-light-sans-serif:    'Source Sans Pro', "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
-$font-family-serif:               Georgia, "Times New Roman", Times, serif !default;
-$font-family-monospace:           Monaco, Menlo, Consolas, "Courier New", monospace !default;
-
-$font-size-base:                  17px !default;
-$font-size-large:                 ($font-size-base + 4) !default;
-$font-size-small:                 ($font-size-base - 4) !default;
-
 // Fonts
 // -------------------------------
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,400,500,600);
-@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/sourcesanspro/SourceSansPro-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/ubuntu/Ubuntu.woff') format('woff');
+}
+
 @font-face {
   font-family: 'gloriahallelujah';
   src: url('../fonts/gloriahallelujah/gloriahallelujah.eot');
@@ -50,6 +62,47 @@ $font-size-small:                 ($font-size-base - 4) !default;
   url('../fonts/gloriahallelujah/gloriahallelujah.svg#gloriahallelujah') format('svg');
   font-style:   normal;
   font-weight:  400;
+}
+
+// ERROR handling for ngMessages
+// ------------------------------
+
+.error-container {
+  margin: 5px 0;
+}
+
+.error-container:last-child {
+  margin: 5px 0 0;
+}
+
+.error {
+  padding: 10px 16px;
+  font-family: 'Source Sans Pro' , sans-serif;
+  font-size: 11px;
+  color: #555;
+  vertical-align: middle;
+}
+
+.error i {
+  font-size: 24px;
+  color: #B83E2C;
+  vertical-align: middle;
+}
+
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+
+label.item.has-errors {
+  border-bottom: 3px solid red;
+}
+
+label.item.info-blurb {
+  border-bottom: 3px solid #0000ff;
+}
+
+label.item.no-errors {
+  border-bottom: 3px solid green;
 }
 
 // Styles
@@ -69,38 +122,152 @@ body, p, h1, h2, h3, h4, h5 {
   //text-shadow: 3px 3px 0px rgba($assertive, 0.6);
 }
 
-$big-bg:      '../img/grey-bg.jpg';
+
+// my modal fix
+// ----------------------
+@media (min-width: 680px) {
+  .modal {
+    top: 0px !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+  }
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {
+    margin-top: 20px;
+  }
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {
+    height: 64px;
+  }
+  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
+    top: 64px;
+  }
+}
+
+// text overlay on image
+// --------------------------
+
+
+
+// backgrounds
+// -------------------------------
+
+$big-bg:      '../img/bg-black-paisley.jpg';
+$category-bg: '../img/bg-black-texture.jpg';
+$quarkycon: '../img/quarkycon.png';
+
+
+.intro-bg {
+  background: url($big-bg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+/*.scroll-bg {
+  background-color: #708090;
+}
+
+.quarky-bg {
+  background-color: #708090;
+}
+
+.category-bg {
+  background-color: #708090;
+}*/
+
 .scroll-bg {
   background: url($big-bg) no-repeat center center fixed;
   background-size: cover;
 }
 
-// IONIC CARDS
-// --------------------------------
-.card{
-  margin-bottom: -20px !important;
+.quarky-bg {
+  background: url($quarkycon) no-repeat center center fixed;
+  background-color: #708090;
 }
-.card-item-height {
-  /* height: 50vh; */
-  height: 300px;
+
+.category-bg {
+  background-color: #708090;
+  background: url($category-bg) no-repeat center center fixed;
+  background-size: cover;
 }
+
+// SOCIAL TODO: unused right?
+// ---------------------------------
+
+.quarky-instagram {
+  background-color: #25537B;
+  color: #fff;
+}
+
+.quarky-googleplus {
+  background-color: #dd4b39;
+}
+
+.quarky-facebook {
+  background-color: #4863ae;
+}
+
+.quarky-wordpress {
+  background-color: #1e8cbe;
+  color: #fff;
+}
+
+.quarky-twitter {
+  background-color: #46c0fb;
+}
+.quarky-instagram {
+  background-color: #25537B;
+  color: #fff;
+}
+
+// APP INTRO
+// ---------------------------------
+/* App Intro */
+.slider {
+  height: 100%; }
+
+.slider-slide {
+  padding-top: 80px;
+  color: #000000;
+  background-color: #ffffff;
+  text-align: center;
+  font-family: "Ubuntu", "gloriahallelujah", "Source Sans Pro";
+  font-weight: 300; }
+
+#intro-logo {
+  margin: 30px 0px; }
+
+#intro-list {
+  color: #ffffff;
+  width: 80%;
+  margin: 30px auto;
+  font-size: 15px; }
+
+#intro-list ol {
+  margin-top: 30px; }
+
+#intro-list ol li {
+  text-align: left;
+  list-style: decimal;
+  margin: 10px 0px; }
+
 
 // PROFILE
 // ---------------------------------
 #profile-info {
   position: absolute;
-  /*top: -95px;*/
+  top: -95px;
   width: 100%;
   z-index: 2;
   text-align: center;
 }
 #profile-name {
-  color: #444;
+  color: #ffffff;
   font-size: 26px;
 }
 #profile-description {
   font-size: 15px;
-  color: #888;
+  color: #ffffff;
 }
 
 #profile-image {
@@ -126,49 +293,8 @@ $big-bg:      '../img/grey-bg.jpg';
   height: 100px;
 }
 
-// APP INTRO
-// ----------------------------------------
-/* App Intro */
-.slider {
-  height: 100%;
-}
-.slider-slide {
-  padding-top: 80px;
-  color: #000000;
-  background-color: #ffffff;
-  text-align: center;
 
-  font-family: "Ubuntu", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
-}
-
-#logo {
-  margin: 30px 0px;
-}
-
-#list {
-  width: 80%;
-  margin: 30px auto;
-  font-size: 15px;
-}
-#list ol {
-  margin-top: 30px;
-}
-#list ol li {
-  text-align: left;
-  list-style: decimal;
-  margin: 10px 0px;
-}
-
-.button.ng-hide{
-  display:none;
-}
-
-
-
-
-
+// ==================================
 // Include all of Ionic
-// -----------------------------------------
 @import "www/lib/ionic/scss/ionic";
 

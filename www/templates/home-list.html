@@ -1,0 +1,30 @@
+<ion-view title="Hub">
+    <ion-content class="flex-gallery text-center padding category-bg" ng-controller="HomeListCtrl">
+        <!--
+                <ion-content class="flex-gallery text-center padding category-bg" ng-init="initRemoteFeed()"
+                             ng-controller="HomeCtrl">
+        -->
+        <ion-refresher on-refresh="initRemoteFeed()">
+        </ion-refresher>
+
+        <div ng-if="!infiniteLoad" class="text-center color:white">
+            <h3>Pull down to get the latest!</h3>
+            <div style="height: 100px;" class="spacer"></div>
+                    <img data-ng-click="initRemoteFeed()" data-ng-src="img/quarkycon.png">
+                <h3 class="gloria-h">
+                    Cheat Codes for Thriving, <br>
+                    not just Surviving
+                </h3>
+
+            </div>
+        </div>
+
+        <span ng-repeat="p in posts">
+                <img data-ng-click="openModal(p)" data-ng-src="{{p.featured_image.source || 'img/coming-soon.png'}}" width="300px" alt="">
+        </span>
+
+        <ion-infinite-scroll on-infinite="getRemoteFeed()"
+                             data-ng-if="infiniteLoad" icon="">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

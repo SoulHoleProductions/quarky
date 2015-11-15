@@ -10,6 +10,7 @@ var stop = require('../stop-event');
 var $ = require('../bonzo-augmented');
 var template = require('./signin.ejs');
 var create = require('../object-create');
+var ValidationError = require('../errors/ValidationError');
 var Emitter = require('events').EventEmitter;
 var buttonTmpl = require('../html/zocial-button.ejs');
 var loginActionsTmpl = require('./login_actions.ejs');
@@ -245,6 +246,7 @@ SigninPanel.prototype.onemailinput = function (e) {
 
     this.query('.a0-sso-notice-container').removeClass('a0-hide');
     this.query('.a0-password').addClass('a0-hide');
+    this.query('.a0-db-actions').addClass('a0-hide');
     this.oldText = nextButton.text();
 
     msg = this.options.i18n.t('signin:actionDomain');
@@ -267,6 +269,7 @@ SigninPanel.prototype.onemailinput = function (e) {
   if (isEnterpriseConnection) {
     this.query('.a0-sso-notice-container').removeClass('a0-hide');
     this.query('.a0-password').addClass('a0-hide');
+    this.query('.a0-db-actions').addClass('a0-hide');
     this.oldText = nextButton.text();
 
     msg = this.options.i18n.t('signin:actionDomain');
@@ -280,6 +283,22 @@ SigninPanel.prototype.onemailinput = function (e) {
 
   this.query('.a0-sso-notice-container').addClass('a0-hide');
   this.query('.a0-password').removeClass('a0-hide');
+  this.query('.a0-db-actions').removeClass('a0-hide');
+
+  // If HRD was triggered by a previous panel, return to the panel if we no longer have HRD.
+  var widget = this.widget;
+  var previousPanel = widget._getPreviousPanel();
+  if (previousPanel) {
+    widget._clearPreviousPanel();
+    switch (previousPanel) {
+      case 'reset':
+        widget._resetPanel();
+        break;
+      case 'signup':
+        widget._signupPanel();
+        break;
+    }
+  }
 
   return pwdField.removeAttr('disabled');
 };
@@ -324,6 +343,7 @@ SigninPanel.prototype.onsubmit = function(e) {
   widget._focusError();
 
   if (email_empty) {
+    widget.emit('signin error', new ValidationError('email empty'));
     widget._focusError(email_input);
     ok = false;
   }
@@ -331,18 +351,23 @@ SigninPanel.prototype.onsubmit = function(e) {
   if (!widget._ignoreEmailValidations(email_input)) {
     if (!email_parsed && !email_empty) {
       ok = false || (validate_username && username_parsed);
-      if(!ok) widget._focusError(email_input, options.i18n.t('invalid'));
+
+      if (!ok) {
+        var error_message = validate_username ? 'username invalid' : 'email invalid';
+        widget.emit('signin error', new ValidationError(error_message));
+        widget._focusError(email_input, options.i18n.t('invalid'));
+      }
     }
   }
 
   if (password_empty && password_required && !password_disabled) {
+    widget.emit('signin error', new ValidationError('password empty'));
     widget._focusError(password_input);
     ok = false;
   }
 
   if (this.hrd) {
     return this.enableHRD(this.currentADConnection, this.currentADConnectionDomain);
-
   }
 
   if (ok && this.currentADConnection) {
@@ -365,6 +390,10 @@ SigninPanel.prototype.onsubmit = function(e) {
 
 SigninPanel.prototype.onsocialclick = function(e) {
     stop(e);
+    var target = e.currentTarget || e.delegateTarget || e.target || e;
+    var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
+
+    this.widget.emit('signin submit', this.widget.options, { provider: strategyName });
     this.widget._signinSocial(e, null, null, this);
 };
 
@@ -500,5 +529,3 @@ SigninPanel.prototype.oncancel = function (e) {
 
   debug('sigin canceled');
 };
-
-

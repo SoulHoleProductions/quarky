@@ -9,64 +9,57 @@
                 </button>
             </ion-nav-buttons>
             <ion-nav-buttons side="right">
-                <a nav-clear menu-close href="#/app/home">
-                    <button class="button button-icon icon ion-home"></button>
+                <a nav-clear menu-close href="#/app/home-list">
+                    <button class="button button-icon icon ion-atom"></button>
                 </a>
                 <a nav-clear menu-close href="#/app/guru">
-                    <button class="button button-icon icon ion-university"></button>
+                    <button class="button button-icon icon ion-guru"></button>
                 </a>
-                <a nav-clear menu-close href="#/app/places-servicelist">
-                    <button class="button button-icon icon ion-location"></button>
+                <a nav-clear menu-close href="#/app/places-master">
+                    <button class="button button-icon icon ion-places-circle"></button>
                 </a>
                 <i class="icon button-icon ion-alert-circled assertive" ng-click="showHotlineActionsheet()"></i>
             </ion-nav-buttons>
+
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
 
     <ion-side-menu side="left" class="dark-bg dark-border">
         <ion-header-bar class="bar bar-header bar-dark transparent">
-            <h1 class="title">Whatcha gonna do?</h1>
+            <h1 class="title gloria-h">Whatcha gonna do?</h1>
         </ion-header-bar>
+
         <ion-content class="has-header">
             <ion-list>
-                </ion-item><ion-item class="item-dark item-icon-right" nav-clear menu-close ng-if="!auth.profile" ng-click="login()">
-                Login
-                <i class="icon ion-log-in"></i>
                 </ion-item>
-                <ion-item class="item-avatar" ng-if="auth.profile">
+                <ion-item class="item-dark item-icon-right" nav-clear menu-close ng-show="!auth.profile"
+                          ng-click="login()">
+                    My Stuff
+                    <i class="icon ion-log-in"></i>
+                </ion-item>
+                <ion-item class="item-dark item-icon-right item-avatar" ng-show="auth.profile" menu-close href="#/app/profile">
                     <img data-ng-src="{{auth.profile.picture}}">
-                    <h4>{{ auth.profile.name }}</h4>
-                    <h4>{{auth.profile.email}}</h4>
-                </ion-item>
-                <ion-item class="item-dark item-icon-right" nav-clear menu-close href="#/app/home">
-                    Home
-                    <i class="icon ion-home"></i>
-                </ion-item>
-                <ion-item class="item-dark item-icon-right" nav-clear menu-close href="#/app/guru">
-                    eGuru
-                    <i class="icon ion-university"></i>
-                </ion-item>
-                <ion-item class="item-dark item-icon-right" nav-clear menu-close href="#/app/places-servicelist">
-                    Places
-                    <i class="icon ion-location"></i>
-                </ion-item>
- <!--               <ion-item class="item-dark item-icon-right" nav-clear menu-close ng-click="toIntro()">
-                    Introduction
-                    <i class="icon ion-information"></i>
-                </ion-item>-->
-                <ion-item class="item-dark item-icon-right" nav-clear menu-close href="#/app/about">
-                    About This App
-                    <i class="icon ion-information-circled"></i>
-                </ion-item>
-                <ion-item class="item-dark item-icon-right" nav-clear menu-close ng-if="auth.profile" href="#/app/profile">
-                    My Profile
+                    My Stuff <br>
+                    {{ auth.profile.name }} <br>
                     <i class="icon ion-person"></i>
                 </ion-item>
-                <ion-item class="item-dark item-icon-right" nav-clear menu-close ng-if="auth.profile" ng-click="logout()">
-                    Logout
-                    <i class="icon ion-log-out"></i>
-            </ion-item>
+                <ion-item class="item-dark item-icon-right"  menu-close href="#/app/home-list">
+                    Hub
+                    <i class="icon ion-atom"></i>
+                </ion-item>
+                <ion-item class="item-dark item-icon-right" menu-close href="#/app/guru">
+                    Guru
+                    <i class="icon ion-guru"></i>
+                </ion-item>
+                <ion-item class="item-dark item-icon-right"  menu-close href="#/app/places-master">
+                    Places
+                    <i class="icon ion-places-circle"></i>
+                </ion-item>
+                <ion-item class="item-dark item-icon-right" menu-close href="#/app/about-master">
+                    About Quarky
+                    <i class="icon ion-ios-information-outline"></i>
+                </ion-item>
             </ion-list>
         </ion-content>
     </ion-side-menu>

@@ -155,7 +155,37 @@
       return innerAuth0libraryConfiguration[libName][name];
     }
 
+    function constructorName(fun) {
+      if (fun) {
+        return {
+          lib: authUtilsProvider.fnName(fun),
+          constructor: fun
+        };
+      }
 
+      /* jshint ignore:start */
+      if (null != window.Auth0Lock) {
+        return {
+          lib: 'Auth0Lock',
+          constructor: window.Auth0Lock
+        };
+      }
+
+      if (null != window.Auth0) {
+        return {
+          lib: 'Auth0',
+          constructor: window.Auth0
+        };
+      }
+
+      if (null != Auth0Widget) {
+        throw new Error('Auth0Widget is not supported with this version of auth0-angular' +
+          'anymore. Please try with an older one');
+      }
+
+      throw new Error('Cannott initialize Auth0Angular. Auth0Lock or Auth0 must be available');
+      /* jshint ignore:end */
+    }
 
     this.init = function(options, Auth0Constructor) {
       if (!options) {
@@ -167,29 +197,19 @@
       var domain = options.domain;
       this.sso = options.sso;
 
-      var Constructor = Auth0Constructor;
-      if (!Constructor && typeof Auth0Lock !== 'undefined') {
-        Constructor = Auth0Lock;
-      }
-      if (!Constructor && typeof Auth0 !== 'undefined') {
-        Constructor = Auth0;
-      }
-
-      if (authUtilsProvider.fnName(Constructor) === 'Auth0Widget') {
-        throw new Error('Auth0Widget is not supported with this ' +
-          ' version of auth0-angular anymore. Please try with an older one');
-      }
-      if (authUtilsProvider.fnName(Constructor) === 'Auth0Lock') {
-        this.auth0lib = new Constructor(this.clientID, domain, angular.extend(defaultOptions, options));
+      var constructorInfo = constructorName(Auth0Constructor);
+      this.lib = constructorInfo.lib;
+      if (constructorInfo.lib === 'Auth0Lock') {
+        this.auth0lib = new constructorInfo.constructor(this.clientID, domain, angular.extend(defaultOptions, options));
         this.auth0js = this.auth0lib.getClient();
         this.isLock = true;
-        this.lib = 'Auth0Lock';
       } else {
-        this.auth0lib = new Constructor(angular.extend(defaultOptions, options));
+        this.auth0lib = new constructorInfo.constructor(angular.extend(defaultOptions, options));
         this.auth0js = this.auth0lib;
         this.isLock = false;
-        this.lib = 'Auth0';
       }
+
+      this.initialized = true;
     };
 
 
@@ -259,6 +279,10 @@
 
       // Redirect mode
       $rootScope.$on('$locationChangeStart', function() {
+        if (!config.initialized) {
+          return;
+        }
+
         var hashResult = config.auth0lib.parseHash($window.location.hash);
         if (!auth.isAuthenticated) {
           if (hashResult && hashResult.id_token) {
@@ -270,7 +294,8 @@
               if (ssoData.sso) {
                 auth.signin({
                   popup: false,
-                  connection: ssoData.lastUsedConnection.strategy
+                  callbackOnLocationHash: true,
+                  connection: ssoData.lastUsedConnection.name
                 }, null, null, 'Auth0');
               }
             }));
@@ -284,6 +309,9 @@
 
       if (config.loginUrl) {
         $rootScope.$on('$routeChangeStart', function(e, nextRoute) {
+          if (!config.initialized) {
+            return;
+          }
           if (nextRoute.$$route && nextRoute.$$route.requiresLogin) {
             if (!auth.isAuthenticated && !auth.refreshTokenPromise) {
               $location.path(config.loginUrl);
@@ -295,6 +323,9 @@
 
       if (config.loginState) {
         $rootScope.$on('$stateChangeStart', function(e, to) {
+          if (!config.initialized) {
+            return;
+          }
           if (to.data && to.data.requiresLogin) {
             if (!auth.isAuthenticated && !auth.refreshTokenPromise) {
               e.preventDefault();
@@ -324,6 +355,8 @@
         // Does nothing. Hook events on application's run
       };
 
+      auth.init = angular.bind(config, config.init);
+
       auth.getToken = function(options) {
         options = options || { scope: 'openid' };
 
@@ -333,9 +366,7 @@
 
         var getDelegationTokenAsync = authUtils.promisify(config.auth0js.getDelegationToken, config.auth0js);
 
-        return getDelegationTokenAsync(options).then(function (delegationResult) {
-          return delegationResult.id_token;
-        });
+        return getDelegationTokenAsync(options);
       };
 
       auth.refreshIdToken = function(refresh_token) {
@@ -365,11 +396,15 @@
 
         var signinMethod = getInnerLibraryMethod('signin', libName);
         var successFn = !successCallback ? null : function(profile, idToken, accessToken, state, refreshToken) {
-          onSigninOk(idToken, accessToken, state, refreshToken, profile).then(function(profile) {
-            if (successCallback) {
-              successCallback(profile, idToken, accessToken, state, refreshToken);
-            }
-          });
+          if (!idToken && !angular.isUndefined(options.loginAfterSignup) && !options.loginAfterSignup) {
+            successCallback();
+          } else {
+            onSigninOk(idToken, accessToken, state, refreshToken, profile).then(function(profile) {
+              if (successCallback) {
+                successCallback(profile, idToken, accessToken, state, refreshToken);
+              }
+            });
+          }
         };
 
         var errorFn = !errorCallback ? null : function(err) {

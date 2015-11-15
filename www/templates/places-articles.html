@@ -1,0 +1,43 @@
+<!--
+app.places-articles
+This is the list of articles for a given search or filter
+Selecting one of the items in the list will display the article in a modal
+TODO: add infinite scroll
+
+-->
+<ion-view title="{{placeHeader}}">
+    <ion-content class="category-bg">
+        <div ng-show="auth.profile.can_add_places" class="button-bar">
+            <!--<a class="button button-positive button- icon-left ion-ios-list" ng-click="searchOhanaPlaces()">Quarky Places</a>-->
+            <a class="button button-positive icon-left ion-social-google" ng-click="searchGooglePlaces()">See Google Places</a>
+        </div>
+        <!-- QUARKY Places -->
+        <div class="list">
+            <ion-list class="list">
+                <ion-item class="item-avatar" ng-repeat="match in quarkyMatches" href="#/app/place-ohana-detail/{{match.reference}}">
+                    <img data-ng-src="{{match.icon}}">
+                    <h2>{{match.name}}</h2>
+                    <p>{{match.formatted_address}}</p>
+                </ion-item>
+
+            </ion-list>
+        </div>
+        <!-- QUARKY Places -->
+
+        <!-- Google Places -->
+        <div ng-show="auth.profile.can_add_places" class="list">
+            <ion-list class="list">
+                <ion-item class="item-avatar" ng-repeat="match in googleMatches" href="#/app/place-detail/{{match.reference}}">
+                    <img data-ng-src="{{match.icon}}">
+                    <h2>{{match.name}}</h2>
+                    <p>{{match.formatted_address}}</p>
+                </ion-item>
+
+            </ion-list>
+        </div>
+        <!-- Google Places -->
+
+        <h2 class="gloria-h">{{noresult}}</h2>
+
+    </ion-content>
+</ion-view>

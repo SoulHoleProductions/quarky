@@ -1,70 +1,57 @@
-<ion-view view-title="About Quarky App">
-    <ion-content class="has-header padding scroll-bg">
-        <div class="card">
-            <div class="item item-divider item-icon-left">
-                <i class="icon ion-information-circled"></i>
-                About QuarkyApp
+<ion-view title="About">
+    <ion-content padding="true" class="has-header scroll-bg" ng-init="getLocalFeed()">
+        <ion-refresher on-refresh="initRemoteFeed()">
+        </ion-refresher>
+<!--
+        The database is called {{db_name}}, there are {{doc_count}} docs, dbtype is {{sqlite_plugin}}
+        <button class="button button-dark button-block button-small icon-left ion-minus-circled" ng-click="cleanDB()">Clean About Database</button>
+
+-->
+<!--        <span ng-hide="posts.length">
+        <button class="button button-dark button-block button-small icon-left ion-minus-circled" ng-click="getRemoteFeed()">get remote data</button>
+        </span>-->
+        <span ng-show="posts.length">
+               <button class="button button-full button-dark gloria-h">
+                   Partners
+               </button>
+        <span ng-repeat="p in posts | filter: partnerFilter">
+            <div class="list card">
+                <div class="item item-divider">{{p.title}}</div>
+                <div class="item item-body">
+                    <img ng-show="p._attachments.featured_image" width="300px" data-ng-src="data:image/png;base64,{{p._attachments.featured_image.data}}" id="featured-id"/>
+                    <img ng-show="!p._attachments.featured_image" width="300px" data-ng-src="{{p.featured_image.source}}" alt="">
+                    <div data-ng-bind-html="toTrusted(p.content)"></div>
+                </div>
             </div>
-            <div class="item item-text-wrap">
-                The Quarky App is a creation of Soul Hole Productions with inspiration and financial support from North Kansas City Hospital.
+        </span>
 
-                <br><br><b>Partners include:</b>
-                <ul>
-                    <li>
-                        The Healthy Transitions Initiative (HTI) of Jackson County
-                    </li>
-                    <li>
-                        Northland Center for Advanced Professional Studies (CAPS)
-                    </li>
-                    <li>
-                        Connect the Dottes for a Better KCK
-                    </li>
-                    <li>
-                        The Metro KC Youth Collaborative
-                    </li>
-                    <li>
-                        Youth with Vision and Mid-America Regional Council
-                    </li>
-                </ul>
-                <br>
+        <button class="button button-full button-dark gloria-h">
+            Acknowledgements
+        </button>
+       <span ng-repeat="p in posts | filter: ackFilter">
+            <div class="list card">
+                <div class="item item-divider">{{p.title}}</div>
+                <div class="item item-body">
+                    <img ng-show="p._attachments.featured_image" width="300px" data-ng-src="data:image/png;base64,{{p._attachments.featured_image.data}}" id="featured-id"/>
+                    <img ng-show="!p._attachments.featured_image" width="300px" data-ng-src="{{p.featured_image.source}}" alt="">
+                    <div data-ng-bind-html="toTrusted(p.content)"></div>
+                </div>
             </div>
-        </div>
+        </span>
+<button class="button button-full button-dark gloria-h">
+    Disclaimers
+</button>
+        <span ng-repeat="p in posts | filter: legalFilter">
+            <div class="list card">
+                <div class="item item-divider">{{p.title}}</div>
+                <div class="item item-body">
+                    <img ng-show="p._attachments.featured_image" width="300px" data-ng-src="data:image/png;base64,{{p._attachments.featured_image.data}}" id="featured-id"/>
+                    <img ng-show="!p._attachments.featured_image" width="300px" data-ng-src="{{p.featured_image.source}}" alt="">
+                    <div data-ng-bind-html="toTrusted(p.content)"></div>
+                </div>
+            </div>
+        </span>
 
-        <div class="item item-divider item-icon-left">
-            <i class="icon ion-ios-contact"></i>
-            Contacts
-        </div>
-        <div class="item item-text-wrap">
-            <b>Soul Hole Productions, LLC</b>
-            <ul class="list">
-                <li class="list-item">
-                    Jason Bohn and Derek Baron, Founders
-                </li>
-                <li class="list-item">
-                    info@quarkyapp.com
-                </li>
-            </ul>
-
-            <b>North Kansas City Hospital</b>
-            <ul class="list">
-                <li class="list-item">
-                    Jana Longwith
-                </li>
-                <li class="list-item">
-                    Jana.Longwith@nkch.org
-                </li>
-            </ul>
-
-        </div>
-
-        <div class="item item-divider item-icon-left">
-            <i class="icon ion-alert"></i>
-            Important Legal Information
-        </div>
-        <div class="item item-text-wrap">
-            This Quarky App and website concerns youth-oriented problems.  It is not intended to take the place of professional advice. The information in the app or on this website is intended to provide only support and general information. It is for information purposes only and offers you suggestions on where to get started when you need help.  It should not be used or relied upon to replace counseling or therapy. We hope it is also a reminder that you are not alone. There are people who care.
-        </div>
-
-
+        </span>
     </ion-content>
 </ion-view>

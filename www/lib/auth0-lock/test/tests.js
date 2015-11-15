@@ -89,6 +89,28 @@ describe('Auth0Lock', function () {
     }
   });
 
+  describe('$dicts usage', function () {
+    it('should expose at the instance level the $dicts object with dictionaries', function(done) {
+      expect(widget.$dicts).to.not.be.empty();
+      done();
+    });
+
+    it('should propagate the overriden properties on top of dict provided', function (done) {
+      var title = "Helloooooooo";
+      // override  the original `en` dict
+      widget.$dicts.en.signin.title = title;
+
+      widget
+      .once('signin ready', function () {
+        expect(widget.options.i18n.t('signin:title')).to.be(title);
+        done();
+      })
+      .show({
+        dict: 'en'
+      })
+    });
+  });
+
   it('should setup client with callbackOnLocationHash', function (done) {
     widget
     .once('signin ready', function() {
@@ -232,6 +254,31 @@ describe('Auth0Lock', function () {
     });
   });
 
+  it('should fireup loggedin submit on submit in loggedin mode', function (done) {
+    client.getSSOData = function (withAd, callback) {
+      callback(null, {
+        sso: true,
+        lastUsedUsername: 'john@gmail.com',
+        lastUsedConnection: { strategy: 'google-oauth2', name: 'google-oauth2' }
+      });
+    };
+
+    client.login = function () {};
+
+    widget
+    .once('loggedin submit', function(opts) {
+      expect(opts).to.not.be(undefined);
+      done();
+    })
+    .once('ready', function () {
+      bean.fire($('.a0-googleplus')[0], 'click');
+    })
+    .show({
+      callbackURL: callbackURL,
+      responseType: 'token'
+    });
+  });
+
   describe('When assetsUrl option is not specified', function () {
     beforeEach(function() {
       this.widget = new Auth0Lock(clientID, 'abc.contoso.com');
@@ -246,6 +293,12 @@ describe('Auth0Lock', function () {
 
       expect(this.widget.$options.assetsUrl).to.equal('https://cdn.auth0.com/');
     });
+
+    it('should use EU assetsUrl if domain is *.eu.auth0.com', function () {
+      this.widget = new Auth0Lock(clientID, 'abc.eu.auth0.com:3000');
+
+      expect(this.widget.$options.assetsUrl).to.equal('https://cdn.eu.auth0.com/');
+    });
   });
 
   describe('When assetsUrl option is specified', function () {
@@ -255,32 +308,6 @@ describe('Auth0Lock', function () {
       });
 
       expect(this.widget.$options.assetsUrl).to.equal('https://sdk.myauth0-custom.com/');
-    });
-  });
-
-  describe('When cdn option is not specified', function () {
-    beforeEach(function() {
-      this.widget = new Auth0Lock(clientID, 'abc.contoso.com');
-    });
-
-    it('should use domain as cdn if domain is not *.auth0.com', function () {
-      expect(this.widget.$options.cdn).to.equal('https://abc.contoso.com/w2/');
-    });
-
-    it('should use default cdn if domain is *.auth0.com', function () {
-      this.widget = new Auth0Lock(clientID, 'abc.auth0.com');
-
-      expect(this.widget.$options.cdn).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
-    });
-  });
-
-  describe('When cdn option is specified', function () {
-    it('should use provided cdn url and ignore defaults', function () {
-      this.widget = new Auth0Lock(clientID, 'abc.contoso.com', {
-        cdn: 'https://sdk.myauth0-custom.com/'
-      });
-
-      expect(this.widget.$options.cdn).to.equal('https://sdk.myauth0-custom.com/');
     });
   });
 
@@ -494,6 +521,76 @@ describe('Auth0Lock', function () {
       .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
     });
 
+    it('should emit signin error event when email is empty', function (done) {
+      widget
+      .once('ready', function () {
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+      })
+      .on('signin error', function (err) {
+        expect(err.message).to.be('email empty');
+        done();
+      })
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
+    });
+
+    it('should emit signin error event when email is invalid', function (done) {
+      widget
+      .once('ready', function () {
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john.@#$@fabrikam.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+      })
+      .on('signin error', function (err) {
+        expect(err.message).to.be('email invalid');
+        done();
+      })
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
+    });
+
+    it('should emit signin error event when password is empty', function (done) {
+      widget
+      .once('ready', function () {
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+      })
+      .on('signin error', function (err) {
+        expect(err.message).to.be('password empty');
+        done();
+      })
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
+    });
+
+    it('should emit submit envent when logging with social connections', function (done) {
+      client.login = function () {};
+
+      widget
+      .once('signin submit', function(opts) {
+        expect(opts).to.not.be(undefined);
+        done();
+      })
+      .once('ready', function () {
+        bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
+      })
+      .show({
+        callbackURL: callbackURL,
+        responseType: 'token'
+      });
+    });
+
+    it('should emit signin error event when password is empty', function (done) {
+      widget
+      .once('ready', function () {
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+      })
+      .on('signin error', function (err) {
+        expect(err.message).to.be('password empty');
+        done();
+      })
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
+    });
+
     describe('when requires_username is enabled', function() {
 
       beforeEach(function() {
@@ -536,6 +633,26 @@ describe('Auth0Lock', function () {
           expect($('.a0-email .a0-error-input')).to.not.be.empty();
           expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
           expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
+          done();
+        })
+        .showSignin(this.options);
+      });
+
+      it('should emit signin error event when username is invalid', function (done) {
+        var auth0 = widget;
+        var username = '1.1.1.1';
+        var password = '12345';
+
+        auth0
+        .once('signin ready', function() {
+          $('#a0-signin_easy_email').val(username);
+          $('#a0-signin_easy_password').val(password);
+          $('#a0-signin_easy_repeat_password').val(password);
+
+          bean.fire($('.a0-signin form')[0], 'submit');
+        })
+        .once('signin error', function(err) {
+          expect(err.message).to.be('username invalid');
           done();
         })
         .showSignin(this.options);

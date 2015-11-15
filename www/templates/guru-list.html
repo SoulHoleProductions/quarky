@@ -1,0 +1,19 @@
+<ion-view title="{{postName}}">
+    <ion-content class="flex-gallery text-center padding category-bg">
+
+        <div ng-if="!posts.length">
+            <h2>No articles right now</h2>
+            <h3>Check back soon!</h3>
+        </div>
+
+        <span ng-repeat="p in posts">
+            <a href="#/app/guru/detail/{{p.slug}}">
+                <img data-ng-src="{{p.featured_image.local}}" width="300px" alt="">
+            </a>
+        </span>
+
+ <!--       <ion-infinite-scroll on-infinite="getRemoteFeed()"
+                             data-ng-if="infiniteLoad" icon="">
+        </ion-infinite-scroll>-->
+    </ion-content>
+</ion-view>

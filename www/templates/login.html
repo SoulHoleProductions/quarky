@@ -1,7 +1,85 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-  </ion-header-bar>
-  <ion-content>
-  </ion-content>
-</ion-modal-view>
+<ion-view view-title="">
+    <ion-nav-bar class="bar bar-header bar-dark">
+        <ion-nav-buttons side="left">
+            <button class="button button-light button-clear no-animation"
+                    ng-show="!slideIndex">
+            </button>
+            <button class="button button-light button-clear no-animation"
+                    ng-click="previous()" ng-show="slideIndex > 0">
+                Previous
+            </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button button-light button-clear no-animation"
+                    ng-click="next()" ng-show="slideIndex != 2">
+                Learn More
+            </button>
+            <button class="button button-light button-clear no-animation"
+                    ng-show="slideIndex == 2">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-slide-box on-slide-changed="slideChanged(index)">
+        <ion-slide class="intro-bg">
+            <div id="intro-logo">
+                <img src="img/quarkycon.png" width="20%">
+            </div>
+            <p id="intro-list">Quarky is an amazing new way for Youth and Young Adults to discover and share places, articles and resources</p>
+            <div class="row">
+                <div class="col-25"></div>
+                <div class="col-50">
+                        <div>
+                            <button class="button button-small button-full button-positive icon-left ion-social-facebook" ng-click="doAuth('facebook')"> Facebook</button>
+                            <button class="button button-small button-full button-assertive icon-left ion-social-googleplus" ng-click="doAuth('google-oauth2')"> Google+</button>
+                            <button class="button button-small button-full button-positive icon-left ion-social-instagram" ng-click="doAuth('instagram')"> Instagram</button>
+                            <button class="button button-small button-full button-calm icon-left ion-social-twitter" ng-click="doAuth('twitter')"> Twitter</button>
+                        </div>
+                </div>
+                <div class="col-25"></div>
+            </div>
+
+        </ion-slide>
+        <ion-slide class="intro-bg">
+            <div class="card">
+                <div class="item item-divider item-positive">
+                    How to Be Quarky:
+                </div>
+                <div class="item item-icon-left item-text-wrap item-stable">
+                    <i class="icon ion-atom"></i>
+                    Use the Hub to find new events & articles every week
+                </div>
+                <div class="item item-icon-left item-text-wrap item-stable">
+                    <i class="icon ion-guru"></i>
+                    Study with the Guru to help your friends, explore careers, share your story or be inspired
+                </div>
+                <div class="item item-icon-left item-text-wrap item-stable">
+                    <i class="icon ion-places-circle"></i>
+                    Discover Places for Fun, Help and Community Service near you
+                </div>
+                <div class="item item-icon-left item-text-wrap item-stable">
+                    <i class="icon ion-alert-circled assertive"></i>
+                    Need Help Now?  Talk or text someone 24/7 or share the number.
+                </div>
+                <div class="item item-icon-left item-text-wrap item-stable">
+                    <i class="icon ion-ios-information-outline"></i>
+                    Learn more about Quarky and our Partners.
+                </div>
+            </div>
+        </ion-slide>
+        <ion-slide class="intro-bg">
+            <div class="card">
+                <div class="item item-divider item-assertive">
+                    We need your help during BETA!
+                </div>
+                <div class="item item-icon-left item-text-wrap item-stable">
+                    <i class="icon ion-places-circle"></i>
+                    The Places feature is waiting for your additions
+                    </div>
+                    <div class="item item-icon-left item-text-wrap item-stable">
+                        <i class="icon ion-person"></i>
+                    If you want to volunteer, go to your profile and say 'yes'!
+                </div>
+            </div>
+        </ion-slide>
+    </ion-slide-box>
+</ion-view>

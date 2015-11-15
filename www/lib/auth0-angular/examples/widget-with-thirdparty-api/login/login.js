@@ -10,7 +10,7 @@ angular.module( 'sample.login', [
       auth.getToken({
         api: 'firebase'
       }).then(function(firebaseToken) {
-        store.set('firebaseToken', firebaseToken);
+        store.set('firebaseToken', firebaseToken.id_token);
       });
       $location.path("/");
     }, function(error) {

@@ -1,0 +1,461 @@
+<!--
+add to quarky
+
+A wizard that walks you through adding a Google Place to a Quarky Place
+
+-->
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Add to Quarky Places</h1>
+
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+
+    <ion-content>
+        <form name="authorizationForm" novalidate="" ng-submit="submitOhana(authorizationForm)">
+            <div class="card">
+                <div class="item item-divider">
+                    Organization
+                </div>
+                <div class="item item-text-wrap">
+
+                    <! -- ORG_NAME ->
+                    <label ng-hide="ohanaform.org_select" class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.org_name.$invalid, 'no-errors' : authorizationForm.org_name.$valid}">
+                        <span class="input-label">Name</span>
+                        <input type="text" name="org_name" ng-model="ohanaform.org_name" ng-minlength="5"
+                               ng-maxlength="80" required>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.org_name.$error"
+                         ng-messages="authorizationForm.org_name.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 5 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 80 characters!
+                        </div>
+                    </div>
+                    <! -- ORG_DESCRIPTION ->
+                    <label ng-hide="ohanaform.org_select" class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.org_description.$invalid, 'no-errors' : authorizationForm.org_description.$valid}">
+                        <span class="input-label">Description</span>
+                        <textarea type="text" name="org_description" ng-model="ohanaform.org_description"
+                                  ng-minlength="5" ng-maxlength="500" required></textarea>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.org_description.$error"
+                         ng-messages="authorizationForm.org_description.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 5 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 500 characters!
+                        </div>
+                    </div>
+                    <! -- ORG_WEBSITE ->
+                    <label ng-hide="ohanaform.org_select" class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.org_website.$invalid, 'no-errors' : authorizationForm.org_website.$valid}">
+                        <span class="input-label">Website</span>
+                        <input type="text" name="org_website" ng-model="ohanaform.org_website" ng-minlength="5"
+                               ng-maxlength="250">
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.org_website.$error"
+                         ng-messages="authorizationForm.org_website.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 5 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 250 characters!
+                        </div>
+                    </div>
+                    <! -- ORG_SELECT ->
+                    <label class="item item-input item-select"
+                           ng-class="{ 'info-blurb' : authorizationForm.org_select.$valid }">
+                        <div class="input-label">
+                            Use existing:
+                        </div>
+                        <select name="org_select"
+                                ng-model="ohanaform.org_select"
+                                ng-options="o.id as o.name for o in existingOrgs"
+                                ng-change="ohanaform.org_name = '------'; ohanaform.org_description='------';ohanaform.org_website='------'">
+                        </select>
+                    </label>
+                </div>
+                <div class="item item-divider">
+                    Location
+                </div>
+                <div class="item item-text-wrap">
+                    <! -- LOC_NAME ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_name.$invalid, 'no-errors' : authorizationForm.loc_name.$valid}">
+                        <span class="input-label">Name</span>
+                        <input type="text" name="loc_name" ng-model="ohanaform.loc_name" ng-minlength="5"
+                               ng-maxlength="80" required>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_name.$error"
+                         ng-messages="authorizationForm.loc_name.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 5 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 80 characters!
+                        </div>
+                    </div>
+                    <! -- LOC_DESCRIPTION ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_description.$invalid, 'no-errors' : authorizationForm.loc_description.$valid}">
+                        <span class="input-label">Description</span>
+                        <textarea type="text" name="loc_description" ng-model="ohanaform.loc_description"
+                                  ng-minlength="5" ng-maxlength="500" required></textarea>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_description.$error"
+                         ng-messages="authorizationForm.loc_description.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 5 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 500 characters!
+                        </div>
+                    </div>
+                    <! -- LOC_WEBSITE ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_website.$invalid, 'no-errors' : authorizationForm.loc_website.$valid}">
+                        <span class="input-label">Website</span>
+                        <input type="text" name="loc_website" ng-model="ohanaform.loc_website" ng-minlength="5"
+                               ng-maxlength="250">
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_website.$error"
+                         ng-messages="authorizationForm.loc_website.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 5 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 250 characters!
+                        </div>
+                    </div>
+
+                </div>
+                <div class="item item-divider">
+                    Address
+                </div>
+                <div class="item item-text-wrap">
+                    <! -- LAT and LONG ->
+                    <div class="item item-text-wrap">
+                        <input type="text" name="loc_lat" ng-model="ohanaform.loc_lat" style="display: none;"/>
+                        Latitude: {{ohanaform.loc_lat}}
+                    </div>
+                    <div class="item item-text-wrap">
+                        <input type="text" name="loc_lng" ng-model="ohanaform.loc_lng" style="display: none;"/>
+                        Longitude: {{ohanaform.loc_lng}}
+                    </div>
+                    <! -- loc_addy_address_1 ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_addy_address_1.$invalid, 'no-errors' : authorizationForm.loc_addy_address_1.$valid}">
+                        <span class="input-label">Street 1</span>
+                        <input type="text" name="loc_addy_address_1" ng-model="ohanaform.loc_addy_address_1"
+                               ng-minlength="1" ng-maxlength="120" required>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_addy_address_1.$error"
+                         ng-messages="authorizationForm.loc_addy_address_1.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 1 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 120 characters!
+                        </div>
+                    </div>
+                    <! -- loc_addy_address_2 ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_addy_address_2.$invalid, 'no-errors' : authorizationForm.loc_addy_address_2.$valid}">
+                        <span class="input-label">Street 2</span>
+                        <input type="text" name="loc_addy_address_2" ng-model="ohanaform.loc_addy_address_2"
+                               ng-minlength="0" ng-maxlength="120">
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_addy_address_2.$error"
+                         ng-messages="authorizationForm.loc_addy_address_2.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 1 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 120 characters!
+                        </div>
+                    </div>
+                    <! -- loc_addy_city ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_addy_city.$invalid, 'no-errors' : authorizationForm.loc_addy_city.$valid}">
+                        <span class="input-label">City</span>
+                        <input type="text" name="loc_addy_city" ng-model="ohanaform.loc_addy_city" ng-minlength="1"
+                               ng-maxlength="80" required>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_addy_city.$error"
+                         ng-messages="authorizationForm.loc_addy_city.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 1 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 80 characters!
+                        </div>
+                    </div>
+                    <! -- loc_addy_state_province ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_addy_state_province.$invalid, 'no-errors' : authorizationForm.loc_addy_state_province.$valid}">
+                        <span class="input-label">State</span>
+                        <input type="text" name="loc_addy_state_province" ng-model="ohanaform.loc_addy_state_province"
+                               ng-minlength="1" ng-maxlength="2" required>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_addy_state_province.$error"
+                         ng-messages="authorizationForm.loc_addy_state_province.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 1 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 2 characters!
+                        </div>
+                    </div>
+                    <! -- loc_addy_postal_code ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_addy_postal_code.$invalid, 'no-errors' : authorizationForm.loc_addy_postal_code.$valid}">
+                        <span class="input-label">Zipcode</span>
+                        <input type="number" name="loc_addy_postal_code" string-to-number
+                               ng-model="ohanaform.loc_addy_postal_code" ng-minlength="1" ng-maxlength="9" required>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_addy_postal_code.$error"
+                         ng-messages="authorizationForm.loc_addy_postal_code.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 1 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 9 characters!
+                        </div>
+                    </div>
+                    <! -- loc_addy_country ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_addy_country.$invalid, 'no-errors' : authorizationForm.loc_addy_country.$valid}">
+                        <span class="input-label">Country</span>
+                        <input type="text" name="loc_addy_country" ng-model="ohanaform.loc_addy_country"
+                               ng-minlength="1" ng-maxlength="2" required>
+                    </label>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_addy_country.$error"
+                         ng-messages="authorizationForm.loc_addy_country.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            Two character country code required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 1 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 2 characters!
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-divider">
+                    Phone
+                </div>
+                <div class="item item-text-wrap">
+                    <! -- loc_phone_number ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.loc_phone_number.$invalid, 'no-errors' : authorizationForm.loc_phone_number.$valid}">
+                        <span class="input-label">Phone</span>
+                        <input type="tel"
+                               name="loc_phone_number"
+                               ng-model="ohanaform.loc_phone_number"
+                               ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/"
+                               required>
+                    </label>
+                    <! -- loc_phone_number_type DEFAULTS to VOICE ->
+                    <div class="item item-text-wrap">
+                        <input type="text" name="loc_phone_number_type" ng-model="ohanaform.loc_phone_number_type" style="display: none;"/>
+                    </div>
+
+                    <div class="error-container" ng-show="authorizationForm.loc_phone_number.$error"
+                         ng-messages="authorizationForm.loc_phone_number.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="pattern">
+                            <i class="ion-information-circled"></i>
+                            Must be a valid 10 digit phone number
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-divider">
+                    Service offered
+                </div>
+                <div class="item item-text-wrap">
+
+                    <! -- SVC_NAME ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.svc_name.$invalid, 'no-errors' : authorizationForm.svc_name.$valid}">
+                        <span class="input-label">Name</span>
+                        <input type="text" name="svc_name" ng-model="ohanaform.svc_name" ng-minlength="5"
+                               ng-maxlength="80" required>
+                    </label>
+                    <div class="error-container" ng-show="authorizationForm.svc_name.$error"
+                         ng-messages="authorizationForm.svc_name.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 5 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 80 characters!
+                        </div>
+                    </div>
+                    <! -- SVC_DESCRIPTION ->
+                    <label class="item item-input"
+                           ng-class="{ 'has-errors' : authorizationForm.svc_description.$invalid, 'no-errors' : authorizationForm.svc_description.$valid}">
+                        <span class="input-label">Description</span>
+                        <textarea type="text" name="svc_description" ng-model="ohanaform.svc_description"
+                                  ng-minlength="5" ng-maxlength="500" required></textarea>
+                    </label>
+                    <div class="error-container" ng-show="authorizationForm.svc_description.$error"
+                         ng-messages="authorizationForm.svc_description.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            This field is required!
+                        </div>
+                        <div class="error" ng-message="minlength">
+                            <i class="ion-information-circled"></i>
+                            Minimum length of this field is 5 characters!
+                        </div>
+                        <div class="error" ng-message="maxlength">
+                            <i class="ion-information-circled"></i>
+                            Maximum length of this field is 500 characters!
+                        </div>
+                    </div>
+
+                    <! -- SVC_STATUS ->
+                    <label class="item item-input item-select"
+                           ng-class="{ 'has-errors' : authorizationForm.svc_status.$invalid, 'no-errors' : authorizationForm.svc_status.$valid}">
+                        <div class="input-label">
+                            Status
+                        </div>
+                        <select name="svc_status"
+                                ng-model="ohanaform.svc_status"
+                                required>
+                            <option>defunct</option>
+                            <option>active</option>
+                            <option>inactive</option>
+                        </select>
+                    </label>
+                    <div class="error-container" ng-show="authorizationForm.svc_status.$error"
+                         ng-messages="authorizationForm.svc_status.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            A status selection is required!
+                        </div>
+                    </div>
+
+                    <! -- SVC_CATEGORIES ->
+                    <label class="item item-input item-select"
+                           ng-class="{ 'has-errors' : authorizationForm.svc_category.$invalid, 'no-errors' : authorizationForm.svc_category.$valid}">
+                        <div class="input-label">
+                            Category
+                        </div>
+                        <select name="svc_category"
+                                ng-model="ohanaform.svc_category"
+                                ng-options="o.taxonomy_id as o.name for o in ohanaCats"
+                                required>
+                        </select>
+                    </label>
+                    <div class="error-container" ng-show="authorizationForm.svc_category.$error"
+                         ng-messages="authorizationForm.svc_category.$error">
+                        <div class="error" ng-message="required">
+                            <i class="ion-information-circled"></i>
+                            A category is required!
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button class="button button-block button-positive" ng-disabled="authorizationForm.$invalid" type="submit">
+                Save to Quarky Places
+            </button>
+        </form>
+    </ion-content>
+</ion-modal-view>

@@ -2,12 +2,19 @@
   "name": "Quarky",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.0.0-rc.1",
-    "auth0-angular": "3.*",
+    "ionic": "driftyco/ionic-bower#1.1.1",
+    "auth0-angular": "4.*",
     "a0-angular-storage": ">= 0.0.6",
-    "angular-jwt": ">= 0.0.4"
+    "angular-jwt": ">= 0.0.4",
+    "ionic-platform-web-client": "~0.1.0"
   },
   "dependencies": {
-    "ngCordova": "~0.1.14-alpha"
+    "ngGeolocation": ">=0.0.2",
+    "ionic-datepicker": "~0.9.0"
+  },
+  "resolutions": {
+    "angular": "1.4.3",
+    "angular-animate": "1.4.3",
+    "angular-sanitize": "1.4.3"
   }
 }

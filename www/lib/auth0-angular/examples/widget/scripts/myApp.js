@@ -21,11 +21,11 @@ myApp.config(function ($routeProvider, authProvider,
 
   $locationProvider.hashPrefix('!');
 
-  authProvider.init({
-    domain: 'samples.auth0.com',
-    clientID: 'BUIJSW9x60sIHBw8Kd9EmCbj8eDIFxDC',
-    loginUrl: '/login'
-  });
+  // authProvider.init({
+  //   domain: 'samples.auth0.com',
+  //   clientID: 'BUIJSW9x60sIHBw8Kd9EmCbj8eDIFxDC',
+  //   loginUrl: '/login'
+  // });
 
   jwtInterceptorProvider.tokenGetter = function(store) {
     return store.get('token');
@@ -36,6 +36,12 @@ myApp.config(function ($routeProvider, authProvider,
   // want to check the delegation-token example
   $httpProvider.interceptors.push('jwtInterceptor');
 }).run(function($rootScope, auth, store, jwtHelper, $location) {
+
+  auth.init({
+    domain: 'samples.auth0.com',
+    clientID: 'BUIJSW9x60sIHBw8Kd9EmCbj8eDIFxDC',
+    loginUrl: '/login'
+  });
   $rootScope.$on('$locationChangeStart', function() {
     if (!auth.isAuthenticated) {
       var token = store.get('token');

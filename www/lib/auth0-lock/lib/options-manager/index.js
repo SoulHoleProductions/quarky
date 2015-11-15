@@ -82,9 +82,7 @@ function OptionsManager(widget, options) {
   // enable/disable gravatar image fetch
   this.gravatar = null != options.gravatar ? !!options.gravatar : true;
 
-  // If popupCallback, enable popup mode
   if ('function' === typeof options.popupCallback) {
-    this.popup = true;
     // XXX: the following to should already come with
     // the options from constructor... right?
     this.popupOptions = _.extend({}, options.popupOptions);
@@ -118,6 +116,11 @@ function OptionsManager(widget, options) {
   // hence SSO will not work.
   // To enable Ajax/jsonp/cors use sso: false.
   this.sso = null != this.sso ? !!this.sso : true;
+
+  // sso:true && popupCallback overrides usage of popup
+  // otherwise defaults to popup default value (false)
+  // or whatever provided via options.
+  this.popup = 'function' === typeof this.popupCallback || !!this.popup;
 
   // Delay options requiring $client configuration
   this.$widget.getClientConfiguration(bind(this._onclientloaded, this));
@@ -361,6 +364,23 @@ OptionsManager.prototype._filterConnections = function (domain, strategies, crit
 };
 
 /**
+ * Given an email verifies if the email address matches a specific connection.
+ * In that case the login will happen through an external platform (SSO enabled).
+ *
+ * @param {String} email
+ *
+ * @return {Boolean}
+ */
+OptionsManager.prototype._isConnectionEmail = function(email) {
+  var emailDomain = this._extractEmailDomain(email || '');
+  var adConnection = this._findConnectionByADDomain(emailDomain);
+  var isEnterpriseConnection =
+    this._isEnterpriseConnection(email || '');
+  return ('username' !== this.usernameStyle && adConnection) ||
+    isEnterpriseConnection;
+};
+
+/**
  * Resolves wether `email`'s domain belongs to
  * an enterprise connection or not, and alters
  * `output` object in the way...
@@ -529,6 +549,11 @@ OptionsManager.prototype._shouldShowLastLogin = function() {
 
   // Don't show last login if in Phonegap with AD or auth0 connection
   if (window.cordova && isADOrAuth0) {
+    return false;
+  }
+
+  // Don't show last login if we don't know the strategy
+  if (connectionStrategy && !this.$strategies[connectionStrategy]) {
     return false;
   }
 

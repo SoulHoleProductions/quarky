@@ -36,6 +36,8 @@ myApp.config(function ($routeProvider, authProvider, $httpProvider,
     if (config.url.indexOf('http://localhost:33000') === 0) {
       return auth.getToken({
         targetClientId: targetClientId
+      }).then(function(delegation) {
+        return delegation.id_token;
       });
     } else {
       return store.get('token');

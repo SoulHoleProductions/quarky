@@ -5,7 +5,7 @@ var minor_version = pkg.version.replace(/\.(\d)*$/, '');
 var major_version = pkg.version.replace(/\.(\d)*\.(\d)*$/, '');
 var path = require('path');
 
-function  rename_release (v) {
+function rename_release (v) {
   return function (d, f) {
     var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + "$1.js"));
     return dest;
@@ -15,21 +15,23 @@ function  rename_release (v) {
 module.exports = function(grunt) {
   grunt.initConfig({
     connect: {
-      test: {
+      dev: {
         options: {
+          base:  ["example", "build", "."],
           hostname: '0.0.0.0',
           port: 9999
         }
       },
       example: {
         options: {
-          base:  "example",
+          base:  ["example", "build", "."],
+          hostname: '0.0.0.0',
           port: 3000
         }
       },
       example_https: {
         options: {
-          base:  "example",
+          base:  ["example", "build", "."],
           port:  3000,
           protocol: 'https',
           hostname: '*',
@@ -58,11 +60,6 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      example: {
-        files: {
-          'example/auth0.js': 'build/auth0.js',
-        }
-      },
       release: {
         files: [
           { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(pkg.version) },
@@ -72,11 +69,11 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      build: ["release/", "build/", "example/auth0.js"],
+      build: ["release/", "build/"],
     },
     watch: {
       another: {
-        files: ['node_modules', 'standalone.js', 'lib/*.js'],
+        files: ['node_modules', 'standalone.js', 'index.js', 'lib/*.js'],
         tasks: ['build']
       }
     },
@@ -87,7 +84,7 @@ module.exports = function(grunt) {
         stderr: true
       },
       'test-phantom': {
-        cmd: 'node_modules/.bin/zuul --phantom 9999 -- test/*.js',
+        cmd: 'node_modules/.bin/zuul --disable-tunnel --phantom 9999 -- test/*.js',
         stdout: true,
         stderr: true
       }
@@ -103,6 +100,7 @@ module.exports = function(grunt) {
         accessKeyId:     process.env.S3_KEY,
         secretAccessKey: process.env.S3_SECRET,
         bucket:          process.env.S3_BUCKET,
+        region:          process.env.S3_REGION,
         uploadConcurrency: 5,
         params: {
           CacheControl: 'public, max-age=300'
@@ -130,24 +128,43 @@ module.exports = function(grunt) {
         ]
       }
     },
-    /* Purge FASTLY cache. */
-    fastly: {
-      options: {
-        key:  process.env.FASTLY_KEY,
-        host: process.env.FASTLY_HOST
-      },
-      purge: {
+    http: {
+      purge_js: {
         options: {
-          urls: [
-            'w2/auth0-' + pkg.version   + '.min.js',
-            'w2/auth0-' + pkg.version   + '.js',
-            'w2/auth0-' + major_version + '.js',
-            'w2/auth0-' + major_version + '.min.js',
-            'w2/auth0-' + minor_version + '.js',
-            'w2/auth0-' + minor_version + '.min.js'
-          ]
-        },
+          url: process.env.CDN_ROOT + '/w2/auth0-' + pkg.version + '.js',
+          method: 'DELETE'
+        }
       },
+      purge_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-' + pkg.version + '.min.js',
+          method: 'DELETE'
+        }
+      },
+      purge_major_js: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-' + major_version + '.js',
+          method: 'DELETE'
+        }
+      },
+      purge_major_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-' + major_version + '.min.js',
+          method: 'DELETE'
+        }
+      },
+      purge_minor_js: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-' + minor_version + '.js',
+          method: 'DELETE'
+        }
+      },
+      purge_minor_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/w2/auth0-' + minor_version + '.min.js',
+          method: 'DELETE'
+        }
+      }
     }
   });
 
@@ -156,13 +173,15 @@ module.exports = function(grunt) {
     if (key !== "grunt" && key.indexOf("grunt") === 0) grunt.loadNpmTasks(key);
   }
 
-  grunt.registerTask("build",         ["clean", "browserify:dist", "uglify:min", "copy:example"]);
-  grunt.registerTask("example",       ["connect:example", "watch", "build"]);
-  grunt.registerTask("example_https", ["connect:example_https", "watch", "build"]);
+  grunt.registerTask("build",         ["clean", "browserify:dist", "uglify:min"]);
+  grunt.registerTask("example",       ["build", "connect:example", "watch"]);
+  grunt.registerTask("example_https", ["build", "connect:example_https", "watch"]);
 
-  grunt.registerTask("dev",           ["connect:test", "watch", "build"]);
+  grunt.registerTask("dev",           ["build", "connect:dev", "watch"]);
   grunt.registerTask("integration",   ["exec:test-integration"]);
   grunt.registerTask("phantom",       ["exec:test-phantom"]);
 
-  grunt.registerTask("cdn",           ["build", "copy:release", "aws_s3", "fastly:purge"]);
+  grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min']);
+
+  grunt.registerTask("cdn",           ["build", "copy:release", "aws_s3", "purge_cdn"]);
 };

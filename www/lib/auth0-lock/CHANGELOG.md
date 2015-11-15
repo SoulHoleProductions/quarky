@@ -1,3 +1,572 @@
+## [7.11.1] - 2015-10-20
+
+### Fixed
+
+- [] Provide safer rules for zocial icons (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ac3ab5b6003ff71677acf2a9847b34e183184cdd
+- [] Update social fonts with the proper name (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1dafa231533e37545dfa39ac58caea5b2c77b497
+
+## [7.11.0] - 2015-10-20
+
+### Fixed
+
+- [] Merge pull request #252 from auth0/update-social-icons (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d32d63db658ad9ed5f7c09639cd89ff7e2310933
+- [] Publish zocial font to CDN (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f5a1e1f73133c8526e897c1c8d36fb56e4a1bd68
+- [] Use ejsify to compile ejs templates with webpack (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/18d9ae8281081adda3e94a22e56522dc1885960d
+- [] Merge pull request #251 from theopak/master (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/620136e0651aadc8efa39ca39639b989166e031c
+- [] Fix windows icon, it didn't look right (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/7e5d78d7ed6d3201ff2823f778111f637dba4c37
+- [] Update google and windows icons CSS (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/3521c1e6fec44ef817e01053d2669b5aa1830593
+- [] Update google and windows icons in social font (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/6da6210bae81ba3e3fd433c5f27c8f70e9d08073
+- [] Update readme so that it correctly shows all steps required for using webpack (`Theodore X. Pak`)
+  https://github.com/auth0/lock/commit/2b1d213462c8704430d11d925f5da09c6d7af8d2
+- [] Fix webpack example build errors by explicitly declaring /-loader/, the lack of which can result in situations such as this one: http://stackoverflow.com/a/29890656 (`Theodore X. Pak`)
+  https://github.com/auth0/lock/commit/78ec931fbaf7b7ef1dfddfe78f3fdd5c54a44db6
+
+## [7.10.3] - 2015-08-26
+
+### Fixed
+
+- [] Merge pull request #232 from rolodato/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/7357ea03869466d751b6e2e3de534499747152fa
+
+
+## [7.10.2] - 2015-10-20
+
+### Fixed
+
+- [] Don't show last login for unknown connections (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2d6c0ab4b3ea6d522b8c8b1faa89336b676fd7bd
+
+## [7.10.1] - 2015-10-08
+
+### Fixed
+
+- [] Merge pull request #241 from lordakshaya/patch-1 (`Sandrino Di Mattia`)
+  https://github.com/auth0/lock/commit/7c81625af30d6aff30f2c9c15926b55d2bbead97
+- [] Using the latest version of auth0-js (`Akshaya`)
+  https://github.com/auth0/lock/commit/69089d84eabfcbbef04226dee3c2b07d70e9f2f7
+
+## [7.10.0] - 2015-08-26
+
+### Fixed
+
+- [] Merge pull request #237 from sandrinodimattia/support-password-change-required (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/1445107c70b93178d5dcbcd94df3aabf1d1dbc5d
+- [] Support password change required (`Sandrino Di Mattia`)
+  https://github.com/auth0/lock/commit/d16ddcd6d1bb625313deef87d3b96eab99e053fa
+- [] Merge pull request #235 from taion/webpack (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/259de3984a0c01d8cca0dae03d21cc3d38c01e75
+- [] Use cacheable loaders in webpack (`Jimmy Jia`)
+  https://github.com/auth0/lock/commit/eadf6204c30203c6e9c36621d22b2d829a89371e
+- [] Merge pull request #229 from taion/webpack (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/5b959ef0a27fc4b4581561fbfb1f80e07078fa91
+- [] Make it easier to find the webpack instructions (`Jimmy Jia`)
+  https://github.com/auth0/lock/commit/618911690c3d754d40df748ccdc7c2fa70c2a67e
+- [] Improve webpack example (`Jimmy Jia`)
+  https://github.com/auth0/lock/commit/9ac37125ecc51d0c2e75b7fb98f0897a7f6649dd
+- [] Merge pull request #228 from taion/patch-1 (`Rodrigo López Dato`)
+  https://github.com/auth0/lock/commit/71ec758ace34acd795aa99d7ca7893a832362f7c
+- [] Fix typo in README (`Jimmy Jia`)
+  https://github.com/auth0/lock/commit/36f6e29e509dd8a503cffe514a21d04a638d9b5f
+- [] Merge pull request #222 from clodeku/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b829a16446b9f8d70a465186ae9e203098e13879
+- [] update from latest version of en.json (`Clode Ku`)
+  https://github.com/auth0/lock/commit/1534ea1f64ce6a7611dda31250ae559b43ddbeee
+- [] Release: 7.9.5 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/699211796f8d9766f5992285fa3c850f598bd966
+- [] Merge branch 'cwilgenhoff-fix/email-warning-blocks-issue' (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c50cc5af8cf6a1ef5c75bcecf936b93a64ab9189
+- [] Merge branch 'fix/email-warning-blocks-issue' of https://github.com/cwilgenhoff/lock into cwilgenhoff-fix/email-warning-blocks-issue (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/1f87b1b8f2b07526cd2ea09b4eb0cc028988db74
+- [] Fix example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/02b59bcde75696286b0eb53dff9eaedd24059294
+- [] Adjusted position of the "invalid" warning (`Cristian Wilgenhoff`)
+  https://github.com/auth0/lock/commit/c534ab4411a81dfa572ee37ca6134ca9b2dd8de3
+- [] Fix for "Invalid" email warning blocks entered email (`Cristian Wilgenhoff`)
+  https://github.com/auth0/lock/commit/775257948883be03589708647ced628eae96e158
+- [] Release: 7.9.4 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/1021552546212857f4f4fc243600a1d4ad7fad1f
+- [] Add polish dict to base code (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/04b32b2c6f6bc92f9fbe6cc994c137968f4b522c
+- [] Merge pull request #217 from rpdiss/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/952411e81cd0466fde27ec782b26beb2280fb5ea
+- [] pl i18 (`rafal.piekarski`)
+  https://github.com/auth0/lock/commit/584dd0de2992e6a0650b78b35d4a58f8791fd6f7
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/e4be61615c77e15073a1d511d7c8071e614fe619
+- [] Release: 7.9.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a9c3db4842166a331b0ec051e52a0b05529b3d06
+- [] Added Japanese translations (`Daniel Lobo`)
+  https://github.com/auth0/lock/commit/1369674b474e1f57ae7dce6f655b1616c5aa5cda
+- [] Release: 7.9.2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/6f7b1b5d2f4a457bd68eb4f90a819c972c59c481
+- [] Bump auth0.js@6.6.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/4995662f501c2bf533ecd87892a2a3ad85ec44ab
+- [] Release: 7.9.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/514ac1e63732b1cd9a4ee8efaf18e7530e8637d4
+- [] Add au domain for client fetch (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a72fcbb27d9170ac71d32d3aa8d19ebfbb4d3dab
+- [] Revert example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/cc9d6483f8a0b113f4077944bbe13158e2856196
+- [] Release: 7.9.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d9f91b9431f6e056eafb73ffa8944bd6aebcc9bf
+- [] Final fixes for options with popup and sso (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8eb587c0e555e46e6a30600024fb7acca074b9d1
+- [] Fixes for mode popup + callback and/or sso (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/717c8fc83b281a6b6ff1d4b4f28f90939f2cdeac
+- [] popup property overriden by sso:true && popupCallback:{Function} (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/fdc2ec468adcc5e16a52679026901ec220ef934f
+- [] Fix double open of popup from different lock threads (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
+- [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
+- [] Release: 7.8.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a30431108618924fd48a7a702f4b98fa76c56b56
+- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
+- [] Release: 7.8.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
+- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
+- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
+- [] Add a few npm commands for better CI handling (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
+- [] Update example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
+- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
+- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
+- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
+- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
+- [] First succesful attempt for custom rules errors (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
+- [] First attempt to make rule fail (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
+- [] [repo]: Add demo css to development task (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
+
+## [7.9.5] - 2015-08-26
+
+### Fixed
+
+- [] Merge branch 'cwilgenhoff-fix/email-warning-blocks-issue' (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c50cc5af8cf6a1ef5c75bcecf936b93a64ab9189
+- [] Merge branch 'fix/email-warning-blocks-issue' of https://github.com/cwilgenhoff/lock into cwilgenhoff-fix/email-warning-blocks-issue (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/1f87b1b8f2b07526cd2ea09b4eb0cc028988db74
+- [] Fix example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/02b59bcde75696286b0eb53dff9eaedd24059294
+- [] Adjusted position of the "invalid" warning (`Cristian Wilgenhoff`)
+  https://github.com/auth0/lock/commit/c534ab4411a81dfa572ee37ca6134ca9b2dd8de3
+- [] Fix for "Invalid" email warning blocks entered email (`Cristian Wilgenhoff`)
+  https://github.com/auth0/lock/commit/775257948883be03589708647ced628eae96e158
+- [] Release: 7.9.4 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/1021552546212857f4f4fc243600a1d4ad7fad1f
+- [] Add polish dict to base code (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/04b32b2c6f6bc92f9fbe6cc994c137968f4b522c
+- [] Merge pull request #217 from rpdiss/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/952411e81cd0466fde27ec782b26beb2280fb5ea
+- [] pl i18 (`rafal.piekarski`)
+  https://github.com/auth0/lock/commit/584dd0de2992e6a0650b78b35d4a58f8791fd6f7
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/e4be61615c77e15073a1d511d7c8071e614fe619
+- [] Release: 7.9.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a9c3db4842166a331b0ec051e52a0b05529b3d06
+- [] Added Japanese translations (`Daniel Lobo`)
+  https://github.com/auth0/lock/commit/1369674b474e1f57ae7dce6f655b1616c5aa5cda
+- [] Release: 7.9.2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/6f7b1b5d2f4a457bd68eb4f90a819c972c59c481
+- [] Bump auth0.js@6.6.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/4995662f501c2bf533ecd87892a2a3ad85ec44ab
+- [] Release: 7.9.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/514ac1e63732b1cd9a4ee8efaf18e7530e8637d4
+- [] Add au domain for client fetch (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a72fcbb27d9170ac71d32d3aa8d19ebfbb4d3dab
+- [] Revert example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/cc9d6483f8a0b113f4077944bbe13158e2856196
+- [] Release: 7.9.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d9f91b9431f6e056eafb73ffa8944bd6aebcc9bf
+- [] Final fixes for options with popup and sso (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8eb587c0e555e46e6a30600024fb7acca074b9d1
+- [] Fixes for mode popup + callback and/or sso (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/717c8fc83b281a6b6ff1d4b4f28f90939f2cdeac
+- [] popup property overriden by sso:true && popupCallback:{Function} (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/fdc2ec468adcc5e16a52679026901ec220ef934f
+- [] Fix double open of popup from different lock threads (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
+- [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
+- [] Release: 7.8.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a30431108618924fd48a7a702f4b98fa76c56b56
+- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
+- [] Release: 7.8.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
+- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
+- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
+- [] Add a few npm commands for better CI handling (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
+- [] Update example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
+- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
+- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
+- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
+- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
+- [] First succesful attempt for custom rules errors (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
+- [] First attempt to make rule fail (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
+- [] [repo]: Add demo css to development task (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
+
+## [7.9.4] - 2015-08-26
+
+### Fixed
+
+- [] Add polish dict to base code (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/04b32b2c6f6bc92f9fbe6cc994c137968f4b522c
+- [] Merge pull request #217 from rpdiss/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/952411e81cd0466fde27ec782b26beb2280fb5ea
+- [] pl i18 (`rafal.piekarski`)
+  https://github.com/auth0/lock/commit/584dd0de2992e6a0650b78b35d4a58f8791fd6f7
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/e4be61615c77e15073a1d511d7c8071e614fe619
+- [] Release: 7.9.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a9c3db4842166a331b0ec051e52a0b05529b3d06
+- [] Added Japanese translations (`Daniel Lobo`)
+  https://github.com/auth0/lock/commit/1369674b474e1f57ae7dce6f655b1616c5aa5cda
+- [] Release: 7.9.2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/6f7b1b5d2f4a457bd68eb4f90a819c972c59c481
+- [] Bump auth0.js@6.6.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/4995662f501c2bf533ecd87892a2a3ad85ec44ab
+- [] Release: 7.9.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/514ac1e63732b1cd9a4ee8efaf18e7530e8637d4
+- [] Add au domain for client fetch (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a72fcbb27d9170ac71d32d3aa8d19ebfbb4d3dab
+- [] Revert example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/cc9d6483f8a0b113f4077944bbe13158e2856196
+- [] Release: 7.9.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d9f91b9431f6e056eafb73ffa8944bd6aebcc9bf
+- [] Final fixes for options with popup and sso (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8eb587c0e555e46e6a30600024fb7acca074b9d1
+- [] Fixes for mode popup + callback and/or sso (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/717c8fc83b281a6b6ff1d4b4f28f90939f2cdeac
+- [] popup property overriden by sso:true && popupCallback:{Function} (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/fdc2ec468adcc5e16a52679026901ec220ef934f
+- [] Fix double open of popup from different lock threads (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
+- [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
+- [] Release: 7.8.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a30431108618924fd48a7a702f4b98fa76c56b56
+- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
+- [] Release: 7.8.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
+- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
+- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
+- [] Add a few npm commands for better CI handling (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
+- [] Update example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
+- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
+- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
+- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
+- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
+- [] First succesful attempt for custom rules errors (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
+- [] First attempt to make rule fail (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
+- [] [repo]: Add demo css to development task (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
+
+## [7.9.3] - 2015-08-26
+
+### Fixed
+
+- [] Added Japanese translations (`Daniel Lobo`)
+  https://github.com/auth0/lock/commit/1369674b474e1f57ae7dce6f655b1616c5aa5cda
+
+## [7.9.2] - 2015-08-26
+
+### Fixed
+
+- [] Bump auth0.js@6.6.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/4995662f501c2bf533ecd87892a2a3ad85ec44ab
+
+## [7.9.1] - 2015-08-26
+
+### Fixed
+
+- [] Add au domain for client fetch (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a72fcbb27d9170ac71d32d3aa8d19ebfbb4d3dab
+- [] Revert example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/cc9d6483f8a0b113f4077944bbe13158e2856196
+
+## [7.9.0] - 2015-08-26
+
+### Fixed
+
+- [] Final fixes for options with popup and sso (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8eb587c0e555e46e6a30600024fb7acca074b9d1
+- [] Fixes for mode popup + callback and/or sso (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/717c8fc83b281a6b6ff1d4b4f28f90939f2cdeac
+- [] popup property overriden by sso:true && popupCallback:{Function} (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/fdc2ec468adcc5e16a52679026901ec220ef934f
+- [] Fix double open of popup from different lock threads (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
+- [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
+
+## [7.8.1] - 2015-08-26
+
+### Fixed
+
+- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
+
+## [7.8.0] - 2015-08-26
+
+### Fixed
+
+- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
+- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
+- [] Add a few npm commands for better CI handling (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
+- [] Update example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
+- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
+- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
+- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
+- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
+- [] First succesful attempt for custom rules errors (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
+- [] First attempt to make rule fail (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
+- [] [repo]: Add demo css to development task (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
+
+## [7.7.6] - 2015-08-21
+
+### Fixed
+
+- [] Merge pull request #209 from auth0/fix_domain_issue (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c1c00331ad61bb9201e7bb7a638430c0ffacfd41
+- [] fix issue when the hostname is auth0 but with extra subdomains level (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/44b49a5f5e87ca07dcd6c6ab843fc8f5ab61178e
+
+## [7.7.5] - 2015-07-23
+
+### Fixed
+
+- [] Expose  with full collection of supported languages to allow main dicts override (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/5a226beaa2b933d31482a07882ed2914dfe51013
+- [] Update i18n module to better handle dicts. Expose dicts on Lock instance for easy override (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/403b86afd46d4135242b1ad5eee89778936b8b33
+
+## [7.7.4] - 2015-07-23
+
+### Fixed
+
+- [] Merge pull request #206 from bartdereu/patch-3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/f67e9aecb5de82dfad1e10df8c9f066c8d74e001
+- [] Update nl-NL.json (`bartdereu`)
+  https://github.com/auth0/lock/commit/77cd8bce752198ca284321dbf5ac7426218db922
+
+## [7.7.3] - 2015-07-23
+
+### Fixed
+
+- [] Merge pull request #203 from bartdereu/patch-2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b7361a3b32372a24547bdf180e85bf360363acd4
+- [] Update nl-NL.json (`bartdereu`)
+  https://github.com/auth0/lock/commit/5bbb380fcc4633c58f0c54471d2854d80fe34796
+- [] add region to Gruntfile (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/c299e086ab1279bd455cf90723f32d5693a31f17
+
+## [7.7.2] - 2015-07-23
+
+### Fixed
+
+- [] Merge pull request #199 from auth0/remove/cdn-option (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/56658246e7f43187bc56af596da47afcda625f46
+- [] Remove alt_spinner from templates and also options.cdn from lock constructor (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2b706277564daf09b8152717fc6ead64613817b2
+
+## [7.7.1] - 2015-07-08
+
+### Fixed
+
+- [] Add close event for when the user clicks the X button (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/a5960db82ea9767c2761dfb08a893aac80197aba
+
+## [7.7.0] - 2015-07-08
+
+### Fixed
+
+- [] Merge pull request #196 from tehsis/issues/82-events (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c14e5405c0121122c291df8a90a58b04ebfd7065
+- [] Improved lifecycle events (`Pablo Terradillos`)
+  https://github.com/auth0/lock/commit/523fb75ca966f7e3da522727cf95c3d444625581
+
+## [7.6.2] - 2015-06-02
+
+### Fixed
+
+- [] Add korean language (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2b9a743713ccffdfa277d2ec7adbffce35abcbd1
+- [] Merge pull request #182 from amondnet/internationalization-korean (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c25939283383e8c46dfecb46e4dbe725f265c24e
+
+## [7.6.1] - 2015-06-02
+
+### Fixed
+
+- [] Fixed issue with reset password panel and SSO (`Sandrino Di Mattia`)
+  https://github.com/auth0/lock/commit/c26fd02e28cdb2c2b66b5b669a9f52079b74065c
+
+## [7.6.0] - 2015-06-02
+
+### Fixed
+
+- [] Improve SSO experience (`Sandrino Di Mattia`)
+  https://github.com/auth0/lock/commit/bfdff2a5dab5201aad2fb4238571a644c5ba2ee5
+  https://github.com/auth0/lock/commit/621333319910bdb7ea8a744002e4e99f1d7b8c64
+
+## [7.5.7] - 2015-06-02
+
+### Fixed
+
+- [] Fixed issue with ie9 inside div no render of labels (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/60d81156d705666918a5219614388fffc3ecbc82
+
+## [7.5.6] - 2015-06-02
+
+### Added
+
+- [] Added zh-TW to i18n (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/49eb28346d2c5bf5b0bd46777a829d791c1bea91
+  https://github.com/auth0/lock/commit/8a7e77a83f23444c5eb2a0ba78fc6f3c8f19382d
+- [] Added ignores to bower.json (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/8baa4a5022a512c138b779875f08803162e26859
+  https://github.com/auth0/lock/commit/e3dc654d6c2e27cb09cee6e80bbf5ebfb1c431cb
+- [] Added examples: webpack  (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/9fb2dd5b4c4afa422bed8a6650b5e8233c596ea8
+  https://github.com/auth0/lock/commit/b195409ae84ee85d20a57132fbabccf21a513a64
+  https://github.com/auth0/lock/commit/745b75b797af7b9e4ddd6ba1ba831589f15e8424
+  https://github.com/auth0/lock/commit/395af1d4626f706f2524aa8d4a38ce5a3a7913ac
+  https://github.com/auth0/lock/commit/9aef6ab83590783b26b0d6912861aef01ad0f5c8
+  https://github.com/auth0/lock/commit/5dcdf6e0166979a09c1f21bfce6f8f40e960397a
+
+## [7.5.5] - 2015-04-13
+
+### Fixed
+
+- Fixes `blueimp-md5` exporting issue to have webpack support (Fixes: https://github.com/auth0/lock/issues/95) (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/5673162d072c15a5d268de8163442f537d8bf0ab
+
+## 7.5.4 - (May 19, 2015)
+
+### Fixed
+
+ - Fix bug with internal AMD definitions when loading Auth0Lock through AMD.
+  https://github.com/auth0/lock/commit/92c956726f1327971dbe2a2bf106718dc3b0ee8f
+
+## 7.5.3 - (May 18, 2015)
+
+### Fixed
+
+ - Bump auth0-js@6.4.2 do not use JSONP when it is on the same domain.
+  https://github.com/auth0/lock/commit/fd1d9391aefdf366e504b0c094218cd26f7d5337
+
+## 7.5.2 - (May 12, 2015)
+
+### Fixed
+
+ - Bump auth0-js@6.4 to prevent a CORS call when authenticating on the same auth0 domain.
+  https://github.com/auth0/lock/commit/327d5249ebca515c2ecec3d8b18464668fc9cbcb
+
+## 7.5.1 - (April 27, 2015)
+
+### Fixed
+
+ - [popup] Bump auth0-js@6.3.1 to fix issue with window popup not closing on `.signup` with `auto_login=false` (`siacomuzzi - cristiandouce`)
+  https://github.com/auth0/lock/commit/471d8a169c8f98567365c085b26d938a9591eac2
+  https://github.com/auth0/lock/commit/2c68ccbb72391aa0187921cf705d3bdbdc50b1f7
+
+
+## 7.5.0 - (April 27, 2015)
+
+### Changed
+
+ - [font] Font family changed to Helvetica. (`beneliflo`)
+  https://github.com/auth0/lock/commit/299460259cb8f8635f5134194d8ead07813132da
+
+## 7.4.0 - (April 16, 2015)
+
+### Added
+
+ - [login-hint] Add `login_hint` parameter sent on every request with email/username (`cristiandouce`)
+  https://github.com/auth0/lock/commit/ea8e8e4a77823df9531b1ff2c2051245dad9dffb
+
+## 7.3.2 - (April 13, 2015)
+
+### Added
+
+ - [region-support] Support EU `assetsUrl` (`cristiandouce - sandrinodimattia`)
+  https://github.com/auth0/lock/commit/879946991f70a7a88451c40f08ce148095161c45
+  https://github.com/auth0/lock/commit/89c7e80d381a3fa96bc1223223a4f03520c13e04
+  https://github.com/auth0/lock/commit/ed5ecd1d02e307b382d5b031eb40901405eee492
+
+## 7.3.1 - (March 24, 2015)
+
+### Fixed
+
+ - [translation] Small fix to German translations (de.json) (`cristiandouce - Jeroenr1`)
+  https://github.com/auth0/lock/commit/9bdadf3445a94a84c06f9923b76cbbb920505f72
+  https://github.com/auth0/lock/commit/945fb2654bd36810028b57e86c4a768383a46e4e
+
+## 7.3.0 - (March 19, 2015)
+
+### Added
+
+ - [error] Improving offline error reporting. (Updated to auth0.js@6.1.0) (`pose`)
+  https://github.com/auth0/lock/commit/f978d548d37cfb451a24b2d86ac1419081a82964
+  https://github.com/auth0/lock/commit/42726ae2d273d6cb3a268e5ca6d70c211e9e2393
+ - [translation] Added Swedish translations (sv.json) (`pose - alexkerber`)
+  https://github.com/auth0/lock/commit/01edbdb198ca0c0f23fbddeef48e39a26d736428
+  https://github.com/auth0/lock/commit/2f0fa9632603ad63a54741fbc70dfe59dfc65235
+  https://github.com/auth0/lock/commit/e8ee91fcff5743bfd2d3f5c90bb5e4ed99e351da
+
 ## 7.2.0 - (March 16, 2015)
 
 ### Changed
@@ -317,9 +886,9 @@ Another idea would be to fix the trailing commas in some of the other translatio
 
 ### Added
 
- - [lock] handle `requires_username` in db connection (`[object Object]`)
+ - [lock] handle `requires_username` in db connection (`Matias Corbanini`)
   https://github.com/auth0/lock/commit/1e53915fafca55cb821fadc65049a1f7068a1d66
- - [lock] sign-up tests with `requires_username` (`[object Object]`)
+ - [lock] sign-up tests with `requires_username` (`Matias Corbanini`)
   https://github.com/auth0/lock/commit/72053c72f23d402089069994a560263deb3b0b86
  - [lock] Move _isUsernameRequired to options-manager lib module (`cristiandouce`)
   https://github.com/auth0/lock/commit/eedf8af250cae6990edfb7546091d5afccb2ed40

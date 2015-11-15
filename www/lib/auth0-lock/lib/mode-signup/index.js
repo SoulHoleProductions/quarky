@@ -14,6 +14,7 @@ var buttonTmpl = require('../html/zocial-button.ejs');
 var regex = require('../regex');
 var gravatar = require('../gravatar');
 var PasswordStrength = require('../password-strength');
+var ValidationError = require('../errors/ValidationError');
 var empty = regex.empty;
 var email_parser = regex.email_parser;
 var slice = Array.prototype.slice;
@@ -173,6 +174,10 @@ SignupPanel.prototype.bindAll = function() {
 
 SignupPanel.prototype.onzocialclick = function(e) {
   stop(e);
+  var target = e.currentTarget || e.delegateTarget || e.target || e;
+  var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
+
+  this.widget.emit('signup submit', this.widget.options, { provider: strategyName });
   this.widget._signinSocial(e, null, null, this);
 };
 
@@ -206,11 +211,23 @@ SignupPanel.prototype.oncancel = function(e) {
   widget._signinPanel();
 };
 
-SignupPanel.prototype.onemailinput = function () {
+SignupPanel.prototype.onemailinput = function() {
   var mailField = this.query('.a0-email input');
+  var email = mailField.val();
+
+  if (this.options._isConnectionEmail(email)) {
+    var widget = this.widget;
+    widget._setPreviousPanel('signup');
+    widget._showSuccess();
+    widget._showError();
+    widget._focusError();
+    widget._signinPanel();
+    widget._setEmail(email);
+    return;
+  }
 
   if ('username' !== this.options.usernameStyle && this.options.gravatar) {
-    this.gravatar(mailField.val());
+    this.gravatar(email);
   }
 };
 
@@ -247,7 +264,21 @@ SignupPanel.prototype.submit = function() {
 
   widget._loadingPanel({ mode: 'signup' });
 
-  debug('signin up');
+  debug('signup submit');
+  widget.emit('signup submit', widget.options);
+
+  // IMPROVE: This is a hack to allow `loginAfterSignup` with `sso: true`
+  // since the auth0-js client requires a popup for that, and it needs to
+  // be open in the same thread as the event emitted by the user action
+  // FOLLOW: https://github.com/auth0/auth0.js/blob/065c9e6cb2f950545c11bbcd8bd1d7b0004380ae/index.js#L499-L504
+  var will_popup = options.loginAfterSignup && options.popup
+    && (options.sso || options.responseType !== 'token');
+
+  if (will_popup) {
+    panel.lock_safe_popup = widget.$auth0._buildPopupWindow({});
+    widget.$auth0._current_popup = null;
+  }
+
   widget.$auth0.signup({
     connection: connection.name,
     username:   (options._isUsernameRequired()) ? username : email,
@@ -268,9 +299,24 @@ SignupPanel.prototype.submit = function() {
       return debug('this signup was triggered from another node instance', arguments);
     }
 
-    if (!err && widget.options.loginAfterSignup) { return widget._signinWithAuth0(panel); }
+    // Emit "signup success" for all non error cases.
+    if (!err) { widget.emit('signup success'); }
+
+    if (!err && widget.options.loginAfterSignup) {
+      widget.$auth0._current_popup = panel.lock_safe_popup;
+      panel.lock_safe_popup = null;
+      return widget._signinWithAuth0(panel);
+    }
+
+    if (panel.lock_safe_popup) {
+      panel.lock_safe_popup.close();
+    }
+
     if (!err && 'function' === typeof callback) { return callback.apply(widget, args), widget.hide(); }
     if (!err) { return widget.hide(); }
+
+    debug('Error on signup: %o', err);
+    widget.emit('signup error', err);
 
     // display signup again
     widget.setPanel(panel);
@@ -347,11 +393,13 @@ SignupPanel.prototype.valid = function() {
   widget._focusError();
 
   if (email_empty) {
+    widget.emit('signup error', new ValidationError('email empty'));
     widget._focusError(email_input);
     ok = false;
   }
 
   if (!email_parsed && !email_empty) {
+    widget.emit('signup error', new ValidationError('email invalid'));
     widget._focusError(email_input, widget.options.i18n.t('invalid'));
     ok = false;
   }
@@ -362,16 +410,19 @@ SignupPanel.prototype.valid = function() {
     var username_parsed = username_parser.exec(username_input.val().toLowerCase());
 
     if (username_empty) {
+      widget.emit('signup error', new ValidationError('username empty'));
       widget._focusError(username_input);
       ok = false;
     }
     if (!username_parsed && !username_empty) {
+      widget.emit('signup error', new ValidationError('username invalid'));
       widget._focusError(username_input, widget.options.i18n.t('invalid'));
       ok = false;
     }
   }
 
   if (password_empty) {
+    widget.emit('signup error', new ValidationError('password empty'));
     widget._focusError(password_input);
     ok = false;
   }
