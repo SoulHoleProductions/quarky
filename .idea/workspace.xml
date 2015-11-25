@@ -2,547 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="664bda5d-0333-48b4-b4b8-f479426ea7f3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/Quarky-feature-graphic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/guru_2015-08-30_15-54-13.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/guru_tablet7_2015-08-30_16-11-33.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/hub2_2015-08-30_15-57-51.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/hub_2015-08-30_15-49-49.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/icon510.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/icon512.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/places_2015-08-30_15-54-53.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/places_tablet10_2015-08-30_16-20-29.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/GooglePlay/sidemenu_2015-08-30_15-51-45.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-hdpi-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-ldpi-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-mdpi-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-xhdpi-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-xxhdpi-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/icon/drawable-xxxhdpi-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-hdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-ldpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-mdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-xhdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-xxhdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-land-xxxhdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-hdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-ldpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-mdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-xhdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-xxhdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/android/splash/drawable-port-xxxhdpi-screen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-small@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/fonts/sourcesanspro/SourceSansPro-Regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/fonts/ubuntu/Ubuntu.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/bg-abstract-blue.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/bg-black-paisley.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/bg-black-texture.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/bg-electric-blue.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/bg-soulhole.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/coming-soon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/grey-bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/Coming-Soon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/ElevateYourInfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/ElevateYourStory.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/ElevateYourgame.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/ElevateYouroptions.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/ElevateYourself.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/ElevateYourskills.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/ElevateYourspirit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/My-Stuff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/about/Credits.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/about/Partners.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/about/Tips-Tricks.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/about/legal-disclaimers.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eGame/Books-that-Matter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eGame/Boot-Camp-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eGame/Equpment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eGame/Game-Plans-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eGame/Get-a-job.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eGame/Money-Smart.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eInfo/A-D.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eInfo/E-H.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eInfo/I-L.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eInfo/M-P.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eInfo/Q-T.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eInfo/U-Z.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eOptions/Ask-Jason.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eOptions/Good-Advice-Bad-Advice.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eOptions/Share-Your-Story.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eOptions/Stories-with-Support-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/Friends.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/Love.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/Share-your-inspiration.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/attitude.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/encouragement.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/family.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/higherlearning.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/random.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSelf/whoAmI.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSkills/Reasons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSkills/Recognize.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSkills/Refferals.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSkills/Relationships.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSkills/Resilience.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSkills/Response.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSpirit/Belonging2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSpirit/Concern-for-Others2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSpirit/Life-and-Death.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSpirit/Meaning-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSpirit/Worth.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSpirit/hope2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/Quarky-feature-graphic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/guru_2015-08-30_15-54-13.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/guru_tablet7_2015-08-30_16-11-33.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/hub2_2015-08-30_15-57-51.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/hub_2015-08-30_15-49-49.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/icon510.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/icon512.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/places_2015-08-30_15-54-53.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/places_tablet10_2015-08-30_16-20-29.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/intro/sidemenu_2015-08-30_15-51-45.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/Places-for-Fun.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/Places-for-Help.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/Places-to-Serve.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/Share-a-Place-Banner.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/AE-Venues.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Build-Skills.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Clubs.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Expression.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Food-and-Events.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Free.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Hobbies.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Outdoors.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Random-Fun.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Random-Fun2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Shop-and-Travel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Sports-and-Rec.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/fun/Sports-and-Rec1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Care.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Education.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Emergency.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Food.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Goods.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Health.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Housing.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Legal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Money.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Transit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/help/Work.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/service/Volunteer-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/service/donate.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/service/recycle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/places/service/worship-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/quarky-bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/public/auth0_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.io-config.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/css/quarky-Lock.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/about-module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/auth0-variables.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/guru-module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/home-module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/menu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/places-module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/profile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/karma-src-all.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-animate/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-messages/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-messages/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-messages/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-messages/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-messages/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-resource/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-resource/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-resource/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-resource/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-resource/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/angular/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/public/app.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/public/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/src/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/src/auth0-variables.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/webpack.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ko.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pl.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh-TW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/errors/ValidationError.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/i18n/dictionary.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/i18n/dicts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/md5/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/test/assets.tests.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/lib/base64_url.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/lib/index-of.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/lib/same-origin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/test/passwordless.tests.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/auth0.js/version.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/LICENSE.MD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-modal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-popup.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.styles.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-image-lazy-load.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/build/config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/dist/ionic.io.bundle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/analytics/analytics.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/analytics/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/analytics/es5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/analytics/serializers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/analytics/storage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/data-types.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/es5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/events.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/logger.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/promise.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/request.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/settings.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/storage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/user.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/deploy/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/deploy/deploy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/deploy/es5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/es5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/push-dev.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/push-message.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/push-token.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/push.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ionic.ion.imagecachefactory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/demo/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/demo/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/demo/ngGeolocation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/ngGeolocation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/ngGeolocation.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/about-list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/about-master.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/about-modal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/add-to-quarky.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/guru-detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/guru-list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/guru-modal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/guru-nav.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/home-card.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/home-list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/home-modal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/place-detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/place-ohana-detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/places-articles.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/places-gallery.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/places-master.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hooks/after_prepare/020_remove_sass_from_platforms.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hooks/before_platform_add/init_directories.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/iconNew.idraw" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/iconOld.psd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/data/full-services.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/data/services.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/eguru.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/icon-1024.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/icon-1024.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/light_bg1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/parallax-bg1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/parallax-bg2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/section-background.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/filters.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/guru.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/home.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/places.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/js/quarky-variables.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-jwt/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/bin/deploy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/bin/version" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/example/build/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/icomoon.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/icomoon.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/icomoon.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/icomoon.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0.js/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0.js/lib/base64_url_decode.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0.js/lib/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_loaders.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_split-pane.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-animation.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/guru-card.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/guru.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/home.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/intro.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/places-card.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/places-home.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/places-servicedetail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/templates/places-servicelist.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/LICENSE.md" afterPath="$PROJECT_DIR$/www/lib/ngGeolocation/LICENSE" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/example/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/development-demo/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/example/index.less" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/development-demo/index.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/example/login.html" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/development-demo/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-40.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-40.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-40@2x.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-40@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-50.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-50.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-50@2x.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-50@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-60.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-60.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-60@2x.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-60@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-60@3x.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-60@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-72.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-72.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-72@2x.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-72@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-76.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-76.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-76@2x.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-76@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-small.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon-small@2x.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon-small@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/icon/icon@2x.png" afterPath="$PROJECT_DIR$/resources/ios/icon/icon@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default-568h@2x~iphone.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-568h@2x~iphone.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default-667h.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-667h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default-736h.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-736h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape-736h.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape-736h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape@2x~ipad.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape@2x~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape~ipad.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Landscape~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default-Portrait@2x~ipad.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Portrait@2x~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default-Portrait~ipad.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default-Portrait~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default@2x~iphone.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default@2x~iphone.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/ios/splash/Default~iphone.png" afterPath="$PROJECT_DIR$/resources/ios/splash/Default~iphone.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/img/quarkycon.png" afterPath="$PROJECT_DIR$/www/img/quarkycon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js.gzip" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js.gzip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/demo/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/demo/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/demo/ngGeolocation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/ngGeolocation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ngGeolocation/ngGeolocation.min.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ionic.project" afterPath="$PROJECT_DIR$/ionic.project" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/ionic.app.scss" afterPath="$PROJECT_DIR$/scss/ionic.app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic.app.css" afterPath="$PROJECT_DIR$/www/css/ionic.app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic.app.min.css" afterPath="$PROJECT_DIR$/www/css/ionic.app.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/.bower.json" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/History.md" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/History.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/README.md" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/bower.json" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/dist/angular-storage.js" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/dist/angular-storage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/dist/angular-storage.min.js" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/dist/angular-storage.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/gulpfile.js" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/karma-dist-concatenated.conf.js" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/karma-dist-concatenated.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/karma-dist-minified.conf.js" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/karma-dist-minified.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/karma-src.conf.js" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/karma-src.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/package.json" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-animate/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/README.md" afterPath="$PROJECT_DIR$/www/lib/angular-animate/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.js" afterPath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-animate/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-animate/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-jwt/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-jwt/History.md" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/History.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-jwt/README.md" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-jwt/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-jwt/dist/angular-jwt.js" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/dist/angular-jwt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-jwt/dist/angular-jwt.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/dist/angular-jwt.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-jwt/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-jwt/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/README.md" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.js" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/README.md" afterPath="$PROJECT_DIR$/www/lib/angular/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular-csp.css" afterPath="$PROJECT_DIR$/www/lib/angular/angular-csp.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.js" afterPath="$PROJECT_DIR$/www/lib/angular/angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/package.json" afterPath="$PROJECT_DIR$/www/lib/angular/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/.bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/Gruntfile.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/build/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/build/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/build/auth0-angular.min.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/build/auth0-angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/docs/refresh-token.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/docs/refresh-token.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/docs/storing-information.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/docs/storing-information.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/client/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/client/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/client/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/client/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/client/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/html5mode/public/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/html5mode/public/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/html5mode/public/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/html5mode/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/redirect/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/redirect/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/redirect/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/redirect/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/config.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/controllers.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/ui-router/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/ui-router/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/ui-router/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/ui-router/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/home/home.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/home/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/login/login.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/login/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/scripts/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/scripts/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/src/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/src/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/test/test.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/test/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/places-module.js" afterPath="$PROJECT_DIR$/www/js/places-module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-messages/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.js" afterPath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-messages/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-messages/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-resource/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.js" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-resource/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-resource/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/.bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/.gitignore" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/Gruntfile.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.min.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/de.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/de.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/en.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/en.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/es.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/es.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ja.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ja.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nl-NL.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nl-NL.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.css" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.min.css" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/reset.less" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/reset.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/themes/default.less" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/themes/default.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/zocial.less" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/zocial.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/gravatar/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/gravatar/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/i18n/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/i18n/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-kerberos/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-kerberos/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-loading/loading.ejs" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-loading/loading.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-loggedin/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-loggedin/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-reset/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-reset/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signin/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signin/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signup/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signup/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/options-manager/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/options-manager/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/strategies/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/strategies/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signup/signup.ejs" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signup/signup.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/standalone.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/standalone.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/selection.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/selection.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/test/reset.tests.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/test/reset.tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/test/signup.tests.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/test/signup.tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/test/tests.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/test/tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/.bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0.js/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/.gitignore" afterPath="$PROJECT_DIR$/www/lib/auth0.js/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/.jshintrc" afterPath="$PROJECT_DIR$/www/lib/auth0.js/.jshintrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/.zuul.yml" afterPath="$PROJECT_DIR$/www/lib/auth0.js/.zuul.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/Gruntfile.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0.js/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/bin/deploy" afterPath="$PROJECT_DIR$/www/lib/auth0.js/bin/deploy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/bin/version" afterPath="$PROJECT_DIR$/www/lib/auth0.js/bin/version" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/example/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0.js/example/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/lib/LoginError.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/lib/LoginError.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0.js/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/standalone.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/standalone.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/test/tests.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/test/tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/test/user-and-pass.tests.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/test/user-and-pass.tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/test_harness.html" afterPath="$PROJECT_DIR$/www/lib/auth0.js/test_harness.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/README.md" afterPath="$PROJECT_DIR$/www/lib/ionic/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/css/ionic.css" afterPath="$PROJECT_DIR$/www/lib/ionic/css/ionic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/css/ionic.min.css" afterPath="$PROJECT_DIR$/www/lib/ionic/css/ionic.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic-angular.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic-angular.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic-angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic.bundle.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic.bundle.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic.bundle.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_bar.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_bar.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_button-bar.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_button-bar.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_form.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_form.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_items.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_items.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_loading.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_loading.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_menu.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_menu.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_mixins.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_mixins.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_modal.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_modal.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_platform.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_platform.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_popup.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_popup.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_radio.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_radio.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_range.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_range.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_refresher.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_refresher.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_scaffolding.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_scaffolding.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_select.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_select.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_slide-box.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_slide-box.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_spinner.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_spinner.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_tabs.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_tabs.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_util.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_util.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_variables.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-font.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-font.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-icons.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-icons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-variables.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/ionicons.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/ionicons.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/ngCordova/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/README.md" afterPath="$PROJECT_DIR$/www/lib/ngCordova/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/bower.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.min.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.min.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/package.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/about.html" afterPath="$PROJECT_DIR$/www/templates/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/login.html" afterPath="$PROJECT_DIR$/www/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/menu.html" afterPath="$PROJECT_DIR$/www/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/profile.html" afterPath="$PROJECT_DIR$/www/templates/profile.html" />
     </list>
     <ignored path="quarky.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -563,11 +63,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="bower.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bower.json">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.114285715">
-              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.010929">
+              <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -601,7 +111,6 @@
         <option value="$PROJECT_DIR$/www/js/places.js" />
         <option value="$PROJECT_DIR$/www/templates/guru-card.html" />
         <option value="$PROJECT_DIR$/config.xml" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/js/controllers.js" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/templates/guru.html" />
@@ -609,14 +118,16 @@
         <option value="$PROJECT_DIR$/www/templates/intro.html" />
         <option value="$PROJECT_DIR$/www/templates/about.html" />
         <option value="$PROJECT_DIR$/www/templates/menu.html" />
-        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/js/guru.js" />
         <option value="$PROJECT_DIR$/www/js/quarky-variables.js" />
         <option value="$PROJECT_DIR$/www/js/home.js" />
         <option value="$PROJECT_DIR$/www/templates/home.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/www/js/places-module.js" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
       </list>
     </option>
   </component>
@@ -657,7 +168,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -676,29 +186,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quarky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quarky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
@@ -840,7 +336,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427424907911</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update github to open beta 0.1.5">
+      <created>1447546800517</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1447546800517</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -867,7 +369,6 @@
     <frame x="170" y="25" width="1398" height="949" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954683" sideWeight="0.5005348" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29992738" sideWeight="0.49946523" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0342246" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -883,8 +384,9 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954683" sideWeight="0.5005348" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3282887" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -910,7 +412,8 @@
     <MESSAGE value="social sharing for beta1" />
     <MESSAGE value="preparing for beta" />
     <MESSAGE value="home cards same size and scroll as needed" />
-    <option name="LAST_COMMIT_MESSAGE" value="home cards same size and scroll as needed" />
+    <MESSAGE value="update github to open beta 0.1.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="update github to open beta 0.1.5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -919,7 +422,15 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.bowerrc">
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -931,7 +442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14367816">
           <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -939,7 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -955,30 +464,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/places-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22988506">
+          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/angular/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/ionic/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/angular/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/angular/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51428574">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85714287">
+          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.114285715">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        <state vertical-scroll-proportion="1.010929">
+          <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
           <folding />
         </state>
       </provider>

@@ -27,8 +27,7 @@
 angular.module('places',
     [
         'ngCordova',
-        'ionic',
-        'ngGeolocation',
+        'ionic', ,
         'ngResource',
         'ngMessages'
     ])

@@ -25,7 +25,8 @@
       "id": "nl.x-services.plugins.socialsharing"
     },
     "cordova-plugin-geolocation",
-    "org.apache.cordova.inappbrowser"
+    "org.apache.cordova.inappbrowser",
+    "org.apache.cordova.statusbar"
   ],
   "cordovaPlatforms": [
     "ios",

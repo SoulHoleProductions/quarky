@@ -1,38 +1,38 @@
 angular.module('quarky', ['ionic',
-    'ionic.service.core',
-    'ionic.service.analytics',
-    'ngIOS9UIWebViewPatch',
-    'about-module',
-    'home-module',
-    'menu',
-    'profile',
-    'guru',
-    'places',
-    'auth0',
-    'angular-storage',
-    'angular-jwt',
-    'ngResource'
-])
+        'ionic.service.core', 'ngCordova',
+        'ionic.service.analytics',
+        'ngIOS9UIWebViewPatch',
+        'about-module',
+        'home-module',
+        'menu',
+        'profile',
+        'guru',
+        'places',
+        'auth0',
+        'angular-storage',
+        'angular-jwt',
+        'ngResource'
+    ])
 
     .run(function ($ionicPlatform, $ionicAnalytics, auth, $rootScope, store, jwtHelper, $location, $ionicLoading) {
 
         $ionicPlatform.ready(function () {
             $ionicAnalytics.register();
 
-            try {
-                if (window.cordova && window.cordova.plugins.Keyboard) {
-                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                }
-                if (window.StatusBar) {
-                    // org.apache.cordova.statusbar required
-                    StatusBar.styleDefault();
-                }
-                if (window.cordova && window.cordova.plugins.inAppBrowser) {
-                    window.open = cordova.InAppBrowser.open;
-                }
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
+
             }
-            catch (e) {
-                alert(e)
+            if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleDefault();
+                StatusBar.overlaysWebView(false);
+            }
+            if (window.cordova && window.cordova.plugins.inAppBrowser) {
+                window.open = cordova.InAppBrowser.open;
             }
 
         });
@@ -50,7 +50,7 @@ angular.module('quarky', ['ionic',
         auth.hookEvents();
         //This event gets triggered on URL change
         var refreshingToken = null;
-        $rootScope.$on('$locationChangeStart', function() {
+        $rootScope.$on('$locationChangeStart', function () {
             var token = store.get('token');
             var refreshToken = store.get('refreshToken');
             if (token) {
@@ -61,10 +61,10 @@ angular.module('quarky', ['ionic',
                 } else {
                     if (refreshToken) {
                         if (refreshingToken === null) {
-                            refreshingToken = auth.refreshIdToken(refreshToken).then(function(idToken) {
+                            refreshingToken = auth.refreshIdToken(refreshToken).then(function (idToken) {
                                 store.set('token', idToken);
                                 auth.authenticate(store.get('profile'), idToken);
-                            }).finally(function() {
+                            }).finally(function () {
                                 refreshingToken = null;
                             });
                         }
@@ -278,10 +278,10 @@ angular.module('quarky', ['ionic',
             clientID: AUTH0_CLIENT_ID,
             loginState: 'login'
         });
-        authProvider.on('loginSuccess', function($location, profilePromise, idToken, store, refreshToken) {
+        authProvider.on('loginSuccess', function ($location, profilePromise, idToken, store, refreshToken) {
             console.log('got loginSuccess ');
 
-            profilePromise.then(function(profile) {
+            profilePromise.then(function (profile) {
                 console.log('loginSuccess profile: ', profile);
                 console.log('loginSuccess token: ', idToken);
                 console.log('loginSuccess refreshToken: ', refreshToken);
@@ -292,11 +292,11 @@ angular.module('quarky', ['ionic',
                 $location.path('/app/home-list');
             });
         });
-        authProvider.on('authenticated', function($location) {
+        authProvider.on('authenticated', function ($location) {
             console.log('got authenticated ');
             $location.path('/app/home-list');
         });
-        authProvider.on('loginFailure', function($location, error) {
+        authProvider.on('loginFailure', function ($location, error) {
             // Error callback
             console.log('loginFailure: ', error);
             $location.path('/login');

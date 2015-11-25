@@ -10,21 +10,18 @@
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
 
-    <!-- ionic, ionic.io, auth0, ngcordova, cordova, pouch -->
+    <!-- ionic, ionic.io, auth0, cordova, pouch -->
     <script src="lib/ionic/js/ionic.bundle.min.js"></script>
-    <!--<script src="lib/angular-ios9-uiwebview.patch.js"></script>-->
     <script src="lib/auth0.js/build/auth0.min.js"></script>
     <script src="lib/auth0-angular/build/auth0-angular.min.js"></script>
     <script src="lib/a0-angular-storage/dist/angular-storage.min.js"></script>
     <script src="lib/angular-jwt/dist/angular-jwt.min.js"></script>
     <script src="lib/angular-resource/angular-resource.min.js"></script>
     <script src="lib/angular-messages/angular-messages.min.js"></script>
-    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
     <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
     <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
     <!-- <script src="cordova.js"></script> -->
     <script src="lib/ionic-image-lazy-load.js"></script>
-    <script src="lib/ngGeolocation/ngGeolocation.min.js"></script>
 
     <!-- Quarky js -->
     <script src="js/auth0-variables.js"></script>
@@ -37,17 +34,20 @@
     <script src="js/menu.js"></script>
 
     <!--for Google places and autocomplete-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=true"></script>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=true"></script>
 
     <!--ionic.io platform web client-->
     <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 </head>
 
 <!--<body ng-app="quarky">-->
 <body>
 <ion-nav-view></ion-nav-view>
 <script>
-    window.ionic.Platform.ready(function() {
+    window.ionic.Platform.ready(function () {
         angular.bootstrap(document, ['quarky']);
     });
 </script>
