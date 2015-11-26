@@ -8,7 +8,9 @@
     "angular-jwt": ">= 0.0.4",
     "ionic-platform-web-client": "~0.1.0",
     "ngCordova": "~0.1.23-alpha",
-    "ionic-datepicker": "~0.9.0"
+    "ionic-datepicker": "~0.9.0",
+    "angular-resource": "1.4.3",
+    "angular-messages": "1.4.3"
   },
   "resolutions": {
     "angular": "1.4.3",

@@ -1,7 +1,6 @@
 angular.module('quarky', ['ionic',
         'ionic.service.core', 'ngCordova',
         'ionic.service.analytics',
-        'ngIOS9UIWebViewPatch',
         'about-module',
         'home-module',
         'menu',
@@ -14,9 +13,12 @@ angular.module('quarky', ['ionic',
         'ngResource'
     ])
 
-    .run(function ($ionicPlatform, $ionicAnalytics, auth, $rootScope, store, jwtHelper, $location, $ionicLoading) {
+    .run(function ($ionicPlatform, $ionicAnalytics,
+                   auth, $rootScope, store,
+                   jwtHelper, $location, $ionicLoading) {
 
         $ionicPlatform.ready(function () {
+            console.log('Platform ready');
             $ionicAnalytics.register();
 
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -24,15 +26,25 @@ angular.module('quarky', ['ionic',
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
+            }
 
-            }
-            if (window.StatusBar) {
-                // org.apache.cordova.statusbar required
-                StatusBar.styleDefault();
-                StatusBar.overlaysWebView(false);
-            }
             if (window.cordova && window.cordova.plugins.inAppBrowser) {
                 window.open = cordova.InAppBrowser.open;
+            }
+
+  /*          if (ionic.Platform.isIOS())
+                ionic.Platform.fullScreen();
+
+            if (window.StatusBar) {
+                return StatusBar.hide();
+            }
+*/
+            if(window.StatusBar) {
+                console.log('StatusBar!!');
+                StatusBar.overlaysWebView(false);
+                //StatusBar.style(1); //Light
+                //StatusBar.style(2); //Black, transulcent
+                //StatusBar.style(3); //Black, opaque
             }
 
         });
@@ -296,9 +308,13 @@ angular.module('quarky', ['ionic',
             console.log('got authenticated ');
             $location.path('/app/home-list');
         });
-        authProvider.on('loginFailure', function ($location, error) {
+        authProvider.on('loginFailure', function ($location, error, auth, store) {
             // Error callback
             console.log('loginFailure: ', error);
+            auth.signout();
+            store.remove('profile');
+            store.remove('token');
+            store.remove('refreshToken');
             $location.path('/login');
         });
         jwtInterceptorProvider.tokenGetter = function (store, jwtHelper, auth) {

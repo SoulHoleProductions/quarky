@@ -35,12 +35,13 @@
 
     <!--for Google places and autocomplete-->
     <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=true"></script>
+            src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
-    <!--ionic.io platform web client-->
-    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
-
+    <!-- NGCORDOVA before cordova.js and after your AngularJS / Ionic file (since ngCordova depends on AngularJS) -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <!--ionic.io platform web client-->
+    <!-- Cordova is bootstrapped by ionic-platform-web-client -->
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
 </head>
 
 <!--<body ng-app="quarky">-->
