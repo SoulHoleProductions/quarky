@@ -46,7 +46,7 @@ $balanced:                        #66cc33 !default;*/
 
 .error {
   padding: 10px 16px;
-  font-family: 'Source Sans Pro' , sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 11px;
   color: #555;
   vertical-align: middle; }
@@ -69,7 +69,7 @@ label.item.no-errors {
   border-bottom: 3px solid green; }
 
 body, p, h1, h2, h3, h4, h5 {
-  font-family: 'Source Sans Pro' , sans-serif; }
+  font-family: 'Source Sans Pro', sans-serif; }
 
 .ubuntu {
   font-family: 'Ubuntu', sans-serif !important; }
@@ -204,6 +204,38 @@ body, p, h1, h2, h3, h4, h5 {
   margin-bottom: 20px;
   width: 100px;
   height: 100px; }
+
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+  height: 64px; }
+
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
+  margin-top: 19px !important; }
+
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 20px; }
+
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-subheader, .platform-ios8.platform-cordova:not(.fullscreen) .has-header, .platform-ios8.platform-cordova:not(.fullscreen) .tabs-top > .tabs, .platform-ios8.platform-cordova:not(.fullscreen) .tabs.tabs-top {
+  top: 64px; }
+
+.platform-ios8.platform-cordova:not(.fullscreen) .has-subheader {
+  top: 108px; }
+
+.platform-ios8.platform-cordova:not(.fullscreen) .has-tabs-top {
+  top: 113px; }
+
+.platform-ios8.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
+  top: 157px; }
+
+.platform-ios8.platform-cordova.status-bar-hide {
+  margin-bottom: 20px; }
+
+@media (orientation: landscape) {
+  .platform-ios8.platform-browser.platform-ipad {
+    position: fixed; } }
+
+.platform-c:not(.enable-transitions) * {
+  -webkit-transition: none !important;
+  transition: none !important; }
 
 /*!
   Ionicons, v2.0.1

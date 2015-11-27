@@ -20,15 +20,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Colors
 // -------------------------------
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #000000 !default;
+$light: #fff !default;
+$stable: #f8f8f8 !default;
+$positive: #387ef5 !default;
+$calm: #11c1f3 !default;
+$balanced: #33cd5f !default;
+$energized: #ffc900 !default;
+$assertive: #ef473a !default;
+$royal: #886aea !default;
+$dark: #000000 !default;
 //$dark:                            #6e6c6c !default; //username
 /*$positive:                        #457cfa !default; //facebook
 $calm:                            #87acff !default; //twitter
@@ -60,8 +60,8 @@ $balanced:                        #66cc33 !default;*/
   url('../fonts/gloriahallelujah/gloriahallelujah.woff') format('woff'),
   url('../fonts/gloriahallelujah/gloriahallelujah.ttf') format('truetype'),
   url('../fonts/gloriahallelujah/gloriahallelujah.svg#gloriahallelujah') format('svg');
-  font-style:   normal;
-  font-weight:  400;
+  font-style: normal;
+  font-weight: 400;
 }
 
 // ERROR handling for ngMessages
@@ -77,7 +77,7 @@ $balanced:                        #66cc33 !default;*/
 
 .error {
   padding: 10px 16px;
-  font-family: 'Source Sans Pro' , sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 11px;
   color: #555;
   vertical-align: middle;
@@ -109,7 +109,7 @@ label.item.no-errors {
 // -------------------------------
 
 body, p, h1, h2, h3, h4, h5 {
-  font-family: 'Source Sans Pro' , sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .ubuntu {
@@ -121,7 +121,6 @@ body, p, h1, h2, h3, h4, h5 {
   //font-size: 17px;
   //text-shadow: 3px 3px 0px rgba($assertive, 0.6);
 }
-
 
 // my modal fix
 // ----------------------
@@ -145,18 +144,12 @@ body, p, h1, h2, h3, h4, h5 {
   }
 }
 
-// text overlay on image
-// --------------------------
-
-
-
 // backgrounds
 // -------------------------------
 
-$big-bg:      '../img/bg-black-paisley.jpg';
+$big-bg: '../img/bg-black-paisley.jpg';
 $category-bg: '../img/bg-black-texture.jpg';
 $quarkycon: '../img/quarkycon.png';
-
 
 .intro-bg {
   background: url($big-bg) no-repeat center center fixed;
@@ -215,6 +208,7 @@ $quarkycon: '../img/quarkycon.png';
 .quarky-twitter {
   background-color: #46c0fb;
 }
+
 .quarky-instagram {
   background-color: #25537B;
   color: #fff;
@@ -224,7 +218,8 @@ $quarkycon: '../img/quarkycon.png';
 // ---------------------------------
 /* App Intro */
 .slider {
-  height: 100%; }
+  height: 100%;
+}
 
 .slider-slide {
   padding-top: 80px;
@@ -232,25 +227,29 @@ $quarkycon: '../img/quarkycon.png';
   background-color: #ffffff;
   text-align: center;
   font-family: "Ubuntu", "gloriahallelujah", "Source Sans Pro";
-  font-weight: 300; }
+  font-weight: 300;
+}
 
 #intro-logo {
-  margin: 30px 0px; }
+  margin: 30px 0px;
+}
 
 #intro-list {
   color: #ffffff;
   width: 80%;
   margin: 30px auto;
-  font-size: 15px; }
+  font-size: 15px;
+}
 
 #intro-list ol {
-  margin-top: 30px; }
+  margin-top: 30px;
+}
 
 #intro-list ol li {
   text-align: left;
   list-style: decimal;
-  margin: 10px 0px; }
-
+  margin: 10px 0px;
+}
 
 // PROFILE
 // ---------------------------------
@@ -261,10 +260,12 @@ $quarkycon: '../img/quarkycon.png';
   z-index: 2;
   text-align: center;
 }
+
 #profile-name {
   color: #ffffff;
   font-size: 26px;
 }
+
 #profile-description {
   font-size: 15px;
   color: #ffffff;
@@ -277,7 +278,7 @@ $quarkycon: '../img/quarkycon.png';
   width: 128px;
   height: 128px;
   margin: 30px auto 0;
-  box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
 }
 
 .avatar {
@@ -286,13 +287,58 @@ $quarkycon: '../img/quarkycon.png';
   border-radius: 100px;
   margin: 0 auto;
   text-align: center;
-  display:block;
+  display: block;
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100px;
   height: 100px;
 }
 
+// Fix status bar
+// -----------------------------------
+
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+  height: 64px
+}
+
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
+  margin-top: 19px !important
+}
+
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 20px
+}
+
+.platform-ios8.platform-cordova:not(.fullscreen) .bar-subheader, .platform-ios8.platform-cordova:not(.fullscreen) .has-header, .platform-ios8.platform-cordova:not(.fullscreen) .tabs-top > .tabs, .platform-ios8.platform-cordova:not(.fullscreen) .tabs.tabs-top {
+  top: 64px
+}
+
+.platform-ios8.platform-cordova:not(.fullscreen) .has-subheader {
+  top: 108px
+}
+
+.platform-ios8.platform-cordova:not(.fullscreen) .has-tabs-top {
+  top: 113px
+}
+
+.platform-ios8.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
+  top: 157px
+}
+
+.platform-ios8.platform-cordova.status-bar-hide {
+  margin-bottom: 20px
+}
+
+@media (orientation: landscape) {
+  .platform-ios8.platform-browser.platform-ipad {
+    position: fixed
+  }
+}
+
+.platform-c:not(.enable-transitions) * {
+  -webkit-transition: none !important;
+  transition: none !important
+}
 
 // ==================================
 // Include all of Ionic

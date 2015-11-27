@@ -12,42 +12,48 @@ angular.module('quarky', ['ionic',
         'angular-jwt',
         'ngResource'
     ])
+    .factory('ionicReady', function($ionicPlatform) {
+        var readyPromise;
 
+        return function () {
+            if (!readyPromise) {
+                readyPromise = $ionicPlatform.ready();
+            }
+            return readyPromise;
+        };
+    })
     .run(function ($ionicPlatform, $ionicAnalytics,
-                   auth, $rootScope, store,
+                   auth, $rootScope, store, ionicReady,
                    jwtHelper, $location, $ionicLoading) {
 
-        $ionicPlatform.ready(function () {
-            console.log('Platform ready');
+
+        ionicReady().then(function() {
+            console.log('ionicReady().then');
+            // Stuff to do when the platform is finally ready.
+            ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
+            ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
+            ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");
+
             $ionicAnalytics.register();
 
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
-            if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+            if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
+
+            }
+            if (window.StatusBar) {
+                //StatusBar.styleDefault();
+                StatusBar.styleBlackTranslucent();
             }
 
             if (window.cordova && window.cordova.plugins.inAppBrowser) {
                 window.open = cordova.InAppBrowser.open;
             }
 
-  /*          if (ionic.Platform.isIOS())
-                ionic.Platform.fullScreen();
-
-            if (window.StatusBar) {
-                return StatusBar.hide();
-            }
-*/
-            if(window.StatusBar) {
-                console.log('StatusBar!!');
-                StatusBar.overlaysWebView(false);
-                //StatusBar.style(1); //Light
-                //StatusBar.style(2); //Black, transulcent
-                //StatusBar.style(3); //Black, opaque
-            }
-
         });
+
 
         //-------------- global http loading
         $rootScope.$on('loading:show', function () {
