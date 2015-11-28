@@ -4,12 +4,13 @@
         <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
     </ion-header-bar>
     <ion-content>
-        <div class="list card">
-            <div class="item item-body">
+        <div class="list card no-margin">
+            <div class="item item-body no-padding">
                 <div data-ng-if="aPost.featured_image.source">
                     <img width="100%"  data-ng-src="{{aPost.featured_image.source}}">
                 </div>
-                <!--<div data-ng-bind-html="toTrusted(aPost.content)"></div>-->
+            </div>
+            <div class="item item-body">
                 <div data-ng-bind-html="aPost.content | hrefToJS"></div>
             </div>
         </div>
