@@ -159,6 +159,7 @@
 .#{$ionicons-prefix}arrow-up-c:before,
 .#{$ionicons-prefix}asterisk:before,
 .#{$ionicons-prefix}at:before,
+.#{$ionicons-prefix}atom:before,
 .#{$ionicons-prefix}backspace:before,
 .#{$ionicons-prefix}backspace-outline:before,
 .#{$ionicons-prefix}bag:before,
@@ -241,6 +242,8 @@
 .#{$ionicons-prefix}gear-a:before,
 .#{$ionicons-prefix}gear-b:before,
 .#{$ionicons-prefix}grid:before,
+.#{$ionicons-prefix}guru:before,
+.#{$ionicons-prefix}guru-new:before,
 .#{$ionicons-prefix}hammer:before,
 .#{$ionicons-prefix}happy:before,
 .#{$ionicons-prefix}happy-outline:before,
@@ -251,6 +254,9 @@
 .#{$ionicons-prefix}help-buoy:before,
 .#{$ionicons-prefix}help-circled:before,
 .#{$ionicons-prefix}home:before,
+.#{$ionicons-prefix}home-news:before,
+.#{$ionicons-prefix}hotline:before,
+.#{$ionicons-prefix}hotline2:before,
 .#{$ionicons-prefix}icecream:before,
 .#{$ionicons-prefix}image:before,
 .#{$ionicons-prefix}images:before,
@@ -583,6 +589,9 @@
 .#{$ionicons-prefix}pin:before,
 .#{$ionicons-prefix}pinpoint:before,
 .#{$ionicons-prefix}pizza:before,
+.#{$ionicons-prefix}placeholder:before,
+.#{$ionicons-prefix}places:before,
+.#{$ionicons-prefix}places-circle:before,
 .#{$ionicons-prefix}plane:before,
 .#{$ionicons-prefix}planet:before,
 .#{$ionicons-prefix}play:before,
@@ -895,6 +904,7 @@
 .#{$ionicons-prefix}arrow-up-c:before { content: $ionicon-var-arrow-up-c; }
 .#{$ionicons-prefix}asterisk:before { content: $ionicon-var-asterisk; }
 .#{$ionicons-prefix}at:before { content: $ionicon-var-at; }
+.#{$ionicons-prefix}atom:before { content: $ionicon-var-atom; }
 .#{$ionicons-prefix}backspace:before { content: $ionicon-var-backspace; }
 .#{$ionicons-prefix}backspace-outline:before { content: $ionicon-var-backspace-outline; }
 .#{$ionicons-prefix}bag:before { content: $ionicon-var-bag; }
@@ -977,6 +987,8 @@
 .#{$ionicons-prefix}gear-a:before { content: $ionicon-var-gear-a; }
 .#{$ionicons-prefix}gear-b:before { content: $ionicon-var-gear-b; }
 .#{$ionicons-prefix}grid:before { content: $ionicon-var-grid; }
+.#{$ionicons-prefix}guru:before { content: $ionicon-var-guru; }
+.#{$ionicons-prefix}guru-new:before { content: $ionicon-var-guru-new; }
 .#{$ionicons-prefix}hammer:before { content: $ionicon-var-hammer; }
 .#{$ionicons-prefix}happy:before { content: $ionicon-var-happy; }
 .#{$ionicons-prefix}happy-outline:before { content: $ionicon-var-happy-outline; }
@@ -987,6 +999,9 @@
 .#{$ionicons-prefix}help-buoy:before { content: $ionicon-var-help-buoy; }
 .#{$ionicons-prefix}help-circled:before { content: $ionicon-var-help-circled; }
 .#{$ionicons-prefix}home:before { content: $ionicon-var-home; }
+.#{$ionicons-prefix}home-news:before { content: $ionicon-var-home-news; }
+.#{$ionicons-prefix}hotline:before { content: $ionicon-var-hotline; }
+.#{$ionicons-prefix}hotline2:before { content: $ionicon-var-hotline2; }
 .#{$ionicons-prefix}icecream:before { content: $ionicon-var-icecream; }
 .#{$ionicons-prefix}image:before { content: $ionicon-var-image; }
 .#{$ionicons-prefix}images:before { content: $ionicon-var-images; }
@@ -1319,6 +1334,9 @@
 .#{$ionicons-prefix}pin:before { content: $ionicon-var-pin; }
 .#{$ionicons-prefix}pinpoint:before { content: $ionicon-var-pinpoint; }
 .#{$ionicons-prefix}pizza:before { content: $ionicon-var-pizza; }
+.#{$ionicons-prefix}placeholder:before { content: $ionicon-var-placeholder; }
+.#{$ionicons-prefix}places:before { content: $ionicon-var-places; }
+.#{$ionicons-prefix}places-circle:before { content: $ionicon-var-places-circle; }
 .#{$ionicons-prefix}plane:before { content: $ionicon-var-plane; }
 .#{$ionicons-prefix}planet:before { content: $ionicon-var-planet; }
 .#{$ionicons-prefix}play:before { content: $ionicon-var-play; }
