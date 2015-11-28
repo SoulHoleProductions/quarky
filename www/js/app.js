@@ -54,7 +54,6 @@ angular.module('quarky', ['ionic',
 
         });
 
-
         //-------------- global http loading
         $rootScope.$on('loading:show', function () {
             $ionicLoading.show({template: 'Loading...'})

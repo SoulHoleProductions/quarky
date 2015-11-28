@@ -8,6 +8,13 @@ angular.module('about-module', ['ionicLazyLoad', 'ngCordova'])
         'ORDER_BY': 'modified', // author, title, name (slug), date, modified
         'ORDER': 'DESC' // ASC or DESC
     })
+    .filter('hrefToJS', function ($sce, $sanitize) {
+        return function (text) {
+            var regex = /href="([\S]+)"/g;
+            var newString = $sanitize(text).replace(regex, "href=\"#\" onClick=\"window.open('$1', '_system', 'location=yes')\"");
+            return $sce.trustAsHtml(newString);
+        }
+    })
     .controller('AboutMasterCtrl', function ($scope, $rootScope, $window, $http,
                                              $sce, posts, AboutConfig, $ionicPlatform) {
 

@@ -9,6 +9,15 @@ angular.module('home-module', ['ionicLazyLoad', 'ngCordova'])
         'ORDER_BY': 'modified', // author, title, name (slug), date, modified
         'ORDER': 'DESC' // ASC or DESC
     })
+    .filter('hrefToJS', function ($sce, $sanitize) {
+        return function (text) {
+            //console.log('before hretToJS: ', text);
+            var regex = /href="([\S]+)"/g;
+            var newString = $sanitize(text).replace(regex, "href=\"#\" onClick=\"window.open('$1', '_system', 'location=yes')\"");
+            //console.log('after hretToJS: ', newString);
+            return $sce.trustAsHtml(newString);
+        }
+    })
     .controller('HomeListCtrl', function ($scope, $rootScope, $window, $sce, auth,
                                           HomeConfig, HomeService2, $ionicPlatform,
                                           $ionicPopup, $ionicModal, $cordovaSocialSharing) {

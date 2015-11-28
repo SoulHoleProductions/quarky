@@ -119,25 +119,24 @@ body, p, h1, h2, h3, h4, h5 {
   background: url('../img/bg-black-texture.jpg') no-repeat center center fixed;
   background-size: cover; }
 
-.quarky-instagram {
+.button.button-dark.quarky-instagram {
   background-color: #25537B;
+  border-color: #25537B;
   color: #fff; }
 
-.quarky-googleplus {
-  background-color: #dd4b39; }
-
-.quarky-facebook {
-  background-color: #4863ae; }
-
-.quarky-wordpress {
-  background-color: #1e8cbe;
+.button.button-dark.quarky-googleplus {
+  background-color: #dd4b39;
+  border-color: #dd4b39;
   color: #fff; }
 
-.quarky-twitter {
-  background-color: #46c0fb; }
+.button.button-dark.quarky-facebook {
+  background-color: #4863ae;
+  border-color: #4863ae;
+  color: #fff; }
 
-.quarky-instagram {
-  background-color: #25537B;
+.button.button-dark.quarky-twitter {
+  background-color: #46c0fb;
+  border-color: #46c0fb;
   color: #fff; }
 
 /* App Intro */
@@ -204,38 +203,6 @@ body, p, h1, h2, h3, h4, h5 {
   margin-bottom: 20px;
   width: 100px;
   height: 100px; }
-
-.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
-  height: 64px; }
-
-.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
-  margin-top: 19px !important; }
-
-.platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
-  margin-top: 20px; }
-
-.platform-ios8.platform-cordova:not(.fullscreen) .bar-subheader, .platform-ios8.platform-cordova:not(.fullscreen) .has-header, .platform-ios8.platform-cordova:not(.fullscreen) .tabs-top > .tabs, .platform-ios8.platform-cordova:not(.fullscreen) .tabs.tabs-top {
-  top: 64px; }
-
-.platform-ios8.platform-cordova:not(.fullscreen) .has-subheader {
-  top: 108px; }
-
-.platform-ios8.platform-cordova:not(.fullscreen) .has-tabs-top {
-  top: 113px; }
-
-.platform-ios8.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
-  top: 157px; }
-
-.platform-ios8.platform-cordova.status-bar-hide {
-  margin-bottom: 20px; }
-
-@media (orientation: landscape) {
-  .platform-ios8.platform-browser.platform-ipad {
-    position: fixed; } }
-
-.platform-c:not(.enable-transitions) * {
-  -webkit-transition: none !important;
-  transition: none !important; }
 
 /*!
   Ionicons, v2.0.1
