@@ -440,7 +440,7 @@ angular.module('places',
             toolbar: 'yes'
         };
         $scope.showPage = function (url) {
-            $cordovaInAppBrowser.open(url, '_blank', options)
+            $cordovaInAppBrowser.open(url, '_system', options)
                 .then(function (event) {
                     // success
                 })
@@ -522,7 +522,7 @@ angular.module('places',
             toolbar: 'yes'
         };
         $scope.showPage = function (url) {
-            $cordovaInAppBrowser.open(url, '_blank', options)
+            $cordovaInAppBrowser.open(url, '_system', options)
                 .then(function (event) {
                     // success
                 })
