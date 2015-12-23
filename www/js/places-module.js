@@ -621,6 +621,24 @@ angular.module('places',
 
         // ============= Add to Quarky =============================
 
+        // Alert popup code
+
+        $scope.popupDoc = function(title, content) {
+            if(!content)
+                content = "Doc is being written :)";
+            if(!title)
+                title = "Documentation";
+            var alertPopup = $ionicPopup.alert({
+                title: title,
+                template: content,
+            });
+
+            alertPopup.then(function(res) {
+            });
+
+        };
+
+
         function getAddressComponent(address, component, type) {
             var element = null;
             angular.forEach(address.address_components, function (address_component) {
@@ -937,6 +955,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3941,
             "name": "Sports and Rec",
+            "search": "sports",
             "order": 11,
             "featured_image": {
                 "ID": 3937,
@@ -948,6 +967,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3939,
             "name": "Shop and Travel",
+            "search": "shop",
             "order": 10,
             "featured_image": {
                 "ID": 3936,
@@ -959,6 +979,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3933,
             "name": "Random Fun",
+            "search": "fun",
             "order": 9,
             "featured_image": {
                 "ID": 3934,
@@ -970,6 +991,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3931,
             "name": "Free",
+            "search": "free",
             "order": 6,
             "featured_image": {
                 "ID": 3923,
@@ -981,6 +1003,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3929,
             "name": "Outdoors",
+            "search": "outdoor",
             "order": 8,
             "featured_image": {
                 "ID": 3923,
@@ -992,6 +1015,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3927,
             "name": "Hobbies",
+            "search": "hobby",
             "order": 7,
             "featured_image": {
                 "ID": 3924,
@@ -1003,6 +1027,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3921,
             "name": "Food and Events",
+            "search": "food",
             "order": 5,
             "featured_image": {
                 "ID": 4366,
@@ -1014,6 +1039,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3919,
             "name": "Expression",
+            "search": "expression",
             "order": 4,
             "featured_image": {
                 "ID": 3913,
@@ -1025,6 +1051,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3917,
             "name": "Clubs and Organizations",
+            "search": "clubs",
             "order": 3,
             "featured_image": {
                 "ID": 3912,
@@ -1036,6 +1063,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3915,
             "name": "Build Skills",
+            "search": "skills",
             "order": 2,
             "featured_image": {
                 "ID": 4364,
@@ -1047,6 +1075,7 @@ function PlacesService($http, PlacesConfig) {
         {
             "ID": 3908,
             "name": "A and E Venues",
+            "search": "venues",
             "order": 1,
             "featured_image": {
                 "ID": 3910,

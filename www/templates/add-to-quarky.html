@@ -14,8 +14,11 @@ A wizard that walks you through adding a Google Place to a Quarky Place
     <ion-content>
         <form name="authorizationForm" novalidate="" ng-submit="submitOhana(authorizationForm)">
             <div class="card">
-                <div class="item item-divider">
+                <div class="item item-divider item-icon-right">
                     Organization
+                        <i ng-click="popupDoc('Organization',
+                        'This is the company, business or agency to which all the locations belong. The description should explain the holistic purpose of the org'
+                        )" class="icon ion-help-circled"></i>
                 </div>
                 <div class="item item-text-wrap">
 
@@ -101,8 +104,11 @@ A wizard that walks you through adding a Google Place to a Quarky Place
                         </select>
                     </label>
                 </div>
-                <div class="item item-divider">
+                <div class="item item-divider item-icon-right">
                     Location
+                    <i ng-click="popupDoc('Location',
+                       'This is about a specific location for the organization.'
+                        )" class="icon ion-help-circled"></i>
                 </div>
                 <div class="item item-text-wrap">
                     <! -- LOC_NAME ->
@@ -176,8 +182,11 @@ A wizard that walks you through adding a Google Place to a Quarky Place
                     </div>
 
                 </div>
-                <div class="item item-divider">
+                <div class="item item-divider item-icon-right">
                     Address
+                    <i ng-click="popupDoc('Location Address',
+                       'The primary address for a specific location for the organization.'
+                        )" class="icon ion-help-circled"></i>
                 </div>
                 <div class="item item-text-wrap">
                     <! -- LAT and LONG ->
@@ -328,8 +337,11 @@ A wizard that walks you through adding a Google Place to a Quarky Place
                         </div>
                     </div>
                 </div>
-                <div class="item item-divider">
+                <div class="item item-divider item-icon-right">
                     Phone
+                    <i ng-click="popupDoc('Location Phonenumber',
+                       'The primary PHONE for a specific location for the organization.'
+                        )" class="icon ion-help-circled"></i>
                 </div>
                 <div class="item item-text-wrap">
                     <! -- loc_phone_number ->
@@ -359,8 +371,11 @@ A wizard that walks you through adding a Google Place to a Quarky Place
                         </div>
                     </div>
                 </div>
-                <div class="item item-divider">
+                <div class="item item-divider item-icon-right">
                     Service offered
+                    <i ng-click="popupDoc('Service at Location',
+                       'This is the main service being offered at this location. Additional services can be added later via the web interface.'
+                        )" class="icon ion-help-circled"></i>
                 </div>
                 <div class="item item-text-wrap">
 

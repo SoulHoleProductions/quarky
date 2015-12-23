@@ -27,8 +27,9 @@ $calm: #11c1f3 !default;
 $balanced: #33cd5f !default;
 $energized: #ffc900 !default;
 $assertive: #ef473a !default;
-$royal: #886aea !default;
-$dark: #000000 !default;
+$royal: #000000 !default;
+$dark: #444 !default;
+
 //$dark:                            #6e6c6c !default; //username
 /*$positive:                        #457cfa !default; //facebook
 $calm:                            #87acff !default; //twitter
@@ -163,18 +164,6 @@ $quarkycon: '../img/quarkycon.png';
   background: url($big-bg) no-repeat center center fixed;
   background-size: cover;
 }
-
-/*.scroll-bg {
-  background-color: #708090;
-}
-
-.quarky-bg {
-  background-color: #708090;
-}
-
-.category-bg {
-  background-color: #708090;
-}*/
 
 .scroll-bg {
   background: url($big-bg) no-repeat center center fixed;
