@@ -155,13 +155,78 @@ angular.module('places',
 
         );
     })
+    .directive('googleplace', function() {
+        return {
+            require: 'ngModel',
+            link: function(scope, element, attrs, model) {
+                //var options = {
+                //    types: [],
+                //    componentRestrictions: {}
+                //};
+                var options = {
+                    types: ['(regions)'],
+                    componentRestrictions: {country: 'us'}
+                };
+                scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
 
+                google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+                    scope.$apply(function() {
+                        console.log("autocomplete: ", element);
+                        scope.selectedPlace = scope.gPlace.getPlace();
+                        console.log("autocomplete selected place: ", scope.selectedPlace);
+                        model.$setViewValue(element.val());
+                    });
+                });
+            }
+        };
+    })
     .controller('PlacesMasterCtrl', function ($scope, $rootScope, $state, PlacesService,
                                               $ionicScrollDelegate, $ionicLoading,
                                               $ionicHistory, $ionicPopup,
                                               $cordovaGeolocation, $ionicPlatform) {
         $scope.posts = [];
+        $scope.gPlace;
+        $scope.selectedPlace;
         $rootScope.geoWatch = null;
+        $scope.searchModel = {};
+
+        $scope.searchSettings = function() {
+
+            var myPopup = $ionicPopup.show({
+                template:
+                '<input type="search" placeholder="Zip, City, State ..." ng-model="searchModel.address" googleplace="" class="ng-pristine ng-valid" autocomplete="off">'+
+                '<div class="padding range range-dark"><i class="icon ion-android-walk"></i>'+
+                '<input type="range" ng-model="searchModel.radius" name="distance" min="1" max="25" value="25">'+
+                '<i class="icon ion-android-car"></i> {{ searchModel.radius}} mi. </div>'+
+                ''+
+                '',
+                title: 'Search Settings',
+                subTitle: 'refine what you find',
+                scope: $scope,
+                buttons: [
+                    {text: 'Cancel'},
+                    {
+                        text: '<b>Save</b>',
+                        type: 'button-positive',
+                        onTap: function (e) {
+                            if ($scope.searchModel == {}) {
+                                //don't allow the user to close unless he enters search settings
+                                e.preventDefault();
+                            } else {
+                                return $scope.searchModel;
+                            }
+                        }
+                    }
+                ]
+            });
+
+            myPopup.then(function (res) {
+                console.log('Tapped!', res);
+                //updateGender(res);
+            });
+
+
+        }
 
         $scope.updateSearch = function(key, value) {
             if(key == 'text') $scope.search.text = value;

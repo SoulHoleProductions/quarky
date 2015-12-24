@@ -5,16 +5,26 @@ It determines location and presents the first level of search and filtering
 -->
 
 <ion-view title="Places">
-    <ion-header-bar class="bar-dark bar-subheader item-input-inset">
+    <ion-header-bar class="bar-royal bar-subheader item-input-inset">
+        <button class="button button-clear button-icon ion-gear-a" ng-click="searchSettings()">
+        </button>
         <label class="item-input-wrapper">
             <i class="icon ion-ios-search placeholder-icon"></i>
             <input ng-model="search.text" type="search" placeholder="Search places">
         </label>
-        <button class="button button-clear" ng-click="doSearch()">
+        <button class="button button-outline" ng-click="doSearch()">
             Go
         </button>
     </ion-header-bar>
+    <!-- TEST AUTOCOMPLETE
     <ion-header-bar class="bar-dark bar-subheader item-input-inset">
+
+        <label class="item-input-wrapper">
+            <i class="icon ion-location placeholder-icon"></i>
+            <input type="search" placeholder="address, Apt# and ZIP" ng-model="places.address" googleplace="" class="ng-pristine ng-valid" autocomplete="off">
+        </label>
+        -->
+       <!-- ORIGINAL SEARCH
         <div class="padding range range-dark">
             <i class="icon ion-android-walk"></i>
             <input type="range" ng-model="search.radius" name="distance" min="1" max="25" ng-change="updateSearch('radius', search.radius)" value="25">
@@ -22,7 +32,8 @@ It determines location and presents the first level of search and filtering
             {{ search.radius}} mi.
         </div>
     </ion-header-bar>
-    <ion-content class="category-bg has-header has-subheader has-tabs-top" ng-init="bootstrapFeed()"
+    -->
+    <ion-content class="category-bg has-header has-subheader" ng-init="bootstrapFeed()"
                  ng-controller="PlacesMasterCtrl">
         <div ng-show="myPosition.error">
             Location Error ({{myPosition.error.code}}): {{myPosition.error.message}}
