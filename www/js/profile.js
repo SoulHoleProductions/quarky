@@ -229,7 +229,7 @@ angular.module('profile', ['ionic-datepicker', 'ngResource'])
         // GENDER
         $scope.setGender = function () {
             $scope.data = {};
-            $scope.data.gender = "female";
+            $scope.data.gender = $scope.selectGender;
             // An elaborate, custom popup
             var myPopup = $ionicPopup.show({
                 template: '<ion-radio ng-model="data.gender" ng-value="\'male\'">Male</ion-radio>' +

@@ -9,33 +9,34 @@ Enables user to open the Place separately in a google map webpage
 
 <ion-view title="{{name}}">
 	
-	<ion-content scroll=true class="category-bg">
+	<ion-content scroll=true class="category-bg no-margin no-padding">
 		
 		<div class="list card">
 
-			<div class="item item-avatar">
+			<div class="item item-stable item-avatar">
 				<img data-ng-src="{{icon}}">
 				<h2>{{name}}</h2>
 				<p>{{formatted_address}}</p>
 			</div>
-
-			<div class="item item-body">
-                <div class="item item-text-wrap">
-                    {{description}}
-                </div>
-				<img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{latitude}},{{longitude}}&zoom=14&markers=color:blue%7C{{latitude}},{{longitude}}&size=310x310&sensor=true" width="300" height="300" />
-			</div>
-			<div class="item tabs tabs-secondary tabs-icon-left">
+			<div class="item tabs tabs-secondary tabs-icon-top">
 				<a ng-show="hasPhones" class="tab-item" href="tel:{{phones[0].number}}">
-					<i class="icon ion-ios7-telephone"></i> {{phones[0].number}}
-				</a>	
+					<i class="icon ion-ios-telephone"></i> {{phones[0].number}}
+				</a>
 				<a ng-show="hasWebsite" class="tab-item" ng-click="showPage(website)">
 					<i class="icon ion-link"></i> Visit Website
-				</a>	
+				</a>
 				<a class="tab-item" ng-click="showPage('https://maps.google.com/maps?z=12&t=m&q=loc:'+latitude+'+'+longitude+'')">
 					<i class="icon ion-map"></i> View Map
-				</a>	
+				</a>
 			</div>
+			<div class="item item-image">
+				<img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{latitude}},{{longitude}}&zoom=14&markers=color:blue%7C{{latitude}},{{longitude}}&size=310x310&sensor=true" width="300" height="300" />
+			</div>
+
+				<div class="item item-divider item-text-wrap">
+					{{description}}
+				</div>
+
 		</div>
 	</ion-content>
 </ion-view>

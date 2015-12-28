@@ -27,7 +27,7 @@
 angular.module('places',
     [
         'ngCordova',
-        'ionic', ,
+        'ionic',
         'ngResource',
         'ngMessages'
     ])
@@ -52,6 +52,7 @@ angular.module('places',
             {
                 locations: {
                     method: 'GET',
+                    cache: true,
                     isArray:true,
                     url: PlacesConfig.OHANA_URL+':verb',
                     params: {
@@ -59,7 +60,7 @@ angular.module('places',
                         keyword: '@keyword',
                         lat_lng: '@lat_lng',
                         radius : '@radius',
-                        per_page : 100
+                        per_page : '@per_page'
                     },
                     headers: {
                         'Accept': 'application/vnd.ohanapi+json; version=1'
@@ -67,6 +68,7 @@ angular.module('places',
                 },
                 location: {
                     method: 'GET',
+                    cache: true,
                     url: PlacesConfig.OHANA_URL+'locations/:id',
                     params: {
                         id: '@id'
@@ -77,6 +79,7 @@ angular.module('places',
                 },
                 organizations: {
                     method: 'GET',
+                    cache: true,
                     isArray:true,
                     url: PlacesConfig.OHANA_URL+':verb',
                     params: {
@@ -90,6 +93,7 @@ angular.module('places',
                 },
                 categories: {
                     method: 'GET',
+                    cache: true,
                     isArray:true,
                     url: PlacesConfig.OHANA_URL+':verb',
                     params: {
@@ -155,7 +159,20 @@ angular.module('places',
 
         );
     })
-    .directive('googleplace', function() {
+    .factory('auth0metadata', function ($resource) {
+        return $resource('https://quarky.auth0.com/api/v2/users/:user',
+            {
+                user: '@user'
+            },
+            {
+                update: {
+                    method: 'PATCH'
+                }
+            }
+        );
+    })
+    /*.directive('googleplace', function() {
+        // TODO: not being used right now
         return {
             require: 'ngModel',
             link: function(scope, element, attrs, model) {
@@ -179,29 +196,91 @@ angular.module('places',
                 });
             }
         };
+    })*/
+    .directive('reverseGeocode', function () {
+        return {
+            restrict: 'E',
+            template: '<div></div>',
+            link: function (scope, element, attrs) {
+                var geocoder = new google.maps.Geocoder();
+                var latlng = new google.maps.LatLng(attrs.lat, attrs.lng);
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        console.log('geocoder: ', JSON.stringify(results[1]));
+                        if (results[1]) {
+                            element.text(results[1].formatted_address);
+                        } else {
+                            element.text('Location not found');
+                        }
+                    } else {
+                        element.text('Problem, try later: ' + status);
+                    }
+                });
+            },
+            replace: true
+        }
     })
     .controller('PlacesMasterCtrl', function ($scope, $rootScope, $state, PlacesService,
-                                              $ionicScrollDelegate, $ionicLoading,
-                                              $ionicHistory, $ionicPopup,
-                                              $cordovaGeolocation, $ionicPlatform) {
+                                              $ionicScrollDelegate, $ionicLoading, auth,
+                                              $ionicHistory, $ionicPopup, OhanaAPI,
+                                              $cordovaGeolocation, $ionicPlatform, auth0metadata) {
         $scope.posts = [];
-        $scope.gPlace;
-        $scope.selectedPlace;
+        //$scope.gPlace; // used with googleplace directive
+        //$scope.selectedPlace; // used with googleplace directive
         $rootScope.geoWatch = null;
-        $scope.searchModel = {};
 
+        // SEARCH SETTINGS
+        function updateSearchModel(srchModel) {
+            if (srchModel) {
+                var request = {};
+                request.user = auth.profile.user_id;
+
+                var body = {
+                    "user_metadata": {
+                        "searchModel": srchModel
+                    }
+                };
+
+                return auth0metadata.update(request, body).$promise
+                    .then(function (o) {
+                        //console.log("updated Auth0: ", o);
+                        $scope.searchModel = o.user_metadata.searchModel;
+                        auth.profile.user_metadata.searchModel = o.user_metadata.searchModel;
+                        $ionicLoading.hide();
+                        return o;
+                    })
+                    .catch(function (err) {
+                        console.log("error updating Auth0: ", err);
+                        $ionicLoading.hide();
+                        return err;
+                    });
+            }
+        };
         $scope.searchSettings = function() {
+
+            if (!$rootScope.myPosition) {
+                $ionicPopup.alert({
+                    title: 'Location',
+                    template: 'Getting position, try again shortly'
+                });
+                return;
+            }
 
             var myPopup = $ionicPopup.show({
                 template:
-                '<input type="search" placeholder="Zip, City, State ..." ng-model="searchModel.address" googleplace="" class="ng-pristine ng-valid" autocomplete="off">'+
+                '<li class="item item-toggle">Show categories first:<label class="toggle"><input ng-model="searchModel.showCategories" type="checkbox">'+
+                '<div class="track"> <div class="handle"></div> </div> </label></li>'+
                 '<div class="padding range range-dark"><i class="icon ion-android-walk"></i>'+
                 '<input type="range" ng-model="searchModel.radius" name="distance" min="1" max="25" value="25">'+
-                '<i class="icon ion-android-car"></i> {{ searchModel.radius}} mi. </div>'+
-                ''+
+                '<i class="icon ion-android-car"></i> {{ searchModel.radius}} miles </div>'+
+                '<div class="padding range range-dark"><i class="icon ion-minus-circled"></i>'+
+                '<input type="range" ng-model="searchModel.per_page" name="distance" min="1" max="100">'+
+                '<i class="icon ion-plus-circled"></i> {{ searchModel.per_page}} results </div>'+
+
+                '<button class="button button-full button-small button-dark icon ion-location">Your Location</button>'+
+                '<reverse-geocode lat=\"'+$rootScope.geolat+'\" lng=\"'+$rootScope.geolong+'\" />'+
                 '',
                 title: 'Search Settings',
-                subTitle: 'refine what you find',
                 scope: $scope,
                 buttons: [
                     {text: 'Cancel'},
@@ -209,12 +288,7 @@ angular.module('places',
                         text: '<b>Save</b>',
                         type: 'button-positive',
                         onTap: function (e) {
-                            if ($scope.searchModel == {}) {
-                                //don't allow the user to close unless he enters search settings
-                                e.preventDefault();
-                            } else {
-                                return $scope.searchModel;
-                            }
+                            return $scope.searchModel;
                         }
                     }
                 ]
@@ -222,17 +296,90 @@ angular.module('places',
 
             myPopup.then(function (res) {
                 console.log('Tapped!', res);
-                //updateGender(res);
+                updateSearchModel(res);
             });
 
+        }
+        if (auth.profile.user_metadata && auth.profile.user_metadata.searchModel) {
+            $scope.searchModel = auth.profile.user_metadata.searchModel;
+        } else {
+            $scope.searchModel = {}; // used with autocomplete
+            $scope.searchModel.radius = '25';
+            $scope.searchModel.per_page = '10';
+            $scope.searchModel.showCategories = false;
+        }
+
+
+        // ION-AUTOCOMPLETE
+
+        $scope.autocompleteCallback = function (query, isInitializing) {
+         /*   console.log(
+                "autocompleteCallback: query:", query,
+                " initializing:", isInitializing,
+                " searchModel:", JSON.stringify($scope.searchModel));
+*/
+            if (isInitializing && $scope.searchModel.showCategories) {
+                // depends on the configuration of the `items-method-value-key` (items) and the `item-value-key` (name) and `item-view-value-key` (name)
+
+                var galleries = PlacesService.getAllGalleries();
+                return galleries;
+            } else {
+
+                var lat_lng = $rootScope.geolat +','+$rootScope.geolong;
+
+                var request = {};
+                request.keyword = query;
+                request.lat_lng = lat_lng;
+                request.per_page = $scope.searchModel.per_page;
+                request.radius = $scope.searchModel.radius;
+
+                return OhanaAPI.locations(request).$promise;
+            }
+        }
+
+        $scope.autocompleteSelectedItem = function (callback) {
+            // callback.item, callback.componentId, callback.selectedItems
+            // print out the selected item
+            console.log("selected item: ", callback.item, " searchModel: ", $scope.searchModel);
+
+            if(angular.isDefined(callback.item.id)) // came from an ohana item
+                $state.go('app.place-ohana-detail', { placeId: callback.item.id} );
+            if(angular.isDefined(callback.item.ID)) // came from a category
+            {
+                $scope.searchModel.name = callback.item.search ? callback.item.search : callback.item.name;
+                $scope.doSearch2();
+
+            }
 
         }
+
+
+        // =================
 
         $scope.updateSearch = function(key, value) {
             if(key == 'text') $scope.search.text = value;
             if(key == 'radius') $scope.search.radius = value;
             console.log('Updatesearch to: ', $scope.search);
         }
+
+        $scope.doSearch2 = function () {
+            if (!$rootScope.myPosition) {
+                $ionicPopup.alert({
+                    title: 'Location',
+                    template: 'Getting position, try again shortly'
+                });
+                return;
+            }
+            console.log('doSearch2: ', $scope.searchModel);
+
+            $state.go('app.places-articles', {
+                searchParams: {
+                    'text': $scope.searchModel.name || "",
+                    'radius': $scope.searchModel.radius,
+                    'per_page': $scope.searchModel.per_page
+                }
+            });
+        };
 
         $scope.doSearch = function (srch) {
             if (srch && srch.length) $scope.search = {'text': srch};
@@ -249,7 +396,7 @@ angular.module('places',
             }
             if (!$scope.search.text) $scope.search.text = "fun";
             if (!$scope.search.radius) $scope.search.radius = "25";
-            console.log('doSearch: ', $scope.search)
+            console.log('doSearch: ', $scope.search);
 
             $state.go('app.places-articles', {
                 searchParams: {
@@ -334,20 +481,20 @@ angular.module('places',
                     $rootScope.geolong = position.coords.longitude
                     $ionicLoading.hide();
                 });
+
         }
 
         $scope.$on('$ionicView.enter', function () {
-            console.log('ionicView enter, posts=', $scope.posts, ' search is: ', $scope.search);
+            //console.log('ionicView enter, posts=', $scope.posts, ' search is: ', $scope.search);
             $ionicPlatform.ready(function () {
-                console.log('ionicPlatform ready');
                 watchLocation();
             });
         });
 
         $scope.$on('$ionicView.leave', function () {
             $cordovaGeolocation.clearWatch($rootScope.geoWatch.watchID);
-            console.log("cleared watch: ", $rootScope.geoWatch);
-            console.log('leaving geolocation view');
+            //console.log("cleared watch: ", $rootScope.geoWatch);
+            //console.log('leaving geolocation view');
         });
     })
     .controller('PlacesGalleryCtrl', function ($scope, $rootScope, PlacesService,
@@ -408,6 +555,8 @@ angular.module('places',
             request.keyword = search.text;
             request.lat_lng = lat_lng;
             request.radius = search.radius;
+            if(search.per_page)
+                request.per_page = search.per_page;
 
             console.log("searchOhanaPlaces request: ", request);
             $ionicLoading.show({template: 'Loading...'});
@@ -497,6 +646,8 @@ angular.module('places',
                                                    $ionicSlideBoxDelegate, $ionicLoading,
                                                    $cordovaInAppBrowser, OhanaAPI,
                                                    $ionicScrollDelegate, $ionicPopup) {
+
+        console.log("PlacesOhanaDetailCtrl: stateParams:", $stateParams);
         $rootScope.notHome = true;
         $scope.placeId = $stateParams.placeId;
         var options = {
@@ -1324,7 +1475,6 @@ function PlacesService($http, PlacesConfig) {
         console.log('service gallery');
         return _serviceGallery;
     }
-
     this.getHelpGallery = function () {
         console.log('help gallery');
         return _helpGallery;
@@ -1341,6 +1491,12 @@ function PlacesService($http, PlacesConfig) {
         console.log('coming soon');
         return _comingSoon;
     };
+    this.getAllGalleries = function() {
+        var list = _funGallery;
+        list = list.concat(_helpGallery);
+        list = list.concat(_serviceGallery);
+        return list;
+    }
     this.getListData = function (id) {
         console.log("getting list data for ", id);
         switch (id) {

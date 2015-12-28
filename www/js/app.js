@@ -10,7 +10,8 @@ angular.module('quarky', ['ionic',
         'auth0',
         'angular-storage',
         'angular-jwt',
-        'ngResource'
+        'ngResource',
+        'ion-autocomplete'
     ])
     .factory('ionicReady', function($ionicPlatform) {
         var readyPromise;
