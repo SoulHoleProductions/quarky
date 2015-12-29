@@ -25,10 +25,12 @@ angular.module('profile', ['ionic-datepicker', 'ngResource'])
             {
                 getMe: {
                     method: 'GET',
+                    cache: true,
                     url: ModuleConfig.FEED_URL + 'users/me'
                 },
                 getPosts: {
                     method: 'GET',
+                    cache: true,
                     isArray: true,
                     url: ModuleConfig.FEED_URL + ':verb',
                     params: {
@@ -42,6 +44,7 @@ angular.module('profile', ['ionic-datepicker', 'ngResource'])
                 },
                 getPost: {
                     method: 'GET',
+                    cache: true,
                     url: ModuleConfig.FEED_URL + 'posts/:id',
                     params: {
                         id: '@id'

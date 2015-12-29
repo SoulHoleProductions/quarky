@@ -621,7 +621,8 @@ function GuruService($http, GuruConfig) {
         };
 
         var service = $http.get(GuruConfig.FEED_URL, {
-            params: params
+            params: params,
+            cache: true
         });
 
         // here's the magic cache strategy

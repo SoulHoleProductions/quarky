@@ -177,7 +177,8 @@ function HomeService2($q, $http, HomeConfig, $window) {
         };
 
         return $http.get(HomeConfig.FEED_URL, {
-            params: params
+            params: params,
+            cache: true
         });
     };
 
