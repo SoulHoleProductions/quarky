@@ -458,21 +458,24 @@ angular.module('places',
             $rootScope.geoWatch.then(
                 null,
                 function (err) {
-                    // error
-                    $ionicLoading.hide();
-                    console.log("error in watch position", err.message);
-                    if (ionic.Platform.isAndroid()) {
-                        $ionicPopup.alert({
-                            title: 'No Location',
-                            template: 'Please confirm GPS is enabled and try again'
-                        });
-                    }
-                    $ionicHistory.nextViewOptions({
-                        disableAnimate: true,
-                        disableBack: true
-                    });
-                    $state.go('app.home-list');
 
+                    if (!$rootScope.myPosition) { // we never got a position at all
+                        $ionicLoading.hide();
+                        console.log("error in watch position", err.message);
+                        if (ionic.Platform.isAndroid()) {
+                            $ionicPopup.alert({
+                                title: 'No Location',
+                                template: 'Please confirm GPS is enabled and try again'
+                            });
+                        }
+                        $ionicHistory.nextViewOptions({
+                            disableAnimate: true,
+                            disableBack: true
+                        });
+                        $state.go('app.home-list');
+                    } else { // we did get a position
+                        console.log("stopped getting position, error: ", err.message);
+                    }
                 },
                 function (position) {
                     console.log("got watch position", $rootScope.geoWatch);

@@ -25,40 +25,39 @@
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
 
-    <ion-side-menu side="left" class="stable-border stable-bg">
-        <ion-header-bar class="bar bar-header bar-royal transparent">
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar bar-header bar-royal">
             <h1 class="title gloria-h">Whatcha gonna do?</h1>
         </ion-header-bar>
 
-        <ion-content class="has-header royal-bg">
+        <ion-content class="has-header dark-bg">
             <ion-list>
-                </ion-item>
-                <ion-item class="item-royal item-icon-right" nav-clear menu-close ng-show="!auth.profile"
+                <ion-item class="item-dark item-icon-right" nav-clear menu-close ng-show="!auth.profile"
                           ng-click="login()">
                     My Stuff
-                    <i class="icon ion-log-in"></i>
+                    <i class="icon ion-log-in positive"></i>
                 </ion-item>
-                <ion-item class="item-royal item-icon-right item-avatar" ng-show="auth.profile" menu-close href="#/app/profile">
+                <ion-item class="item-dark item-icon-right item-avatar" ng-show="auth.profile" menu-close href="#/app/profile">
                     <img data-ng-src="{{auth.profile.picture}}">
                     My Stuff <br>
                     {{ auth.profile.name }} <br>
-                    <i class="icon ion-person"></i>
+                    <i class="icon ion-person positive"></i>
                 </ion-item>
-                <ion-item class="item-royal item-icon-right"  menu-close href="#/app/home-list">
+                <ion-item class="item-dark item-icon-right"  menu-close href="#/app/home-list">
                     Hub
-                    <i class="icon ion-atom"></i>
+                    <i class="icon ion-atom calm"></i>
                 </ion-item>
-                <ion-item class="item-royal item-icon-right" menu-close href="#/app/guru">
+                <ion-item class="item-dark item-icon-right" menu-close href="#/app/guru">
                     Guru
-                    <i class="icon ion-guru"></i>
+                    <i class="icon ion-guru balanced"></i>
                 </ion-item>
-                <ion-item class="item-royal item-icon-right"  menu-close href="#/app/places-master">
+                <ion-item class="item-dark item-icon-right"  menu-close href="#/app/places-master">
                     Places
-                    <i class="icon ion-places-circle"></i>
+                    <i class="icon ion-places-circle energized"></i>
                 </ion-item>
-                <ion-item class="item-royal item-icon-right" menu-close href="#/app/about-master">
+                <ion-item class="item-dark item-icon-right" menu-close href="#/app/about-master">
                     About Quarky
-                    <i class="icon ion-ios-information-outline"></i>
+                    <i class="icon ion-ios-information-outline assertive"></i>
                 </ion-item>
             </ion-list>
         </ion-content>

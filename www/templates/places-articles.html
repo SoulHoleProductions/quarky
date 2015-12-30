@@ -9,7 +9,7 @@ TODO: add infinite scroll
     <ion-content class="category-bg">
         <div ng-show="auth.profile.can_add_places" class="button-bar">
             <!--<a class="button button-positive button- icon-left ion-ios-list" ng-click="searchOhanaPlaces()">Quarky Places</a>-->
-            <a class="button button-positive icon-left ion-social-google" ng-click="searchGooglePlaces()">See Google Places</a>
+            <a class="button button-positive icon-left ion-social-google" ng-click="searchGooglePlaces()">{{auth.profile.name}}, tap to see Google Places</a>
         </div>
         <!-- QUARKY Places -->
         <div class="list">

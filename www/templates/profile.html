@@ -7,9 +7,7 @@
         </div>
 
 
-        <div class="list card">
-            <div class="item item-divider">
-
+        <div class="list card dark-bg">
                 <ion-item ng-show="auth.profile.app_metadata.can_add_places" class="item-icon-left item-positive">
                     <i class="icon ion-ribbon-a"></i>
                     You can add places!
@@ -20,19 +18,18 @@
                     <i class="icon ion-ribbon-a"></i>
                     Volunteer: {{selectVol || 'tap to request' | capitalize}}
                 </ion-item>
-                </div>
-                <div class="item item-body">
-                <ion-item ng-class="{ 'item': selectGender, 'item-assertive' : !selectGender}"
+
+                <ion-item ng-class="{ 'item-dark': selectGender, 'item-assertive' : !selectGender}"
                           class="item-icon-left" ng-click="setGender()">
-                    <i class="icon ion-person"></i>
+                    <i class="icon ion-person positive"></i>
                     Gender: {{selectGender || 'tap here' | capitalize}}
                 </ion-item>
 
 
                 <ion-item ng-class="{ 'item': auth.profile.user_metadata.birthday, 'item-assertive': !auth.profile.user_metadata.birthday }"
-                          class="item-icon-left">
+                          class="item-icon-left item-dark">
                     <ionic-datepicker input-obj="datepickerObject">
-                        <i class="icon ion-happy"></i>
+                        <i class="icon ion-happy energized"></i>
                         Birthday: {{datepickerObject.inputDate || 'Tap here' | date:'MMM d, y'}}
                     </ionic-datepicker>
                 </ion-item>
@@ -42,42 +39,40 @@
                     App feedback
                 </ion-item>-->
 
-                <ion-item class="item item-icon-left">
-                    <i class="icon ion-email"></i>
+                <ion-item class="item item-icon-left item-dark">
+                    <i class="icon ion-email calm"></i>
                     {{auth.profile.email || 'not on file'}}
                 </ion-item>
 
-                <ion-item class="item item-icon-left" ng-show="currentPlatform">
-                    <i class="icon ion-iphone"></i>
+                <ion-item class="item item-icon-left item-dark" ng-show="currentPlatform">
+                    <i class="icon ion-iphone balanced"></i>
                     {{currentPlatform}} version {{currentPlatformVersion}}
                 </ion-item>
-                    </div>
-                    <div class="item item-divider">
-                    <button class="button button-outline button-block button-small button-positive icon-right ion-log-out" ng-click="logout()">Logout</button>
-
-            </div>
         </div>
 
-<!--  ADD ARTICLES TESTING
+        <button class="button button-outline button-positive button-block icon-right ion-log-out" ng-click="logout()">Logout</button>
 
-        <div ng-if="!posts.length">
-            <div id="profile-name">No articles right now</div>
-        </div>
 
-        <div ng-show="auth.profile.can_add_places" class="button-bar">
-            <a class="button button-positive icon-left ion-social-google" ng-click="addArticle()">Add an article!</a>
-        </div>
-        <div ng-show="auth.profile.can_add_places" class="button-bar">
-            <a class="button button-positive icon-left ion-social-google" ng-click="addArticle2()">Add an article v2!</a>
-        </div>
+        <!--  ADD ARTICLES TESTING
 
-        <ion-list>
-            <ion-item class="item-thumbnail-left" ng-repeat="p in posts">
-                <img src="{{'img/coming-soon.png'}}">
-                <h2>{{p.title.rendered}}</h2>
-            </ion-item>
-        </ion-list>
--->
+                <div ng-if="!posts.length">
+                    <div id="profile-name">No articles right now</div>
+                </div>
+
+                <div ng-show="auth.profile.can_add_places" class="button-bar">
+                    <a class="button button-positive icon-left ion-social-google" ng-click="addArticle()">Add an article!</a>
+                </div>
+                <div ng-show="auth.profile.can_add_places" class="button-bar">
+                    <a class="button button-positive icon-left ion-social-google" ng-click="addArticle2()">Add an article v2!</a>
+                </div>
+
+                <ion-list>
+                    <ion-item class="item-thumbnail-left" ng-repeat="p in posts">
+                        <img src="{{'img/coming-soon.png'}}">
+                        <h2>{{p.title.rendered}}</h2>
+                    </ion-item>
+                </ion-list>
+        -->
 
     </ion-content>
 </ion-view>
