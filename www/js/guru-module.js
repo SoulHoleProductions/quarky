@@ -1,44 +1,97 @@
 angular.module('guru', ['ngCordova'])
-    .constant("GuruConfig", {
-        'FEED_URL': 'https://quarkyapp.com/wp-json/posts/',
-        'PAGE_SIZE': 70,
-        'CATEGORY': 'eGuru',
-        'STATUS': 'publish',
-        'TAG': 'elevate1',
-        'ORDER_BY': 'title', // author, title, name (slug), date, modified
-        'ORDER': 'ASC' // ASC or DESC
-    })
-    .filter('hrefToJS', function ($sce, $sanitize) {
-        return function (text) {
-            var regex = /href="([\S]+)"/g;
-            var newString = $sanitize(text).replace(regex, "href=\"#\" onClick=\"window.open('$1', '_system', 'location=yes')\"");
-            return $sce.trustAsHtml(newString);
-        }
-    })
-    .service('GuruService', ['$http', 'GuruConfig', GuruService])
-    .controller('GuruListCtrl', function($scope, GuruConfig,
-                                         $ionicPlatform, GuruService,
-                                         $stateParams){
+    .service('GuruService', [GuruService])
+    .controller('GuruListCtrl', function ($scope,
+                                          $ionicPlatform, GuruService,
+                                          $stateParams) {
         var postId = $stateParams.id;
         $scope.postName = GuruService.getNavName(postId).name;
         console.log("in GuruListCtrl, postId is:  ", postId);
         $scope.posts = GuruService.getListData(postId);
     })
-    .controller('GuruDetailCtrl', function($scope, GuruConfig, auth,
-                                         $ionicPlatform, GuruService,
-                                         $stateParams, $ionicModal,
-                                         $sce, $cordovaSocialSharing){
+    .controller('GuruDetailCtrl', function ($scope, auth, $sanitize, Bookmark,
+                                            $ionicPlatform, GuruService,
+                                            $stateParams, $ionicModal,
+                                            wordpressAPI, wordpressConfig,
+                                            $sce, $cordovaSocialSharing) {
 
         $scope.noItems = false;
-        $scope.post = { 'slug': $stateParams.id };
-        $scope.postTitle = $stateParams.id.replace(/-/g, ' ').replace(/^./, function(x){return x.toUpperCase()});
+        $scope.post = {'slug': $stateParams.id};
+        $scope.postTitle = $stateParams.id.replace(/-/g, ' ');
         $scope.postlist = null;
 
-        $scope.loadPostList = function (slug) {
+
+        // Infinite FEED ----
+        $scope.posts = [];
+        $scope.pagenum = null;
+        $scope.infiniteLoad = false;
+
+        $scope.preLoadFeed = function (slug) {
+            $scope.pagenum = 1;
+            $scope.getRemoteFeed(slug);
+            $scope.infiniteLoad = true;
+        }
+        $scope.initRemoteFeed = function (slug) {
+            console.log('initRemoteFeed: posts.length: ', $scope.posts.length);
+            $scope.infiniteLoad = false;
+            $scope.pagenum = 1;
+            if ($scope.posts.length) {
+                $scope.posts = [];
+                $scope.getRemoteFeed(slug);
+            }
+            $scope.$broadcast("scroll.refreshComplete");
+            $scope.infiniteLoad = true;
+        };
+        $scope.getRemoteFeed = function (slug) {
+
+            var PAGE_SIZE = 8;
+
+            var params = {
+                "filter[category_name]": slug ? slug : 'eGuru',
+                "page": $scope.pagenum,
+                'filter[posts_per_page]': PAGE_SIZE,
+                //"filter[tag]": 'elevate1'
+            }
+
+            console.log("call WP with params: ", params);
+
+            wordpressAPI.getPosts(params)
+                .$promise
+                .then(function (result) {
+                    console.log("from service: ", result, " pagenum: ", $scope.pagenum);
+                    (result.length == PAGE_SIZE) ? $scope.pagenum++ : $scope.pagenum = 1;
+                    if (result.length) {
+                        $scope.posts = $scope.posts.concat(result);
+                    }
+                    if ($scope.pagenum ==1 && result.length <= 0) $scope.noItems = true;
+                    if(result.length > 0 && result.length < PAGE_SIZE)
+                        $scope.infiniteLoad = false;
+
+                    $scope.$broadcast("scroll.infiniteScrollComplete");
+                    $scope.$broadcast('scroll.resize');
+                    return result;
+                })
+                .catch(function (err) {
+                    console.log('Network error! ', data, status);
+                    $scope.$broadcast("scroll.infiniteScrollComplete");
+                    $scope.$broadcast("scroll.refreshComplete");
+                    $scope.infiniteLoad = false;
+                    $rootScope.$broadcast('loading:hide')
+                    $ionicPopup.alert({
+                        title: 'Network Error!',
+                        template: 'Try again when you have a network connection.'
+                    });
+                    $scope.noItems = true;
+                    return data;
+                });
+        };
+        // FEED ----
+
+
+   /*     $scope.loadPostList = function (slug) {
             GuruService.getRemoteFeed(1, slug).success(function (data) {
                 console.log("loadPost got remoteData: ", data);
                 $scope.postlist = data;
-                if(data.length == 0) $scope.noItems = true;
+                if (data.length == 0) $scope.noItems = true;
                 return data;
             }).error(function (data) {
                 console.log("error: ", data);
@@ -46,22 +99,45 @@ angular.module('guru', ['ngCordova'])
                 return data;
             });
         }
+*/
+
         $scope.toTrusted = function (text) {
             return ($sce.trustAsHtml(text));
         }
 
         // Social Sharing
         // -------------------------------------
-        $scope.shareNative = function(message, subject, image, url) {
-            if(!message) message = "I am using QuarkyApp, maybe you should too :)";
-            if(!subject) subject = "Found this on QuarkyApp!";
-            if(!image) image = "https://quarkyapp.com/wp-content/uploads/2015/06/quarkycon1.jpg";
-            if(!url) url = "https://quarkyapp.com";
-            $cordovaSocialSharing.share(message, subject, image, url);
+        $scope.shareNative = function (message, subject, image, url) {
+            function htmlToPlaintext(text) {
+                return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+            }
+
+            console.log("shareNative, message: ", message, " subject: ", subject, " image: ", image, " url: ", url);
+            if(message) {
+                message = htmlToPlaintext($sanitize(message));
+            } else {
+                message = "I am using QuarkyApp, maybe you should too :)";
+            }
+
+            if(subject){
+                subject = htmlToPlaintext($sanitize(subject));
+            } else {
+                subject = "Found this on Quarky App!";
+            }
+
+            if (!image) image = "https://quarkyapp.com/wp-content/uploads/2015/06/quarkycon1.jpg";
+            if (!url) url = "https://quarkyapp.com";
+
+            console.log("shareNative, message: ", message, " subject: ", subject, " image: ", image, " url: ", url);
+
+            if(ionic.Platform.isWebView()) { // cordova app
+                $cordovaSocialSharing.share(message, subject, image, url);
+            }
         }
 
+
         // --------------- modal from the given template URL
-        $ionicModal.fromTemplateUrl('templates/guru-modal.html', function ($ionicModal) {
+        $ionicModal.fromTemplateUrl('templates/article-modal.html', function ($ionicModal) {
             $scope.modal = $ionicModal;
         }, {
             // Use our scope for the scope of the modal to keep it simple
@@ -71,6 +147,7 @@ angular.module('guru', ['ngCordova'])
         });
         $scope.openModal = function (aPost) {
             $scope.aPost = aPost;
+            $scope.bookmarked = Bookmark.check(aPost.ID.toString());
             $scope.modal.show()
         }
         $scope.closeModal = function () {
@@ -79,18 +156,33 @@ angular.module('guru', ['ngCordova'])
         $scope.$on('$destroy', function () {
             $scope.modal.remove();
         });
+        // Execute action on hide modal
+        $scope.$on('modal.hidden', function() {
+        });
 
+        // Bookmarking
+        $scope.bookmarkItem = function (id) {
+            if ($scope.bookmarked) {
+                Bookmark.remove(id);
+                $scope.bookmarked = false;
+            } else {
+                Bookmark.set(id);
+                $scope.bookmarked = true;
+            }
+        };
+
+        // ----------------- modal
 
     })
     .controller('GuruCtrl', function ($scope, GuruService) {
         $scope.posts = [];
 
-        $scope.bootstrapFeed = function() {
+        $scope.bootstrapFeed = function () {
             $scope.posts = GuruService.bootstrapGuruNav();
         }
     });
 
-function GuruService($http, GuruConfig) {
+function GuruService() {
     var _navdata = [
         {
             "ID": 2631,
@@ -305,7 +397,7 @@ function GuruService($http, GuruConfig) {
                 "local": "img/guru-nav/eOptions/Stories-with-Support-1.png"
             }
 
-        },{
+        }, {
             "ID": 2992,
             "slug": "ask-jason-article",
             "featured_image": {
@@ -535,104 +627,70 @@ function GuruService($http, GuruConfig) {
         }
     ];
 
-    this.getNavName = function(id) {
+    this.getNavName = function (id) {
         console.log("getnavname: ", id);
-        for(var i=0;i<_navdata.length;i++){
-            if(_navdata[i].ID == id){
+        for (var i = 0; i < _navdata.length; i++) {
+            if (_navdata[i].ID == id) {
                 console.log("get nav name returning: ", _navdata[i]);
                 return _navdata[i];
             }
         }
     };
-    this.getRemoteSvcFeed = function (pagenum) {
-        // https://quarkyapp.com/wp-json/posts?filter[category_name]=eGuru&filter[posts_per_page]=30&filter[tag]=elevate1
-        // wp-json/posts?filter[post_status]=publish&filter[posts_per_page]=20&page=2&filter[orderby]=date&filter[order]=desc
-        var params = {
-            "filter[category_name]": GuruConfig.CATEGORY,
-            "filter[posts_per_page]": GuruConfig.PAGE_SIZE,
-            "filter[tag]": GuruConfig.TAG,
-            "filter[post_status]": GuruConfig.STATUS,
-            "filter[orderby]": GuruConfig.ORDER_BY,
-            "filter[order]": GuruConfig.ORDER,
-            "page": pagenum
-        };
-        console.log('getting data using: ', params);
-
-        return $http.get(GuruConfig.FEED_URL, {
-            params: params
-        });
-    };
-    this.getListData = function(id) {
+    this.getListData = function (id) {
         console.log("getting list data for ", id);
-        switch(id) {
-            case '2631': return this.getElevateInfo(); break;
-            case '2655': return this.getElevateSkills(); break;
-            case '2638': return this.getElevateOptions(); break;
-            case '2670': return this.getElevateGame(); break;
-            case '2642': return this.getElevateSelf(); break;
-            case '2652': return this.getElevateSpirit(); break; // TODO finish elevateYourSpirit
-            default: return this.getComingSoon();
+        switch (id) {
+            case '2631':
+                return this.getElevateInfo();
+                break;
+            case '2655':
+                return this.getElevateSkills();
+                break;
+            case '2638':
+                return this.getElevateOptions();
+                break;
+            case '2670':
+                return this.getElevateGame();
+                break;
+            case '2642':
+                return this.getElevateSelf();
+                break;
+            case '2652':
+                return this.getElevateSpirit();
+                break; // TODO finish elevateYourSpirit
+            default:
+                return this.getComingSoon();
         }
         return;
     }
-    this.getComingSoon = function() {
+    this.getComingSoon = function () {
 
         return _comingSoon;
     }
-    this.getElevateSpirit = function() {
+    this.getElevateSpirit = function () {
         //https://quarkyapp.com/wp-json/posts?filter[category_name]=elevate-your-spirit&filter[posts_per_page]=30&filter[tag]=elevate2
         return _elevateSpirit;
     };
-    this.getElevateSelf = function() {
+    this.getElevateSelf = function () {
         //https://quarkyapp.com/wp-json/posts?filter[category_name]=inspiration&filter[posts_per_page]=30&filter[tag]=elevate2
         return _elevateSelf;
     };
-    this.getElevateGame = function() {
+    this.getElevateGame = function () {
         //https://quarkyapp.com/wp-json/posts?filter[category_name]=elevate-your-game&filter[posts_per_page]=30&filter[tag]=elevate2
         return _elevateGame;
     };
-    this.getElevateOptions = function() {
+    this.getElevateOptions = function () {
         //https://quarkyapp.com/wp-json/posts?filter[category_name]=options&filter[posts_per_page]=30&filter[tag]=elevate2
         return _elevateOptions;
     };
-    this.getElevateSkills = function() {
+    this.getElevateSkills = function () {
         //https://quarkyapp.com/wp-json/posts?filter[category_name]=skills&filter[posts_per_page]=30&filter[tag]=elevate2
         return _elevateSkills;
     };
-    this.getElevateInfo = function() {
+    this.getElevateInfo = function () {
         return _elevateInfo;
     };
     this.bootstrapGuruNav = function () {
         return _navdata;
 
-    };
-    this.getRemoteFeed = function(pagenum, cat) {
-        pagenum = pagenum || 1;
-        cat = cat || GuruConfig.CATEGORY;
-
-        var params = {
-            "filter[category_name]": cat,
-            "filter[posts_per_page]": GuruConfig.PAGE_SIZE,
-            //"filter[tag]": GuruConfig.TAG,
-            "filter[orderby]": GuruConfig.ORDER_BY,
-            "filter[post_status]": GuruConfig.STATUS,
-            "filter[order]": GuruConfig.ORDER,
-            "page": pagenum
-        };
-
-        var service = $http.get(GuruConfig.FEED_URL, {
-            params: params,
-            cache: true
-        });
-
-        // here's the magic cache strategy
-        // we get the data from wordress
-        // then we upsert any changes into the local database
-        return service.success(function (result) {
-            return result;
-        }).error(function (data) {
-            console.log('get remotefeed error! ', data);
-            return;
-        });
     };
 }

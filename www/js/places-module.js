@@ -31,7 +31,6 @@ angular.module('places',
         'ngResource',
         'ngMessages'
     ])
-
     .constant("PlacesConfig", {
         'FEED_URL': 'https://quarkyapp.com/wp-json/posts/',
         'OHANA_URL': 'https://soulhole-api.herokuapp.com/api/',   // Production
@@ -157,18 +156,6 @@ angular.module('places',
                 }
             }
 
-        );
-    })
-    .factory('auth0metadata', function ($resource) {
-        return $resource('https://quarky.auth0.com/api/v2/users/:user',
-            {
-                user: '@user'
-            },
-            {
-                update: {
-                    method: 'PATCH'
-                }
-            }
         );
     })
     /*.directive('googleplace', function() {

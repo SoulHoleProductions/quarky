@@ -8,15 +8,20 @@
         </ion-refresher>
 
         <div ng-if="!infiniteLoad" class="text-center color:white">
-            <h3>Pull down to get the latest!</h3>
-            <div style="height: 100px;" class="spacer"></div>
-                    <img data-ng-click="initRemoteFeed()" data-ng-src="img/quarkycon.png">
-                <h3 class="gloria-h">
-                    Cheat Codes for Thriving, <br>
-                    not just Surviving
-                </h3>
-
+            <div class="card no-margin">
+                <div class="item item-icon-left item-text-wrap item-balanced">
+                    <i class="icon ion-arrow-down-c"></i>
+                    <b>Pull down</b> to get the latest!
+                </div>
+                <div class="item item-image no-padding no-margin">
+                    <img data-ng-click="initRemoteFeed()" data-ng-src="img/splash.png">
+                </div>
+                <div class="item item-icon-left item-text-wrap item-royal gloria-h">
+                    <i class="icon ion-code"></i>
+                    Cheat codes for thriving, not just surviving
+                </div>
             </div>
+
         </div>
 
         <span ng-repeat="p in posts">

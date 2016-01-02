@@ -1,0 +1,20 @@
+<ion-view view-title="Bookmarks">
+	<ion-content lazy-scroll padding="true" class="has-header category-bg">
+		<div ng-if="!hasBookmarks" class="text-center color:white">
+			<div class="card no-margin">
+				<div class="item item-icon-left item-text-wrap item-balanced">
+					<i class="icon ion-bookmark"></i>
+					You can <b>bookmark</b> an article to show it here
+				</div>
+			</div>
+		</div>
+		<ion-list>
+			<ion-item class="item-thumbnail-left" ng-repeat="post in posts" data-ng-click="openModal(post)">
+				<img image-lazy-src="{{post.featured_image.source || 'img/coming-soon.png'}}" image-lazy-loader="lines">
+				<h2>{{post.title}}</h2>
+				<div data-ng-bind-html="toTrusted(post.excerpt)"></div>
+				<h5>{{post.modified | date: 'fullDate'}}</h5>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

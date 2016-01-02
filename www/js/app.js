@@ -9,33 +9,185 @@ angular.module('quarky', ['ionic',
         'places',
         'auth0',
         'angular-storage',
+        'angular-cache',
         'angular-jwt',
         'ngResource',
         'ion-autocomplete'
     ])
-    .factory('ionicReady', function($ionicPlatform) {
-        var readyPromise;
-
-        return function () {
-            if (!readyPromise) {
-                readyPromise = $ionicPlatform.ready();
+    .constant("wordpressV2Config", {
+        'FEED_URL': 'http://soul-hole.net/wp-json/wp/v2/',
+        'PAGE_SIZE': -1, // get them all
+        'STATUS': 'publish',
+//        'TAG': 'elevate1',
+        'ORDER_BY': 'title', // author, title, name (slug), date, modified
+        'ORDER': 'ASC' // ASC or DESC
+    })
+    .factory('wordpressAPIv2', function ($resource, wordpressV2Config) {
+        return $resource(wordpressV2Config.FEED_URL,
+            {},
+            {
+                getMe: {
+                    method: 'GET',
+                    cache: true,
+                    url: wordpressV2Config.FEED_URL + 'users/me'
+                },
+                getPosts: {
+                    method: 'GET',
+                    cache: true,
+                    isArray: true,
+                    url: wordpressV2Config.FEED_URL + ':verb',
+                    params: {
+                        verb: 'posts',
+                        'filter[posts_per_page]': wordpressV2Config.PAGE_SIZE,
+                        'filter[orderby]': wordpressV2Config.ORDER_BY,
+                        'filter[post_status]': wordpressV2Config.STATUS,
+                        'filter[order]': wordpressV2Config.ORDER
+                    },
+                    headers: {}
+                },
+                getPost: {
+                    method: 'GET',
+                    cache: true,
+                    url: wordpressV2Config.FEED_URL + 'posts/:id',
+                    params: {
+                        id: '@id'
+                    },
+                    headers: {}
+                },
+                createPost: {
+                    method: 'POST',
+                    url: wordpressV2Config.FEED_URL + 'posts',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
             }
-            return readyPromise;
-        };
+        );
+    })
+    .constant("wordpressConfig", {
+        'FEED_URL': 'https://quarkyapp.com/wp-json/',
+        'PAGE_SIZE': 6, // 70 for guru, 6 for home
+        'CATEGORY': 'eGuru', // 'eGuru' vs 'Home'
+        'STATUS': 'publish',
+        'TAG': 'elevate1', // home DOES NOT use this
+        'ORDER_BY': 'modified', // author, title, name (slug), date, modified
+        'ORDER': 'DESC' // ASC or DESC
+    })
+    .factory('wordpressAPI', function ($resource, wordpressConfig) {
+        return $resource(wordpressConfig.FEED_URL,
+            {},
+            {
+                getPosts: {
+                    method: 'GET',
+                    cache: true,
+                    isArray: true,
+                    url: wordpressConfig.FEED_URL + ':verb',
+                    params: {
+                        verb: 'posts',
+                        'filter[posts_per_page]': wordpressConfig.PAGE_SIZE,
+                        'filter[orderby]': wordpressConfig.ORDER_BY,
+                        'filter[post_status]': wordpressConfig.STATUS,
+                        'filter[order]': wordpressConfig.ORDER
+                    },
+                    headers: {}
+                },
+                getPost: {
+                    method: 'GET',
+                    cache: true,
+                    url: wordpressConfig.FEED_URL + 'posts/:ID',
+                    params: {
+                        ID: '@ID'
+                    },
+                    headers: {}
+                }
+            }
+        );
+    })
+    .filter('capitalize', function () {
+        return function (input, scope) {
+            if (input != null) {
+                input = input.toString();
+                var stringArr = input.split(" ");
+                var result = "";
+                var cap = stringArr.length;
+                for (var x = 0; x < cap; x++) {
+                    stringArr[x].toLowerCase();
+                    if (x === cap - 1) {
+                        result += stringArr[x].substring(0, 1).toUpperCase() + stringArr[x].substring(1);
+                    } else {
+                        result += stringArr[x].substring(0, 1).toUpperCase() + stringArr[x].substring(1) + " ";
+                    }
+                }
+                return result;
+            }
+        }
+    })
+    .filter('hrefToJS', function ($sce, $sanitize) {
+        return function (text) {
+            var regex = /href="([\S]+)"/g;
+            var newString = $sanitize(text).replace(regex, "href=\"#\" onClick=\"window.open('$1', '_system', 'location=yes')\"");
+            return $sce.trustAsHtml(newString);
+        }
+    })
+    .factory('auth0metadata', function ($resource) {
+        return $resource('https://quarky.auth0.com/api/v2/users/:user',
+            {
+                user: '@user'
+            },
+            {
+                update: {
+                    method: 'PATCH'
+                }
+            }
+        );
+    })
+    .factory('Bookmark', function( CacheFactory ) {
+
+        if ( ! CacheFactory.get('bookmarkCache') ) {
+            CacheFactory.createCache('bookmarkCache');
+        }
+
+        var bookmarkCache = CacheFactory.get( 'bookmarkCache' );
+
+        return {
+            set: function(id) {
+                bookmarkCache.put( id, 'bookmarked' );
+            },
+            get: function(id) {
+                bookmarkCache.get( id );
+                console.log( id );
+            },
+            check: function(id) {
+                var keys = bookmarkCache.keys();
+                console.log('bookmark keys: ', keys);
+                var index = keys.indexOf(id);
+                if(index >= 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            remove: function(id) {
+                bookmarkCache.remove(id);
+            }
+        }
+
     })
     .run(function ($ionicPlatform, $ionicAnalytics,
-                   auth, $rootScope, store, ionicReady,
+                   auth, $rootScope, store,
                    jwtHelper, $location, $ionicLoading) {
 
 
-        ionicReady().then(function() {
-            console.log('ionicReady().then');
-            // Stuff to do when the platform is finally ready.
+        $ionicPlatform.ready(function () {
             ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
             ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
             ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");
 
-            $ionicAnalytics.register();
+            $ionicAnalytics.register({
+                // Don't send any events to the analytics backend.
+                // (useful during development)
+                dryRun: false // TODO: change to false before publish
+            });
 
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -98,7 +250,16 @@ angular.module('quarky', ['ionic',
     })
 
     .config(function ($stateProvider, $urlRouterProvider, authProvider, $httpProvider,
-                      jwtInterceptorProvider) {
+                      jwtInterceptorProvider, CacheFactoryProvider) {
+
+        angular.extend(CacheFactoryProvider.defaults, {
+            'storageMode': 'localStorage',
+            'capacity': 10,
+            'maxAge': 10800000,
+            'deleteOnExpire': 'aggressive',
+            'recycleFreq': 10000
+        });
+
         $stateProvider
 
             .state('login', {
@@ -118,6 +279,21 @@ angular.module('quarky', ['ionic',
                     'menuContent': {
                         templateUrl: "templates/profile.html",
                         controller: 'ProfileCtrl'
+                    }
+                },
+                data: {
+                    // This tells Auth0 that this state requires the user to be logged in.
+                    // If the user isn't logged in and he tries to access this state
+                    // he'll be redirected to the login page
+                    requiresLogin: true
+                }
+            })
+            .state('app.bookmarks', {
+                url: "/bookmarks",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/bookmarks.html",
+                        controller: 'BookmarksCtrl'
                     }
                 },
                 data: {
@@ -197,7 +373,7 @@ angular.module('quarky', ['ionic',
                 },
                 resolve: {
                     posts: function (AboutService2) {
-                        return AboutService2.getPosts();
+                        return AboutService2.getAboutPosts();
                     }
                 }
             })

@@ -1,22 +1,35 @@
-<ion-view title="{{postTitle}}">
-    <ion-content lazy-scroll padding="true" class="has-header category-bg" ng-init="loadPostList(post.slug)">
+<ion-view title="{{postTitle | capitalize}}">
+    <!--<ion-content lazy-scroll padding="true" class="has-header category-bg" ng-init="preLoadFeed(post.slug)">-->
+        <ion-content lazy-scroll padding="true" class="has-header category-bg" ng-init="initRemoteFeed(post.slug)" ng-controller="GuruDetailCtrl">
 
-        <div ng-if="!postlist.length && !noItems" class="text-center color:white">
+        <ion-refresher on-refresh="initRemoteFeed(post.slug)">
+        </ion-refresher>
+
+       <!-- <div ng-if="!postlist.length && !noItems" class="text-center color:white">
             <h3 class="gloria-h">Getting content...</h3>
             <ion-spinner></ion-spinner>
-        </div>
+        </div>-->
+
         <div ng-if="noItems" class="text-center color:white">
             <h3 class="gloria-h">There are no articles</h3>
             <h3 class="gloria-h">Check back soon!</h3>
         </div>
 
         <ion-list>
-            <ion-item class="item-thumbnail-left" ng-repeat="post in postlist" data-ng-click="openModal(post)">
+            <ion-item class="item-thumbnail-left" ng-repeat="post in posts" data-ng-click="openModal(post)">
                 <img image-lazy-src="{{post.featured_image.source || 'img/coming-soon.png'}}" image-lazy-loader="lines">
                 <h2>{{post.title}}</h2>
                 <div data-ng-bind-html="toTrusted(post.excerpt)"></div>
+                <h5>{{post.modified | date: 'fullDate'}}</h5>
             </ion-item>
         </ion-list>
+
+        <ion-infinite-scroll on-infinite="getRemoteFeed(post.slug)"
+                             data-ng-if="infiniteLoad"
+                             distance="1%"
+                             icon="lines">
+        </ion-infinite-scroll>
+
     </ion-content>
 </ion-view>
 
