@@ -129,14 +129,28 @@ angular.module('quarky', ['ionic',
             return $sce.trustAsHtml(newString);
         }
     })
-    .factory('auth0metadata', function ($resource) {
-        return $resource('https://quarky.auth0.com/api/v2/users/:user',
+    .constant("auth0config", { 'FEED_URL': 'http://soul-hole.net/wp-json/wp/v2/'})
+    .factory('auth0metadata', function ($resource, auth0config) {
+        return $resource(auth0config.FEED_URL,
             {
-                user: '@user'
             },
             {
                 update: {
-                    method: 'PATCH'
+                    method: 'PATCH',
+                    url: auth0config.FEED_URL + 'users/:user',
+                    params: {
+                        user: '@user'
+                    },
+                    headers: {}
+                },
+                getForUser: {
+                    method: 'GET',
+                    cache: false,
+                    url: auth0config.FEED_URL + 'users/:user',
+                    params: {
+                        user: '@user'
+                    },
+                    headers: {}
                 }
             }
         );
@@ -174,7 +188,7 @@ angular.module('quarky', ['ionic',
 
     })
     .run(function ($ionicPlatform, $ionicAnalytics,
-                   auth, $rootScope, store,
+                   auth, $rootScope, store, $ionicPopup,
                    jwtHelper, $location, $ionicLoading) {
 
 
@@ -213,6 +227,13 @@ angular.module('quarky', ['ionic',
         });
         $rootScope.$on('loading:hide', function () {
             $ionicLoading.hide()
+        });
+        $rootScope.$on('loading:offline', function () {
+            $ionicLoading.hide()
+            $ionicPopup.alert({
+                title: 'That did not work',
+                template: 'You seem to be offline...'
+            });
         });
 
         //-------------- auth0
@@ -526,6 +547,23 @@ angular.module('quarky', ['ionic',
                     return config
                 },
                 response: function (response) {
+                    $rootScope.$broadcast('loading:hide')
+                    return response
+                },
+                responseError: function(response) {
+                    var status = response.status;
+                    if ( (status >= 500) && (status < 600) ) {
+                        $rootScope.$broadcast('loading:offline')
+                        return response;
+                    }
+                    if(status <= 0) {
+                        $rootScope.$broadcast('loading:offline')
+                        return response;
+                    }
+                    $rootScope.$broadcast('loading:hide')
+                    return response
+                },
+                requestError: function(response) {
                     $rootScope.$broadcast('loading:hide')
                     return response
                 }
