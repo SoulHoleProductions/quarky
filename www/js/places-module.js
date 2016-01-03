@@ -556,12 +556,18 @@ angular.module('places',
                     var matches = result.map(function (o) {
                         o.formatted_address = null;
                         if(o.address) {
-                            o.formatted_address =
+                            /*o.formatted_address =
                                 (o.address.address_1 || '') + ', ' +
                                 (o.address.address_2 || '') + ', ' +
                                 (o.address.city || '') +', ' +
                                 (o.address.state_province || '') +', '+
-                                (o.address.postal_code || '');
+                                (o.address.postal_code || '');*/
+                            o.formatted_address = '';
+                            o.formatted_address += (o.address.address_1 ? (o.address.address_1 + ', ') : '');
+                            o.formatted_address += (o.address.address_2 ? (o.address.address_2 + ', ') : '');
+                            o.formatted_address += (o.address.city ? (o.address.city + ', ') : '');
+                            o.formatted_address += (o.address.state_province ? (o.address.state_province + ', ') : '');
+                            o.formatted_address += (o.address.postal_code ? (o.address.postal_code) : '');
                         }
                         return {
                             id: o.id,
@@ -577,7 +583,7 @@ angular.module('places',
                     $ionicLoading.hide();
                     $ionicScrollDelegate.resize();
                     if (matches.length === 0) {
-                        $scope.noresult = "Sorry, there are no Quarky matches.";
+                        $scope.noresult = "No Quarky Places for this category, check back soon";
                     }
                 })
                 .catch(function(err){
@@ -668,12 +674,18 @@ angular.module('places',
                 $scope.longitude = o.longitude;
                 if(o.address) {
                     $scope.hasAddress = true;
-                    $scope.formatted_address =
+                    /*$scope.formatted_address =
                         (o.address.address_1 || '') + ', ' +
                         (o.address.address_2 || '') + ', ' +
                         (o.address.city || '') +', ' +
                         (o.address.state_province || '') +', '+
-                        (o.address.postal_code || '');
+                        (o.address.postal_code || '');*/
+                    $scope.formatted_address = '';
+                    $scope.formatted_address += (o.address.address_1 ? (o.address.address_1 + ', ') : '');
+                    $scope.formatted_address += (o.address.address_2 ? (o.address.address_2 + ', ') : '');
+                    $scope.formatted_address += (o.address.city ? (o.address.city + ', ') : '');
+                    $scope.formatted_address += (o.address.state_province ? (o.address.state_province + ', ') : '');
+                    $scope.formatted_address += (o.address.postal_code ? (o.address.postal_code) : '');
                 } else $scope.hasAddress = false;
                 if(o.website) {
                     $scope.hasWebsite = true;

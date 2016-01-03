@@ -37,7 +37,12 @@ TODO: add infinite scroll
         </div>
         <!-- Google Places -->
 
-        <h2 class="gloria-h">{{noresult}}</h2>
+        <div ng-if="noresult" class="card no-margin">
+            <div class="item item-icon-left item-text-wrap item-balanced gloria-h">
+                <i class="icon ion-information-circled"></i>
+                {{noresult}}
+            </div>
+        </div>
 
     </ion-content>
 </ion-view>

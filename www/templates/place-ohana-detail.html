@@ -18,7 +18,7 @@ Enables user to open the Place separately in a google map webpage
 				<h2>{{name}}</h2>
 				<p>{{formatted_address}}</p>
 			</div>
-			<div class="item tabs tabs-secondary tabs-icon-top">
+			<div class="item tabs tabs-secondary tabs-dark tabs-icon-top">
 				<a ng-show="hasPhones" class="tab-item" href="tel:{{phones[0].number}}">
 					<i class="icon ion-ios-telephone"></i> {{phones[0].number}}
 				</a>
@@ -30,7 +30,7 @@ Enables user to open the Place separately in a google map webpage
 				</a>
 			</div>
 			<div class="item item-image">
-				<img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{latitude}},{{longitude}}&zoom=14&markers=color:blue%7C{{latitude}},{{longitude}}&size=310x310&sensor=true" width="300" height="300" />
+				<img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{latitude}},{{longitude}}&zoom=14&markers=color:blue%7C{{latitude}},{{longitude}}&size=310x310&scale=2" width="100%" />
 			</div>
 
 				<div class="item item-divider item-text-wrap">

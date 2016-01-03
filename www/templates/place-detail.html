@@ -47,9 +47,9 @@ Enables user to open the Place separately in a google map webpage
 
 				</div>
 
-				<p ng-show="!hasPhotos">
-				<img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{place.position.latitude}},{{place.position.longitude}}&zoom=14&markers=color:blue%7C{{place.position.latitude}},{{place.position.longitude}}&size=310x310&sensor=true" width="300" height="300" />
-				</p>
+				<div class="item item-image" ng-show="!hasPhotos">
+				<img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{place.position.latitude}},{{place.position.longitude}}&zoom=14&markers=color:blue%7C{{place.position.latitude}},{{place.position.longitude}}&size=310x310&scale=2" width="100%"/>
+				</div>
 
 
 			</div>
