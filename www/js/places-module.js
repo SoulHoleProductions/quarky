@@ -210,38 +210,20 @@ angular.module('places',
     .controller('PlacesMasterCtrl', function ($scope, $rootScope, $state, PlacesService,
                                               $ionicScrollDelegate, $ionicLoading, auth,
                                               $ionicHistory, $ionicPopup, OhanaAPI,
-                                              $cordovaGeolocation, $ionicPlatform, auth0metadata) {
+                                              $cordovaGeolocation, $ionicPlatform,
+                                              UserSettings, UserStorageService) {
         $scope.posts = [];
         //$scope.gPlace; // used with googleplace directive
         //$scope.selectedPlace; // used with googleplace directive
         $rootScope.geoWatch = null;
 
-        // SEARCH SETTINGS
-        function updateSearchModel(srchModel) {
-            if (srchModel) {
-                var request = {};
-                request.user = auth.profile.user_id;
 
-                var body = {
-                    "user_metadata": {
-                        "searchModel": srchModel
-                    }
-                };
-
-                return auth0metadata.update(request, body).$promise
-                    .then(function (o) {
-                        //console.log("updated Auth0: ", o);
-                        $scope.searchModel = o.user_metadata.searchModel;
-                        auth.profile.user_metadata.searchModel = o.user_metadata.searchModel;
-                        $ionicLoading.hide();
-                        return o;
-                    })
-                    .catch(function (err) {
-                        console.log("error updating Auth0: ", err);
-                        $ionicLoading.hide();
-                        return err;
-                    });
-            }
+        // SEARCH SETTINGS ---------------
+        $scope.searchModel = UserSettings.searchModel;
+        function changeSetting(type, value) {
+            $scope[type] = value;
+            UserSettings[type] = value;
+            UserStorageService.serializeSettings();
         };
         $scope.searchSettings = function() {
 
@@ -255,13 +237,13 @@ angular.module('places',
 
             var myPopup = $ionicPopup.show({
                 template:
-                '<li class="item item-toggle">Show categories first:<label class="toggle"><input ng-model="searchModel.showCategories" type="checkbox">'+
+                '<li class="item item-toggle">Show categories first:<label class="toggle"><input ng-model="$parent.searchModel.showCategories" type="checkbox">'+
                 '<div class="track"> <div class="handle"></div> </div> </label></li>'+
                 '<div class="padding range range-dark"><i class="icon ion-android-walk"></i>'+
-                '<input type="range" ng-model="searchModel.radius" name="distance" min="1" max="25" value="25">'+
+                '<input type="range" ng-model="$parent.searchModel.radius" name="distance" min="1" max="25">'+
                 '<i class="icon ion-android-car"></i> {{ searchModel.radius}} miles </div>'+
                 '<div class="padding range range-dark"><i class="icon ion-minus-circled"></i>'+
-                '<input type="range" ng-model="searchModel.per_page" name="distance" min="1" max="100">'+
+                '<input type="range" ng-model="$parent.searchModel.per_page" name="distance" min="1" max="100">'+
                 '<i class="icon ion-plus-circled"></i> {{ searchModel.per_page}} results </div>'+
 
                 '<button class="button button-full button-small button-dark icon ion-location">Your Location</button>'+
@@ -275,6 +257,7 @@ angular.module('places',
                         text: '<b>Save</b>',
                         type: 'button-positive',
                         onTap: function (e) {
+                            //console.log('my searchModel is: ', $scope.searchModel);
                             return $scope.searchModel;
                         }
                     }
@@ -282,23 +265,15 @@ angular.module('places',
             });
 
             myPopup.then(function (res) {
-                console.log('Tapped!', res);
-                updateSearchModel(res);
+                //console.log('Tapped!', res);
+                changeSetting('searchModel', res);
             });
 
         }
-        if (auth.profile.user_metadata && auth.profile.user_metadata.searchModel) {
-            $scope.searchModel = auth.profile.user_metadata.searchModel;
-        } else {
-            $scope.searchModel = {}; // used with autocomplete
-            $scope.searchModel.radius = '25';
-            $scope.searchModel.per_page = '10';
-            $scope.searchModel.showCategories = false;
-        }
+        // Search Settings -----------------
 
 
         // ION-AUTOCOMPLETE
-
         $scope.autocompleteCallback = function (query, isInitializing) {
          /*   console.log(
                 "autocompleteCallback: query:", query,
@@ -323,7 +298,6 @@ angular.module('places',
                 return OhanaAPI.locations(request).$promise;
             }
         }
-
         $scope.autocompleteSelectedItem = function (callback) {
             // callback.item, callback.componentId, callback.selectedItems
             // print out the selected item
@@ -339,7 +313,6 @@ angular.module('places',
             }
 
         }
-
 
         // =================
 

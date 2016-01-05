@@ -8,9 +8,10 @@ angular.module('guru', ['ngCordova'])
         console.log("in GuruListCtrl, postId is:  ", postId);
         $scope.posts = GuruService.getListData(postId);
     })
-    .controller('GuruDetailCtrl', function ($scope, auth, $sanitize, Bookmark,
+    .controller('GuruDetailCtrl', function ($scope, auth, $sanitize,
                                             $ionicPlatform, GuruService,
                                             $stateParams, $ionicModal,
+                                            UserSettings, UserStorageService,
                                             wordpressAPI, wordpressConfig,
                                             $sce, $cordovaSocialSharing) {
 
@@ -137,6 +138,43 @@ angular.module('guru', ['ngCordova'])
 
 
         // --------------- modal from the given template URL
+
+        // Bookmarking
+        $scope.bookmarks = UserSettings.bookmarks;
+        function checkBookmark(id) {
+            var keys;
+            try {
+                keys = Object.keys($scope.bookmarks);
+            } catch(e) {
+                keys = [];
+            }
+            console.log('bookmark keys: ', keys);
+            var index = keys.indexOf(id);
+            if (index >= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function changeSetting(type, value) {
+            $scope[type] = value;
+            UserSettings[type] = value;
+            UserStorageService.serializeSettings();
+        };
+        $scope.bookmarkItem = function (id) {
+            if ($scope.bookmarked) {
+                var change = $scope.bookmarks;
+                delete change[id];
+                changeSetting('bookmarks', change);
+                $scope.bookmarked = false;
+            } else {
+                var change = $scope.bookmarks;
+                change[id] = "bookmarked";
+                changeSetting('bookmarks', change);
+                $scope.bookmarked = true;
+            }
+        };
+
         $ionicModal.fromTemplateUrl('templates/article-modal.html', function ($ionicModal) {
             $scope.modal = $ionicModal;
         }, {
@@ -147,7 +185,7 @@ angular.module('guru', ['ngCordova'])
         });
         $scope.openModal = function (aPost) {
             $scope.aPost = aPost;
-            $scope.bookmarked = Bookmark.check(aPost.ID.toString());
+            $scope.bookmarked = checkBookmark(aPost.ID.toString());
             $scope.modal.show()
         }
         $scope.closeModal = function () {
@@ -159,17 +197,6 @@ angular.module('guru', ['ngCordova'])
         // Execute action on hide modal
         $scope.$on('modal.hidden', function() {
         });
-
-        // Bookmarking
-        $scope.bookmarkItem = function (id) {
-            if ($scope.bookmarked) {
-                Bookmark.remove(id);
-                $scope.bookmarked = false;
-            } else {
-                Bookmark.set(id);
-                $scope.bookmarked = true;
-            }
-        };
 
         // ----------------- modal
 

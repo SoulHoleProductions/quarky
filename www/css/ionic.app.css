@@ -15,6 +15,10 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.spinner svg {
+  stroke: #387ef5;
+  fill: #387ef5; }
+
 /*$positive:                        #457cfa !default; //facebook
 $calm:                            #87acff !default; //twitter
 $assertive:                       #ff7959 !default; //google

@@ -2,8 +2,14 @@
     <!--<ion-content lazy-scroll padding="true" class="has-header category-bg" ng-init="preLoadFeed(post.slug)">-->
         <ion-content lazy-scroll padding="true" class="has-header category-bg" ng-init="initRemoteFeed(post.slug)" ng-controller="GuruDetailCtrl">
 
-        <ion-refresher on-refresh="initRemoteFeed(post.slug)">
         </ion-refresher>
+            <ion-refresher
+                    class="spinner-positive"
+                    spinner = "lines"
+                    refreshing-icon = "lines"
+                    pulling-icon = "ion-arrow-down-c positive"
+                    on-refresh="initRemoteFeed(post.slug)">
+            </ion-refresher>
 
        <!-- <div ng-if="!postlist.length && !noItems" class="text-center color:white">
             <h3 class="gloria-h">Getting content...</h3>
@@ -30,8 +36,7 @@
 
         <ion-infinite-scroll on-infinite="getRemoteFeed(post.slug)"
                              data-ng-if="infiniteLoad"
-                             distance="1%"
-                             icon="lines">
+                             distance="1%">
         </ion-infinite-scroll>
 
     </ion-content>

@@ -1,6 +1,11 @@
 <ion-view title="About">
     <ion-content padding="true" class="has-header scroll-bg" ng-init="getLocalFeed()">
-        <ion-refresher on-refresh="initRemoteFeed()">
+        <ion-refresher
+                class="spinner-positive"
+                spinner = "lines"
+                refreshing-icon = "lines"
+                pulling-icon = "ion-arrow-down-c positive"
+                on-refresh="initRemoteFeed()">
         </ion-refresher>
 <!--
         The database is called {{db_name}}, there are {{doc_count}} docs, dbtype is {{sqlite_plugin}}

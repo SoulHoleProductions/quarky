@@ -4,32 +4,34 @@
                 <ion-content class="flex-gallery text-center padding category-bg" ng-init="initRemoteFeed()"
                              ng-controller="HomeCtrl">
         -->
-        <ion-refresher on-refresh="initRemoteFeed()">
+        <ion-refresher
+                class="spinner-positive"
+                spinner = "lines"
+                refreshing-icon = "lines"
+                pulling-icon = "ion-arrow-down-c positive"
+                on-refresh="initRemoteFeed()">
         </ion-refresher>
 
         <div ng-if="!infiniteLoad" class="text-center color:white">
-            <div class="card no-margin">
-                <div class="item item-icon-left item-text-wrap item-balanced">
+            <div class="card">
+                <div class="item item-icon-left item-text-wrap item-stable">
                     <i class="icon ion-arrow-down-c"></i>
                     <b>Pull down</b> to get the latest!
                 </div>
-                <div class="item item-image no-padding no-margin">
-                    <img data-ng-click="initRemoteFeed()" data-ng-src="img/splash.png">
-                </div>
-                <div class="item item-icon-left item-text-wrap item-royal gloria-h">
-                    <i class="icon ion-code"></i>
-                    Cheat codes for thriving, not just surviving
-                </div>
             </div>
+
+            <img data-ng-click="initRemoteFeed()" width="300px" src="img/quarkyIcon512.png">
 
         </div>
 
         <span ng-repeat="p in posts">
-                <img data-ng-click="openModal(p)" data-ng-src="{{p.featured_image.source || 'img/coming-soon.png'}}" width="300px" alt="">
+                <img data-ng-click="openModal(p)" data-ng-src="{{p.featured_image.source || 'img/coming-soon.png'}}"
+                     width="300px" alt="">
         </span>
 
         <ion-infinite-scroll on-infinite="getRemoteFeed()"
-                             data-ng-if="infiniteLoad" icon="">
+                             spinner = "lines"
+                             data-ng-if="infiniteLoad">
         </ion-infinite-scroll>
     </ion-content>
 </ion-view>

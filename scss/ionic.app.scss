@@ -30,6 +30,11 @@ $assertive: #ef473a !default;
 $royal: #000000 !default;
 $dark: #444 !default;
 
+.spinner svg {
+  stroke: $positive;
+  fill: $positive;
+}
+
 //$dark:                            #6e6c6c !default; //username
 /*$positive:                        #457cfa !default; //facebook
 $calm:                            #87acff !default; //twitter

@@ -9,7 +9,6 @@ angular.module('quarky', ['ionic',
         'places',
         'auth0',
         'angular-storage',
-        'angular-cache',
         'angular-jwt',
         'ngResource',
         'ion-autocomplete'
@@ -129,24 +128,41 @@ angular.module('quarky', ['ionic',
             return $sce.trustAsHtml(newString);
         }
     })
-    .constant("auth0config", { 'FEED_URL': 'http://soul-hole.net/wp-json/wp/v2/'})
-    .factory('auth0metadata', function ($resource, auth0config) {
-        return $resource(auth0config.FEED_URL,
-            {
+    .value('UserSettings', // These are the default user settings for a new user
+        {
+            "birthday": new Date(2000, 01, 01),
+            "want_add_places": false,
+            "gender": "male",
+            "searchModel": {
+                "radius": "25",
+                "per_page": "15",
+                "showCategories": false,
+                "name": [
+                    ""
+                ]
             },
+            "bookmarks": {
+                "4988": "bookmarked"
+            }
+        }
+    )
+    .factory('auth0metadata', function($resource) {
+        var FEED_URL = 'http://quarky.auth0.com/api/v2/';
+        return $resource(FEED_URL,
+            {},
             {
-                update: {
+                updateUser: {
                     method: 'PATCH',
-                    url: auth0config.FEED_URL + 'users/:user',
+                    url: FEED_URL + 'users/:user',
                     params: {
                         user: '@user'
                     },
                     headers: {}
                 },
-                getForUser: {
+                getUser: {
                     method: 'GET',
                     cache: false,
-                    url: auth0config.FEED_URL + 'users/:user',
+                    url: FEED_URL + 'users/:user',
                     params: {
                         user: '@user'
                     },
@@ -154,38 +170,71 @@ angular.module('quarky', ['ionic',
                 }
             }
         );
+
     })
-    .factory('Bookmark', function( CacheFactory ) {
+    .service("UserStorageService", function (UserSettings, auth, auth0metadata, $ionicPopup) {
 
-        if ( ! CacheFactory.get('bookmarkCache') ) {
-            CacheFactory.createCache('bookmarkCache');
-        }
+        deserializeSettings();
 
-        var bookmarkCache = CacheFactory.get( 'bookmarkCache' );
-
+        // API
         return {
-            set: function(id) {
-                bookmarkCache.put( id, 'bookmarked' );
-            },
-            get: function(id) {
-                bookmarkCache.get( id );
-                console.log( id );
-            },
-            check: function(id) {
-                var keys = bookmarkCache.keys();
-                console.log('bookmark keys: ', keys);
-                var index = keys.indexOf(id);
-                if(index >= 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            },
-            remove: function(id) {
-                bookmarkCache.remove(id);
-            }
+            serializeSettings: serializeSettings,
+            deserializeSettings: deserializeSettings
+        };
+
+        function getAuth0User() {
+            return auth.profile.user_id;
+        }
+        function updateAuth0() {
+            var request = {};
+            request.user = getAuth0User();
+
+            var body = {
+                "user_metadata": UserSettings
+            };
+
+            return auth0metadata.updateUser(request, body).$promise;
         }
 
+        function serializeSettings() {
+            updateAuth0()
+                .then(function (o) {
+                    console.log("User Settings saved: ", o);
+                })
+                .catch(function (err) {
+                    console.log("Error: User Settings not saved", err);
+                    $ionicPopup.alert({
+                        title: 'Error',
+                        template: 'Could not save your settings'
+                    });
+                });
+        }
+        function deserializeSettings() {
+            auth0metadata.getUser( { user : getAuth0User() } ).$promise
+                .then(function(o){
+                    console.log('deserialize got o: ', o);
+                    angular.extend(UserSettings, o.user_metadata);
+                    console.log("User Settings restored");
+                    /*var newSettings, rawSettings = o;
+                    if (rawSettings) {
+                        newSettings = JSON.parse(rawSettings);
+                        if (newSettings) {
+                            // use extend since it copies one property at a time
+                            angular.extend(UserSettings, newSettings);
+                            console.log("User Settings restored");
+                        }
+                    }*/
+
+                })
+                .catch(function(err){
+                    console.log("Unable to restore settings: ", err);
+                    $ionicPopup.alert({
+                        title: 'Error',
+                        template: 'Could not restore your settings'
+                    });
+                });
+
+        }
     })
     .run(function ($ionicPlatform, $ionicAnalytics,
                    auth, $rootScope, store, $ionicPopup,
@@ -203,8 +252,6 @@ angular.module('quarky', ['ionic',
                 dryRun: false // TODO: change to false before publish
             });
 
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
@@ -231,7 +278,7 @@ angular.module('quarky', ['ionic',
         $rootScope.$on('loading:offline', function () {
             $ionicLoading.hide()
             $ionicPopup.alert({
-                title: 'That did not work',
+                title: 'No network',
                 template: 'You seem to be offline...'
             });
         });
@@ -239,7 +286,6 @@ angular.module('quarky', ['ionic',
         //-------------- auth0
         //This hooks all auth events
         auth.hookEvents();
-        //This event gets triggered on URL change
         var refreshingToken = null;
         $rootScope.$on('$locationChangeStart', function () {
             var token = store.get('token');
@@ -270,16 +316,9 @@ angular.module('quarky', ['ionic',
 
     })
 
-    .config(function ($stateProvider, $urlRouterProvider, authProvider, $httpProvider,
-                      jwtInterceptorProvider, CacheFactoryProvider) {
+    .config(function ($stateProvider, $urlRouterProvider,
+                      authProvider, $httpProvider, jwtInterceptorProvider) {
 
-        angular.extend(CacheFactoryProvider.defaults, {
-            'storageMode': 'localStorage',
-            'capacity': 10,
-            'maxAge': 10800000,
-            'deleteOnExpire': 'aggressive',
-            'recycleFreq': 10000
-        });
 
         $stateProvider
 
@@ -550,20 +589,20 @@ angular.module('quarky', ['ionic',
                     $rootScope.$broadcast('loading:hide')
                     return response
                 },
-                responseError: function(response) {
+                responseError: function (response) {
                     var status = response.status;
-                    if ( (status >= 500) && (status < 600) ) {
+                    if ((status >= 500) && (status < 600)) {
                         $rootScope.$broadcast('loading:offline')
                         return response;
                     }
-                    if(status <= 0) {
+                    if (status <= 0) {
                         $rootScope.$broadcast('loading:offline')
                         return response;
                     }
                     $rootScope.$broadcast('loading:hide')
                     return response
                 },
-                requestError: function(response) {
+                requestError: function (response) {
                     $rootScope.$broadcast('loading:hide')
                     return response
                 }
