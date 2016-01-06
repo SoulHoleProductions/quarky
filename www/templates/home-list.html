@@ -31,6 +31,8 @@
 
         <ion-infinite-scroll on-infinite="getRemoteFeed()"
                              spinner = "lines"
+                             immediate-check="false"
+                             distance="1%"
                              data-ng-if="infiniteLoad">
         </ion-infinite-scroll>
     </ion-content>

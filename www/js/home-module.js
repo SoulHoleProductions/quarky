@@ -8,44 +8,53 @@ angular.module('home-module', ['ionicLazyLoad', 'ngCordova'])
         $scope.pagenum = null;
         $scope.infiniteLoad = false;
 
+
+        function saveIonicUser(user) {
+            user.save().then(
+                function(response) {
+                    console.log('user was saved: ', response);
+                },
+                function(error) {
+                    console.log('user was NOT saved, error:', error);
+                }
+            );
+        }
         // --------------------- IONIC.IO
         if(auth.isAuthenticated) {
 
-            UserStorageService.serializeSettings();
+            //UserStorageService;
 
-            var user = null;
             // kick off the platform web client
             Ionic.io();
 
-            Ionic.User.load(auth.profile.user_id).then(
-                //success
-                function(loadedUser) {
-                    //console.log("loaded a user: ", loadedUser);
-                    // if this user should be treated as the current user,
-                    // you will need to set it as such:
-                    Ionic.User.current(loadedUser);
+            // this will give you a fresh user or the previously saved 'current user'
+            var user = Ionic.User.current();
 
-                    // assuming you previous had var user = Ionic.User.current()
-                    // you will need to update your variable reference
-                    user = Ionic.User.current();
-                    //console.log("current user is: ", user);
-                    saveUser(user);
-                },
-                // failed to load user from platform
-                function(err) {
-                    //failure loading user
-                    console.log('failed to laod user from ionic.io, assume new user: ', err);
+            // if the user doesn't have an id, you'll need to give it one.
+            if (!user.id) {
+                user.id = auth.profile.user_id;
+                user.set('name', auth.profile.name );
+                user.set('email', auth.profile.email );
+                user.set('picture', auth.profile.picture );
+                user.set('nickname', auth.profile.nickname );
+                if(auth.profile.app_metadata && auth.profile.app_metadata.can_add_places) {
+                    user.set('can_add_places', auth.profile.app_metadata.can_add_places.toString());
+                } else {
+                    user.set('can_add_places', 'false');
+                }
 
-                    user.id = auth.profile.user_id;
-                    saveUser(user);
-                });
+                // TODO: add user_metadata (UserSettings) to the IonicUser
+
+                saveIonicUser(user);
+            }
+
 
         } else {
             console.log('Oops, no user authenticated!');
         }
 
         function saveUser(user) {
-            user.set('name', auth.profile.name );
+            /*user.set('name', auth.profile.name );
             user.set('email', auth.profile.email );
             user.set('picture', auth.profile.picture );
             user.set('nickname', auth.profile.nickname );
@@ -71,7 +80,7 @@ angular.module('home-module', ['ionicLazyLoad', 'ngCordova'])
                 user.set('can_add_places', auth.profile.app_metadata.can_add_places.toString());
             } else {
                 user.set('can_add_places', 'false');
-            }
+            }*/
             console.log('About to SAVE USER to ionic.io: ', user);
             user.save().then(
                 function(response) {

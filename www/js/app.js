@@ -1,6 +1,7 @@
 angular.module('quarky', ['ionic',
-        'ionic.service.core', 'ngCordova',
+        'ionic.service.core',
         'ionic.service.analytics',
+        'ngCordova',
         'about-module',
         'home-module',
         'menu',
@@ -130,7 +131,7 @@ angular.module('quarky', ['ionic',
     })
     .value('UserSettings', // These are the default user settings for a new user
         {
-            "birthday": new Date(2000, 01, 01),
+            "birthday": new Date(),
             "want_add_places": false,
             "gender": "male",
             "searchModel": {
@@ -141,9 +142,7 @@ angular.module('quarky', ['ionic',
                     ""
                 ]
             },
-            "bookmarks": {
-                "4988": "bookmarked"
-            }
+            "bookmarks": {}
         }
     )
     .factory('auth0metadata', function($resource) {
@@ -186,6 +185,7 @@ angular.module('quarky', ['ionic',
             return auth.profile.user_id;
         }
         function updateAuth0() {
+            console.log("UserSettings to update: ", UserSettings);
             var request = {};
             request.user = getAuth0User();
 
@@ -199,7 +199,7 @@ angular.module('quarky', ['ionic',
         function serializeSettings() {
             updateAuth0()
                 .then(function (o) {
-                    console.log("User Settings saved: ", o);
+                    console.log("User Settings saved: ", o.user_metadata);
                 })
                 .catch(function (err) {
                     console.log("Error: User Settings not saved", err);
@@ -212,9 +212,16 @@ angular.module('quarky', ['ionic',
         function deserializeSettings() {
             auth0metadata.getUser( { user : getAuth0User() } ).$promise
                 .then(function(o){
-                    console.log('deserialize got o: ', o);
-                    angular.extend(UserSettings, o.user_metadata);
-                    console.log("User Settings restored");
+                    //console.log('deserialize got o: ', o);
+                    if(o.user_metadata) {
+                        angular.extend(UserSettings, o.user_metadata);
+                        console.log("User Settings restored: ", o.user_metadata);
+                        console.log("UserSettings: ", UserSettings);
+                    } else {
+                        // we don't have user_metadata, so create them
+                        console.log("we don't have user_metadata, so create them...");
+                        serializeSettings();
+                    }
                     /*var newSettings, rawSettings = o;
                     if (rawSettings) {
                         newSettings = JSON.parse(rawSettings);
