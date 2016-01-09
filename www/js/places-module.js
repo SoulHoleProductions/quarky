@@ -35,7 +35,7 @@ angular.module('places',
         'FEED_URL': 'https://quarkyapp.com/wp-json/posts/',
         'OHANA_URL': 'https://soulhole-api.herokuapp.com/api/',   // Production
         'OHANA_TOKEN': 'db8473ec53916f6dad2be7fad3f38d5c',                             // Production
-        //'OHANA_URL': 'http://localhost:8080/api/',                  // Dev
+        //'OHANA_URL': 'http://localhost:8080/api/',                  // Dev TODO: CAN NOT USE HTTP
         //'OHANA_TOKEN': '219c7eaef3f68dac0b0849033d64b059',          // Dev
         'PAGE_SIZE': 70,
         'CATEGORY': 'eGuru',

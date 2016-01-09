@@ -15,7 +15,7 @@ angular.module('quarky', ['ionic',
         'ion-autocomplete'
     ])
     .constant("wordpressV2Config", {
-        'FEED_URL': 'http://soul-hole.net/wp-json/wp/v2/',
+        'FEED_URL': 'https://soul-hole.net/wp-json/wp/v2/',
         'PAGE_SIZE': -1, // get them all
         'STATUS': 'publish',
 //        'TAG': 'elevate1',
@@ -146,7 +146,7 @@ angular.module('quarky', ['ionic',
         }
     )
     .factory('auth0metadata', function($resource) {
-        var FEED_URL = 'http://quarky.auth0.com/api/v2/';
+        var FEED_URL = 'https://quarky.auth0.com/api/v2/';
         return $resource(FEED_URL,
             {},
             {
@@ -586,7 +586,23 @@ angular.module('quarky', ['ionic',
         $httpProvider.interceptors.push('jwtInterceptor');
 
         //-------------- global http loading
-        $httpProvider.interceptors.push(function ($rootScope) {
+        $httpProvider.interceptors.push(function ($rootScope, $q) {
+
+            var handleError = function (response) {
+                console.log('$resource Error: ', response);
+                var status = response.status;
+                if ((status >= 500) && (status < 600)) {
+                    $rootScope.$broadcast('loading:offline')
+                    return response;
+                }
+                if (status <= 0) {
+                    $rootScope.$broadcast('loading:offline')
+                    return response;
+                }
+                $rootScope.$broadcast('loading:hide');
+                return response;
+            }
+
             return {
                 request: function (config) {
                     $rootScope.$broadcast('loading:show')
@@ -597,21 +613,10 @@ angular.module('quarky', ['ionic',
                     return response
                 },
                 responseError: function (response) {
-                    var status = response.status;
-                    if ((status >= 500) && (status < 600)) {
-                        $rootScope.$broadcast('loading:offline')
-                        return response;
-                    }
-                    if (status <= 0) {
-                        $rootScope.$broadcast('loading:offline')
-                        return response;
-                    }
-                    $rootScope.$broadcast('loading:hide')
-                    return response
+                   return $q.reject(handleError(response));
                 },
                 requestError: function (response) {
-                    $rootScope.$broadcast('loading:hide')
-                    return response
+                    return $q.reject(handleError(response));
                 }
             }
         });

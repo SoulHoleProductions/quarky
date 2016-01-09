@@ -40,7 +40,7 @@ angular.module('about-module', ['ionicLazyLoad', 'ngCordova'])
                     $scope.postlist = data;
                     return data;
                 })
-                .catch(function (err) {
+                .catch(function (data) {
                     console.log("error: ", data);
                     return data;
                 });

@@ -72,17 +72,11 @@ angular.module('guru', ['ngCordova'])
                     return result;
                 })
                 .catch(function (err) {
-                    console.log('Network error! ', data, status);
                     $scope.$broadcast("scroll.infiniteScrollComplete");
                     $scope.$broadcast("scroll.refreshComplete");
                     $scope.infiniteLoad = false;
-                    $rootScope.$broadcast('loading:hide')
-                    $ionicPopup.alert({
-                        title: 'Network Error!',
-                        template: 'Try again when you have a network connection.'
-                    });
-                    $scope.noItems = true;
-                    return data;
+                    //$scope.noItems = true;
+                    return err.data;
                 });
         };
         // FEED ----
