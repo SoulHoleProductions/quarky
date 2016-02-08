@@ -1,3 +1,270 @@
+## [8.1.3] - 2016-01-08
+
+### Fixed
+
+- [] Merge pull request #283 from auth0/log-in-sign-up-tabs-text (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d8c6f8eb28cada5041a1bd01ed38d80890df2256
+- [] Add translations for login/sign up tabs (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/aaf246a6861cc140b249ae52904b54e560784eed
+- [] Update version for CDN scripts in README (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1cf50e5cc5d3945f724481381eccc3d26ffd9d07
+
+## [8.1.2] - 2016-01-07
+
+### Fixed
+
+- [] Merge pull request #282 from auth0/fixes (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/74d9baa6bd935a5bb0637c37324de536b9cf88ba
+- [] Avoid flashing a popup lock when in inline mode (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c433c374adf8c8bed7e5ca1367b4283a94d450d7
+- [] Different box shadow for inline locks (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/e992814b711679c2161005247a9bdb1f36fa6759
+
+## [8.1.1] - 2016-01-05
+
+### Fixed
+
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/974ac6affa3a1352821b4bd27ad89af6deb537c3
+- [] fix margin spin msg (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/18028a7f3882fbb49dd2b42d8a36ff7e565bfea2
+- [] fix bg gradient (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/504ac01268974bb8a3646d7d1d56ab0532a3972d
+
+## [8.1.0] - 2016-01-05
+
+### Fixed
+
+- [] Merge pull request #279 from auth0/electron-support (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1ada9576e24c8520ecba8b61cc63996eb569eaca
+- [] Upgrade to auth0.js with openWindow method (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/98383d77568e7434092925802253de75c6fc09c0
+- [] Allow to override Auth0.prototype.openWindow (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/8e3bead85241296bb10c0267640b05d9e2e3ea31
+- [] Ensure default icon works when serving from the fs (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d9766a7b4b2a9a0315695f0c90b1bb3bbc2f23cd
+
+## [8.0.6] - 2016-01-05
+
+### Fixed
+
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/968feaa76377c96ed116526ff8d3a6bd44df7d0c
+- [] disabled animation with pwd-strength (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/7fa4e4417ba953b94fc2d5e3e4c230933b320041
+
+## [8.0.5] - 2016-01-04
+
+### Fixed
+
+- [] Merge update with zuul (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/2d3b2dfb6ef028c2d478597197dd01b491d9efbc
+- [] Merge pull request #281 from auth0/fix/zuul (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2918093790b61780d92d67e36ea451fadf528e74
+- [] gravatar blur only (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/266ea6cb0f284a7d82f3925ddc2448fc0ce7bbfc
+- [] bump zuul@3.8.0 and pin zuul-ngrok@3.0.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/7175ff0011959813220d9c87b4738fc8da799761
+- [] fix loading font size (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/94d363de6433e8775bee3a8bb8fa3302ddf99722
+- [] fix popup safari (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/c2239ec508d7f76959866bd1d019aaf5ad5629e8
+
+## [8.0.4] - 2015-12-30
+
+### Fixed
+
+- [] fix height mobile (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/4407d2f3ad860f1af6861befcc5dc984d92ee28a
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a9a34652f75a892a5bf95b7c5d3cd994eb79b22f
+- [] minor fix sso (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/f1ee15e5bc16c88723d3854f14a746623ba63ebd
+- [] Add Heroku generated app.json (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/ef06221550f86eff57e1af15025cd16ce37015de
+
+## [8.0.3] - 2015-12-29
+
+### Fixed
+
+- [] Remove commented lines for email error messages (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/db43f361a8f493a75700fa198c0d4399132da493
+- [] Don't expect email input error messages in tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0aea435c92c7287decab2b47606fe0757f9f8a91
+- [] styled SSO (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/9fd0897bce40671a4705972c3ff8375979f84b6c
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/326bd9de0dad77baa0f2dbc3a7343040b4ed8e8c
+- [] fix error pulse (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/5c83a89a596b6a3bd4d7c262fe0e23ddb15eaace
+
+## [8.0.2] - 2015-12-29
+
+### Fixed
+
+- [] Merge pull request #280 from auth0/enterprise-ready-event (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/efd524aad70b1fef5ab5c212fe7d5d84659b8155
+- [] Add an 'enterprise ready' event (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f7f065aabefdd235dc294a8ec5bbf1513504157c
+
+## [8.0.1] - 2015-12-29
+
+### Fixed
+
+- [] Fix css blur support check (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d2a88aa6f5df036d4ca9f785f80b6df4febdffcf
+- [] Merge pull request #275 from auth0/header-solid-bg-fallback (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/330c1dc995e67b4bc22c5d6ef900ef4af730f9c5
+- [] header support or no support styled (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/94a45b85c22b9396bebfb0d9e237abf4647fc1fd
+- [] WIP fallback to solid header background (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/918c7c9667afa46114e0be1de44b1c85636a3eb3
+- [] Avoid flash when rendering inside a container (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0001fb0f242aa5c1d7a14ac624a7e4058db32e58
+- [] fix header blur (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a1c627abb2430abebf25cb6b484eee2f094a9d13
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a324fab78adbe4f391d56268bae8854d2e5a3dad
+- [] Hide forgot pass link for enterprise conn (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/64a1de03b31a4ac811eeff14c452c8c69bf73bb8
+- [] fix input border (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/06734958055e81903d8e0fb060c0ab52c425c5a5
+- [] fix close button (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/d5f3ce94da13be14f090228f845285af17821e8d
+
+## [8.0.0] - 2015-12-18
+
+### Fixed
+
+- [] Merge pull request #272 from auth0/new-skin-tweaks (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/3ef12d5b0334766b43e09a172bb7a8c02153dddc
+- [] fix centered mobile (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/cb994fc41925b0e975f05159787e5510fa01afb5
+- [] Update selectors in tests to match the new markup (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/97838964daeee56e637105d438aec3d4e317248d
+- [] fix avatar in mobile view (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/1f8762190378464da69d22cc1bfe075f4cc944af
+- [] fixed text and social icons (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/6ba936f9d2291b207984aee036317caf75ea1dcd
+- [] fix close button and loading smaller (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/ebee8136f136a03a21698e34833e2f24185ffe55
+- [] Merge pull request #271 from auth0/new-skin (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/706e436dfcd9ae0aa11946336bf833914ede1d4b
+- [] Merge branch 'master' into new-skin (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/fe23c05407f9902212d8cc9e187fd024139186f4
+- [] Remove text-transform for last login button (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/065d7507d7e8fcb38a99714d326ca753665edbb3
+- [] Corrections to LoggedinPanel (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2d41f0c5c61518efdc7aec82f0c44f7044fdeac6
+- [] Add primary color example to views.html (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/258ca6ed412e31c26a424192f5824f4d941b74dd
+- [] Customize submit color with primaryColor option (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/7a5d3a940744b624f44ffd2dd02a362c42008303
+- [] update variable forgotText en and es (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/462e6fdf2002b55366931598eed7349cd974639a
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/3904401eab5a129baffeed8009cd0aa1609524f3
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/b8de465fa173ad0c7b07afe028c5ae964112082c
+- [] fix responsive (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/4acc2c66c5bf2e8fbd960a97edac238fa43724e9
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/00bcaf1b56823341a77d1a3b26d3edec4888441b
+- [] fix switch (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/90699696c942279e17478954af410d5d7785c41e
+- [] fix social icons (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/1fdaf7b645f5063478b61d6c4fdfe39d85a3da54
+- [] added new spinner (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a5a097aec69199400b98b206e3b4d215c610a721
+- [] added log in / sign up switch (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/489ce2748bad02270bedcfe7b7d507ef3b297adc
+- [] added back button (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/94ca0a6a65b2fdbc19a63c89351f450bc63da9f0
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/99bff00d791c9bbfc1758828d18a6670d1c475d4
+- [] styled terms (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/2eb06c0e0e06c6c62028df4d39fee9b602f2e39c
+- [] fix generals issues in the content (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/7a7ac3e0f90a8894589f17f1942c086e2251bbc0
+- [] minor fix error message (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/f7325279937e579285348645b6341b1aea893bc2
+- [] added header blur image (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/ac8d1cda594e913223fd7ea89ef65bb604ca81b6
+- [] added others lock (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/6747c516200e0da523387aa86ae39da611b9193b
+- [] styled error (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/cd4f17e48218d1d250424bd89217bc5d564b43cc
+- [] added view frame and fix header (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a4754c69f753680337cad38b9f2c330433887ce8
+- [] removed title login (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/9fc8169e0c3f419e1ee1102a0699f5a7e72e3e0e
+- [] Add engines to package.json (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d39a741969f86aa1821741d87de5fe5936bb4748
+- [] Parse port for heroku demo (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/ab689d105257f9af52e2e29ee6b1d3ab84f935a7
+- [] Add start script (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/0892d24e3e5620593f115df6710c2212081366ff
+- [] shadow avatar (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/2b793013060248a32e74e98fd812f60f65813777
+- [] add icon access (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/f95cd8b7a649cbb24f7bbad39698327b9a8514f5
+- [] new lock skin (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/11e6a7fa5f8e611d5c0a7339403be45c46cbc820
+
+## [7.13.0] - 2015-12-18
+
+### Fixed
+
+- [] Merge pull request #181 from nicosabena/patch-2 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c4182a05fbf2ff7e419f19d449105527bf33d1a6
+- [] Merge pull request #269 from auth0/thai-language (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b995e0d71ff65a182b65fcf4cdab4b51e55d4ca9
+- [] Merge pull request #268 from auth0/new-loading-spinner (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/739a1316e188199b002192e59e7c4087d86ea073
+- [] Fix template alignment (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2cad5518c6d905eed395aefe953d8a2f0566adf2
+- [] Add Thai (th) language (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/8819cb638c3059ac4d048a4fd8422d461b354b19
+- [] Replace auth0 logo with a traditional spinner, closes #254 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/a8021e5f2a89d715117bf9f73dbddb3d2c917de4
+- [] Better translation for reset. (`nicosabena`)
+  https://github.com/auth0/lock/commit/ba1a640e706ce00bb9389a4da6624aef04e6b839
+
+## [7.12.6] - 2015-12-17
+
+### Fixed
+
+- [] Merge pull request #267 from auth0/add-stage-subdomain (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/149b4023b22405ce778f4f7123abf56d2c70f695
+- [] Consider stage subdomain when building assets url (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/cb264baad403c9caff6107c3ac4f8d51f9bc15f8
+- [] Merge pull request #226 from udomsak/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/e869bdd83e6afd8a88eb9f64b90f726c66b4b7e0
+- [] Merge pull request #265 from johannesboyne/patch-1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/9e152eb4b2e478fc6e9f33985eab8f90ede6d72a
+- [] Update de.json (`Johannes Boyne`)
+  https://github.com/auth0/lock/commit/7bb0edb4448a8be86936fc1bb9dbed51feeaab72
+- [] Add Thai language support (`udomsak chundang`)
+  https://github.com/auth0/lock/commit/e81178b19cf04f631af43dcea02e433bb76abc6a
+
+## [7.12.5] - 2015-12-08
+
+### Fixed
+
+- [] Merge pull request #264 from auth0/upgrade-debug (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b2ee63a5356765763c324029f3a160bef2bcc9ee
+- [] Update debug module to 2.2.0, closes #255 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/85f8c719ff1b91f6706bf22e9291680be39888c2
+
+## [7.12.4] - 2015-12-04
+
+### Fixed
+
+- [] Merge pull request #263 from auth0/facebook-display-popup (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d72026956917c077342395f0715531a8da87ec36
+- [] Pass display='popup' for popup facebook strategy (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ed268e35c578d711c103e0ba802822a7264f52e9
+
 ## [7.12.3] - 2015-11-26
 
 ### Fixed

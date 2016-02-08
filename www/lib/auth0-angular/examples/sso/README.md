@@ -4,6 +4,30 @@ This example shows how to use SSO with Angular. **The most important thing is to
 
 Also, you can check out [more information about SSO here](https://auth0.com/docs/sso/single-sign-on) and a full repository with both SPAs and Regular WebApp samples working with SSO [here](https://github.com/auth0/auth0-sso-sample)
 
+## Configuration
+
+With SSO enabled the user will be logged in automatically. The `ssoLogin` event allows you to specify additional options to the current login transaction.
+
+For example, you can use it to decide which scopes should be available in the token:
+
+````
+authProvider.on('ssoLogin', function(loginOptions) {
+  loginOptions.authParams = {
+    scope: 'openid name email nickname'
+  };
+});
+````
+
+Or, in HTML5 mode you can control the callbackURL to avoid errors like `Callback URL mismatch. http://localhost:3000/info is not in the list of authorized callback URLs: http://localhost:3000/`:
+
+````
+authProvider.on('ssoLogin', function(loginOptions) {
+  loginOptions.authParams = {
+    callbackURL: window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '')
+  };
+});
+````
+
 ### Running the example
 
 In order to be able to test SSO correctly, you must have more than one application and each must have its own domain. For that, you can edit your `/etc/hosts` and make app1.com and app2.com point to `127.0.0.1`.
@@ -19,7 +43,7 @@ For that, open `/etc/hosts` and edits as follows:
 ##
 127.0.0.1 localhost
 255.255.255.255 broadcasthost
-::1             localhost 
+::1             localhost
 # ...
 127.0.0.1 app1.com
 ````

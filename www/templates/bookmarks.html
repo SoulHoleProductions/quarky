@@ -11,7 +11,7 @@
 		<ion-list>
 			<ion-item class="item-thumbnail-left" ng-repeat="post in posts" data-ng-click="openModal(post)">
 				<img image-lazy-src="{{post.featured_image.source || 'img/coming-soon.png'}}" image-lazy-loader="lines">
-				<h2>{{post.title}}</h2>
+				<h2 data-ng-bind-html="post.title"></h2>
 				<div data-ng-bind-html="toTrusted(post.excerpt)"></div>
 				<h5>{{post.modified | date: 'fullDate'}}</h5>
 			</ion-item>

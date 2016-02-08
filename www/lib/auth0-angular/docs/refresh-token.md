@@ -1,8 +1,7 @@
-# Refresh tokens
+# Using Refresh Tokens in Mobile Applications
 
 Mostly when building mobile apps, we want to show the signin page only once and then leave the user logged in forever. For those cases, it makes sense to have a `refreshToken`. A `refreshToken` lets us get a new `id_token` or `JWT` anytime we want. 
-
-> **Warning**: This means that if the `refreshToken` gets compromised, unless we revoke that token, somebody would be able to get a new JWT forever.
+> **Warning**: This means that if the `refreshToken` gets compromised, unless we revoke that token, somebody would be able to get a new JWT forever. This is why we only suggest to use Refresh Tokens in Mobile Applications, not in Web Applications.
 
 ### 1. Getting the Refresh Token
 

@@ -272,7 +272,7 @@
             widget.showSignin({
               callbackURL: window.location.href,
               responseType: 'token',
-              connections: ['qraftlabs.com']
+              connections: ['auth0.com']
             });
           });
 
@@ -475,7 +475,7 @@
           function trackEvents(widget, namespace) {
             var name = namespace || 'widget';
 
-            ['signup', 'signin', 'reset', 'kerberos', 'loggedin'].forEach(function (mode) {
+            ['signup', 'signin', 'reset', 'kerberos', 'loggedin', 'enterprise'].forEach(function (mode) {
               ['ready', 'error', 'success', 'submit'].forEach(function (ev) {
                 var event_name = mode + ' ' + ev;
                 widget.on(event_name, function() {

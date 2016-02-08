@@ -14,12 +14,12 @@
     "angular": "1.3.0"
   },
   "homepage": "https://github.com/auth0/auth0-angular",
-  "version": "4.0.5",
-  "_release": "4.0.5",
+  "version": "4.1.0",
+  "_release": "4.1.0",
   "_resolution": {
     "type": "version",
-    "tag": "v4.0.5",
-    "commit": "6eb64a3553719b220844af895ca71e279c509ca9"
+    "tag": "v4.1.0",
+    "commit": "6e01c1fc320d59175944c907ead66a8595b7fb82"
   },
   "_source": "git://github.com/auth0/auth0-angular.git",
   "_target": "4.*",

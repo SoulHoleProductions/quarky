@@ -20,6 +20,10 @@ a.zocial {
   cursor: pointer;
   overflow: hidden;
   transition: opacity 0.2s ease;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .zocial:hover {
@@ -41,7 +45,7 @@ a.zocial span{
 }
 
 .strategy div.zocial span{
-  text-transform: lowercase;
+  text-transform: none;
   font-size: 12px;
 }
 
@@ -80,9 +84,9 @@ a.zocial span{
 }
 
 
-.strategy{
-  margin: 10px 0;
-}
+// .strategy{
+//   margin: 10px 0;
+// }
 
 
 /* Adjustments for light background buttons */
@@ -260,7 +264,7 @@ button:-moz-focus-inner {
 .equal-viewport .zocial, .zocial.icon{
   width: auto;
   display: inline-block;
-  margin: 6px;
+  margin: 5px;
 
   &:before {
     width: 40px;

@@ -1,6 +1,7 @@
 angular.module('quarky', ['ionic',
         'ionic.service.core',
         'ionic.service.analytics',
+        'ionic.service.push',
         'ngCordova',
         'about-module',
         'home-module',
@@ -182,7 +183,9 @@ angular.module('quarky', ['ionic',
         };
 
         function getAuth0User() {
-            return auth.profile.user_id;
+            var userid = auth.profile.user_id;
+            console.log('getAuth0User: ', userid );
+            return userid;
         }
         function updateAuth0() {
             console.log("UserSettings to update: ", UserSettings);
@@ -210,6 +213,7 @@ angular.module('quarky', ['ionic',
                 });
         }
         function deserializeSettings() {
+
             auth0metadata.getUser( { user : getAuth0User() } ).$promise
                 .then(function(o){
                     //console.log('deserialize got o: ', o);
@@ -243,7 +247,7 @@ angular.module('quarky', ['ionic',
 
         }
     })
-    .run(function ($ionicPlatform, $ionicAnalytics,
+    .run(function ($ionicPlatform, $ionicAnalytics, $ionicPush,
                    auth, $rootScope, store, $ionicPopup,
                    jwtHelper, $location, $ionicLoading) {
 
@@ -259,6 +263,23 @@ angular.module('quarky', ['ionic',
                 dryRun: false // TODO: change to false before publish
             });
 
+            $ionicPush.init({
+                "debug": true,
+                "onNotification": function(notification) {
+                    var payload = notification.payload;
+                    console.log('ionic push notification: ', notification, payload);
+                    $ionicLoading.hide()
+                    $ionicPopup.alert({
+                        title: 'Title: ' + notification.title,
+                        template: 'Msg: ' + notification.text
+                    });
+                },
+                "onRegister": function(data) {
+                    console.log('ionic push token: ', data.token);
+                }
+            });
+            $ionicPush.register();
+
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
@@ -268,7 +289,6 @@ angular.module('quarky', ['ionic',
                 //StatusBar.styleDefault();
                 StatusBar.styleBlackTranslucent();
             }
-
             if (window.cordova && window.cordova.plugins.inAppBrowser) {
                 window.open = cordova.InAppBrowser.open;
             }
@@ -539,7 +559,7 @@ angular.module('quarky', ['ionic',
             clientID: AUTH0_CLIENT_ID,
             loginState: 'login'
         });
-        authProvider.on('loginSuccess', function ($location, profilePromise, idToken, store, refreshToken) {
+        /*authProvider.on('loginSuccess', function ($location, profilePromise, idToken, store, refreshToken) {
             console.log('got loginSuccess ');
 
             profilePromise.then(function (profile) {
@@ -565,7 +585,8 @@ angular.module('quarky', ['ionic',
             store.remove('token');
             store.remove('refreshToken');
             $location.path('/login');
-        });
+        });*/
+
         jwtInterceptorProvider.tokenGetter = function (store, jwtHelper, auth) {
             var idToken = store.get('token');
             var refreshToken = store.get('refreshToken');

@@ -382,7 +382,15 @@ Auth0Lock.prototype.exhibit = function() {
   // activate panel
   // XXX: (?) this I don't get... why remove and add?
   this.query('div.a0-panel').removeClass('a0-active');
-  this.query('div.a0-overlay').addClass('a0-active');
+
+  var overlay = this.query('div.a0-overlay-hint')
+    .removeClass('a0-overlay-hint')
+    .addClass('a0-active');
+
+  if (!options.container) {
+    overlay.addClass('a0-overlay')
+  }
+
   this.query('.a0-panel.a0-onestep').addClass('a0-active');
 
   this.query('.a0-overlay')
@@ -396,9 +404,6 @@ Auth0Lock.prototype.exhibit = function() {
   if (!options.container) {
     // hides all non-lock elements when lock is open
     bonzo(document.body).addClass('a0-lock-open');
-  } else {
-    // remove overlay when render inside a div
-    this.query('.a0-active').removeClass('a0-overlay');
   }
 
   // close popup with ESC key
@@ -868,6 +873,9 @@ Auth0Lock.prototype.getAssetsUrl = function (assetsUrl, domain) {
   if (this.isAuth0Domain('au')) {
     return 'https://cdn.au.auth0.com/';
   }
+  if (this.isAuth0Domain('stage')) {
+    return 'https://cdn.stage.auth0.com/';
+  }
   if (this.isAuth0Domain()) {
     return 'https://cdn.auth0.com/';
   }
@@ -948,7 +956,7 @@ Auth0Lock.prototype._focusError = function(input, message) {
     // reset errors
     this.query('.a0-errors').removeClass('a0-errors');
     this.query('.a0-error-input').removeClass('a0-error-input');
-    this.query('.a0-error-message').remove();
+
     // reset animations
     return animation_shake_reset(this.$container);
   }
@@ -961,7 +969,7 @@ Auth0Lock.prototype._focusError = function(input, message) {
     .addClass('a0-error-input');
 
   if (!message) return;
-  input.parent().append($.create('<span class="a0-error-message">' + message + '</span>'));
+
   this.emit('error shown', message, input);
 };
 
@@ -1196,6 +1204,11 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
     extra.connection_scope = extra.connection_scopes[connectionName];
   }
 
+  if (strategyName === 'facebook') {
+    extraParams = extraParams || {};
+    extraParams.display = 'popup';
+  }
+
   if (strategy) {
     // If we are in popup mode and responseType == 'token' was specified
     // we need to pass a callback.
@@ -1421,6 +1434,10 @@ Auth0Lock.prototype._clearPreviousPanel = function () {
   this._setPreviousPanel(null);
 };
 
+Auth0Lock._setOpenWindowFn = function(f) {
+  Auth0.prototype.openWindow = f;
+};
+
 /**
  * Private helpers
  */
@@ -1437,7 +1454,7 @@ Auth0Lock.prototype._clearPreviousPanel = function () {
 function animation_shake(context) {
   $('.a0-panel', context)
     .addClass('a0-errors')
-    .addClass('a0-animated a0-shake');
+    // .addClass('a0-animated a0-shake');
 }
 
 /**

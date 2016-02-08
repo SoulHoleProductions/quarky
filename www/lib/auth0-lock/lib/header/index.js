@@ -89,4 +89,3 @@ HeaderView.prototype.setImage = function(url) {
 HeaderView.prototype.restoreImage = function () {
   this.image.reset();
 };
-

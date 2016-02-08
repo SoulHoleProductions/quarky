@@ -16,8 +16,8 @@ TODO: add infinite scroll
             <ion-list class="list">
                 <ion-item class="item-avatar" ng-repeat="match in quarkyMatches" href="#/app/place-ohana-detail/{{match.reference}}">
                     <img data-ng-src="{{match.icon}}">
-                    <h2>{{match.name}}</h2>
-                    <p>{{match.formatted_address}}</p>
+                    <h2 data-ng-bind-html="match.name"></h2>
+                    <p data-ng-bind-html="match.formatted_address"></p>
                 </ion-item>
 
             </ion-list>
@@ -29,8 +29,8 @@ TODO: add infinite scroll
             <ion-list class="list">
                 <ion-item class="item-avatar" ng-repeat="match in googleMatches" href="#/app/place-detail/{{match.reference}}">
                     <img data-ng-src="{{match.icon}}">
-                    <h2>{{match.name}}</h2>
-                    <p>{{match.formatted_address}}</p>
+                    <h2 data-ng-bind-html="match.name"></h2>
+                    <p data-ng-bind-html="match.formatted_address"></p>
                 </ion-item>
 
             </ion-list>

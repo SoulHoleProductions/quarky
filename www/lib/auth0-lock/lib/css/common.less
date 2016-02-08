@@ -40,13 +40,21 @@
 }
 
 .panel .loading {
-  min-height: 110px;
+  height: 200px;
 }
 
 .spin-container {
-  position: relative;
-  // left: 50%;
-  top: 50%;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%) scale(.5);
+  transform: translate(-50%,-50%) scale(.5);
+  -webkit-animation-duration: 600ms;
+  animation-duration: 600ms;
+  text-align: center;
+  z-index: 1;
 }
 
 .loading.with-message .spin-container {
@@ -56,11 +64,14 @@
 .spin-message {
   text-align:center;
   position:relative;
-  top:60px;
+  top: 55%;
+  width: 150px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .spin-message span {
-  font-size:14px;
+  font-size:12px;
   color:#41444a;
 }
 
@@ -99,9 +110,9 @@
   user-select: none;
   background: #000;
   background: rgba(0,0,0,0.8);
-  opacity: 0;
   transition: 300ms opacity ease-out;
   transform: translate3d(0, 0, 0);
+  animation: fadeIn .3s ease-in;
 
 
   .centrix {
@@ -109,11 +120,14 @@
     vertical-align: middle;
     display: table-cell;
     margin: 0;
+    opacity: 0;
   }
 }
 
 .overlay.active {
-  opacity: 1;
+  .centrix {
+    opacity: 1;
+  }
 }
 
 .overlay .panel {

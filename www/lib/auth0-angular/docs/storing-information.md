@@ -1,6 +1,6 @@
 # Storing information
 
-You can use `angular-storage` to store the user profile and tokens so that he doesn't have to log in again every time he refreshes the webpage. 
+You can use `angular-storage` to store the user profile and tokens so that they will not have to log in every time the page is refreshed.
 
 In this tutorial, you'll learn how to do this.
 
@@ -14,7 +14,7 @@ angular.module('myApp', ['auth0', 'angular-storage', 'angular-jwt']);
 
 ### 2. Saving the user information after login.
 
-After the user has logged in, you want to store his profile and token. For that, you'll do the following:
+After the user has successfully signed in, you’ll want to store the profile details and authentication token:
 
 
 ````js

@@ -152,29 +152,29 @@ function AboutService2($q) {
     var _posts = [
         {
             id: '1',
+            name: 'Tips and Tricks',
+            localImage: 'img/guru-nav/about/Tips-Tricks.png',
+            slug: 'tips-tricks-articles'
+
+        },
+        {
+            id: '2',
             name: 'Partners',
             localImage: 'img/guru-nav/about/Partners.png',
             slug: 'partner-articles'
         },
         {
-            id: '2',
+            id: '3',
             name: 'Acknowledgements',
             localImage: 'img/guru-nav/about/Credits.png',
             slug: 'acknowledgements-articles'
 
         },
         {
-            id: '3',
+            id: '4',
             name: 'Legal Disclaimers',
             localImage: 'img/guru-nav/about/legal-disclaimers.png',
             slug: 'legal-disclaimers-articles'
-
-        },
-        {
-            id: '4',
-            name: 'Tips and Tricks',
-            localImage: 'img/guru-nav/about/Tips-Tricks.png',
-            slug: 'tips-tricks-articles'
 
         }
     ];

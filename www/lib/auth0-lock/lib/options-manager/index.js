@@ -122,6 +122,21 @@ function OptionsManager(widget, options) {
   // or whatever provided via options.
   this.popup = 'function' === typeof this.popupCallback || !!this.popup;
 
+  // Submit button color
+  this.primaryColor = null != options.primaryColor ? options.primaryColor : "#ea5323";
+
+  this.cssBlurSupport = (function() {
+    // Check stolen from Modernizr, see https://github.com/Modernizr/Modernizr/blob/29eab707f7a2fb261c8a9c538370e97eb1f86e25/feature-detects/css/filters.js
+    var el = global.document.createElement("div");
+    el.style.cssText = "filter: blur(2px); -webkit-filter: blur(2px)";
+    return !!el.style.length && (global.document.documentMode === undefined || global.document.documentMode > 9);
+  })();
+
+  this.defaultIcon = "//cdn.auth0.com/styleguide/1.0.0/img/badge.png";
+  if (window.location.protocol && window.location.protocol === "file:") {
+    this.defaultIcon = "http:" + this.defaultIcon;
+  }
+
   // Delay options requiring $client configuration
   this.$widget.getClientConfiguration(bind(this._onclientloaded, this));
 }

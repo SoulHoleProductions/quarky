@@ -41,7 +41,7 @@ angular.module('menu', ['auth0'])
 
     })
 
-    .controller('LoginCtrl', function ($scope, auth, $state, store,
+    .controller('LoginCtrl', function ($scope, auth, $state, store, UserSettings,
                                        $ionicHistory, $ionicSlideBoxDelegate) {
 
         var currentPlatform = 'Mobile';
@@ -64,26 +64,75 @@ angular.module('menu', ['auth0'])
             $scope.slideIndex = index;
         };
 
-        $scope.doAuth = function (socialConnection) {
-            console.log('socialConnection is: ', socialConnection);
+        $scope.doAuth = function () {
             auth.signin({
                     sso: false,
-                    connection: socialConnection,
+                    //popup: true,
+                    //container: 'hiw-login-container',
+                    focusInput: false,
+                    closable: true,
+                    //icon: 'https://quarkyapp.com/wp-content/uploads/2015/06/quarkycon1.jpg',
+                    icon: 'img/quarkycon.png',
+                    //socialBigButtons: true,
+                    primaryColor: '#000000',
                     authParams: {
                         scope: 'openid offline_access',
-                        // The following is optional
-                        device: currentPlatform+' '+currentPlatformVersion
+                        device: currentPlatform + ' ' + currentPlatformVersion
                     }
                 }, function (profile, token, accessToken, state, refreshToken) {
                     // Success callback
-                    console.log('doAuth profile: ', profile);
-                    console.log('doAuth token: ', token);
-                    console.log('doAuth accessToken: ', accessToken);
-                    console.log('doAuth refreshToken: ', refreshToken);
+
+                    /*console.log('doAuth profile: ', profile);
+                     console.log('doAuth token: ', token);
+                     console.log('doAuth accessToken: ', accessToken);
+                     console.log('doAuth refreshToken: ', refreshToken);*/
 
                     store.set('profile', profile);
                     store.set('token', token);
                     store.set('refreshToken', refreshToken);
+
+                    // put auth'd user settings into UserSettings
+                    angular.extend(UserSettings, profile.user_metadata);
+                    console.log("doAuth - UserSettings: ", UserSettings);
+
+                    // kick off the platform web client
+                    Ionic.io();
+
+                    // this will give you a fresh user or the previously saved 'current user'
+                    var user = Ionic.User.current();
+
+                    // if the user doesn't have an id, you'll need to give it one.
+                    // if the user doesn't match the auth'd user, then user changed
+                    if (!user.id || user.id != auth.profile.user_id) {
+                        user.id = auth.profile.user_id;
+                        user.set('name', auth.profile.name);
+                        user.set('email', auth.profile.email);
+                        user.set('picture', auth.profile.picture);
+                        user.set('nickname', auth.profile.nickname);
+                        if (auth.profile.app_metadata && auth.profile.app_metadata.can_add_places) {
+                            user.set('can_add_places', auth.profile.app_metadata.can_add_places.toString());
+                        } else {
+                            user.set('can_add_places', 'false');
+                        }
+
+                        // TODO: add user_metadata (UserSettings) to the IonicUser??
+                        Ionic.User.current(user);
+                        user = Ionic.User.current();
+                        //console.log('Ionic.User.current(): ', user);
+                        user.save().then(
+                            function (response) {
+                                console.log('user was saved to ionic.io: ', response);
+                            },
+                            function (error) {
+                                console.log('user was NOT saved to ionic.io, error:', error);
+                            }
+                        );
+                    }
+
+
+                    // -------------------- IONIC.IO
+
+
                     $state.go('app.home-list');
                 }, function (err) {
                     // Error callback
@@ -98,6 +147,40 @@ angular.module('menu', ['auth0'])
             );
         }
 
+        /*       $scope.doAuth = function (socialConnection) {
+         console.log('socialConnection is: ', socialConnection);
+         auth.signin({
+         sso: false,
+         connection: socialConnection,
+         authParams: {
+         scope: 'openid offline_access',
+         // The following is optional
+         device: currentPlatform+' '+currentPlatformVersion
+         }
+         }, function (profile, token, accessToken, state, refreshToken) {
+         // Success callback
+         console.log('doAuth profile: ', profile);
+         console.log('doAuth token: ', token);
+         console.log('doAuth accessToken: ', accessToken);
+         console.log('doAuth refreshToken: ', refreshToken);
+
+         store.set('profile', profile);
+         store.set('token', token);
+         store.set('refreshToken', refreshToken);
+         $state.go('app.home-list');
+         }, function (err) {
+         // Error callback
+         console.log('doAuth: ', err);
+         $ionicHistory.nextViewOptions({
+         disableAnimate: true,
+         disableBack: true
+         });
+         $state.go('login');
+
+         }
+         );
+         }
+         */
         $scope.logout = function () {
             auth.signout();
             store.remove('profile');
