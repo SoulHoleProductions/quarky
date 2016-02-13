@@ -339,8 +339,6 @@ angular.module('quarky', ['ionic',
                 }
             }
         });
-
-
     })
 
     .config(function ($stateProvider, $urlRouterProvider,
@@ -438,9 +436,6 @@ angular.module('quarky', ['ionic',
                     }
                 },
                 data: {
-                    // This tells Auth0 that this state requires the user to be logged in.
-                    // If the user isn't logged in and he tries to access this state
-                    // he'll be redirected to the login page
                     requiresLogin: true
                 }
             })
@@ -587,21 +582,25 @@ angular.module('quarky', ['ionic',
             $location.path('/login');
         });*/
 
-        jwtInterceptorProvider.tokenGetter = function (store, jwtHelper, auth) {
-            var idToken = store.get('token');
+        var refreshingToken = null;
+        jwtInterceptorProvider.tokenGetter = function(store, $http, jwtHelper) {
+
+            var token = store.get('token');
             var refreshToken = store.get('refreshToken');
-            // If no token return null
-            if (!idToken || !refreshToken) {
-                return null;
-            }
-            // If token is expired, get a new one
-            if (jwtHelper.isTokenExpired(idToken)) {
-                return auth.refreshIdToken(refreshToken).then(function (idToken) {
-                    store.set('token', idToken);
-                    return idToken;
-                });
-            } else {
-                return idToken;
+            if (token) {
+                if (!jwtHelper.isTokenExpired(token)) {
+                    return store.get('token');
+                } else {
+                    if (refreshingToken === null) {
+                        refreshingToken =  auth.refreshIdToken(refreshToken).then(function(idToken) {
+                            store.set('token', idToken);
+                            return idToken;
+                        }).finally(function() {
+                            refreshingToken = null;
+                        });
+                    }
+                    return refreshingToken;
+                }
             }
         }
         $httpProvider.interceptors.push('jwtInterceptor');

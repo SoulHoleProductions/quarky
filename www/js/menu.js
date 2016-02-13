@@ -68,10 +68,8 @@ angular.module('menu', ['auth0'])
             auth.signin({
                     sso: false,
                     //popup: true,
-                    //container: 'hiw-login-container',
                     focusInput: false,
                     closable: true,
-                    //icon: 'https://quarkyapp.com/wp-content/uploads/2015/06/quarkycon1.jpg',
                     icon: 'img/quarkycon.png',
                     //socialBigButtons: true,
                     primaryColor: '#000000',
@@ -80,8 +78,6 @@ angular.module('menu', ['auth0'])
                         device: currentPlatform + ' ' + currentPlatformVersion
                     }
                 }, function (profile, token, accessToken, state, refreshToken) {
-                    // Success callback
-
                     /*console.log('doAuth profile: ', profile);
                      console.log('doAuth token: ', token);
                      console.log('doAuth accessToken: ', accessToken);

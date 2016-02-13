@@ -128,6 +128,10 @@ angular.module('profile', ['ionic-datepicker', 'ngResource'])
         $scope.auth = auth;
         $scope.posts = [];
 
+        $scope.launch = function(url) {
+            window.open(url, '_system', 'location=yes');
+        }
+
         console.log('ProfileCtrl: UserSettings: ',UserSettings);
 
         // when a widget is changed, come here an update the setting object too

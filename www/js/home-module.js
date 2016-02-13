@@ -1,8 +1,8 @@
 angular.module('home-module', ['ionicLazyLoad', 'ngCordova'])
     .controller('HomeListCtrl', function ($scope, $rootScope, $window, $sce, auth, $sanitize,
                                           wordpressAPI, wordpressConfig, $ionicPlatform,
-                                          UserSettings, UserStorageService,
-                                          $ionicPopup, $ionicModal, $cordovaSocialSharing) {
+                                          UserSettings, UserStorageService, $ionicPopup,
+                                          $ionicModal, $cordovaSocialSharing) {
 
         $scope.posts = [];
         $scope.pagenum = null;
