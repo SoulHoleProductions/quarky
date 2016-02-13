@@ -1,4 +1,4 @@
-[![Auth0](https://cldup.com/yYelLVuXby.jpg)](http://auth0.com)
+[![Auth0](https://cloudup.com/c2evgl2cz3j+)](http://auth0.com)
 
 # Lock
 [![NPM version][npm-image]][npm-url]
@@ -18,7 +18,7 @@ Lock makes it easy to integrate SSO in your app. You won't have to worry about:
 * Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).
 * Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
 
-[![Auth0](https://i.cloudup.com/6opoEX_Z9z.png)](http://auth0.com)
+[![Auth0](https://cloudup.com/ceeo-qIlCTd+)](http://auth0.com)
 
 > You can try it out yourself online at our [Auth0 Lock playground][playground-url].
 
@@ -57,21 +57,11 @@ If you are targeting mobile audiences, it's recommended that you add:
 
 ### Browserify
 
-If you are using Browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
+No special configuration is required if you are using Browserify to build your project.
 
-``` json
-{
-  "devDependencies": {
-    "brfs": "0.0.8",
-    "ejsify": "0.1.0",
-    "packageify": "^0.2.0"
-  }
-}
-```
+### Webpack
 
-### webpack
-
-If you are using webpack, you will need to install loaders (`$ npm install --save brfs ejsify json-loader packageify transform-loader`) and then use them in your `webpack.config.js` file:
+If you are using Webpack, you will need to install loaders (`$ npm install --save json-loader transform-loader`) and then use them in your `webpack.config.js` file:
 
 ```js
 loaders: [{
@@ -155,6 +145,14 @@ To publish a new version use:
 ## Issue Reporting
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+
+## Author
+
+[Auth0](auth0.com)
+
+## License
+
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 <!-- Vaaaaarrsss -->
 

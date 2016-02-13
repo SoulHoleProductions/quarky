@@ -248,7 +248,7 @@ angular.module('quarky', ['ionic',
         }
     })
     .run(function ($ionicPlatform, $ionicAnalytics, $ionicPush,
-                   auth, $rootScope, store, $ionicPopup,
+                   auth, $rootScope, store, $state, $ionicPopup,
                    jwtHelper, $location, $ionicLoading) {
 
 
@@ -312,7 +312,7 @@ angular.module('quarky', ['ionic',
 
         //-------------- auth0
         //This hooks all auth events
-        auth.hookEvents();
+
         var refreshingToken = null;
         $rootScope.$on('$locationChangeStart', function () {
             var token = store.get('token');
@@ -339,6 +339,14 @@ angular.module('quarky', ['ionic',
                 }
             }
         });
+        $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+            //console.log('state transition from: ', fromState, ' to state: ', toState);
+            if(toState.name == 'login' && auth.isAuthenticated ) {
+                $state.transitionTo("app.home-list");
+                event.preventDefault();
+            }
+        });
+        auth.hookEvents();
     })
 
     .config(function ($stateProvider, $urlRouterProvider,
@@ -582,25 +590,21 @@ angular.module('quarky', ['ionic',
             $location.path('/login');
         });*/
 
-        var refreshingToken = null;
-        jwtInterceptorProvider.tokenGetter = function(store, $http, jwtHelper) {
-
-            var token = store.get('token');
+        jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
+            var idToken = store.get('token');
             var refreshToken = store.get('refreshToken');
-            if (token) {
-                if (!jwtHelper.isTokenExpired(token)) {
-                    return store.get('token');
-                } else {
-                    if (refreshingToken === null) {
-                        refreshingToken =  auth.refreshIdToken(refreshToken).then(function(idToken) {
-                            store.set('token', idToken);
-                            return idToken;
-                        }).finally(function() {
-                            refreshingToken = null;
-                        });
-                    }
-                    return refreshingToken;
-                }
+            // If no token return null
+            if (!idToken || !refreshToken) {
+                return null;
+            }
+            // If token is expired, get a new one
+            if (jwtHelper.isTokenExpired(idToken)) {
+                return auth.refreshIdToken(refreshToken).then(function(idToken) {
+                    store.set('token', idToken);
+                    return idToken;
+                });
+            } else {
+                return idToken;
             }
         }
         $httpProvider.interceptors.push('jwtInterceptor');

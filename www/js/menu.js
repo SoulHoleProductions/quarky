@@ -52,6 +52,13 @@ angular.module('menu', ['auth0'])
             currentPlatformVersion = ionic.Platform.version();
         });
 
+        if(auth.isAuthenticated) {
+            console.log('authenticated, move to home-list');
+            $state.go('app.home-list');
+        } else {
+            console.log('NOT authenticated, do login');
+        }
+
         $scope.next = function () {
             $ionicSlideBoxDelegate.next();
         };
@@ -67,6 +74,7 @@ angular.module('menu', ['auth0'])
         $scope.doAuth = function () {
             auth.signin({
                     sso: false,
+                    //rememberLastLogin: false,
                     //popup: true,
                     focusInput: false,
                     closable: true,
@@ -191,11 +199,14 @@ angular.module('menu', ['auth0'])
         };
 
         $scope.$on('$ionic.reconnectScope', function () {
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('login');
+            if(!auth.isAuthenticated) {
+                $ionicHistory.nextViewOptions({
+                    disableAnimate: true,
+                    disableBack: true
+                });
+                $state.go('login');
+            }
+
         });
 
     });

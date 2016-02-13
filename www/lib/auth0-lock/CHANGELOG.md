@@ -1,3 +1,131 @@
+## [8.2.3] - 2016-02-04
+
+### Fixed
+
+- [] Merge pull request #310 from auth0/fix-social-icons (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d3cf5a8b1dd05ef063ac347784b34c565ece1e8a
+- [] Don't optimize legibility for social icons (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/af302d8d565e1b685a79c9952a7dc0a11da72200
+- [] Update package.json (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b5b8d67f56a94ee8500cd103dacd950fbf267354
+
+## [8.2.2] - 2016-01-28
+
+### Fixed
+
+- [] Merge pull request #305 from auth0/styling-tweaks (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/46546480b7c40ce5b46e42b6d0f1bb562cda1666
+- [] Optimize legibility (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/4153c0317b5a46cbe6bf033705dbd565bff6f4ac
+- [] Adjust social button text styling (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/9cd693412e662234586380f3441bccb2553dab8b
+- [] Adjust font weight of header title (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c509377752be4e661335490e94c96adef6a2d3d9
+
+## [8.2.1] - 2016-01-26
+
+### Fixed
+
+- [] Merge pull request #304 from auth0/fix-webpack-bundle (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/adf22276602c29bf7705a6a25de523f208e632ef
+- [] Upgrade lock version in webpack example (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b8596a8eae2e225f7a6b3f9f943507a96c12c728
+- [] Update webpack example and doc (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/e63e94753503c321fdbb40c004df229c922c148a
+- [] Upgrade brfs dependency (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/4587f5182e70ff68f05089b5159264a593509b12
+- [] Merge pull request #299 from carnevalle/patch-2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/5a83c157ad928109f2c19d8b65e2d99a2384691a
+- [] More descriptive message for "Not your account?" (`Troels Johnsen`)
+  https://github.com/auth0/lock/commit/1510415ae127569f26e6778d809afc132dec60fe
+
+## [8.2.0] - 2016-01-21
+
+### Fixed
+
+- [] Merge pull request #297 from auth0/fix-gravatar-tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/4f44e19b2ba926e846f9b41d9e42ffe1a896e721
+- [] Fix gravatar tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/5cb94337022d66b31830d1287343436fa15c50d5
+- [] Merge branch 'fixes' (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b4e2446b6899d25238d6066e613fca103ba5bf65
+- [] Merge branch 'master' into fixes (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0b52c320cc27645fb5c5b6d6593bcc40868759cc
+- [] Merge pull request #296 from auth0/beneliflo-bugfix (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/8c2614ca4cc933b13f5dbc267ba5640cf02a714a
+- [] Merge pull request #293 from clodeku/master (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/fabd226c2a3174436fe3bd68e5df4a02d94b4b96
+- [] Merge pull request #289 from auth0/browserify-bundling (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/685381b5ebfc98a56b15a3b5ed192339cc456615
+- [] Show error if no valid connection could be found, fixes #14 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/960059dda09d4a8952eb1a37f48cba9a2c4cba2c
+- [] Fix firing of avatar and icon events (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/5b283e266b3e10efba24e4bfe9509c1ea06ff294
+- [] Avoid flickr when removing avatar, fixes 292 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d9c50430da58cc1fc45386beb0fee2dda12d66d8
+- [] Update zh-TW.json (`Clode Ku`)
+  https://github.com/auth0/lock/commit/d28feb4b0dd0d85f67cb7f80e37fc3c393804107
+- [] Merge pull request #291 from adam2314/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/10582e41c138f8404ff1d55027623f5d05af2cde
+- [] Merge pull request #2 from auth0/master (`adam2314`)
+  https://github.com/auth0/lock/commit/9668c9cff7a736e71a9bb20b1430b5686700d3df
+- [] remove comment (`adam2314`)
+  https://github.com/auth0/lock/commit/59cf775496cc285fd9595d19ff46204d9eadfdaf
+- [] Merge pull request #290 from adam2314/master (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2a61c82f3a1f50e7f4d0ec065a1d03a6290b46f6
+- [] Merge pull request #1 from adam2314/adam2314-patch-1 (`adam2314`)
+  https://github.com/auth0/lock/commit/62fa81160beb0d38908cb25bc1a7989137ab4036
+- [] Update he.json (`adam2314`)
+  https://github.com/auth0/lock/commit/3d50afeaa6ba69ff9f9c0428389b97340512aaac
+- [] Last attempt to avoid modal flicker (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/577dda74d2b234e4bc8b5627610cf2040dcabff7
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/c878e61e600108a00b7a7672d3f7d0f5138bb2b0
+- [] fix lock overlay (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/b33642ed1a151bb4a9989a9c6c633d643afef3cc
+- [] Threat browserify transforms as regular dependencies (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/22eb3a198968d0f5978b0eeae9e47401aa12b05d
+
+## [8.1.5] - 2016-01-11
+
+### Fixed
+
+- [] Merge pull request #287 from auth0/revert (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/a883afa846c246cc9e8bd974ae84eca9b643656d
+- [] Revert "Avoid flashing a popup lock when in inline mode" (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/bb9d000332cc8e6f367d4e33ee000f2ea64727b5
+- [] Revert "Fix flashing lock when in popup mode" (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2c8f1be34522d16ca22466bf25927485e2ffdee8
+- [] Revert "Remove .mode-container background color" (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/578934598c9fda02655e55eb1b9a15ba0770a7f1
+- [] Revert "Move background-color from .mode to .body-content" (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2dab7c627848bb58bc75ca51ebcf025a4c4e2cbb
+
+## [8.1.4] - 2016-01-11
+
+### Fixed
+
+- [] Merge pull request #286 from auth0/fixes (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1b97cc53fd4c6a32b8e452561e65801e7bb93a83
+- [] Reduce font-weight in login/sign up tabs (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/6e3a281453c0a8afad1234f9baeccc1f4aece09c
+- [] Move background-color from .mode to .body-content (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d1388793014164b458d2b45844acd20283269ed4
+- [] Update font family (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/037b49620b4478268ad6ae114365b4f4d14b76fa
+- [] Remove .mode-container background color (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/e606643630f233df1c75e17aa17880564b2a8f70
+- [] Merge pull request #285 from aguerere/fix-issue284-update-license-and-readme (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f9a1ffdc68a270ffda07137aeebc95d2cdcf53d8
+- [] Update screenshot readme.md (`Ricky Rauch`)
+  https://github.com/auth0/lock/commit/20752685800ac03e3ec88539673876dc244313c0
+- [] Update banner (`Ricky Rauch`)
+  https://github.com/auth0/lock/commit/2b4c827e9acf4f19007b34696ab0fe44ce209eb8
+- [] Update license and readme (`Alberto Güerere`)
+  https://github.com/auth0/lock/commit/b387bffc533bfe58bc3a29e2cbe9e154e3187bff
+- [] Fix flashing lock when in popup mode (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/9523fb728bc8a1f6a26c4b367de02f185a58a877
+
 ## [8.1.3] - 2016-01-08
 
 ### Fixed

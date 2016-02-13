@@ -287,7 +287,7 @@
     width: 50%;
     float: left;
     padding: 8px 0;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .active {
@@ -318,7 +318,6 @@
   font-size: 13px;
   position: relative;
   color: #4d4d4d;
-  display: block;
   // overflow: auto;
   zoom: 1;
 
@@ -326,27 +325,22 @@
   background: transparent;
   box-shadow: 0 0 2px rgba(17, 17, 24, .6);
 
-  *{
-    font-family: 'avenir-next-web', Avenir, "Helvetica Neue", Hevetica, sans-serif;
+  * {
+    font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif;
   }
 
   .mode-container {
-    background: white;
     border-radius: 0 0 3px 3px;
   }
 
   .mode {
-    // -webkit-animation: fadeIn 1s ease;
-    // animation: fadeIn 1s ease;
     margin: auto;
-
-    // position: relative;
     background-color: white;
     border-radius: 0 0 3px 3px;
-    // overflow: hidden;
 
     form .body-content {
       padding: 30px;
+      background: white;
     }
   }
 
@@ -375,7 +369,7 @@
 
     h1{
       font-size: 24px;
-      font-weight: 100;
+      font-weight: 400;
       margin-top: 10px;
     }
 
@@ -415,7 +409,7 @@
       -webkit-backdrop-filter: blur(0);
     }
 
-    .image.gravatar {
+    .avatar.gravatar {
       -webkit-filter: blur(40px);
       -ms-filter: blur(40px);
       filter: blur(40px);
@@ -439,7 +433,7 @@
     min-height: 124px;
     position: relative;
 
-    .image {
+    .avatar {
       margin: auto;
       display: inline-block;
       margin-bottom: 6px;
@@ -457,7 +451,7 @@
       }
     }
 
-    .avatar{
+    .image{
       position: relative;
       padding-top: 15px;
       img {
@@ -465,6 +459,15 @@
         display: inline-block;
         vertical-align: middle;
       }
+    }
+
+    .blank-space {
+      height: 70px;
+      display: none;
+    }
+
+    .hide + .hide + .blank-space {
+      display: block;
     }
   }
 
@@ -742,7 +745,7 @@
 
     margin: 0;
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
 
     border-radius: 0 0 3px 3px;
@@ -1168,7 +1171,7 @@
           border-radius: 0;
         }
 
-        .icon-container .image.gravatar {
+        .icon-container .avatar.gravatar {
           margin-top: 10px;
           margin-bottom: 0;
 
