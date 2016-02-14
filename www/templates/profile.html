@@ -3,9 +3,9 @@
 
         <div>
             <img id="profile-image" data-ng-src="{{auth.profile.picture}}">
+
             <div id="profile-name" class="text-center padding-top">{{ auth.profile.name }}</div>
         </div>
-
 
 
         <div class="list card dark-bg">
@@ -14,55 +14,53 @@
                 You can add places!
             </ion-item>
 
-            <ion-item ng-show="!auth.profile.app_metadata.can_add_places" ng-class="{ 'item-positive': want_add_places, 'item-assertive' : !want_add_places}"
+            <ion-item ng-show="!auth.profile.app_metadata.can_add_places"
+                      ng-class="{ 'item-positive': want_add_places, 'item-assertive' : !want_add_places}"
                       class="item-icon-left" ng-click="setVolForPlaces()">
                 <i class="icon ion-ribbon-a"></i>
                 Volunteer: {{want_add_places ? 'Yes' : 'No'}}
             </ion-item>
-        </div>
-
-        <hr>
-
-            <div class="list card dark-bg">
-                <ion-item class="item-icon-left item-dark" ng-click="setGender()">
-                    <i class="icon ion-person positive"></i>
-                    Gender: {{gender | capitalize}}
-                </ion-item>
 
 
-                <ion-item class="item-icon-left item-dark">
-                    <ionic-datepicker input-obj="datepickerObject">
-                        <i class="icon ion-happy energized"></i>
-                        Birthday: {{datepickerObject.inputDate | date:'MMM d, y'}}
-                    </ionic-datepicker>
-                </ion-item>
-            </div>
+            <ion-item class="item-icon-right item-dark" ng-click="setGender()">
+                <i class="icon ion-edit positive"></i>
+                Gender: {{gender | capitalize}}
+            </ion-item>
 
-        <hr>
-               <!-- <ion-item class="item item-icon-left">
-                    <i class="icon ion-speakerphone"></i>
-                    App feedback
-                </ion-item>-->
-        <div class="list card dark-bg">
-                <ion-item class="item item-icon-left item-dark">
-                    <i class="icon ion-email"></i>
-                    {{auth.profile.email || 'not on file'}}
-                </ion-item>
+            <ion-item class="item-icon-right item-dark">
+                <ionic-datepicker input-obj="datepickerObject">
+                    <i class="icon ion-edit positive"></i>
+                    Birthday: {{datepickerObject.inputDate | date:'MMM d, y'}}
+                </ionic-datepicker>
+            </ion-item>
 
 
-                <ion-item class="item item-icon-left item-dark" ng-show="currentPlatform">
-                    <i class="icon ion-iphone"></i>
-                    {{currentPlatform}} version {{currentPlatformVersion}}
-                </ion-item>
-            <div class="button-bar bar-dark item-text-wrap">
-                <a class="button icon-left ion-locked" ng-click="launch('https://quarkyapp.com/app-privacy-policy/')" >Privacy Policy</a>
-                <a class="button icon-left ion-log-out" ng-click="logout()">Logout</a>
-            </div>
+            <!-- <ion-item class="item item-icon-left">
+                 <i class="icon ion-speakerphone"></i>
+                 App feedback
+             </ion-item>-->
+
+            <ion-item class="item item-icon-left item-dark">
+                <i class="icon ion-email"></i>
+                {{auth.profile.email || 'not on file'}}
+            </ion-item>
+
+
+            <ion-item class="item item-icon-left item-dark" ng-show="currentPlatform">
+                <i class="icon ion-iphone"></i>
+                {{currentPlatform}} version {{currentPlatformVersion}}
+            </ion-item>
+
 
         </div>
 
+        <div class="button-bar bar-stable item-text-wrap">
+            <a class="button icon-left ion-locked" ng-click="launch('https://quarkyapp.com/app-privacy-policy/')">Privacy
+                Policy</a>
+            <a class="button icon-left ion-log-out" ng-click="logout()">Logout</a>
+        </div>
 
-
+        <hr>
 
     </ion-content>
 </ion-view>

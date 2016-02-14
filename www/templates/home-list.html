@@ -25,7 +25,8 @@
         </div>
 
         <span ng-repeat="p in posts">
-                <img data-ng-click="openModal(p)" data-ng-src="{{p.featured_image.source || 'img/coming-soon.png'}}"
+                <img data-ng-click="openModal(p)"
+                     data-ng-src="{{p.featured_image.attachment_meta.sizes.medium.url || p.featured_image.source || 'img/coming-soon.png'}}"
                      width="300px" alt="">
         </span>
 

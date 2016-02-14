@@ -14,7 +14,9 @@ It shows the gallery of images for a selected filter from Master
 
         <span ng-repeat="p in posts | orderBy:'+order'">
             <a data-ng-click="doSearch(p.search ? p.search : p.name)">
-                <img data-ng-src="{{p.featured_image.local}}" width="300px" alt="">
+                <img
+                        data-ng-src="{{p.featured_image.local}}"
+                        width="300px" alt="">
             </a>
         </span>
 
