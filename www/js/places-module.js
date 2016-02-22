@@ -303,6 +303,9 @@ angular.module('places',
 
                         var reply = [];
                         //console.log("GOOGLE predictions: ", predictions);
+                        if(!predictions || predictions == null) {
+                            deferred.resolve(reply);
+                        }
                         predictions.forEach(function(prediction) {
                             var foo = {};
                             foo.name = prediction.description;
@@ -318,7 +321,7 @@ angular.module('places',
                     var myLatLng = new google.maps.LatLng(myLat, myLng);
 
                     var request = {};
-                    request.input = query || 'pizza';
+                    request.input = query || $scope.searchModel.lastPlaceSearch || 'pizza';
                     request.location = myLatLng;
                     request.componentRestrictions = { country: 'us'};
                     request.radius = $scope.searchModel.radius * 1609;
@@ -345,9 +348,6 @@ angular.module('places',
             }
         }
         $scope.autocompleteSelectedItem = function (callback) {
-            // callback.item, callback.componentId, callback.selectedItems
-            // print out the selected item
-            console.log("selected item: ", callback.item, " searchModel: ", $scope.searchModel);
 
             if(angular.isDefined(callback.item.id)) // came from an ohana item
                 $state.go('app.place-ohana-detail', { placeId: callback.item.id} );
@@ -355,9 +355,7 @@ angular.module('places',
                 $state.go('app.place-detail', { placeId: callback.item.place_id} );
             if(angular.isDefined(callback.item.ID)) // came from a category
             {
-                $scope.searchModel.name = callback.item.search ? callback.item.search : callback.item.name;
-                $scope.doSearch2();
-
+                $scope.doSearch(callback.item.search ? callback.item.search : callback.item.name);
             }
 
         }
@@ -367,30 +365,6 @@ angular.module('places',
 
         // =================
 
-        $scope.updateSearch = function(key, value) {
-            if(key == 'text') $scope.search.text = value;
-            if(key == 'radius') $scope.search.radius = value;
-            console.log('Updatesearch to: ', $scope.search);
-        }
-
-        $scope.doSearch2 = function () {
-            if (!$rootScope.myPosition) {
-                $ionicPopup.alert({
-                    title: 'Location',
-                    template: 'Getting position, try again shortly'
-                });
-                return;
-            }
-            console.log('doSearch2: ', $scope.searchModel);
-
-            $state.go('app.places-articles', {
-                searchParams: {
-                    'text': $scope.searchModel.name || "",
-                    'radius': $scope.searchModel.radius,
-                    'per_page': $scope.searchModel.per_page
-                }
-            });
-        };
 
         $scope.doSearch = function (srch) {
             if (!$rootScope.myPosition) {
@@ -400,11 +374,11 @@ angular.module('places',
                 });
                 return;
             }
-            console.log('doSearch2: ', $scope.searchModel);
+            console.log('doSearch: ', $scope.searchModel);
 
             $state.go('app.places-articles', {
                 searchParams: {
-                    'text': srch || $scope.searchModel.name || "",
+                    'text': srch || $scope.searchModel.lastPlaceSearch || "",
                     'radius': $scope.searchModel.radius,
                     'per_page': $scope.searchModel.per_page
                 }
@@ -435,7 +409,6 @@ angular.module('places',
         //        }
         //    });
         //};
-
 
         $scope.doGallery = function (aTopic) {
             if (!aTopic) return; // shouldn't happen
@@ -557,11 +530,11 @@ angular.module('places',
                 });
                 return;
             }
-            console.log('gallery doSearch2: ', $scope.searchModel);
+            console.log('gallery doSearch: ', $scope.searchModel);
 
             $state.go('app.places-articles', {
                 searchParams: {
-                    'text': srch || $scope.searchModel.name || "",
+                    'text': srch || $scope.searchModel.lastPlaceSearch || "",
                     'radius': $scope.searchModel.radius,
                     'per_page': $scope.searchModel.per_page
                 }

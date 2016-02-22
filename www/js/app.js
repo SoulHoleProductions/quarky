@@ -140,9 +140,7 @@ angular.module('quarky', ['ionic',
                 "per_page": "15",
                 "showCategories": false,
                 "showGooglePlaces": false,
-                "name": [
-                    ""
-                ]
+                "lastPlaceSearch": "",
             },
             "bookmarks": {}
         }
