@@ -28,7 +28,7 @@ angular.module('menu', ['auth0'])
                 },
                 buttonClicked: function (index) {
                     //console.log('BUTTON CLICKED', index);
-                    if (index == 0) window.open('tel:1-800-784-2433', '_system'); // National Suicide Hotline
+                    if (index == 0) window.open('tel:1-800-273-8255', '_system'); // National Suicide Hotline
                     if (index == 1) window.open('tel:1-800-786-2929', '_system'); // National Runaway Safeline
                     if (index == 2) window.open('tel:1-800-999-9999', '_system'); // Crisis Intervention & Counseling Nineline
                     if (index == 3) window.open('sms:741741'); // crisis text line

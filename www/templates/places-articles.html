@@ -27,10 +27,10 @@ TODO: add infinite scroll
         <!-- Google Places -->
         <div ng-show="auth.profile.can_add_places" class="list">
             <ion-list class="list">
-                <ion-item class="item-avatar" ng-repeat="match in googleMatches" href="#/app/place-detail/{{match.reference}}">
+                <ion-item class="item-avatar" ng-repeat="match in googleMatches" href="#/app/place-detail/{{match.place_id}}">
                     <img data-ng-src="{{match.icon}}">
                     <h2 data-ng-bind-html="match.name"></h2>
-                    <p data-ng-bind-html="match.formatted_address"></p>
+                    <p data-ng-bind-html="match.formatted_address || match.address"></p>
                 </ion-item>
 
             </ion-list>

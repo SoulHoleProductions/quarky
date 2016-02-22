@@ -139,6 +139,7 @@ angular.module('quarky', ['ionic',
                 "radius": "25",
                 "per_page": "15",
                 "showCategories": false,
+                "showGooglePlaces": false,
                 "name": [
                     ""
                 ]
@@ -339,13 +340,13 @@ angular.module('quarky', ['ionic',
                 }
             }
         });
-        $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-            //console.log('state transition from: ', fromState, ' to state: ', toState);
-            if(toState.name == 'login' && auth.isAuthenticated ) {
-                $state.transitionTo("app.home-list");
-                event.preventDefault();
-            }
-        });
+        //$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+        //    //console.log('state transition from: ', fromState, ' to state: ', toState);
+        //    if(toState.name == 'login' && auth.isAuthenticated ) {
+        //        $state.transitionTo("app.home-list");
+        //        event.preventDefault();
+        //    }
+        //});
         auth.hookEvents();
     })
 
@@ -553,8 +554,17 @@ angular.module('quarky', ['ionic',
             })
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/login');
+        //$urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise(function($injector, $location){
+            var $state = $injector.get("$state");
+            var myAuth = $injector.get("auth");
 
+            if(myAuth.isAuthenticated) {
+                $state.go('app.home-list');
+            } else {
+                $state.go('login');
+            }
+        });
 
         //-------------- auth0
         authProvider.init({
