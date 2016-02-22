@@ -309,8 +309,6 @@ function GuruService() {
             }
 
         },
-
-
         {
             "ID": 2702,
             "slug": "referring-articles",
@@ -327,6 +325,15 @@ function GuruService() {
                 "ID": 2737,
                 "source": "https://quarkyapp.com/wp-content/uploads/2015/04/resilience.png",
                 "local": "img/guru-nav/eSkills/Resilience.png"
+            }
+        },
+        {
+            "ID": 5444,
+            "slug": "research-articles",
+            "featured_image": {
+                "ID": 5445,
+                "source": "https://quarkyapp.com/wp-content/uploads/2016/02/Research-2.png",
+                "local": "img/guru-nav/eSkills/Research.png"
             }
         }
     ];

@@ -169,14 +169,15 @@ function AboutService2($q) {
             localImage: 'img/guru-nav/about/Credits.png',
             slug: 'acknowledgements-articles'
 
-        },
-        {
-            id: '4',
-            name: 'Legal Disclaimers',
-            localImage: 'img/guru-nav/about/legal-disclaimers.png',
-            slug: 'legal-disclaimers-articles'
-
         }
+        // ----- removed legal disclaimers
+        //{
+        //    id: '4',
+        //    name: 'Legal Disclaimers',
+        //    localImage: 'img/guru-nav/about/legal-disclaimers.png',
+        //    slug: 'legal-disclaimers-articles'
+        //
+        //}
     ];
     return {
         getAboutPosts: getAboutPosts,
