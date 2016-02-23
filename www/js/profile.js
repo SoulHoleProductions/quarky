@@ -1,7 +1,7 @@
-angular.module('profile', ['ionic-datepicker', 'ngResource'])
+angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
 
-    .controller('BookmarksCtrl', function ($scope, UserSettings, UserStorageService,
-                                           wordpressAPI, $ionicModal, $sce) {
+    .controller('BookmarksCtrl', function ($scope, UserSettings, UserStorageService, $sanitize,
+                                           wordpressAPI, $ionicModal, $sce, $cordovaSocialSharing) {
 
         // when a widget is changed, come here an update the setting object too
         function changeSetting(type, value) {
@@ -54,6 +54,36 @@ angular.module('profile', ['ionic-datepicker', 'ngResource'])
         $scope.$on('$ionicView.enter', function (e) {
             updateView();
         });
+
+        // Social Sharing
+        // -------------------------------------
+        $scope.shareNative = function (message, subject, image, url) {
+            function htmlToPlaintext(text) {
+                return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+            }
+
+            if(message) {
+                message = htmlToPlaintext($sanitize(message));
+            } else {
+                message = "I am using QuarkyApp, maybe you should too :)";
+            }
+
+            if(subject){
+                subject = htmlToPlaintext($sanitize(subject));
+            } else {
+                subject = "Found this on Quarky App!";
+            }
+
+            if (!image) image = "https://quarkyapp.com/wp-content/uploads/2015/06/quarkycon1.jpg";
+            if (!url) url = "https://quarkyapp.com";
+
+            console.log("shareNative, message: ", message, " subject: ", subject, " image: ", image, " url: ", url);
+
+            if(ionic.Platform.isWebView()) { // cordova app
+                $cordovaSocialSharing.share(message, subject, image, url);
+            }
+        }
+
 
 // --------------- modal from the given template URL
 

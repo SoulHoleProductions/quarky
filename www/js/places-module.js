@@ -305,15 +305,17 @@ angular.module('places',
                         //console.log("GOOGLE predictions: ", predictions);
                         if(!predictions || predictions == null) {
                             deferred.resolve(reply);
+                        } else {
+                            predictions.forEach(function(prediction) {
+                                var foo = {};
+                                foo.name = prediction.description;
+                                foo.place_id = prediction.place_id;
+                                reply = reply.concat(foo);
+                            });
+                            //console.log("GOOGLE reply: ", JSON.stringify(reply));
+                            deferred.resolve(reply);
                         }
-                        predictions.forEach(function(prediction) {
-                            var foo = {};
-                            foo.name = prediction.description;
-                            foo.place_id = prediction.place_id;
-                            reply = reply.concat(foo);
-                        });
-                        //console.log("GOOGLE reply: ", JSON.stringify(reply));
-                        deferred.resolve(reply);
+
                     };
 
                     var myLat = $rootScope.geolat;
@@ -359,9 +361,7 @@ angular.module('places',
             }
 
         }
-        $scope.isNotLocated = function() {
-            return isUndefinedOrNull($rootScope.geoWatch);
-        }
+
 
         // =================
 

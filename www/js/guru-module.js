@@ -107,7 +107,6 @@ angular.module('guru', ['ngCordova'])
                 return text ? String(text).replace(/<[^>]+>/gm, '') : '';
             }
 
-            console.log("shareNative, message: ", message, " subject: ", subject, " image: ", image, " url: ", url);
             if(message) {
                 message = htmlToPlaintext($sanitize(message));
             } else {
