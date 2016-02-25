@@ -246,38 +246,107 @@ angular.module('quarky', ['ionic',
 
         }
     })
-    .run(function ($ionicPlatform, $ionicAnalytics, $ionicPush,
-                   auth, $rootScope, store, $state, $ionicPopup,
+    .service('setupIonicIO', function (auth, $ionicAnalytics, $ionicPush) {
+        this.forUser = function(user) {
+            // update ionic user settings from auth (just in case)
+            user.set('name', auth.profile.name);
+            user.set('email', auth.profile.email);
+            user.set('picture', auth.profile.picture);
+            user.set('nickname', auth.profile.nickname);
+            if (auth.profile.app_metadata && auth.profile.app_metadata.can_add_places) {
+                user.set('can_add_places', auth.profile.app_metadata.can_add_places.toString());
+            } else {
+                user.set('can_add_places', 'false');
+            }
+
+            // setup analytics once we have User set (no anonymous events are wanted)
+            $ionicAnalytics.register({
+                dryRun: false, // send events to backend? TODO: change to false before publish
+                silent: false  // silent logger
+            });
+
+            //register for push notifications
+            //if on cordova
+            if(ionic.Platform.isWebView()) {
+                $ionicPush.register(
+                    function (pushToken) {
+                        console.log('$ionicPush registered token:', pushToken.token);
+                        user.addPushToken(pushToken);
+                        user.save().then(
+                            function (response) {
+                                console.log('$ionicPush user.save during auth reg: ', response);
+                            },
+                            function (error) {
+                                console.log('$ionicPush user.save ERROR during auth reg:', error);
+                            }
+                        );
+                    }
+                );
+            } else {
+                // still save the user if not on cordova...
+                user.save().then(
+                    function (response) {
+                        console.log('not cordova user.save during auth reg: ', response);
+                    },
+                    function (error) {
+                        console.log('not cordova user.save ERROR during auth reg:', error);
+                    }
+                );
+            }
+        }
+    })
+    .run(function ($ionicPlatform, $ionicAnalytics, $ionicPush, $ionicUser,
+                   auth, $rootScope, store, $state, $ionicPopup, $window,
                    jwtHelper, $location, $ionicLoading) {
 
 
         $ionicPlatform.ready(function () {
             ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
             ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
+            ionic.Platform.isAndroid() ? console.log("quarky is Android") : console.log("quarky is NOT Android");
             ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");
 
-            $ionicAnalytics.register({
-                // Don't send any events to the analytics backend.
-                // (useful during development)
-                dryRun: false // TODO: change to false before publish
-            });
+            // kick off the platform web client
+            Ionic.io();
 
-            $ionicPush.init({
-                "debug": true,
-                "onNotification": function(notification) {
-                    var payload = notification.payload;
-                    console.log('ionic push notification: ', notification, payload);
-                    $ionicLoading.hide()
-                    $ionicPopup.alert({
-                        title: 'Title: ' + notification.title,
-                        template: 'Msg: ' + notification.text
-                    });
-                },
-                "onRegister": function(data) {
-                    console.log('ionic push token: ', data.token);
-                }
-            });
-            $ionicPush.register();
+            // only if on cordova
+            if(ionic.Platform.isWebView()) {
+                $ionicPush.init({
+                    "debug": false,
+                    "onNotification": function(notification) {
+                        var payload = notification.payload;
+                        console.log('$ionicPush onNotification(): ', notification, payload);
+                        var lastPush = {
+                            title: notification.title || 'Message from Quarky:',
+                            template: notification.text || 'Just checking in...'
+                        };
+                        $window.localStorage['lastPush'] = JSON.stringify(lastPush);
+                        $ionicLoading.hide()
+                        $ionicPopup.alert({
+                            title: 'A new message',
+                            template: notification.text || 'Please check your Profile'
+                        });
+                    },
+                    "onRegister": function(data) {
+                        console.log('$ionicPush onRegister() token: ', data.token);
+                    },
+                    "onError": function(err) {
+                        console.log('$ionicPush onError(): ', err.message);
+                    },
+                    "pluginConfig": {
+                        "ios": {
+                            "alert": "true",
+                            "badge": "true",
+                            "sound": "true"
+                        },
+                        "android": {
+                            "senderID": "586634803974",
+                            "icon": "icon",
+                            "iconColor": "black"
+                        }
+                    }
+                });
+            }
 
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -292,6 +361,46 @@ angular.module('quarky', ['ionic',
                 window.open = cordova.InAppBrowser.open;
             }
 
+            if (auth.isAuthenticated) {
+                console.log('authenticated, move to home-list');
+                /*
+                 // ----- update push tokens
+                 var push = new Ionic.Push();
+                 var user = Ionic.User.current();
+                 var callback = function(pushToken) {
+                 console.log('Updated push Registered token:', pushToken.token);
+                 console.log('Updated push token for:', auth.profile.name, ': ', myAuth.profile.user_id);
+                 user.addPushToken(pushToken);
+                 user.save(); // you NEED to call a save after you add the token
+                 }
+                 push.register(callback);
+                 */
+                // -------------------- IONIC.IO
+                // load the user so we can add the new push token as needed
+                $ionicUser.load(auth.profile.user_id)
+                    .then(
+                        // the auth'd user was found and loaded
+                        function (loadedUser) {
+                            console.log("$ionicUser.load(): ", loadedUser);
+                            var user = $ionicUser.current(loadedUser); // now the current user and (stored)
+                            setupIonicIO.forUser(user);
+                        },
+                        function (err) {
+                            // auth'd user was NOT found, create new user
+                            var user = $ionicUser.current();
+                            if (!user.id || user.id != auth.profile.user_id) {
+                                user.id = auth.profile.user_id;
+                                setupIonicIO.forUser(user);
+                            } else {
+                                //couldn't load the user for some reason
+                                console.log('$ionicUser load error during auth:', err);
+                            }
+                        });
+                // -------------------- IONIC.IO
+
+                $state.go('app.home-list');
+
+            }
         });
 
         //-------------- global http loading
@@ -310,8 +419,6 @@ angular.module('quarky', ['ionic',
         });
 
         //-------------- auth0
-        //This hooks all auth events
-
         var refreshingToken = null;
         $rootScope.$on('$locationChangeStart', function () {
             var token = store.get('token');
@@ -338,13 +445,6 @@ angular.module('quarky', ['ionic',
                 }
             }
         });
-        //$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-        //    //console.log('state transition from: ', fromState, ' to state: ', toState);
-        //    if(toState.name == 'login' && auth.isAuthenticated ) {
-        //        $state.transitionTo("app.home-list");
-        //        event.preventDefault();
-        //    }
-        //});
         auth.hookEvents();
     })
 
@@ -552,17 +652,28 @@ angular.module('quarky', ['ionic',
             })
 
         // if none of the above states are matched, use this as the fallback
-        //$urlRouterProvider.otherwise('/login');
-        $urlRouterProvider.otherwise(function($injector, $location){
+        $urlRouterProvider.otherwise('/login');
+        /*$urlRouterProvider.otherwise(function($injector, $location){
             var $state = $injector.get("$state");
             var myAuth = $injector.get("auth");
 
             if(myAuth.isAuthenticated) {
+                // ----- update push tokens
+                var push = new Ionic.Push();
+                var user = Ionic.User.current();
+                var callback = function(pushToken) {
+                    console.log('Updated push Registered token:', pushToken.token);
+                    console.log('Updated push token for:', myAuth.profile.name, ': ', myAuth.profile.user_id);
+                    user.addPushToken(pushToken);
+                    user.save(); // you NEED to call a save after you add the token
+                }
+                push.register(callback);
+
                 $state.go('app.home-list');
             } else {
                 $state.go('login');
             }
-        });
+        });*/
 
         //-------------- auth0
         authProvider.init({
