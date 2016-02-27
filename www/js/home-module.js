@@ -25,35 +25,62 @@ angular.module('home-module', ['ionicLazyLoad', 'ngCordova'])
             $scope.pagenum = 1;
             if ($scope.posts.length) {
                 $scope.posts = [];
-                $scope.getRemoteFeed();
+                $scope.getRemoteFeed(true);
             }
             $scope.$broadcast("scroll.refreshComplete");
             $scope.infiniteLoad = true;
         };
-        $scope.getRemoteFeed = function () {
-            wordpressAPI.getPosts(
-                {
-                    "filter[category_name]": 'home',
-                    "page": $scope.pagenum
-                }
-
-            )
-                .$promise
-                .then(function(result) {
-                    console.log("from service: ", result, " pagenum: ", $scope.pagenum);
-                    (result.length == wordpressConfig.PAGE_SIZE) ? $scope.pagenum++ : $scope.pagenum = 1;
-                    if (result.length) {
-                        $scope.posts = $scope.posts.concat(result);
+        $scope.getRemoteFeed = function (refresh) {
+            if(refresh && refresh == true) {
+                wordpressAPI.getFreshPosts(
+                    {
+                        "filter[category_name]": 'home',
+                        "page": $scope.pagenum
                     }
-                    $scope.$broadcast("scroll.infiniteScrollComplete");
-                    return result;
-                })
-                .catch(function(err){
-                    $scope.$broadcast("scroll.infiniteScrollComplete");
-                    $scope.$broadcast("scroll.refreshComplete");
-                    $scope.infiniteLoad = false;
-                    return err.data;
-                });
+
+                    )
+                    .$promise
+                    .then(function(result) {
+                        console.log("from service: ", result, " pagenum: ", $scope.pagenum);
+                        (result.length == wordpressConfig.PAGE_SIZE) ? $scope.pagenum++ : $scope.pagenum = 1;
+                        if (result.length) {
+                            $scope.posts = $scope.posts.concat(result);
+                        }
+                        $scope.$broadcast("scroll.infiniteScrollComplete");
+                        return result;
+                    })
+                    .catch(function(err){
+                        $scope.$broadcast("scroll.infiniteScrollComplete");
+                        $scope.$broadcast("scroll.refreshComplete");
+                        $scope.infiniteLoad = false;
+                        return err.data;
+                    });
+            }
+            else {
+                wordpressAPI.getPosts(
+                    {
+                        "filter[category_name]": 'home',
+                        "page": $scope.pagenum
+                    }
+
+                    )
+                    .$promise
+                    .then(function(result) {
+                        console.log("from service: ", result, " pagenum: ", $scope.pagenum);
+                        (result.length == wordpressConfig.PAGE_SIZE) ? $scope.pagenum++ : $scope.pagenum = 1;
+                        if (result.length) {
+                            $scope.posts = $scope.posts.concat(result);
+                        }
+                        $scope.$broadcast("scroll.infiniteScrollComplete");
+                        return result;
+                    })
+                    .catch(function(err){
+                        $scope.$broadcast("scroll.infiniteScrollComplete");
+                        $scope.$broadcast("scroll.refreshComplete");
+                        $scope.infiniteLoad = false;
+                        return err.data;
+                    });
+            }
         };
         // FEED ----
 

@@ -92,6 +92,20 @@ angular.module('quarky', ['ionic',
                     },
                     headers: {}
                 },
+                getFreshPosts: {
+                    method: 'GET',
+                    cache: false,
+                    isArray: true,
+                    url: wordpressConfig.FEED_URL + ':verb',
+                    params: {
+                        verb: 'posts',
+                        'filter[posts_per_page]': wordpressConfig.PAGE_SIZE,
+                        'filter[orderby]': wordpressConfig.ORDER_BY,
+                        'filter[post_status]': wordpressConfig.STATUS,
+                        'filter[order]': wordpressConfig.ORDER
+                    },
+                    headers: {}
+                },
                 getPost: {
                     method: 'GET',
                     cache: true,
