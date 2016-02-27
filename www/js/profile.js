@@ -151,12 +151,15 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
 
 
     })
-    .controller('ProfileCtrl', function ($scope, $rootScope, $ionicPlatform, auth,
+    .controller('ProfileCtrl', function ($scope, $rootScope, $ionicPlatform, auth, $window,
+                                         $ionicUser, $ionicAnalytics, $ionicPush,
                                          store, $ionicLoading, $ionicPopup, $state, $ionicHistory,
                                          UserSettings, UserStorageService) {
 
         $scope.auth = auth;
         $scope.posts = [];
+        $scope.lastPush = store.get('lastPush') || '{}';
+        // $scope.lastPush = JSON.parse($window.localStorage['lastPush'] || '{}' );
 
         $scope.launch = function(url) {
             window.open(url, '_system', 'location=yes');
@@ -278,6 +281,11 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
             store.remove('profile');
             store.remove('token');
             store.remove('refreshToken');
+
+            var newUser = new Ionic.User()
+            newUser.id = Ionic.User.anonymousId();
+            Ionic.User.current(newUser);
+
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,
                 disableBack: true

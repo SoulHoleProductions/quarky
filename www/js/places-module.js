@@ -478,7 +478,8 @@ angular.module('places',
                         });
                         $state.go('app.home-list');
                     } else { // we did get a position
-                        console.log("stopped getting position, error: ", err.message);
+                        console.log("Did not get new position (using old one), error: ", err.message);
+                        $ionicLoading.hide();
                     }
                 },
                 function (position) {

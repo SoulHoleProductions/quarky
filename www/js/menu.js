@@ -42,7 +42,8 @@ angular.module('menu', ['auth0'])
     })
 
     .controller('LoginCtrl', function ($scope, auth, $state, store, UserSettings,
-                                       $ionicHistory, $ionicSlideBoxDelegate) {
+                                       $ionicHistory, $ionicSlideBoxDelegate, setupIonicIO,
+                                       $ionicUser, $ionicPush, $ionicAnalytics) {
 
         var currentPlatform = 'Mobile';
         var currentPlatformVersion = 'Device';
@@ -52,12 +53,6 @@ angular.module('menu', ['auth0'])
             currentPlatformVersion = ionic.Platform.version();
         });
 
-        if(auth.isAuthenticated) {
-            console.log('authenticated, move to home-list');
-            $state.go('app.home-list');
-        } else {
-            console.log('NOT authenticated, do login');
-        }
 
         $scope.next = function () {
             $ionicSlideBoxDelegate.next();
@@ -99,43 +94,29 @@ angular.module('menu', ['auth0'])
                     angular.extend(UserSettings, profile.user_metadata);
                     console.log("doAuth - UserSettings: ", UserSettings);
 
-                    // kick off the platform web client
-                    Ionic.io();
 
-                    // this will give you a fresh user or the previously saved 'current user'
-                    var user = Ionic.User.current();
-
-                    // if the user doesn't have an id, you'll need to give it one.
-                    // if the user doesn't match the auth'd user, then user changed
-                    if (!user.id || user.id != auth.profile.user_id) {
-                        user.id = auth.profile.user_id;
-                        user.set('name', auth.profile.name);
-                        user.set('email', auth.profile.email);
-                        user.set('picture', auth.profile.picture);
-                        user.set('nickname', auth.profile.nickname);
-                        if (auth.profile.app_metadata && auth.profile.app_metadata.can_add_places) {
-                            user.set('can_add_places', auth.profile.app_metadata.can_add_places.toString());
-                        } else {
-                            user.set('can_add_places', 'false');
-                        }
-
-                        // TODO: add user_metadata (UserSettings) to the IonicUser??
-                        Ionic.User.current(user);
-                        user = Ionic.User.current();
-                        //console.log('Ionic.User.current(): ', user);
-                        user.save().then(
-                            function (response) {
-                                console.log('user was saved to ionic.io: ', response);
+                // -------------------- IONIC.IO
+                    // load the user so we can add the new push token as needed
+                    $ionicUser.load(auth.profile.user_id)
+                        .then(
+                            // the auth'd user was found and loaded
+                            function (loadedUser) {
+                                console.log("$ionicUser.load(): ", loadedUser);
+                                var user = $ionicUser.current(loadedUser); // now the current user and (stored)
+                                setupIonicIO.forUser(user);
                             },
-                            function (error) {
-                                console.log('user was NOT saved to ionic.io, error:', error);
-                            }
-                        );
-                    }
-
-
+                            function (err) {
+                                // auth'd user was NOT found, create new user
+                                var user = $ionicUser.current();
+                                if (!user.id || user.id != auth.profile.user_id) {
+                                    user.id = auth.profile.user_id;
+                                    setupIonicIO.forUser(user);
+                                } else {
+                                    //couldn't load the user for some reason
+                                    console.log('$ionicUser load error during auth:', err);
+                                }
+                            });
                     // -------------------- IONIC.IO
-
 
                     $state.go('app.home-list');
                 }, function (err) {
@@ -199,7 +180,7 @@ angular.module('menu', ['auth0'])
         };
 
         $scope.$on('$ionic.reconnectScope', function () {
-            if(!auth.isAuthenticated) {
+            if (!auth.isAuthenticated) {
                 $ionicHistory.nextViewOptions({
                     disableAnimate: true,
                     disableBack: true

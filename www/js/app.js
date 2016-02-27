@@ -310,7 +310,7 @@ angular.module('quarky', ['ionic',
             Ionic.io();
 
             // only if on cordova
-            if(ionic.Platform.isWebView()) {
+            if(window.cordova) {
                 $ionicPush.init({
                     "debug": false,
                     "onNotification": function(notification) {
@@ -318,13 +318,15 @@ angular.module('quarky', ['ionic',
                         console.log('$ionicPush onNotification(): ', notification, payload);
                         var lastPush = {
                             title: notification.title || 'Message from Quarky:',
-                            template: notification.text || 'Just checking in...'
+                            text: notification.text || 'Just checking in...',
+                            date: new Date()
                         };
-                        $window.localStorage['lastPush'] = JSON.stringify(lastPush);
-                        $ionicLoading.hide()
+                        //$window.localStorage['lastPush'] = JSON.stringify(lastPush);
+                        store.set('lastPush', lastPush);
+                        $ionicLoading.hide();
                         $ionicPopup.alert({
-                            title: 'A new message',
-                            template: notification.text || 'Please check your Profile'
+                            title: notification.title || 'Message from Quarky:',
+                            template: notification.text || 'Just checking in...'
                         });
                     },
                     "onRegister": function(data) {
