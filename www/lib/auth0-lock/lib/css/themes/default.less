@@ -25,6 +25,7 @@
   background-clip: padding-box;
   width: 60px;
   height: 60px;
+  box-sizing: border-box;
 }
 
 .spinner-bg {
@@ -283,6 +284,7 @@
     letter-spacing: .3px;
     text-transform: uppercase;
     color: #5C666F;
+    cursor: pointer;
     display: block;
     width: 50%;
     float: left;
@@ -293,6 +295,7 @@
   .active {
     background-color: #5C666F;
     color: white;
+    cursor: default;
   }
 }
 
@@ -341,6 +344,7 @@
     form .body-content {
       padding: 30px;
       background: white;
+      border-radius: 0 0 3px 3px;
     }
   }
 
@@ -349,6 +353,10 @@
   }
 
   h1,h2,h3{
+  }
+
+  a{
+    cursor: pointer;
   }
 
   a, button{
@@ -371,6 +379,11 @@
       font-size: 24px;
       font-weight: 400;
       margin-top: 10px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 15px;
     }
 
   }
@@ -497,9 +510,10 @@
   .last-time{
     color: rgba(0,0,0,.56);
     font-size: 13px;
-    margin-bottom: 20px;
-    line-height: 1.6;
+    line-height: 1.8;
     display: block;
+    margin-top: 0;
+    margin-bottom: 20px;
   }
 
   .corporate-credentials {
@@ -559,6 +573,7 @@
       -webkit-transition: border-color .8s;
       transition: border-color .8s;
       overflow: hidden;
+      transition: .25s ease-in;
 
       i{
         font-size: 14px;
@@ -571,7 +586,7 @@
 
       &.error-input {
         border-color: red;
-        animation: pulse 1s both;
+        // animation: pulse 1s both;
       }
     }
 
@@ -718,7 +733,8 @@
     margin-top: 20px;
     font-weight: normal;
     display: inline-block;
-    color: rgba(0,0,0,.89);
+    color: rgba(0,0,0,.86);
+    cursor: pointer;
   }
 
   button.primary{
@@ -745,7 +761,7 @@
 
     margin: 0;
     position: absolute;
-    bottom: -1px;
+    // bottom: -1px;
     left: 0;
 
     border-radius: 0 0 3px 3px;
@@ -759,16 +775,24 @@
     background-color: rgb(217, 222, 224);
   }
 
-  .success{
-    color: green;
+  .success {
+    background: #7ED321;
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+    color: #fff;
+    padding: 10px 5px;
     position: relative;
+
+    display: block;
   }
 
   .error{
     background: #f04848;
     user-select: all;
     color: white;
-    padding: 15px 0;
+    padding: 10px 0;
     position: relative;
   }
 
@@ -1068,6 +1092,10 @@
         border: 0 !important;
       }
     }
+  }
+
+  .panel.active-pwd-strength #change_password .password_policy {
+    bottom: 132px;
   }
 }
 

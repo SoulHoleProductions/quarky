@@ -2,9 +2,131 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="664bda5d-0333-48b4-b4b8-f479426ea7f3" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0.js/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.directive.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.eot" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.ttf" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.woff" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.woff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/menu.js" afterPath="$PROJECT_DIR$/www/js/menu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/profile.js" afterPath="$PROJECT_DIR$/www/js/profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/.bower.json" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/README.md" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/bower.json" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/dist/angular-storage.js" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/dist/angular-storage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/dist/angular-storage.min.js" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/dist/angular-storage.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/a0-angular-storage/package.json" afterPath="$PROJECT_DIR$/www/lib/a0-angular-storage/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/.bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/.zuul.yml" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/.zuul.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/Gruntfile.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/Gruntfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.min.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/webpack.config.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/examples/webpack/webpack.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ar.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ar.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/da.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/da.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/de.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/de.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/en.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/en.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/es.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/es.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/fr-FR.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/fr-FR.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/he.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/he.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/it.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/it.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ja.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ja.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ko.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ko.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nb-NO.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nb-NO.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nl-NL.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nl-NL.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pl.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pl.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pt-BR.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pt-BR.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pt.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pt.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ru.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ru.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/sv.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/sv.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/tlh.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/tlh.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/tr.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/tr.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh-TW.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh-TW.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/common.less" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/common.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.css" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.min.css" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/themes/default.less" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/themes/default.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/zocial.less" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/zocial.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/gravatar/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/gravatar/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/header/lock-header.ejs" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/header/lock-header.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/html/lock-footer.ejs" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/html/lock-footer.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-kerberos/loggedin.ejs" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-kerberos/loggedin.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-reset/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-reset/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signup/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signup/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/options-manager/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/options-manager/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/options-manager/whitelist.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/options-manager/whitelist.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/strategies/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/strategies/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/selection.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/selection.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.svg" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/support/fonts/src/zocial.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/.bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0.js/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/.zuul.yml" afterPath="$PROJECT_DIR$/www/lib/auth0.js/.zuul.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/auth0.js/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/Gruntfile.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/Gruntfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0.js/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0.js/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.min.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/example/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0.js/example/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0.js/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ion-autocomplete/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ion-autocomplete/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ion-autocomplete/README.md" afterPath="$PROJECT_DIR$/www/lib/ion-autocomplete/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ion-autocomplete/RELEASENOTES.md" afterPath="$PROJECT_DIR$/www/lib/ion-autocomplete/RELEASENOTES.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ion-autocomplete/bower.json" afterPath="$PROJECT_DIR$/www/lib/ion-autocomplete/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ion-autocomplete/dist/ion-autocomplete.js" afterPath="$PROJECT_DIR$/www/lib/ion-autocomplete/dist/ion-autocomplete.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ion-autocomplete/dist/ion-autocomplete.min.js" afterPath="$PROJECT_DIR$/www/lib/ion-autocomplete/dist/ion-autocomplete.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ion-autocomplete/package.json" afterPath="$PROJECT_DIR$/www/lib/ion-autocomplete/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/LICENSE.MD" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/LICENSE.MD" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/README.md" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/gulpfile.js" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/package.json" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-modal.html" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-modal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-popup.html" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-popup.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.service.js" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.styles.css" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/README.md" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/build/config.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/build/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/dist/ionic.io.bundle.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/dist/ionic.io.bundle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/gulpfile.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/package.json" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/analytics/analytics.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/analytics/analytics.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/core.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/request.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/request.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/settings.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/settings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/storage.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/storage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/user.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/core/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/deploy/deploy.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/deploy/deploy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/angular.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/angular.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/es5.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/es5.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/push-dev.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/push-dev.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/push.js" afterPath="$PROJECT_DIR$/www/lib/ionic-platform-web-client/src/push/push.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/bower.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.min.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.min.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/package.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/profile.html" afterPath="$PROJECT_DIR$/www/templates/profile.html" />
     </list>
     <ignored path="quarky.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,18 +147,7 @@
     <favorites_list name="quarky" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8442907">
-              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -66,7 +177,6 @@
         <option value="$PROJECT_DIR$/www/js/home.js" />
         <option value="$PROJECT_DIR$/www/templates/home.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/www/templates/home-modal.html" />
         <option value="$PROJECT_DIR$/www/templates/guru-modal.html" />
         <option value="$PROJECT_DIR$/www/templates/about-modal.html" />
@@ -81,7 +191,6 @@
         <option value="$PROJECT_DIR$/www/js/foo.json" />
         <option value="$PROJECT_DIR$/www/templates/login.html" />
         <option value="$PROJECT_DIR$/release-signing.properties" />
-        <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/www/templates/home-list.html" />
         <option value="$PROJECT_DIR$/www/templates/places-gallery.html" />
         <option value="$PROJECT_DIR$/www/templates/about-list.html" />
@@ -93,15 +202,17 @@
         <option value="$PROJECT_DIR$/www/templates/places-master.html" />
         <option value="$PROJECT_DIR$/www/js/guru-module.js" />
         <option value="$PROJECT_DIR$/www/js/places-module.js" />
-        <option value="$PROJECT_DIR$/www/js/menu.js" />
-        <option value="$PROJECT_DIR$/www/js/profile.js" />
         <option value="$PROJECT_DIR$/ionic.project" />
-        <option value="$PROJECT_DIR$/www/templates/profile.html" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/js/home-module.js" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/js/menu.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/www/templates/profile.html" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/www/js/profile.js" />
       </list>
     </option>
   </component>
@@ -111,8 +222,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="174" />
-    <option name="y" value="-937" />
+    <option name="x" value="-61" />
+    <option name="y" value="-987" />
     <option name="width" value="1487" />
     <option name="height" value="870" />
   </component>
@@ -141,7 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -163,6 +273,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -250,12 +361,6 @@
       <created>1426126373942</created>
       <option name="number" value="Default" />
       <updated>1426126373942</updated>
-    </task>
-    <task id="LOCAL-00003" summary="content shown as cards for eGuru">
-      <created>1427223647058</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1427223647058</updated>
     </task>
     <task id="LOCAL-00004" summary="auth0 security updates">
       <created>1427233807675</created>
@@ -545,7 +650,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456603373073</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="added api key for google places">
+      <created>1462822071029</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1462822071029</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -569,16 +680,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="174" y="-937" width="1487" height="870" extended-state="0" />
+    <frame x="-61" y="-987" width="1487" height="870" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18008186" sideWeight="0.49946523" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18008186" sideWeight="0.49946523" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0342246" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1923077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32647815" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19280206" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24796274" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -586,12 +700,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954683" sideWeight="0.5005348" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -608,7 +719,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added settings to places search" />
     <MESSAGE value="new search with autocomplete" />
     <MESSAGE value="added cache to http and resource requests" />
     <MESSAGE value="profile updates, losing geolocation stays in places" />
@@ -633,7 +743,8 @@
     <MESSAGE value="push notifications v2 - profile shows last notification" />
     <MESSAGE value="push notifications v3 - profile shows last notification" />
     <MESSAGE value="hub will bypass cache when pull-refresh" />
-    <option name="LAST_COMMIT_MESSAGE" value="hub will bypass cache when pull-refresh" />
+    <MESSAGE value="added api key for google places" />
+    <option name="LAST_COMMIT_MESSAGE" value="added api key for google places" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -642,6 +753,16 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/www/js/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#5706#10585#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -731,13 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/places-master.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/places-gallery.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43589744">
@@ -749,20 +863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12315271">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/places-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6256158">
-          <caret line="482" column="21" selection-start-line="482" selection-start-column="21" selection-end-line="482" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63829786">
-          <caret line="118" column="52" selection-start-line="97" selection-start-column="16" selection-end-line="118" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -815,20 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.io-config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15332198">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -843,27 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.07325383">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15332198">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24549918">
-          <caret line="159" column="26" selection-start-line="159" selection-start-column="26" selection-end-line="159" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/guru-module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24630542">
@@ -875,13 +940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.5">
           <caret line="28" column="91" selection-start-line="28" selection-start-column="91" selection-end-line="28" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/home-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16584565">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -927,18 +985,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+    <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09819967">
-          <caret line="76" column="67" selection-start-line="76" selection-start-column="67" selection-end-line="76" selection-end-column="67" />
+        <state vertical-scroll-proportion="2.4479167">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
+    <entry file="file://$PROJECT_DIR$/www/js/home-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8442907">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.44833332">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="e#631#750#0" expanded="false" />
+            <element signature="e#795#1188#0" expanded="false" />
+            <element signature="e#1240#3496#0" expanded="false" />
+            <element signature="e#3563#3619#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.io-config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8072917">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/ionic-datepicker/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/auth0-angular/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/ion-autocomplete/RELEASENOTES.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29045644">
+          <caret line="14" column="123" selection-start-line="14" selection-start-column="123" selection-end-line="14" selection-end-column="123" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/places-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.925926">
+          <caret line="351" column="27" selection-start-line="351" selection-start-column="15" selection-end-line="351" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.375">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/places-master.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41322315">
+          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.75">
+          <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.54">
+          <caret line="407" column="12" selection-start-line="407" selection-start-column="12" selection-end-line="407" selection-end-column="12" />
+          <folding>
+            <element signature="e#5706#10585#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.84">
+          <caret line="397" column="75" selection-start-line="397" selection-start-column="75" selection-end-line="397" selection-end-column="75" />
+          <folding>
+            <element signature="e#25#381#0" expanded="false" />
+            <element signature="e#418#696#0" expanded="false" />
+            <element signature="e#769#2753#0" expanded="false" />
+            <element signature="e#2788#3149#0" expanded="false" />
+            <element signature="e#3218#4864#0" expanded="false" />
+            <element signature="e#3327#3914#0" expanded="false" />
+            <element signature="e#4904#5633#0" expanded="false" />
+            <element signature="e#5686#5958#0" expanded="false" />
+            <element signature="e#6049#6425#0" expanded="false" />
+            <element signature="e#6482#7187#0" expanded="false" />
+            <element signature="e#7282#10016#0" expanded="false" />
+            <element signature="e#13950#15114#0" expanded="false" />
+            <element signature="e#15310#26073#0" expanded="false" />
+            <element signature="e#15955#16094#0" expanded="false" />
+            <element signature="e#16122#16289#0" expanded="false" />
+            <element signature="e#16325#16908#0" expanded="false" />
+            <element signature="e#16946#17535#0" expanded="false" />
+            <element signature="e#24852#26064#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

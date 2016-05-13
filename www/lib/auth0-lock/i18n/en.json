@@ -30,6 +30,7 @@
     "domainUserLabel":                  "You are connected from your corporate network...",
     "wrongEmailPasswordErrorText":      "Wrong email or password.",
     "passwordChangeRequiredErrorText":  "You need to update your password because this is the first time you are signing in, or because your password has expired.",
+    "passwordLeakedErrorText":          "This login attempt has been blocked because your password has been leaked in a third party website. We've sent you an email with instructions on how to unblock it.",
     "unauthorizedErrorText":            "Access denied.",
     "userBlockedErrorText":             "",
     "or":                               "... or log in using",
@@ -69,8 +70,20 @@
     }
 
   },
+  "newReset": {
+    "title":                       "Password Reset",
+    "action":                      "Send",
+    "emailPlaceholder":            "Email",
+    "cancelAction":                "Cancel",
+    "footerText":                  "",
+    "successText":                 "We've just sent you an email to reset your password.",
+    "headerText":                  "Please enter your email address. We will send you an email to reset your password.",
+    "serverErrorText":             "There was an error processing the password reset.",
+    "userDoesNotExistErrorText":   "User does not exist.",
+    "tooManyRequestsErrorText":    "You have reached the limit on password reset attempts.  Please wait before trying again."
+  },
   "reset": {
-    "title":                       "Reset Password",
+    "title":                       "Password Change",
     "action":                      "Send",
     "emailPlaceholder":            "Email",
     "passwordPlaceholder":         "New Password",
@@ -82,6 +95,7 @@
     "headerText":                  "Please enter your email and the new password. We will send you an email to confirm the password change.",
     "serverErrorText":             "There was an error processing the password reset.",
     "userDoesNotExistErrorText":   "User does not exist.",
+    "tooManyRequestsErrorText":    "You have reached the limit on password reset attempts.  Please wait before trying again.",
     "invalidPassword":             "Password is too weak."
   }
 }

@@ -71,8 +71,8 @@ bower install ion-autocomplete --save
 ```
 2. Import the `ion-autocomplete` javascript and css file into your HTML file:
 ```html
-<script src="bower_components/ion-autocomplete/dist/ion-autocomplete.js"></script>
-<link href="bower_components/ion-autocomplete/dist/ion-autocomplete.css" rel="stylesheet">
+<script src="lib/ion-autocomplete/dist/ion-autocomplete.js"></script>
+<link href="lib/ion-autocomplete/dist/ion-autocomplete.css" rel="stylesheet">
 ```
 3. Add `ion-autocomplete` as a dependency on your Ionic app:
 ```javascript
@@ -91,7 +91,8 @@ ion-autocomplete version | Ionic version
 0.0.2 - 0.1.2 | 1.0.0-beta.14
 0.2.0 - 0.2.1 | 1.0.0-rc.3
 0.2.2 - 0.2.3 | 1.0.0
-0.3.0 - latest | 1.1.0
+0.3.0 - 0.3.1 | 1.1.0
+0.3.2 - latest | 1.1.1
 
 # Usage
 
@@ -334,7 +335,8 @@ Define the `model-to-item-method` and `external-model` in your scope:
 ```javascript
 $scope.modelToItemMethod = function (modelValue) {
 
-    // get the full model item from the model value and return it
+    // get the full model item from the model value and return it. You need to implement the `getModelItem` method by yourself 
+    // as this is just a sample. The method needs to retrieve the whole item (like the `items-method`) from just the model value.
     var modelItem = getModelItem(modelValue);
     return modelItem;
 }
@@ -485,6 +487,7 @@ you need to set the `manage-externally` attribute to `true` and then you can cal
 // inside your controller you can define the 'clickButton()' method the following way
 this.clickButton = function () {
     var ionAutocompleteElement = document.getElementsByClassName("ion-autocomplete");
+    angular.element(ionAutocompleteElement).controller('ionAutocomplete').fetchSearchQuery("", true);
     angular.element(ionAutocompleteElement).controller('ionAutocomplete').showModal();
 }
 ```

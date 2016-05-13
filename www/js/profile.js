@@ -152,18 +152,149 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
 
     })
     .controller('ProfileCtrl', function ($scope, $rootScope, $ionicPlatform, auth, $window,
-                                         $ionicUser, $ionicAnalytics, $ionicPush,
                                          store, $ionicLoading, $ionicPopup, $state, $ionicHistory,
+                                         wordpressAPIv2, ionicDatePicker,
                                          UserSettings, UserStorageService) {
 
         $scope.auth = auth;
         $scope.posts = [];
         $scope.lastPush = store.get('lastPush') || '{}';
-        // $scope.lastPush = JSON.parse($window.localStorage['lastPush'] || '{}' );
 
         $scope.launch = function(url) {
             window.open(url, '_system', 'location=yes');
         }
+
+        /*
+         * WP-API v2
+         *
+        $scope.WPgetUser = function(anID) {
+            wordpressAPIv2.getUser(
+                { id: anID}
+            )
+                .$promise
+                .then(function (result) {
+                    var txt = "";
+                    for (var x in result){
+                        txt += result[x];
+                    }
+                    console.log("success -> getUser: ", result, txt);
+
+                })
+                .catch(function (err) {
+                    var status = err.status;
+                    var message = err.statusText;
+                    var alertTitle = "Error: " + err.status;
+                    if ((status >= 400) && (status < 500)) {
+                        alertTitle = "Client Error";
+                    }
+                    if ((status >= 500) && (status < 600)) {
+                        alertTitle = "Server Error";
+                    }
+                    var alertPopup = $ionicPopup.alert({
+                        title: alertTitle,
+                        template: message
+                    });
+
+                    alertPopup.then(function(res) {
+                        console.log("error: ", err);
+                    });
+                })
+        }
+        $scope.WPgetMe = function() {
+            wordpressAPIv2.getMe()
+                .$promise
+                .then(function (result) {
+                    var txt = "";
+                    for (var x in result){
+                        txt += result[x];
+                    }
+                    console.log("success -> getMe: ", result.body, txt);
+                })
+                .catch(function (err) {
+                    var status = err.status;
+                    var message = err.statusText;
+                    var alertTitle = "Error: " + err.status;
+                    if ((status >= 400) && (status < 500)) {
+                        alertTitle = "Client Error";
+                    }
+                    if ((status >= 500) && (status < 600)) {
+                        alertTitle = "Server Error";
+                    }
+                    var alertPopup = $ionicPopup.alert({
+                        title: alertTitle,
+                        template: message
+                    });
+
+                    alertPopup.then(function(res) {
+                        console.log("error: ", err);
+                    });
+                })
+        }
+        $scope.WPcreatePost = function() {
+            wordpressAPIv2.createPost(
+                { title: 'This is a test post' }
+            )
+                .$promise
+                .then(function (result) {
+                    var txt = "";
+                    for (var x in result){
+                        txt += result[x];
+                    }
+                    console.log("success -> createPost: ", result, txt);
+                })
+                .catch(function (err) {
+                    var status = err.status;
+                    var message = err.statusText;
+                    var alertTitle = "Error: " + err.status;
+                    if ((status >= 400) && (status < 500)) {
+                        alertTitle = "Client Error";
+                    }
+                    if ((status >= 500) && (status < 600)) {
+                        alertTitle = "Server Error";
+                    }
+                    var alertPopup = $ionicPopup.alert({
+                        title: alertTitle,
+                        template: message
+                    });
+
+                    alertPopup.then(function(res) {
+                        console.log("error: ", err);
+                    });
+
+                })
+        }
+        $scope.WPtestComments = function() {
+            wordpressAPIv2.testComment(
+                { content: 'This is a test comment' + Math.random().toString(36).substring(7),
+                    post: 2508
+                }
+                )
+                .$promise
+                .then(function (result) {
+                    console.log("success -> testComment: ", result, JSON.stringify(result));
+                })
+                .catch(function (err) {
+                    var status = err.status;
+                    var message = err.statusText;
+                    var alertTitle = "Error: " + err.status;
+                    if ((status >= 400) && (status < 500)) {
+                        alertTitle = "Client Error";
+                    }
+                    if ((status >= 500) && (status < 600)) {
+                        alertTitle = "Server Error";
+                    }
+                    var alertPopup = $ionicPopup.alert({
+                        title: alertTitle,
+                        template: message
+                    });
+
+                    alertPopup.then(function(res) {
+                        console.log("error: ", err);
+                    });
+
+                })
+        }
+*/
 
         console.log('ProfileCtrl: UserSettings: ',UserSettings);
 
@@ -175,36 +306,29 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
         };
 
         // BIRTHDAY
-        $scope.datepickerObject = {
-            titleLabel: 'Birthday',  //Optional
-            todayLabel: 'Today',  //Optional
-            closeLabel: 'Close',  //Optional
-            setLabel: 'Set',  //Optional
-            setButtonType: 'button-balanced',  //Optional
-            todayButtonType: 'button-stable',  //Optional
-            closeButtonType: 'button-assertive',  //Optional
-            mondayFirst: true,    //Optional
-            templateType: 'popup', //Optional
-            showTodayButton: 'true', //Optional
-            modalHeaderColor: 'bar-dark', //Optional
-            modalFooterColor: 'bar-dark', //Optional
-            from: new Date(1950, 1, 1),   //Optional
-            to: new Date(),    //Optional
-            callback: function (val) {    //Mandatory
-                datePickerCallback(val);
-            }
+
+        var ipObj1 = {
+            callback: function (val) {  //Mandatory
+                console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+                if (typeof(val) === 'undefined') {
+                    console.log('No date selected');
+                } else {
+                    console.log('Selected date is : ', val);
+                    this.inputDate = val;
+                    changeSetting('birthday', val);
+                }
+            },
+            mondayFirst: true,          //Optional
+            closeOnSelect: false,       //Optional
+            templateType: 'popup'       //Optional
         };
-        var datePickerCallback = function (val) {
-            if (typeof(val) === 'undefined') {
-                console.log('No date selected');
-            } else {
-                console.log('Selected date is : ', val);
-                $scope.datepickerObject.inputDate = val;
-                changeSetting('birthday', val);
-            }
+
+        $scope.openDatePicker = function(){
+            ionicDatePicker.openDatePicker(ipObj1);
         };
+
         $scope.birthday = UserSettings.birthday;
-        $scope.datepickerObject.inputDate = new Date(UserSettings.birthday);
+        ipObj1.inputDate = new Date(UserSettings.birthday);
 
         // GENDER
         $scope.gender = UserSettings.gender;
@@ -281,10 +405,6 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
             store.remove('profile');
             store.remove('token');
             store.remove('refreshToken');
-
-            var newUser = new Ionic.User()
-            newUser.id = Ionic.User.anonymousId();
-            Ionic.User.current(newUser);
 
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,

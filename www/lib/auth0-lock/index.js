@@ -24,6 +24,7 @@ var HeaderView = require('./lib/header');
 var SigninPanel = require('./lib/mode-signin');
 var SignupPanel = require('./lib/mode-signup');
 var ResetPanel = require('./lib/mode-reset');
+var NewResetPanel = require('./lib/mode-new-reset');
 var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
 var LoadingPanel = require('./lib/mode-loading');
@@ -112,6 +113,13 @@ function Auth0Lock (clientID, domain, options) {
  */
 
 Auth0Lock.version = require('package.version');
+
+/**
+ * Configure telemetry
+ */
+Auth0.clientInfo.lib_version = Auth0.clientInfo.version;
+Auth0.clientInfo.name = "lock.js";
+Auth0.clientInfo.version = Auth0Lock.version;
 
 /**
  * Inherit from `EventEmitter`
@@ -734,9 +742,19 @@ Auth0Lock.prototype._signupPanel = function (options) {
  */
 
 Auth0Lock.prototype._resetPanel = function (options) {
-  var panel = ResetPanel(this, { options: options || {} });
 
-  this._setTitle(this.options.i18n.t('reset:title'));
+  var panelClass, titleNS;
+  if (this.options.useNewReset) {
+    panelClass = NewResetPanel;
+    titleNS = "newReset";
+  } else {
+    panelClass = ResetPanel;
+    titleNS = "reset";
+  }
+
+  var panel = panelClass(this, { options: options || {} });
+
+  this._setTitle(this.options.i18n.t(titleNS + ':title'));
 
   this.setPanel(panel);
 
@@ -754,13 +772,19 @@ Auth0Lock.prototype._resetPanel = function (options) {
 
 Auth0Lock.prototype._loadingPanel = function (options) {
   var panel = LoadingPanel(this, { options: options });
+  var titleNS;
 
   if (options.title) {
-    this._setTitle(this.options.i18n.t(options.title + ':title'));
+    titleNS = options.title;
+  } else if (options.mode) {
+    titleNS = options.mode === 'reset' && this.options.useNewReset
+      ? 'newReset'
+      : options.mode;
   } else {
-    this._setTitle(this.options.i18n.t((options.mode || 'signin') + ':title'));
+    titleNS = 'sigin';
   }
 
+  this._setTitle(this.options.i18n.t(titleNS + ':title'));
   this.setPanel(panel);
 
   if (options.message) {
@@ -1164,9 +1188,11 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
     self._focusError(password_input);
 
     if (err.status !== 401) {
-      self._showError(err.message || self.options.i18n.t('signin:serverErrorText'));
+      self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else if ('password_change_required' === err.code) {
       self._showError(self.options.i18n.t('signin:passwordChangeRequiredErrorText'));
+    } else if ('password_leaked' === err.code) {
+      self._showError(self.options.i18n.t('signin:passwordLeakedErrorText'));
     } else {
       self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
       password_input.focus();
@@ -1284,6 +1310,7 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
 
     // display signin
     self.setPanel(panel);
+    var message;
 
     // render errors
     if (err.message === 'User closed the popup window') {
@@ -1297,22 +1324,27 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
     } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else if ('unauthorized' === err.code && err.details && err.details.error_description === 'user is blocked') {
-      var message = self.options.i18n.t('signin:userBlockedErrorText');
+      message = self.options.i18n.t('signin:userBlockedErrorText');
       self._showError(message || err.details.error_description);
       self._focusError(email_input);
       self._focusError(password_input);
     } else if ('unauthorized' === err.code) {
-      var message = self.options.i18n.t('signin:unauthorizedErrorText');
+      message = self.options.i18n.t('signin:unauthorizedErrorText');
       self._showError((err.details && err.details.error_description) || message);
       self._focusError(email_input);
       self._focusError(password_input);
     } else if ('password_change_required' === err.code) {
-      var message = self.options.i18n.t('signin:passwordChangeRequiredErrorText');
+      message = self.options.i18n.t('signin:passwordChangeRequiredErrorText');
+      self._showError(message);
+      self._focusError(email_input);
+      self._focusError(password_input);
+    } else if ('password_leaked' === err.code) {
+      message = self.options.i18n.t('signin:passwordLeakedErrorText');
       self._showError(message);
       self._focusError(email_input);
       self._focusError(password_input);
     } else {
-      var message = self.options.i18n.t('signin:wrongEmailPasswordErrorText');
+      message = self.options.i18n.t('signin:wrongEmailPasswordErrorText');
       self._showError(message);
       self._focusError(email_input);
       self._focusError(password_input);

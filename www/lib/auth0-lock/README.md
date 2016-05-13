@@ -2,7 +2,7 @@
 
 # Lock
 [![NPM version][npm-image]][npm-url]
-[![Build status][strider-image]][strider-url]
+[![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
@@ -39,14 +39,11 @@ bower install auth0-lock
 Or our CDN:
 
 ```html
-<!-- Latest major release -->
-<script src="http://cdn.auth0.com/js/lock-8.min.js"></script>
-
 <!-- Latest minor release -->
-<script src="http://cdn.auth0.com/js/lock-8.x.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-9.x.min.js"></script>
 
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock-8.x.y.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-9.x.y.min.js"></script>
 ```
 
 If you are targeting mobile audiences, it's recommended that you add:
@@ -61,17 +58,17 @@ No special configuration is required if you are using Browserify to build your p
 
 ### Webpack
 
-If you are using Webpack, you will need to install loaders (`$ npm install --save json-loader transform-loader`) and then use them in your `webpack.config.js` file:
+If you are using Webpack, besides the _auth0-lock and webpack modules_, you will need to install the _json and transform loaders_ (`$ npm install --save json-loader transform-loader`) and then use them in your `webpack.config.js` file:
 
 ```js
 loaders: [{
-  test: /node_modules\/auth0-lock\/.*\.js$/,
+  test: /node_modules[\\\/]auth0-lock[\\\/].*\.js$/,
   loaders: [
     'transform-loader/cacheable?brfs',
     'transform-loader/cacheable?packageify'
   ]
 }, {
-  test: /node_modules\/auth0-lock\/.*\.ejs$/,
+  test: /node_modules[\\\/]auth0-lock[\\\/].*\.ejs$/,
   loader: 'transform-loader/cacheable?ejsify'
 }, {
   test: /\.json$/,
@@ -161,8 +158,8 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
-[strider-image]: https://ci.auth0.com/auth0/lock/badge
-[strider-url]: https://ci.auth0.com/auth0/lock
+[travis-image]: https://travis-ci.org/auth0/lock.svg?branch=master
+[travis-url]: https://travis-ci.org/auth0/lock
 [coveralls-image]: https://img.shields.io/coveralls/auth0/lock.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/auth0/lock?branch=master
 [david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square

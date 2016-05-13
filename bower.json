@@ -4,11 +4,11 @@
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.1.1",
     "auth0-angular": "4.*",
-    "a0-angular-storage": ">= 0.0.13",
+    "a0-angular-storage": ">= 0.0.15",
     "angular-jwt": ">= 0.0.9",
-    "ionic-platform-web-client": "~0.2.1",
-    "ngCordova": "~0.1.23-alpha",
-    "ionic-datepicker": "~0.9.0",
+    "ionic-platform-web-client": "~0.7.1",
+    "ngCordova": "~0.1.26-alpha",
+    "ionic-datepicker": "~1.1.0",
     "angular-resource": "1.4.3",
     "angular-messages": "1.4.3"
   },
@@ -18,6 +18,6 @@
     "angular-sanitize": "1.4.3"
   },
   "dependencies": {
-    "ion-autocomplete": "~0.3.1"
+    "ion-autocomplete": "~0.3.2"
   }
 }

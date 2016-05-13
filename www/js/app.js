@@ -1,6 +1,5 @@
 angular.module('quarky', ['ionic',
         'ionic.service.core',
-        'ionic.service.analytics',
         'ionic.service.push',
         'ngCordova',
         'about-module',
@@ -13,10 +12,11 @@ angular.module('quarky', ['ionic',
         'angular-storage',
         'angular-jwt',
         'ngResource',
-        'ion-autocomplete'
+        'ion-autocomplete',
+        'ionic-datepicker'
     ])
     .constant("wordpressV2Config", {
-        'FEED_URL': 'https://soul-hole.net/wp-json/wp/v2/',
+        'FEED_URL': 'http://soul-hole.net/wp-json/wp/v2/',
         'PAGE_SIZE': -1, // get them all
         'STATUS': 'publish',
 //        'TAG': 'elevate1',
@@ -29,12 +29,18 @@ angular.module('quarky', ['ionic',
             {
                 getMe: {
                     method: 'GET',
-                    cache: true,
-                    url: wordpressV2Config.FEED_URL + 'users/me'
+                    url: wordpressV2Config.FEED_URL + 'users/me?_envelope' //note: use 'body' from envelope
+                },
+                getUser: {
+                    method: 'GET',
+                    url: wordpressV2Config.FEED_URL + 'users/:id',
+                    params: {
+                        id: '@id'
+                    },
+                    headers: {}
                 },
                 getPosts: {
                     method: 'GET',
-                    cache: true,
                     isArray: true,
                     url: wordpressV2Config.FEED_URL + ':verb',
                     params: {
@@ -58,6 +64,13 @@ angular.module('quarky', ['ionic',
                 createPost: {
                     method: 'POST',
                     url: wordpressV2Config.FEED_URL + 'posts',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                },
+                testComment: {
+                    method: 'POST',
+                    url: wordpressV2Config.FEED_URL + 'comments',
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -260,56 +273,7 @@ angular.module('quarky', ['ionic',
 
         }
     })
-    .service('setupIonicIO', function (auth, $ionicAnalytics, $ionicPush) {
-        this.forUser = function(user) {
-            // update ionic user settings from auth (just in case)
-            user.set('name', auth.profile.name);
-            user.set('email', auth.profile.email);
-            user.set('picture', auth.profile.picture);
-            user.set('nickname', auth.profile.nickname);
-            if (auth.profile.app_metadata && auth.profile.app_metadata.can_add_places) {
-                user.set('can_add_places', auth.profile.app_metadata.can_add_places.toString());
-            } else {
-                user.set('can_add_places', 'false');
-            }
-
-            // setup analytics once we have User set (no anonymous events are wanted)
-            $ionicAnalytics.register({
-                dryRun: false, // send events to backend? TODO: change to false before publish
-                silent: false  // silent logger
-            });
-
-            //register for push notifications
-            //if on cordova
-            if(ionic.Platform.isWebView()) {
-                $ionicPush.register(
-                    function (pushToken) {
-                        console.log('$ionicPush registered token:', pushToken.token);
-                        user.addPushToken(pushToken);
-                        user.save().then(
-                            function (response) {
-                                console.log('$ionicPush user.save during auth reg: ', response);
-                            },
-                            function (error) {
-                                console.log('$ionicPush user.save ERROR during auth reg:', error);
-                            }
-                        );
-                    }
-                );
-            } else {
-                // still save the user if not on cordova...
-                user.save().then(
-                    function (response) {
-                        console.log('not cordova user.save during auth reg: ', response);
-                    },
-                    function (error) {
-                        console.log('not cordova user.save ERROR during auth reg:', error);
-                    }
-                );
-            }
-        }
-    })
-    .run(function ($ionicPlatform, $ionicAnalytics, $ionicPush, $ionicUser,
+    .run(function ($ionicPlatform, $ionicPush,
                    auth, $rootScope, store, $state, $ionicPopup, $window,
                    jwtHelper, $location, $ionicLoading) {
 
@@ -319,9 +283,6 @@ angular.module('quarky', ['ionic',
             ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
             ionic.Platform.isAndroid() ? console.log("quarky is Android") : console.log("quarky is NOT Android");
             ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");
-
-            // kick off the platform web client
-            Ionic.io();
 
             // only if on cordova
             if(window.cordova) {
@@ -335,7 +296,6 @@ angular.module('quarky', ['ionic',
                             text: notification.text || 'Just checking in...',
                             date: new Date()
                         };
-                        //$window.localStorage['lastPush'] = JSON.stringify(lastPush);
                         store.set('lastPush', lastPush);
                         $ionicLoading.hide();
                         $ionicPopup.alert({
@@ -345,6 +305,7 @@ angular.module('quarky', ['ionic',
                     },
                     "onRegister": function(data) {
                         console.log('$ionicPush onRegister() token: ', data.token);
+                        $ionicPush.saveToken(data.token);
                     },
                     "onError": function(err) {
                         console.log('$ionicPush onError(): ', err.message);
@@ -362,6 +323,7 @@ angular.module('quarky', ['ionic',
                         }
                     }
                 });
+                $ionicPush.register();
             }
 
             if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -379,39 +341,7 @@ angular.module('quarky', ['ionic',
 
             if (auth.isAuthenticated) {
                 console.log('authenticated, move to home-list');
-                /*
-                 // ----- update push tokens
-                 var push = new Ionic.Push();
-                 var user = Ionic.User.current();
-                 var callback = function(pushToken) {
-                 console.log('Updated push Registered token:', pushToken.token);
-                 console.log('Updated push token for:', auth.profile.name, ': ', myAuth.profile.user_id);
-                 user.addPushToken(pushToken);
-                 user.save(); // you NEED to call a save after you add the token
-                 }
-                 push.register(callback);
-                 */
-                // -------------------- IONIC.IO
-                // load the user so we can add the new push token as needed
-                $ionicUser.load(auth.profile.user_id)
-                    .then(
-                        // the auth'd user was found and loaded
-                        function (loadedUser) {
-                            console.log("$ionicUser.load(): ", loadedUser);
-                            var user = $ionicUser.current(loadedUser); // now the current user and (stored)
-                            setupIonicIO.forUser(user);
-                        },
-                        function (err) {
-                            // auth'd user was NOT found, create new user
-                            var user = $ionicUser.current();
-                            if (!user.id || user.id != auth.profile.user_id) {
-                                user.id = auth.profile.user_id;
-                                setupIonicIO.forUser(user);
-                            } else {
-                                //couldn't load the user for some reason
-                                console.log('$ionicUser load error during auth:', err);
-                            }
-                        });
+
                 // -------------------- IONIC.IO
 
                 $state.go('app.home-list');
@@ -464,9 +394,24 @@ angular.module('quarky', ['ionic',
         auth.hookEvents();
     })
 
-    .config(function ($stateProvider, $urlRouterProvider,
+    .config(function ($stateProvider, $urlRouterProvider, ionicDatePickerProvider,
                       authProvider, $httpProvider, jwtInterceptorProvider) {
 
+
+        var datePickerObj = {
+            inputDate: new Date(),
+            setLabel: 'Set',
+            todayLabel: 'Today',
+            closeLabel: 'Close',
+            mondayFirst: false,
+            weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+            monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            templateType: 'popup',
+            showTodayButton: true,
+            dateFormat: 'dd MMMM yyyy',
+            closeOnSelect: false
+        };
+        ionicDatePickerProvider.configDatePicker(datePickerObj);
 
         $stateProvider
 
@@ -669,27 +614,7 @@ angular.module('quarky', ['ionic',
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/login');
-        /*$urlRouterProvider.otherwise(function($injector, $location){
-            var $state = $injector.get("$state");
-            var myAuth = $injector.get("auth");
 
-            if(myAuth.isAuthenticated) {
-                // ----- update push tokens
-                var push = new Ionic.Push();
-                var user = Ionic.User.current();
-                var callback = function(pushToken) {
-                    console.log('Updated push Registered token:', pushToken.token);
-                    console.log('Updated push token for:', myAuth.profile.name, ': ', myAuth.profile.user_id);
-                    user.addPushToken(pushToken);
-                    user.save(); // you NEED to call a save after you add the token
-                }
-                push.register(callback);
-
-                $state.go('app.home-list');
-            } else {
-                $state.go('login');
-            }
-        });*/
 
         //-------------- auth0
         authProvider.init({
@@ -697,33 +622,6 @@ angular.module('quarky', ['ionic',
             clientID: AUTH0_CLIENT_ID,
             loginState: 'login'
         });
-        /*authProvider.on('loginSuccess', function ($location, profilePromise, idToken, store, refreshToken) {
-            console.log('got loginSuccess ');
-
-            profilePromise.then(function (profile) {
-                console.log('loginSuccess profile: ', profile);
-                console.log('loginSuccess token: ', idToken);
-                console.log('loginSuccess refreshToken: ', refreshToken);
-
-                store.set('profile', profile);
-                store.set('token', idToken);
-                store.set('refreshToken', refreshToken);
-                $location.path('/app/home-list');
-            });
-        });
-        authProvider.on('authenticated', function ($location) {
-            console.log('got authenticated ');
-            $location.path('/app/home-list');
-        });
-        authProvider.on('loginFailure', function ($location, error, auth, store) {
-            // Error callback
-            console.log('loginFailure: ', error);
-            auth.signout();
-            store.remove('profile');
-            store.remove('token');
-            store.remove('refreshToken');
-            $location.path('/login');
-        });*/
 
         jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
             var idToken = store.get('token');

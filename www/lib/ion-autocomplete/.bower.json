@@ -1,6 +1,6 @@
 {
   "name": "ion-autocomplete",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A configurable Ionic directive for an autocomplete dropdown",
   "main": [
     "./dist/ion-autocomplete.js",
@@ -37,17 +37,16 @@
     "url": "https://github.com/guylabs/ion-autocomplete.git"
   },
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.1.0",
+    "ionic": "driftyco/ionic-bower#1.1.1",
     "angular-mocks": "1.4.3"
   },
-  "_release": "0.3.1",
+  "_release": "0.3.2",
   "_resolution": {
     "type": "version",
-    "tag": "v0.3.1",
-    "commit": "4e00fcaba39fffec151e7ddc9dc29341fcb3738b"
+    "tag": "v0.3.2",
+    "commit": "e29cfa9a9b98b2d05c808eacb83ed36d0c207df2"
   },
-  "_source": "git://github.com/guylabs/ion-autocomplete.git",
-  "_target": "~0.3.1",
-  "_originalSource": "ion-autocomplete",
-  "_direct": true
+  "_source": "https://github.com/guylabs/ion-autocomplete.git",
+  "_target": "~0.3.2",
+  "_originalSource": "ion-autocomplete"
 }

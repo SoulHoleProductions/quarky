@@ -42,8 +42,7 @@ angular.module('menu', ['auth0'])
     })
 
     .controller('LoginCtrl', function ($scope, auth, $state, store, UserSettings,
-                                       $ionicHistory, $ionicSlideBoxDelegate, setupIonicIO,
-                                       $ionicUser, $ionicPush, $ionicAnalytics) {
+                                       $ionicHistory, $ionicSlideBoxDelegate) {
 
         var currentPlatform = 'Mobile';
         var currentPlatformVersion = 'Device';
@@ -69,8 +68,6 @@ angular.module('menu', ['auth0'])
         $scope.doAuth = function () {
             auth.signin({
                     sso: false,
-                    //rememberLastLogin: false,
-                    //popup: true,
                     focusInput: false,
                     closable: true,
                     icon: 'img/quarkycon.png',
@@ -81,10 +78,6 @@ angular.module('menu', ['auth0'])
                         device: currentPlatform + ' ' + currentPlatformVersion
                     }
                 }, function (profile, token, accessToken, state, refreshToken) {
-                    /*console.log('doAuth profile: ', profile);
-                     console.log('doAuth token: ', token);
-                     console.log('doAuth accessToken: ', accessToken);
-                     console.log('doAuth refreshToken: ', refreshToken);*/
 
                     store.set('profile', profile);
                     store.set('token', token);
@@ -94,28 +87,8 @@ angular.module('menu', ['auth0'])
                     angular.extend(UserSettings, profile.user_metadata);
                     console.log("doAuth - UserSettings: ", UserSettings);
 
-
                 // -------------------- IONIC.IO
-                    // load the user so we can add the new push token as needed
-                    $ionicUser.load(auth.profile.user_id)
-                        .then(
-                            // the auth'd user was found and loaded
-                            function (loadedUser) {
-                                console.log("$ionicUser.load(): ", loadedUser);
-                                var user = $ionicUser.current(loadedUser); // now the current user and (stored)
-                                setupIonicIO.forUser(user);
-                            },
-                            function (err) {
-                                // auth'd user was NOT found, create new user
-                                var user = $ionicUser.current();
-                                if (!user.id || user.id != auth.profile.user_id) {
-                                    user.id = auth.profile.user_id;
-                                    setupIonicIO.forUser(user);
-                                } else {
-                                    //couldn't load the user for some reason
-                                    console.log('$ionicUser load error during auth:', err);
-                                }
-                            });
+
                     // -------------------- IONIC.IO
 
                     $state.go('app.home-list');
@@ -132,40 +105,6 @@ angular.module('menu', ['auth0'])
             );
         }
 
-        /*       $scope.doAuth = function (socialConnection) {
-         console.log('socialConnection is: ', socialConnection);
-         auth.signin({
-         sso: false,
-         connection: socialConnection,
-         authParams: {
-         scope: 'openid offline_access',
-         // The following is optional
-         device: currentPlatform+' '+currentPlatformVersion
-         }
-         }, function (profile, token, accessToken, state, refreshToken) {
-         // Success callback
-         console.log('doAuth profile: ', profile);
-         console.log('doAuth token: ', token);
-         console.log('doAuth accessToken: ', accessToken);
-         console.log('doAuth refreshToken: ', refreshToken);
-
-         store.set('profile', profile);
-         store.set('token', token);
-         store.set('refreshToken', refreshToken);
-         $state.go('app.home-list');
-         }, function (err) {
-         // Error callback
-         console.log('doAuth: ', err);
-         $ionicHistory.nextViewOptions({
-         disableAnimate: true,
-         disableBack: true
-         });
-         $state.go('login');
-
-         }
-         );
-         }
-         */
         $scope.logout = function () {
             auth.signout();
             store.remove('profile');

@@ -305,8 +305,8 @@ ResetPanel.prototype.submit = function () {
       email_input.val('');
       widget._signinPanel();
       widget._showSuccess(widget.options.i18n.t('reset:successText'));
-      widget.emit('reset success');
-      return 'function' === typeof callback ? callback.apply(widget, args) : null;
+      widget.emit.apply(widget, ['reset success'].concat(args.slice(1)));
+      return;
     }
 
     widget.emit('reset error', err);
@@ -321,11 +321,11 @@ ResetPanel.prototype.submit = function () {
       }
       widget._focusError(email_input);
       widget._showError(widget.options.i18n.t('reset:userDoesNotExistErrorText'));
+    } else if (429 === err.status) {
+      widget._showError(widget.options.i18n.t('reset:tooManyRequestsErrorText'));
     } else {
       widget._showError(widget.options.i18n.t('reset:serverErrorText'));
     }
-
-    return 'function' === typeof callback ? callback.apply(widget, args) : null;
 
   });
 

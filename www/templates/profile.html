@@ -20,6 +20,29 @@
                 Volunteer: {{want_add_places ? 'Yes' : 'No'}}
             </ion-item>
 
+           <!-- <ion-item
+                      class="item-icon-left" ng-click="WPgetUser('1')">
+                <i class="icon ion-ribbon-a"></i>
+                getUser wp-api v2
+            </ion-item>
+
+            <ion-item
+                      class="item-icon-left" ng-click="WPgetMe()">
+                <i class="icon ion-ribbon-a"></i>
+                getMe
+            </ion-item>
+
+            <ion-item
+                      class="item-icon-left" ng-click="WPcreatePost()">
+                <i class="icon ion-ribbon-a"></i>
+                createPost wp-api v2
+            </ion-item>
+            <ion-item
+                    class="item-icon-left" ng-click="WPtestComments()">
+                <i class="icon ion-ribbon-a"></i>
+                test Comments
+            </ion-item>-->
+
             <!--<ion-item ng-if="!angular.equals({}, $scope.lastPush)" class="item-avatar item-stable">-->
             <ion-item class="item-avatar item-dark">
                 <img src="img/quarkycon.png">
@@ -34,11 +57,9 @@
                 Gender: {{gender | capitalize}}
             </ion-item>
 
-            <ion-item class="item-icon-right item-dark">
-                <ionic-datepicker input-obj="datepickerObject">
+            <ion-item class="item-icon-right item-dark" ng-click="openDatePicker()">
                     <i class="icon ion-edit positive"></i>
-                    Birthday: {{datepickerObject.inputDate | date:'MMM d, y'}}
-                </ionic-datepicker>
+                    Birthday: {{birthday | date:'MMM d, y'}}
             </ion-item>
 
 

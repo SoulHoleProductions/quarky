@@ -3,15 +3,18 @@
   "name": "auth0.js",
   "main": "build/auth0.js",
   "dependencies": {},
+  "ignore": [
+    "test"
+  ],
   "homepage": "https://github.com/auth0/auth0.js",
-  "version": "6.8.0",
-  "_release": "6.8.0",
+  "version": "7.0.1",
+  "_release": "7.0.1",
   "_resolution": {
     "type": "version",
-    "tag": "v6.8.0",
-    "commit": "47ba44b673d8195c0698512e54eee95478beff1e"
+    "tag": "v7.0.1",
+    "commit": "3c1acba4a556aa19bde6a6afecc4d5115a7b483c"
   },
-  "_source": "git://github.com/auth0/auth0.js.git",
+  "_source": "https://github.com/auth0/auth0.js.git",
   "_target": ">= 5.2.2",
   "_originalSource": "auth0.js"
 }
