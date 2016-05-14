@@ -279,6 +279,15 @@ angular.module('quarky', ['ionic',
 
 
         $ionicPlatform.ready(function () {
+           /* if (auth.isAuthenticated) {
+                console.log('authenticated, move to home-list');
+
+                // -------------------- IONIC.IO
+
+                $state.go('app.home-list');
+
+            }*/
+
             ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
             ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
             ionic.Platform.isAndroid() ? console.log("quarky is Android") : console.log("quarky is NOT Android");
@@ -306,6 +315,7 @@ angular.module('quarky', ['ionic',
                     "onRegister": function(data) {
                         console.log('$ionicPush onRegister() token: ', data.token);
                         $ionicPush.saveToken(data.token);
+                        $rootScope.myPushToken = data.token;
                     },
                     "onError": function(err) {
                         console.log('$ionicPush onError(): ', err.message);
@@ -339,14 +349,7 @@ angular.module('quarky', ['ionic',
                 window.open = cordova.InAppBrowser.open;
             }
 
-            if (auth.isAuthenticated) {
-                console.log('authenticated, move to home-list');
 
-                // -------------------- IONIC.IO
-
-                $state.go('app.home-list');
-
-            }
         });
 
         //-------------- global http loading
@@ -415,11 +418,7 @@ angular.module('quarky', ['ionic',
 
         $stateProvider
 
-            .state('login', {
-                url: '/login',
-                templateUrl: 'templates/login.html',
-                controller: 'LoginCtrl'
-            })
+
             .state('app', {
                 url: "/app",
                 abstract: true,
@@ -611,9 +610,14 @@ angular.module('quarky', ['ionic',
                     }
                 }
             })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
+            })
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/app/home-list');
 
 
         //-------------- auth0

@@ -20,6 +20,21 @@
                 Volunteer: {{want_add_places ? 'Yes' : 'No'}}
             </ion-item>
 
+            <ion-item
+                    ng-show="auth.profile.app_metadata.can_add_places"
+                    class="item-icon-left item-balanced"
+                    ng-click="testPush()">
+                <i class="icon ion-ribbon-a"></i>
+                Send a test push
+            </ion-item>
+            <ion-item
+                    ng-show="auth.profile.app_metadata.can_add_places"
+                    class="item-icon-left item-balanced"
+                    ng-click="checkPush()">
+                <i class="icon ion-ribbon-a"></i>
+                Check sent push status
+            </ion-item>
+
            <!-- <ion-item
                       class="item-icon-left" ng-click="WPgetUser('1')">
                 <i class="icon ion-ribbon-a"></i>
