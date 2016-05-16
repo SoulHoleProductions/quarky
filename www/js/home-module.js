@@ -10,6 +10,12 @@ angular.module('home-module', ['ionicLazyLoad', 'ngCordova'])
 
 
         $ionicPlatform.ready(function () {
+            // Google Analytics
+            if(typeof analytics !== "undefined") {
+                console.log("Google Analytics user-id: ", auth.profile.user_id);
+                analytics.setUserId(auth.profile.user_id);
+            }
+
         });
 
 

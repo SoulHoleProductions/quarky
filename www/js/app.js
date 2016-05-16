@@ -273,28 +273,19 @@ angular.module('quarky', ['ionic',
 
         }
     })
-    .run(function ($ionicPlatform, $ionicPush,
-                   auth, $rootScope, store, $state, $ionicPopup, $window,
+    .run(function ($ionicPlatform, $ionicPush, auth, $rootScope, store, $state, $ionicPopup, $window,
                    jwtHelper, $location, $ionicLoading) {
 
 
         $ionicPlatform.ready(function () {
-           /* if (auth.isAuthenticated) {
-                console.log('authenticated, move to home-list');
-
-                // -------------------- IONIC.IO
-
-                $state.go('app.home-list');
-
-            }*/
-
             ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
             ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
             ionic.Platform.isAndroid() ? console.log("quarky is Android") : console.log("quarky is NOT Android");
             ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");
 
-            // only if on cordova
+            // Ionic.io only if on cordova
             if(window.cordova) {
+
                 $ionicPush.init({
                     "debug": false,
                     "onNotification": function(notification) {
@@ -334,6 +325,13 @@ angular.module('quarky', ['ionic',
                     }
                 });
                 $ionicPush.register();
+            }
+
+            // Google Analytics
+            if(typeof analytics !== "undefined") {
+                analytics.startTrackerWithId("UA-57113932-2");
+            } else {
+                console.log("Google Analytics Unavailable");
             }
 
             if (window.cordova && window.cordova.plugins.Keyboard) {

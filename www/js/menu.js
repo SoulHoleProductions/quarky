@@ -87,10 +87,6 @@ angular.module('menu', ['auth0'])
                     angular.extend(UserSettings, profile.user_metadata);
                     console.log("doAuth - UserSettings: ", UserSettings);
 
-                // -------------------- IONIC.IO
-
-                    // -------------------- IONIC.IO
-
                     $state.go('app.home-list');
                 }, function (err) {
                     // Error callback
