@@ -77,6 +77,11 @@ angular.module('about-module', ['ionicLazyLoad', 'ngCordova'])
             console.log("shareNative, message: ", message, " subject: ", subject, " image: ", image, " url: ", url);
 
             if(ionic.Platform.isWebView()) { // cordova app
+                // Google Analytics
+                if(typeof analytics !== "undefined") {
+                    analytics.trackEvent('Article', 'Share', subject, 100);
+                    console.log('GA tracking Article Share event: ', subject);
+                }
                 $cordovaSocialSharing.share(message, subject, image, url);
             }
         }
@@ -131,7 +136,12 @@ angular.module('about-module', ['ionicLazyLoad', 'ngCordova'])
         $scope.openModal = function (aPost) {
             $scope.aPost = aPost;
             $scope.bookmarked = checkBookmark(aPost.ID.toString());
-            $scope.modal.show()
+            $scope.modal.show();
+            // Google Analytics
+            if(typeof analytics !== "undefined") {
+                analytics.trackEvent('Article', 'Open', aPost.title, aPost.ID);
+                console.log('GA tracking Article Open event for: ', aPost.title);
+            }
         }
         $scope.closeModal = function () {
             $scope.modal.hide();

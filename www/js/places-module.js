@@ -710,6 +710,11 @@ angular.module('places',
         OhanaAPI.location(request).$promise
             .then(function(o){
                 console.log('here is o: ',o);
+                // Google Analytics
+                if(typeof analytics !== "undefined") {
+                    analytics.trackEvent('Places', 'Open', o.name, 25);
+                    console.log('GA tracking Places Open event for: ', o.name);
+                }
                 $scope.name = o.name;
                 $scope.description = o.description;
                 $scope.icon = 'img/quarkycon.png';
@@ -829,6 +834,12 @@ angular.module('places',
             } else $scope.hasPhotos = false;
 
             $scope.place = res;
+
+            // Google Analytics
+            if(typeof analytics !== "undefined") {
+                analytics.trackEvent('Places', 'Open', res.name, 25);
+                console.log('GA tracking Places Open event for: ', res.name);
+            }
 
             console.log('Looking for existing org called', $scope.place.name);
             OhanaAPI.organizations({
@@ -1071,6 +1082,13 @@ angular.module('places',
                         template: 'You have added a new Place to Quarky'
                     });
                     $scope.closeModal();
+
+                // Google Analytics
+                    if(typeof analytics !== "undefined") {
+                        analytics.trackEvent('Places', 'Create', form.loc_name, form.loc_id);
+                        console.log('GA tracking Places Create event for: ', form.loc_name);
+                    }
+
                     return res;
                 })
                 .catch(function(err){
