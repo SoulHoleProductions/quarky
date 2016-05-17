@@ -276,14 +276,14 @@ angular.module('quarky', ['ionic',
     .run(function ($ionicPlatform, $ionicPush, auth, $rootScope, store, $state, $ionicPopup, $window,
                    jwtHelper, $location, $ionicLoading) {
 
-
         $ionicPlatform.ready(function () {
-            ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
+            console.log("Device Ready for Quarky");
+            /*ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
             ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
             ionic.Platform.isAndroid() ? console.log("quarky is Android") : console.log("quarky is NOT Android");
-            ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");
+            ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");*/
 
-            // Ionic.io only if on cordova
+            // Ionic.io push only if on cordova
             if(window.cordova) {
 
                 $ionicPush.init({
@@ -330,9 +330,31 @@ angular.module('quarky', ['ionic',
             // Google Analytics
             if(typeof analytics !== "undefined") {
                 analytics.startTrackerWithId("UA-57113932-2");
+                //set initial view once
+                if(auth.isAuthenticated) {
+                    analytics.trackView('app.home-list');
+                    console.log("GA tracking view: app.home-list");
+                } else {
+                    analytics.trackView('login');
+                    console.log("GA tracking view: login");
+                }
+                analytics.enableUncaughtExceptionReporting(true,
+                    function(s) {console.log(s);},
+                    function(e) {console.error(e);});
             } else {
                 console.log("Google Analytics Unavailable");
             }
+            // track view changes in google analytics
+            $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams) {
+                if(typeof analytics !== "undefined") {
+                    analytics.trackView(toState.name);
+                    console.log("GA tracking view: ", toState.name);
+                } else {
+                    console.log("GA tracking view's not enabled");
+                }
+            });
+
+            // Cordova keyboard, statusbar and inappbrowser
 
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -346,9 +368,8 @@ angular.module('quarky', ['ionic',
             if (window.cordova && window.cordova.plugins.inAppBrowser) {
                 window.open = cordova.InAppBrowser.open;
             }
-
-
         });
+
 
         //-------------- global http loading
         $rootScope.$on('loading:show', function () {
@@ -616,6 +637,11 @@ angular.module('quarky', ['ionic',
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home-list');
+
+        $urlRouterProvider.otherwise(function($injector, $location){
+
+            return '/app/home-list';
+        });
 
 
         //-------------- auth0

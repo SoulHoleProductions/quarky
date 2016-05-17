@@ -87,6 +87,12 @@ angular.module('menu', ['auth0'])
                     angular.extend(UserSettings, profile.user_metadata);
                     console.log("doAuth - UserSettings: ", UserSettings);
 
+                    // Google Analytics
+                    if(typeof analytics !== "undefined") {
+                        console.log("Google Analytics user-id: ", auth.profile.user_id);
+                        analytics.setUserId(auth.profile.user_id);
+                    }
+
                     $state.go('app.home-list');
                 }, function (err) {
                     // Error callback

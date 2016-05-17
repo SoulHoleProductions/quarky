@@ -5,10 +5,7 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
                                            $cordovaSocialSharing) {
 
         ionic.Platform.ready(function () {
-            // Google Analytics
-            if(typeof analytics !== "undefined") {
-                analytics.trackView("Bookmarks");
-            }
+
         });
 
         // when a widget is changed, come here an update the setting object too
@@ -477,11 +474,6 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
                 $scope.currentPlatform = "Android";
             if (ionic.Platform.isWindowsPhone())
                 $scope.currentPlatform = "Windows Phone";
-
-            // Google Analytics
-            if(typeof analytics !== "undefined") {
-                analytics.trackView("Profile");
-            }
 
         });
 
