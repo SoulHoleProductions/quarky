@@ -130,6 +130,11 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
                 change[id] = "bookmarked";
                 changeSetting('bookmarks', change);
                 $scope.bookmarked = true;
+                // Google Analytics
+                if(typeof analytics !== "undefined") {
+                    analytics.trackEvent('Article', 'Bookmark', id.toString(), 50);
+                    console.log('GA tracking Article Bookmark event for: ', id.toString());
+                }
             }
         };
 
@@ -147,7 +152,7 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
             $scope.modal.show();
             // Google Analytics
             if(typeof analytics !== "undefined") {
-                analytics.trackEvent('Article', 'Open', aPost.title, aPost.ID);
+                analytics.trackEvent('Article', 'Open', aPost.title, 15);
                 console.log('GA tracking Article Open event for: ', aPost.title);
             }
         }

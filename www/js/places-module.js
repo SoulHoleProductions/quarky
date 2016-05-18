@@ -1085,7 +1085,7 @@ angular.module('places',
 
                 // Google Analytics
                     if(typeof analytics !== "undefined") {
-                        analytics.trackEvent('Places', 'Create', form.loc_name, form.loc_id);
+                        analytics.trackEvent('Places', 'Create', form.loc_name, 150);
                         console.log('GA tracking Places Create event for: ', form.loc_name);
                     }
 
