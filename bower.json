@@ -6,7 +6,6 @@
     "auth0-angular": "4.*",
     "a0-angular-storage": ">= 0.0.15",
     "angular-jwt": ">= 0.0.9",
-    "ionic-platform-web-client": "~0.7.1",
     "ngCordova": "~0.1.26-alpha",
     "ionic-datepicker": "~1.1.0",
     "angular-resource": "1.4.3",

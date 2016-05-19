@@ -3,16 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">-->
-<!--    <meta http-equiv="Content-Security-Policy" content="default-src *;
- style-src 'self' 'unsafe-inline' http://fonts.googleapis.com/;
-script-src 'self' 'unsafe-inline' 'unsafe-eval' http://*.googleapis.com
- http://maps.gstatic.com;">-->
-    <meta http-equiv="Content-Security-Policy"
-          content="default-src *;
+    <meta http-equiv="Content-Security-Policy" content="default-src *;
                font-src * data:;
                img-src * data:;
-               script-src 'self' 'unsafe-inline' 'unsafe-eval'
+               script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos;
                            localhost:*
                            127.0.0.1:*
                            http://*.gstatic.com
@@ -21,7 +15,7 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' http://*.googleapis.com
                            https://*.googleapis.com
                            https://*.auth0.com
                            ;
-               style-src  'self' 'unsafe-inline'
+               style-src  &apos;self&apos; &apos;unsafe-inline&apos;
                            localhost
                            127.0.0.1
                            http://*.gstatic.com
@@ -37,8 +31,7 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' http://*.googleapis.com
     <link href="css/ionic.app.css" rel="stylesheet">
 
     <!-- ionic, ionic.io, auth0, cordova, pouch -->
-    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
-    <!--<script src="lib/auth0.js/build/auth0.min.js"></script>-->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/auth0-lock/build/auth0-lock.min.js"></script>
     <script src="lib/auth0-angular/build/auth0-angular.min.js"></script>
     <script src="lib/a0-angular-storage/dist/angular-storage.min.js"></script>
@@ -46,8 +39,6 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' http://*.googleapis.com
     <script src="lib/angular-resource/angular-resource.min.js"></script>
     <script src="lib/angular-messages/angular-messages.min.js"></script>
     <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
-    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
-    <!-- <script src="cordova.js"></script> -->
     <script src="lib/ionic-image-lazy-load.js"></script>
     <script src="lib/ion-autocomplete/dist/ion-autocomplete.js"></script>
     <link href="lib/ion-autocomplete/dist/ion-autocomplete.css" rel="stylesheet">
@@ -64,9 +55,9 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' http://*.googleapis.com
 
     <!-- NGCORDOVA before cordova.js and after your AngularJS / Ionic file (since ngCordova depends on AngularJS) -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
-    <!--ionic.io platform web client-->
-    <!-- Cordova is bootstrapped by ionic-platform-web-client -->
-    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.js"></script>
+    <script src="cordova.js"></script>
+
+    
 </head>
 
 <!--<body ng-app="quarky">-->
@@ -87,8 +78,7 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' http://*.googleapis.com
     });
 </script>
 <!--for Google places and autocomplete-->
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCaRME5c_7KiryZt-77DDBRo0KM6ldD3o0" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyCaRME5c_7KiryZt-77DDBRo0KM6ldD3o0" async defer></script>
 
 </body>
 </html>

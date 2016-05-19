@@ -1,7 +1,4 @@
-angular.module('quarky', ['ionic',
-        'ionic.service.core',
-        'ionic.service.push',
-        'ngCordova',
+angular.module('quarky', ['ionic', 'ngCordova',
         'about-module',
         'home-module',
         'menu',
@@ -273,7 +270,7 @@ angular.module('quarky', ['ionic',
 
         }
     })
-    .run(function ($ionicPlatform, $ionicPush, auth, $rootScope, store, $state, $ionicPopup, $window,
+    .run(function ($ionicPlatform, auth, $rootScope, store, $state, $ionicPopup, $window,
                    jwtHelper, $location, $ionicLoading) {
 
         $ionicPlatform.ready(function () {
@@ -284,7 +281,7 @@ angular.module('quarky', ['ionic',
             ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");*/
 
             // Ionic.io push only if on cordova
-            if(window.cordova) {
+           /* if(window.cordova) {
 
                 $ionicPush.init({
                     "debug": false,
@@ -325,7 +322,7 @@ angular.module('quarky', ['ionic',
                     }
                 });
                 $ionicPush.register();
-            }
+            }*/
 
             // Google Analytics
             if(typeof analytics !== "undefined") {
