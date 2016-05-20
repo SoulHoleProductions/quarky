@@ -31,15 +31,17 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
             $scope.posts = [];
 
             angular.forEach(bookmarkCacheKeys, function (value, key) {
-                wordpressAPI.getPost({
+                return wordpressAPI.getPost({
                         "ID": value
                     })
                     .$promise
                     .then(function (result) {
                         $scope.posts.push(result);
+                        return result;
                     })
                     .catch(function (err) {
                         console.log("error getting bookmark: ", err);
+                        return err;
                         // remove the bookmark TODO: test err to get the right value
                         /*
                         var change = $scope.bookmarks;

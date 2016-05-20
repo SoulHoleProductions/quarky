@@ -15,6 +15,7 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <access origin="*.pushwoosh.com" />
   <access launch-external="yes" origin="tel:*"/>
   <access launch-external="yes" origin="sms:*"/>
   <preference name="webviewbounce" value="false"/>

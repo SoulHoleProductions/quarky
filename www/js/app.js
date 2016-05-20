@@ -128,6 +128,94 @@ angular.module('quarky', ['ionic', 'ngCordova',
             }
         );
     })
+    .factory('PushWoosh', function ($q, $rootScope, $window) {
+        $window.addEventListener('push-notification', function(event){
+            //console.log('PushWoosh received push-notification: ', event);
+            var notification = {};
+            if (ionic.Platform.isIOS()) {
+                notification.title = event.notification.aps.alert;
+                notification.meta = event.notification.u;
+            }
+            if (ionic.Platform.isAndroid()) {
+                notification.title = event.notification.title;
+                notification.meta = event.notification.userdata;
+            }
+            $rootScope.$broadcast('event:push-notification', notification);
+        });
+        return {
+            setTags: function(tags) {
+                var defer = $q.defer();
+                if (!tags) {
+                    defer.reject('Please provide tags.');
+                }
+                else if (!window.plugins || !window.plugins.pushNotification) {
+                    defer.reject('Push Notification not enabled.');
+                }
+                else {
+                    var pushNotification = window.plugins.pushNotification;
+                    pushNotification.setTags(tags,
+                        function(status) {
+                            //success
+                            defer.resolve();
+                        },
+                        function(status) {
+                            defer.reject('setTags failed.');
+                        }
+                    );
+
+                }
+                return defer.promise;
+            },
+            setApplicationIconBadgeNumber: function(num) {
+                if (ionic.Platform.isIOS()) {
+                    var pushNotification = window.plugins.pushNotification;
+                    pushNotification.setApplicationIconBadgeNumber(num);
+                }
+            },
+            init: function(pwAppId, googleProjectNumber) {
+                var defer = $q.defer();
+                if (!pwAppId) {
+                    defer.reject('Please provide your pushwoosh app id.');
+                }
+                else if (!window.plugins || !window.plugins.pushNotification) {
+                    defer.reject('Push Notification not enabled.');
+                }
+                else {
+                    var pushNotification = window.plugins.pushNotification;
+                    if (ionic.Platform.isIOS()) {
+                        pushNotification.onDeviceReady({ pw_appid: pwAppId });
+                    }
+                    if (ionic.Platform.isAndroid()) {
+                        pushNotification.onDeviceReady({ projectid: googleProjectNumber, appid : pwAppId });
+                    }
+                    defer.resolve();
+                }
+                return defer.promise;
+            },
+            registerDevice: function() {
+                var defer = $q.defer();
+                var pushNotification = window.plugins.pushNotification;
+                pushNotification.registerDevice(
+                    function(status) {
+                        var deviceToken;
+                        if (ionic.Platform.isIOS()) {
+                            deviceToken = status.deviceToken;
+                            //reset badges on app start and device reg
+                            pushNotification.setApplicationIconBadgeNumber(0);
+                        }
+                        if (ionic.Platform.isAndroid()) {
+                            deviceToken = status;
+                        }
+                        defer.resolve(deviceToken);
+                    },
+                    function(status) {
+                        defer.reject(status);
+                    }
+                );
+                return defer.promise;
+            }
+        }
+    })
     .filter('capitalize', function () {
         return function (input, scope) {
             if (input != null) {
@@ -270,8 +358,9 @@ angular.module('quarky', ['ionic', 'ngCordova',
 
         }
     })
-    .run(function ($ionicPlatform, auth, $rootScope, store, $state, $ionicPopup, $window,
-                   jwtHelper, $location, $ionicLoading) {
+    .run(function ($ionicPlatform, auth, UserSettings, $rootScope, store, $state, $ionicPopup, $window,
+                   jwtHelper, $location, $ionicLoading, PushWoosh) {
+
 
         $ionicPlatform.ready(function () {
             console.log("Device Ready for Quarky");
@@ -365,8 +454,50 @@ angular.module('quarky', ['ionic', 'ngCordova',
             if (window.cordova && window.cordova.plugins.inAppBrowser) {
                 window.open = cordova.InAppBrowser.open;
             }
+
+            // Initialize PushWoosh Plugin
+            if(window.cordova) {
+                PushWoosh.init('64DE6-A4DB5', '586634803974')// pushwoosh ID, google GCM project ID
+                    .then(function() {
+                        // Register Device to get device token
+                        PushWoosh.registerDevice().then(
+                            function(deviceToken){
+                                console.log('PushWoosh registerDevice token: ', deviceToken);
+                                if(auth.isAuthenticated)
+                                    return PushWoosh.setTags({
+                                        name: auth.profile.name,
+                                        user_id: auth.profile.user_id,
+                                        gender: UserSettings.gender || "",
+                                        birthday: new Date(UserSettings.birthday) || 0
+                                        });
+                            },
+                            function(err){
+                                console.log('PushWoosh registerDevice error: ', err);
+                                // PushWoosh error
+                            });
+                    },
+                    function(err) {
+                        console.log('PushWoosh init error:', err);
+                    }
+                );
+            }
+
         });
 
+
+        // Listen for push notification events
+        $rootScope.$on('event:push-notification', function(event, notification) {
+            console.log('event:push-notification: ', notification);
+            $ionicPopup.alert({
+                title: 'Push Message',
+                template: notification.title
+            });
+            if(typeof analytics !== "undefined") {
+                analytics.trackEvent('Push', 'Received', notification.title, 35);
+                console.log('GA tracking Push Notification: ', notification.title);
+            }
+            PushWoosh.setApplicationIconBadgeNumber(0);
+        });
 
         //-------------- global http loading
         $rootScope.$on('loading:show', function () {

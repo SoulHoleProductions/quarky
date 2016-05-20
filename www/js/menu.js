@@ -41,7 +41,7 @@ angular.module('menu', ['auth0'])
 
     })
 
-    .controller('LoginCtrl', function ($scope, auth, $state, store, UserSettings,
+    .controller('LoginCtrl', function ($scope, auth, $state, store, UserSettings, PushWoosh,
                                        $ionicHistory, $ionicSlideBoxDelegate) {
 
         var currentPlatform = 'Mobile';
@@ -92,6 +92,13 @@ angular.module('menu', ['auth0'])
                         console.log("Google Analytics user-id: ", auth.profile.user_id);
                         analytics.setUserId(auth.profile.user_id);
                     }
+
+                   PushWoosh.setTags({
+                        name: auth.profile.name,
+                        user_id: auth.profile.user_id,
+                        gender: UserSettings.gender || "",
+                        birthday: new Date(UserSettings.birthday) || 0
+                    });
 
                     $state.go('app.home-list');
                 }, function (err) {
