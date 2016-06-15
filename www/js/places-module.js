@@ -158,32 +158,6 @@ angular.module('places',
 
         );
     })
-    /*.directive('googleplace', function() {
-        // TODO: not being used right now
-        return {
-            require: 'ngModel',
-            link: function(scope, element, attrs, model) {
-                //var options = {
-                //    types: [],
-                //    componentRestrictions: {}
-                //};
-                var options = {
-                    types: ['(regions)'],
-                    componentRestrictions: {country: 'us'}
-                };
-                scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
-
-                google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-                    scope.$apply(function() {
-                        console.log("autocomplete: ", element);
-                        scope.selectedPlace = scope.gPlace.getPlace();
-                        console.log("autocomplete selected place: ", scope.selectedPlace);
-                        model.$setViewValue(element.val());
-                    });
-                });
-            }
-        };
-    })*/
     .directive('reverseGeocode', function () {
         return {
             restrict: 'E',

@@ -9,6 +9,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
         'angular-storage',
         'angular-jwt',
         'ngResource',
+        'lbServices',
         'ion-autocomplete',
         'ionic-datepicker'
     ])
@@ -129,7 +130,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
         );
     })
     .factory('PushWoosh', function ($q, $rootScope, $window) {
-        $window.addEventListener('push-notification', function(event){
+        $window.addEventListener('push-notification', function (event) {
             //console.log('PushWoosh received push-notification: ', event);
             var notification = {};
             if (ionic.Platform.isIOS()) {
@@ -143,7 +144,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
             $rootScope.$broadcast('event:push-notification', notification);
         });
         return {
-            setTags: function(tags) {
+            setTags: function (tags) {
                 var defer = $q.defer();
                 if (!tags) {
                     defer.reject('Please provide tags.');
@@ -154,11 +155,11 @@ angular.module('quarky', ['ionic', 'ngCordova',
                 else {
                     var pushNotification = window.plugins.pushNotification;
                     pushNotification.setTags(tags,
-                        function(status) {
+                        function (status) {
                             //success
                             defer.resolve();
                         },
-                        function(status) {
+                        function (status) {
                             defer.reject('setTags failed.');
                         }
                     );
@@ -166,13 +167,13 @@ angular.module('quarky', ['ionic', 'ngCordova',
                 }
                 return defer.promise;
             },
-            setApplicationIconBadgeNumber: function(num) {
+            setApplicationIconBadgeNumber: function (num) {
                 if (ionic.Platform.isIOS()) {
                     var pushNotification = window.plugins.pushNotification;
                     pushNotification.setApplicationIconBadgeNumber(num);
                 }
             },
-            init: function(pwAppId, googleProjectNumber) {
+            init: function (pwAppId, googleProjectNumber) {
                 var defer = $q.defer();
                 if (!pwAppId) {
                     defer.reject('Please provide your pushwoosh app id.');
@@ -183,20 +184,20 @@ angular.module('quarky', ['ionic', 'ngCordova',
                 else {
                     var pushNotification = window.plugins.pushNotification;
                     if (ionic.Platform.isIOS()) {
-                        pushNotification.onDeviceReady({ pw_appid: pwAppId });
+                        pushNotification.onDeviceReady({pw_appid: pwAppId});
                     }
                     if (ionic.Platform.isAndroid()) {
-                        pushNotification.onDeviceReady({ projectid: googleProjectNumber, appid : pwAppId });
+                        pushNotification.onDeviceReady({projectid: googleProjectNumber, appid: pwAppId});
                     }
                     defer.resolve();
                 }
                 return defer.promise;
             },
-            registerDevice: function() {
+            registerDevice: function () {
                 var defer = $q.defer();
                 var pushNotification = window.plugins.pushNotification;
                 pushNotification.registerDevice(
-                    function(status) {
+                    function (status) {
                         var deviceToken;
                         if (ionic.Platform.isIOS()) {
                             deviceToken = status.deviceToken;
@@ -208,7 +209,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
                         }
                         defer.resolve(deviceToken);
                     },
-                    function(status) {
+                    function (status) {
                         defer.reject(status);
                     }
                 );
@@ -257,7 +258,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
             "bookmarks": {}
         }
     )
-    .factory('auth0metadata', function($resource) {
+    .factory('auth0metadata', function ($resource) {
         var FEED_URL = 'https://quarky.auth0.com/api/v2/';
         return $resource(FEED_URL,
             {},
@@ -295,9 +296,10 @@ angular.module('quarky', ['ionic', 'ngCordova',
 
         function getAuth0User() {
             var userid = auth.profile.user_id;
-            console.log('getAuth0User: ', userid );
+            console.log('getAuth0User: ', userid);
             return userid;
         }
+
         function updateAuth0() {
             console.log("UserSettings to update: ", UserSettings);
             var request = {};
@@ -323,12 +325,13 @@ angular.module('quarky', ['ionic', 'ngCordova',
                     });
                 });
         }
+
         function deserializeSettings() {
 
-            auth0metadata.getUser( { user : getAuth0User() } ).$promise
-                .then(function(o){
+            auth0metadata.getUser({user: getAuth0User()}).$promise
+                .then(function (o) {
                     //console.log('deserialize got o: ', o);
-                    if(o.user_metadata) {
+                    if (o.user_metadata) {
                         angular.extend(UserSettings, o.user_metadata);
                         console.log("User Settings restored: ", o.user_metadata);
                         console.log("UserSettings: ", UserSettings);
@@ -338,17 +341,17 @@ angular.module('quarky', ['ionic', 'ngCordova',
                         serializeSettings();
                     }
                     /*var newSettings, rawSettings = o;
-                    if (rawSettings) {
-                        newSettings = JSON.parse(rawSettings);
-                        if (newSettings) {
-                            // use extend since it copies one property at a time
-                            angular.extend(UserSettings, newSettings);
-                            console.log("User Settings restored");
-                        }
-                    }*/
+                     if (rawSettings) {
+                     newSettings = JSON.parse(rawSettings);
+                     if (newSettings) {
+                     // use extend since it copies one property at a time
+                     angular.extend(UserSettings, newSettings);
+                     console.log("User Settings restored");
+                     }
+                     }*/
 
                 })
-                .catch(function(err){
+                .catch(function (err) {
                     console.log("Unable to restore settings: ", err);
                     $ionicPopup.alert({
                         title: 'Error',
@@ -365,59 +368,59 @@ angular.module('quarky', ['ionic', 'ngCordova',
         $ionicPlatform.ready(function () {
             console.log("Device Ready for Quarky");
             /*ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
-            ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
-            ionic.Platform.isAndroid() ? console.log("quarky is Android") : console.log("quarky is NOT Android");
-            ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");*/
+             ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
+             ionic.Platform.isAndroid() ? console.log("quarky is Android") : console.log("quarky is NOT Android");
+             ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");*/
 
             // Ionic.io push only if on cordova
-           /* if(window.cordova) {
+            /* if(window.cordova) {
 
-                $ionicPush.init({
-                    "debug": false,
-                    "onNotification": function(notification) {
-                        var payload = notification.payload;
-                        console.log('$ionicPush onNotification(): ', notification, payload);
-                        var lastPush = {
-                            title: notification.title || 'Message from Quarky:',
-                            text: notification.text || 'Just checking in...',
-                            date: new Date()
-                        };
-                        store.set('lastPush', lastPush);
-                        $ionicLoading.hide();
-                        $ionicPopup.alert({
-                            title: notification.title || 'Message from Quarky:',
-                            template: notification.text || 'Just checking in...'
-                        });
-                    },
-                    "onRegister": function(data) {
-                        console.log('$ionicPush onRegister() token: ', data.token);
-                        $ionicPush.saveToken(data.token);
-                        $rootScope.myPushToken = data.token;
-                    },
-                    "onError": function(err) {
-                        console.log('$ionicPush onError(): ', err.message);
-                    },
-                    "pluginConfig": {
-                        "ios": {
-                            "alert": "true",
-                            "badge": "true",
-                            "sound": "true"
-                        },
-                        "android": {
-                            "senderID": "586634803974",
-                            "icon": "icon",
-                            "iconColor": "black"
-                        }
-                    }
-                });
-                $ionicPush.register();
-            }*/
+             $ionicPush.init({
+             "debug": false,
+             "onNotification": function(notification) {
+             var payload = notification.payload;
+             console.log('$ionicPush onNotification(): ', notification, payload);
+             var lastPush = {
+             title: notification.title || 'Message from Quarky:',
+             text: notification.text || 'Just checking in...',
+             date: new Date()
+             };
+             store.set('lastPush', lastPush);
+             $ionicLoading.hide();
+             $ionicPopup.alert({
+             title: notification.title || 'Message from Quarky:',
+             template: notification.text || 'Just checking in...'
+             });
+             },
+             "onRegister": function(data) {
+             console.log('$ionicPush onRegister() token: ', data.token);
+             $ionicPush.saveToken(data.token);
+             $rootScope.myPushToken = data.token;
+             },
+             "onError": function(err) {
+             console.log('$ionicPush onError(): ', err.message);
+             },
+             "pluginConfig": {
+             "ios": {
+             "alert": "true",
+             "badge": "true",
+             "sound": "true"
+             },
+             "android": {
+             "senderID": "586634803974",
+             "icon": "icon",
+             "iconColor": "black"
+             }
+             }
+             });
+             $ionicPush.register();
+             }*/
 
             // Google Analytics
-            if(typeof analytics !== "undefined") {
+            if (typeof analytics !== "undefined") {
                 analytics.startTrackerWithId("UA-57113932-2");
                 //set initial view once
-                if(auth.isAuthenticated) {
+                if (auth.isAuthenticated) {
                     analytics.trackView('app.home-list');
                     console.log("GA tracking view: app.home-list");
                 } else {
@@ -425,14 +428,18 @@ angular.module('quarky', ['ionic', 'ngCordova',
                     console.log("GA tracking view: login");
                 }
                 analytics.enableUncaughtExceptionReporting(true,
-                    function(s) {console.log(s);},
-                    function(e) {console.error(e);});
+                    function (s) {
+                        console.log(s);
+                    },
+                    function (e) {
+                        console.error(e);
+                    });
             } else {
                 console.log("Google Analytics Unavailable");
             }
             // track view changes in google analytics
-            $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams) {
-                if(typeof analytics !== "undefined") {
+            $rootScope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
+                if (typeof analytics !== "undefined") {
                     analytics.trackView(toState.name);
                     console.log("GA tracking view: ", toState.name);
                 } else {
@@ -456,43 +463,43 @@ angular.module('quarky', ['ionic', 'ngCordova',
             }
 
             // Initialize PushWoosh Plugin
-            if(window.cordova) {
+            if (window.cordova) {
                 PushWoosh.init('64DE6-A4DB5', '586634803974')// pushwoosh ID, google GCM project ID
-                    .then(function() {
-                        // Register Device to get device token
-                        PushWoosh.registerDevice().then(
-                            function(deviceToken){
-                                console.log('PushWoosh registerDevice token: ', deviceToken);
-                                if(auth.isAuthenticated)
-                                    return PushWoosh.setTags({
-                                        name: auth.profile.name,
-                                        user_id: auth.profile.user_id,
-                                        gender: UserSettings.gender || "",
-                                        birthday: new Date(UserSettings.birthday) || 0
+                    .then(function () {
+                            // Register Device to get device token
+                            PushWoosh.registerDevice().then(
+                                function (deviceToken) {
+                                    console.log('PushWoosh registerDevice token: ', deviceToken);
+                                    if (auth.isAuthenticated)
+                                        return PushWoosh.setTags({
+                                            name: auth.profile.name,
+                                            user_id: auth.profile.user_id,
+                                            gender: UserSettings.gender || "",
+                                            birthday: new Date(UserSettings.birthday) || 0
                                         });
-                            },
-                            function(err){
-                                console.log('PushWoosh registerDevice error: ', err);
-                                // PushWoosh error
-                            });
-                    },
-                    function(err) {
-                        console.log('PushWoosh init error:', err);
-                    }
-                );
+                                },
+                                function (err) {
+                                    console.log('PushWoosh registerDevice error: ', err);
+                                    // PushWoosh error
+                                });
+                        },
+                        function (err) {
+                            console.log('PushWoosh init error:', err);
+                        }
+                    );
             }
 
         });
 
 
         // Listen for push notification events
-        $rootScope.$on('event:push-notification', function(event, notification) {
+        $rootScope.$on('event:push-notification', function (event, notification) {
             console.log('event:push-notification: ', notification);
             $ionicPopup.alert({
                 title: 'Push Message',
                 template: notification.title
             });
-            if(typeof analytics !== "undefined") {
+            if (typeof analytics !== "undefined") {
                 analytics.trackEvent('Push', 'Received', notification.title, 35);
                 console.log('GA tracking Push Notification: ', notification.title);
             }
@@ -544,7 +551,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
         auth.hookEvents();
     })
 
-    .config(function ($stateProvider, $urlRouterProvider, ionicDatePickerProvider,
+    .config(function ($stateProvider, $urlRouterProvider, ionicDatePickerProvider, LoopBackResourceProvider,
                       authProvider, $httpProvider, jwtInterceptorProvider) {
 
 
@@ -563,9 +570,9 @@ angular.module('quarky', ['ionic', 'ngCordova',
         };
         ionicDatePickerProvider.configDatePicker(datePickerObj);
 
+        LoopBackResourceProvider.setUrlBase('https://q-api.mybluemix.net/api');
+
         $stateProvider
-
-
             .state('app', {
                 url: "/app",
                 abstract: true,
@@ -766,7 +773,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home-list');
 
-        $urlRouterProvider.otherwise(function($injector, $location){
+        $urlRouterProvider.otherwise(function ($injector, $location) {
 
             return '/app/home-list';
         });
@@ -779,7 +786,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
             loginState: 'login'
         });
 
-        jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
+        jwtInterceptorProvider.tokenGetter = function (store, jwtHelper, auth) {
             var idToken = store.get('token');
             var refreshToken = store.get('refreshToken');
             // If no token return null
@@ -788,7 +795,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
             }
             // If token is expired, get a new one
             if (jwtHelper.isTokenExpired(idToken)) {
-                return auth.refreshIdToken(refreshToken).then(function(idToken) {
+                return auth.refreshIdToken(refreshToken).then(function (idToken) {
                     store.set('token', idToken);
                     return idToken;
                 });
@@ -826,7 +833,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
                     return response
                 },
                 responseError: function (response) {
-                   return $q.reject(handleError(response));
+                    return $q.reject(handleError(response));
                 },
                 requestError: function (response) {
                     return $q.reject(handleError(response));

@@ -189,7 +189,7 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
 
         /*
          * WP-API v2
-         *
+         */
         $scope.WPgetUser = function(anID) {
             wordpressAPIv2.getUser(
                 { id: anID}
@@ -317,7 +317,7 @@ angular.module('profile', ['ionic-datepicker', 'ngResource', 'ngCordova'])
 
                 })
         }
-*/
+/**/
 
         console.log('ProfileCtrl: UserSettings: ',UserSettings);
 
