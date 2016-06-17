@@ -490,7 +490,8 @@ function GuruService() {
                 "local": "img/guru-nav/eGame/Books-that-Matter.png"
             }
 
-        },
+        }
+       /* ,
         {
             "ID": 2785,
             "slug": "equipment-articles",
@@ -509,7 +510,7 @@ function GuruService() {
                 "source": "https://quarkyapp.com/wp-content/uploads/2015/04/Boot-Camp-1.png",
                 "local": "img/guru-nav/eGame/Boot-Camp-1.png"
             }
-        }
+        }*/
     ];
     var _elevateSelf = [
         {
@@ -610,7 +611,8 @@ function GuruService() {
                 "source": "https://quarkyapp.com/wp-content/uploads/2015/08/Worth.png",
                 "local": "img/guru-nav/eSpirit/Worth.png"
             }
-        },
+        }
+        /*,
         {
             "ID": 4183,
             "slug": "belong-articles",
@@ -655,7 +657,7 @@ function GuruService() {
                 "source": "https://quarkyapp.com/wp-content/uploads/2015/04/Life-and-Death.png",
                 "local": "img/guru-nav/eSpirit/Life-and-Death.png"
             }
-        }
+        }*/
     ];
     var _comingSoon = [
         {
