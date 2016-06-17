@@ -185,7 +185,8 @@ angular.module('places',
                                               $ionicScrollDelegate, $ionicLoading, auth,
                                               $ionicHistory, $ionicPopup, OhanaAPI, $q,
                                               $cordovaGeolocation, $ionicPlatform,
-                                              UserSettings, UserStorageService) {
+                                              UserSettings, UserStorageService,
+                                              Place, OETaxonomy) {
         $scope.posts = [];
         //$scope.gPlace; // used with googleplace directive
         //$scope.selectedPlace; // used with googleplace directive
@@ -260,79 +261,49 @@ angular.module('places',
             if (isInitializing && $scope.searchModel.showCategories) {
                 // depends on the configuration of the `items-method-value-key` (items) and the `item-value-key` (name) and `item-view-value-key` (name)
 
-                var galleries = PlacesService.getAllGalleries();
-                return galleries;
+                //var galleries = PlacesService.getAllGalleries();
+                //return galleries;
+
+                return OETaxonomy.find()
+                    .$promise
+                    .then(function(resp){ return resp; })
+                    .catch(function(err){ return err; });
+
             } else {
 
-                if($scope.searchModel.showGooglePlaces) {
-                    //if(!query || query == '')
-                    //  return;
+                var params = {
+                    lat: $rootScope.geolat,
+                    lng: $rootScope.geolong,
+                    search: query,
+                    radius: Number($scope.searchModel.radius) * 1609, // convert miles to meters
+                    limit: Number($scope.searchModel.per_page)
+                };
+                console.log("nearBy with params: ", params);
+                return Place.nearBy(params)
+                    .$promise
+                    .then(function(res){
+                        console.log('nearBy result: ', res);
+                        return res.places;
+                    })
+                    .catch(function(err){
+                        console.log('nearBy error: ', err);
+                        return err;
+                    });
 
-                    var deferred = $q.defer();
-
-                    var displaySuggestions = function(predictions, status) {
-                        if (status != google.maps.places.PlacesServiceStatus.OK) {
-                            deferred.reject(status);
-                        }
-
-                        var reply = [];
-                        //console.log("GOOGLE predictions: ", predictions);
-                        if(!predictions || predictions == null) {
-                            deferred.resolve(reply);
-                        } else {
-                            predictions.forEach(function(prediction) {
-                                var foo = {};
-                                foo.name = prediction.description;
-                                foo.place_id = prediction.place_id;
-                                reply = reply.concat(foo);
-                            });
-                            //console.log("GOOGLE reply: ", JSON.stringify(reply));
-                            deferred.resolve(reply);
-                        }
-
-                    };
-
-                    var myLat = $rootScope.geolat;
-                    var myLng = $rootScope.geolong;
-                    var myLatLng = new google.maps.LatLng(myLat, myLng);
-
-                    var request = {};
-                    request.input = query || $scope.searchModel.lastPlaceSearch || 'pizza';
-                    request.location = myLatLng;
-                    request.componentRestrictions = { country: 'us'};
-                    request.radius = $scope.searchModel.radius * 1609;
-                    request.types = ['establishment'];
-
-                    var service = new google.maps.places.AutocompleteService();
-                    service.getPlacePredictions(request, displaySuggestions);
-
-                    return deferred.promise;
-                }
-                else {
-                    var lat_lng = $rootScope.geolat +','+$rootScope.geolong;
-
-                    var request = {};
-                    request.keyword = query;
-                    request.lat_lng = lat_lng;
-                    request.per_page = $scope.searchModel.per_page;
-                    request.radius = $scope.searchModel.radius;
-
-                    return OhanaAPI.locations(request).$promise;
                 }
 
 
-            }
+            //}
         }
         $scope.autocompleteSelectedItem = function (callback) {
 
-            if(angular.isDefined(callback.item.id)) // came from an ohana item
-                $state.go('app.place-ohana-detail', { placeId: callback.item.id} );
-            if(angular.isDefined(callback.item.place_id)) // came from a google place
-                $state.go('app.place-detail', { placeId: callback.item.place_id} );
-            if(angular.isDefined(callback.item.ID)) // came from a category
-            {
-                $scope.doSearch(callback.item.search ? callback.item.search : callback.item.name);
+            console.log('autocompleteSelectedItem: ', callback);
+
+            if($scope.searchModel.showCategories) { // we have a category result
+                $scope.doSearch(callback.item.name);
             }
+
+            $state.go('app.place-detail', { placeId: callback.item.id} );
 
         }
 
@@ -431,7 +402,7 @@ angular.module('places',
                 enableHighAccuracy: false
             };
 
-            console.log('going to watchPosition');
+            //console.log('going to watchPosition');
             $rootScope.geoWatch = $cordovaGeolocation.watchPosition(posOptions);
             $rootScope.geoWatch.then(
                 null,
@@ -459,8 +430,8 @@ angular.module('places',
                 function (position) {
                     console.log("got watch position", $rootScope.geoWatch);
                     $rootScope.myPosition = position;
-                    $rootScope.geolat = position.coords.latitude
-                    $rootScope.geolong = position.coords.longitude
+                    $rootScope.geolat = position.coords.latitude;
+                    $rootScope.geolong = position.coords.longitude;
                     $ionicLoading.hide();
                 });
 
@@ -732,28 +703,16 @@ angular.module('places',
     .controller('PlacesDetailCtrl', function ($scope, $stateParams, $rootScope,
                                               $ionicSlideBoxDelegate, $ionicLoading,
                                               $cordovaInAppBrowser, $ionicModal,
-                                              OhanaAPI, $filter, $ionicPopup) {
+                                              Place, OETaxonomy, $filter, $ionicPopup) {
         $rootScope.notHome = true;
         $scope.placeId = $stateParams.placeId;
+        console.log('placeId is: ', $scope.placeId);
 
-
-        OhanaAPI.categories().$promise
-            .then(function(res){
-                $ionicLoading.hide();
-                var matches = $filter('filter')(res, { "depth": 0}, true);
-                console.log('Ohana cats matches: ', matches);
-                $scope.ohanaCats = matches;
-                $ionicLoading.hide();
-                return matches;
-            })
-            .catch(function(err){
-                console.log('problem getting ohana cats: ', err);
-                $ionicLoading.hide();
-                $ionicPopup.alert({
-                    title: 'Error',
-                    template: 'error getting categories: '+err.statusText
-                });
-            })
+        $scope.options = {
+            loop: false,
+            effect: 'fade',
+            speed: 500,
+        }
 
 
         var options = {
@@ -777,383 +736,61 @@ angular.module('places',
                 });
         }
 
+        $scope.showHours = function(hours) {
 
-        console.log('placeId is: ', $scope.placeId);
+            $ionicPopup.alert({
+                title: 'Hours / Availability',
+                scope: $scope,
+                templateUrl: 'templates/hours-list.html'
+            });
+        }
 
         $ionicLoading.show({template: 'Loading...'});
-        var service = new google.maps.places.PlacesService(document.createElement("div"));
-        service.getDetails({placeId: $scope.placeId}, function (res) {
-            console.dir(res);
-            //modify res so we can use loc easier
-            res.position = {longitude: res.geometry.location.lng(), latitude: res.geometry.location.lat()};
+        Place.findById({id: $scope.placeId})
+            .$promise
+            .then(function(res){
 
-            if (res.opening_hours) {
-                $scope.hasOpen = true;
-            } else $scope.hasOpen = false;
+                if (res.formatted_hours_array && (res.formatted_hours_array.length > 0)) {
+                    $scope.hasOpen = true;
+                    res.formatted_hours_array = JSON.parse(JSON.stringify(res.formatted_hours_array));
+                    res.formatted_hours_array = res.formatted_hours_array.map(function(e){
+                        return { name: e}
+                    });
+                } else $scope.hasOpen = false;
 
-            $scope.price = "";
-            if (res.price_level) {
-                if (res.price_level === 0) $scope.price = "Free";
-                if (res.price_level === 1) $scope.price = "Inexpensive";
-                if (res.price_level === 2) $scope.price = "Moderate";
-                if (res.price_level === 3) $scope.price = "Expensive";
-                if (res.price_level === 4) $scope.price = "Very expensive";
-            }
-
-            if (res.photos) {
-                $scope.hasPhotos = true;
-                for (var x = 0; x < res.photos.length; x++) {
-                    res.photos[x].url = res.photos[x].getUrl({'maxWidth': 300, 'maxHeight': 300});
+                if (res.photos) {
+                    $scope.hasPhotos = true;
+                    res.photos = JSON.parse(JSON.stringify(res.photos));
+                    res.icon = res.photos[0];
+                    res.photos = res.photos.map(function(e){
+                       return { url: e}
+                    });
+                    if(res.photos.length < 1 ) {
+                        $scope.hasPhotos = false;
+                        res.icon = 'img/quarkycon.png';
+                    }
+                } else {
+                    $scope.hasPhotos = false;
+                    res.icon = 'img/quarkycon.png';
                 }
-            } else $scope.hasPhotos = false;
-
-            $scope.place = res;
-
-            // Google Analytics
-            if(typeof analytics !== "undefined") {
-                analytics.trackEvent('Places', 'Open', res.name, 25);
-                console.log('GA tracking Places Open event for: ', res.name);
-            }
-
-            console.log('Looking for existing org called', $scope.place.name);
-            OhanaAPI.organizations({
-                org_name: $scope.place.name
-            }).$promise
-                .then(function(res){
-                    console.log('Ohana orgs: ', res);
-                    $scope.existingOrgs = res;
-                    return res;
-                })
-                .catch(function(err){
-                    console.log('problem getting ohana orgs: ', err);
-                    $scope.existingOrgs = 'an error occurred';
-                    $ionicLoading.hide();
-                    $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'error getting organizations: '+err.statusText
-                    });
-                })
-
-            $scope.ohanaform = {
-                org_select: $scope.org_select || '',
-                org_name: $scope.place.name || '',
-                org_description : $scope.place.name || '',
-                org_website : $scope.place.website || '',
-                loc_name: $scope.place.name || '',
-                loc_description : $scope.place.name || '',
-                loc_website : $scope.place.website || '',
-
-                loc_addy_address_1 : getAddressComponent($scope.place, 'street_number', 'long') + ' '+ getAddressComponent($scope.place, 'route', 'long'),
-                loc_addy_address_2 : '',
-                loc_addy_city : getAddressComponent($scope.place, 'locality', 'long'),
-                loc_addy_state_province : getAddressComponent($scope.place, 'administrative_area_level_1', 'short'), //2-letter US state_province abbreviation
-                loc_addy_postal_code : parseInt(getAddressComponent($scope.place, 'postal_code', 'long')), // make it a number for the user
-                loc_addy_country : getAddressComponent($scope.place, 'country', 'short'), //2-letter ISO 3361-1 country code
-
-                loc_lat : $scope.place.position.latitude || 'N/A',
-                loc_lng : $scope.place.position.longitude || 'N/A',
-                loc_phone_number: $scope.place.formatted_phone_number,
-                loc_phone_number_type: 'voice',
-                svc_name: $scope.svc_name || '',
-                svc_description: $scope.svc_description || '',
-                svc_status: $scope.svc_status || '',
-                svc_category: $scope.svc_category || ''
-            };
-            $ionicSlideBoxDelegate.update();
-
-            $scope.$apply();
-            $ionicLoading.hide();
-        });
-
-        // ============= Add to Quarky =============================
-
-        // Alert popup code
-
-        $scope.popupDoc = function(title, content) {
-            if(!content)
-                content = "Doc is being written :)";
-            if(!title)
-                title = "Documentation";
-            var alertPopup = $ionicPopup.alert({
-                title: title,
-                template: content,
-            });
-
-            alertPopup.then(function(res) {
-            });
-
-        };
-
-
-        function getAddressComponent(address, component, type) {
-            var element = null;
-            angular.forEach(address.address_components, function (address_component) {
-                if (address_component.types[0] == component) {
-                    element = (type == 'short') ? address_component.short_name : address_component.long_name;
-                }
-            });
-
-            console.log("getAddy: ",element);
-            return element;
-        }
-        function createOhanaOrg(form) {
-            // once done, then call createOhanaLocation()!
-            // OPTIONAL - CREATE ORG -------------------------------
-            // POST https://ohana-api-demo.herokuapp.com/api/organizations
-            // form.org_select.$modelValue == ID of org
-            // form.org_name.$modelValue
-            // form.org_description.$modelValue
-            // form.org_website.$modelValue
-            var _body =
-                {
-                    "description": form.org_description,
-                    "name": form.org_name,
-                    "website": form.org_website
-                };
-            console.log("ORG JSON: ",_body);
-            OhanaAPI.createOrg(_body).$promise
-                .then(function(res){
-                    console.log("CREATED ORG: ",res);
-                    form.org_select = res.id;
-                    return createOhanaLocation(form);
-                })
-                .catch(function(err){
-                    console.log("ERROR CREATING ORG: ", err);
-                    $ionicLoading.hide();
-                    $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'error creating org: '+err.statusText
-                    });
-                    return err;
-                });
-        }
-        function createOhanaLocation (form) {
-            // CREATE LOCATION -------------------------------
-            // POST https://ohana-api-demo.herokuapp.com/api/organizations/:organization_id/locations
-            var _body =
-            {
-                "description": form.loc_description,
-                "name": form.loc_name,
-                "website": form.loc_website,
-                "latitude": angular.isNumber(form.loc_lat) ? form.loc_lat : parseFloat(form.loc_lat),
-                "longitude": angular.isNumber(form.loc_lng) ? form.loc_lng : parseFloat(form.loc_lng),
-                "address_attributes" : {
-                    "address_1": form.loc_addy_address_1,
-                    "address_2": form.loc_addy_address_2,
-                    "city": form.loc_addy_city,
-                    "state_province": form.loc_addy_state_province,
-                    "postal_code": angular.isNumber(form.loc_addy_postal_code) ? form.loc_addy_postal_code.toString() : form.loc_addy_postal_code,
-                    "country": form.loc_addy_country
-                }
-            };
-            console.log("CREATING LOCATION with JSON: ",_body);
-            //TODO: pass in the organization.id
-            OhanaAPI.createLoc(
-                {organization_id: form.org_select},
-                _body)
-                .$promise
-                .then(function(res){
-                    form.loc_id = res.id;
-                    console.log("CREATED LOC: ",res);
-                    return createOhanaLocPhone(form);
-                })
-                .catch(function(err){
-                    console.log("ERROR CREATING LOC: ", err);
-                    $ionicLoading.hide();
-                    $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'error creating LOC: '+err.statusText
-                    });
-                    return err;
-                });
-
-
-
-            // CREATE PHONE ------------------------------------
-            // POST https://ohana-api-demo.herokuapp.com/api/locations/:location_id/phones
-            // loc_phone_number, loc_phone_type
-            //
-            // CREATE SERVICE ------------------------------------
-            // POST https://ohana-api-demo.herokuapp.com/api/locations/:location_id/services
-            // svc_name
-            // svc_description
-            // svc_status
-            //
-            // UPDATE SVC CATEGORIES ------------------------------------
-            // PUT https://ohana-api-demo.herokuapp.com/api/services/:service_id/categories
-            // svc_category // An array of valid oe_ids. --- {"oe_ids": ["101", "102"]}
-            //
-
-        }
-        function createOhanaLocPhone (form) {
-            var _body =
-            {
-                "number": angular.isNumber(form.loc_phone_number) ? form.loc_phone_number.toString() : form.loc_phone_number,
-                "number_type": angular.isNumber(form.loc_phone_number_type) ? form.loc_phone_number_type.toString() : form.loc_phone_number_type
-            };
-            console.log("CREATING PHONE with JSON: ",_body);
-            OhanaAPI.createLocPhone(
-                {location_id: form.loc_id},
-                _body)
-                .$promise.then(function(res){
-                    console.log("CREATED PHONE: ",res);
-                    //TODO: service, categories
-                    return createOhanaLocService(form);
-                })
-                .catch(function(err){
-                    console.log("ERROR CREATING PHONE: ", err);
-                    $ionicLoading.hide();
-                    $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'error creating Phone: '+err.statusText
-                    });
-                    return err;
-                });
-
-        }
-        function createOhanaLocService(form) {
-            //createLocService
-            var _body =
-            {
-                "name": form.svc_name,
-                "description": form.svc_description,
-                "status": form.svc_status
-            };
-            console.log("CREATING SERVICE with JSON: ",_body);
-            OhanaAPI.createLocService(
-                {location_id: form.loc_id},
-                _body)
-                .$promise.then(function(res){
-                    form.svc_id = res.id;
-                    console.log("CREATED SERVICE: ",res);
-                    return createOhanaSvcCategory(form);
-                })
-                .catch(function(err){
-                    console.log("ERROR CREATING SERVICE: ", err);
-                    $ionicLoading.hide();
-                    $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'error creating SERVICE: '+err.statusText
-                    });
-                    return err;
-                });
-
-        }
-        function createOhanaSvcCategory(form) {
-            //createSvcCategory
-            var _body =
-            //{ "taxonomy_ids": ["101", "102"] }; // for testing
-            { "taxonomy_ids": [ form.svc_category ] };
-
-            console.log("CREATING SVC_CAT with JSON: ",_body, " svc id is: ", form.svc_id);
-            OhanaAPI.createSvcCategory(
-                {service_id: form.svc_id},
-                _body)
-                .$promise.then(function(res){
-                    $ionicLoading.hide();
-                    $ionicPopup.alert({
-                        title: 'Success!',
-                        template: 'You have added a new Place to Quarky'
-                    });
-                    $scope.closeModal();
 
                 // Google Analytics
-                    if(typeof analytics !== "undefined") {
-                        analytics.trackEvent('Places', 'Create', form.loc_name, 150);
-                        console.log('GA tracking Places Create event for: ', form.loc_name);
-                    }
-
-                    return res;
-                })
-                .catch(function(err){
-                    console.log("ERROR CREATING SERVICE: ", err);
-                    $ionicLoading.hide();
-                    $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'error creating SERVICE: '+err.statusText
-                    });
-                    return res;
-                });
-
-
-        }
-
-        $scope.submitOhana = function(form) {
-            if(form.$valid) {
-                var foo = {};
-                foo.loc_addy_address_1      = form.loc_addy_address_1.$modelValue;
-                foo.loc_addy_address_2      = form.loc_addy_address_2.$modelValue;
-                foo.loc_addy_city           = form.loc_addy_city.$modelValue;
-                foo.loc_addy_country        = form.loc_addy_country.$modelValue;
-                foo.loc_addy_postal_code    = angular.isNumber(form.loc_addy_postal_code.$modelValue) ?
-                                                form.loc_addy_postal_code.$modelValue.toString() :
-                                                form.loc_addy_postal_code.$modelValue,
-                foo.loc_addy_state_province = form.loc_addy_state_province.$modelValue;
-                foo.loc_description         = form.loc_description.$modelValue;
-                foo.loc_name                = form.loc_name.$modelValue;
-                foo.loc_phone_number        = form.loc_phone_number.$modelValue;
-                foo.loc_phone_number_type   = form.loc_phone_number_type.$modelValue;
-                foo.loc_website             = form.loc_website.$modelValue;
-                foo.loc_lat                 = angular.isNumber(form.loc_lat.$modelValue) ?
-                                                form.loc_lat.$modelValue :
-                                                parseFloat(form.loc_lng.$modelValue),
-                foo.loc_lng                 = angular.isNumber(form.loc_lng.$modelValue) ?
-                                                form.loc_lng.$modelValue :
-                                                parseFloat(form.loc_lng.$modelValue),
-                foo.org_description         = form.org_description.$modelValue;
-                foo.org_name                = form.org_name.$modelValue;
-                foo.org_select              = form.org_select.$modelValue;
-                foo.org_website             = form.org_website.$modelValue;
-                foo.svc_category            = form.svc_category.$modelValue;
-                foo.svc_description         = form.svc_description.$modelValue;
-                foo.svc_name                = form.svc_name.$modelValue;
-                foo.svc_status              = form.svc_status.$modelValue;
-                console.log("SUBMITTING FOO: ", foo);
-
-                if(!foo.org_select || foo.org_select == "") {
-                    createOhanaOrg(foo); // new org
-                } else {
-                    createOhanaLocation(foo); // use existing org
+                if(typeof analytics !== "undefined") {
+                    analytics.trackEvent('Places', 'Open', res.name, 25);
+                    console.log('GA tracking Places Open event for: ', res.name);
                 }
-            } else {
-                console.log("got invalid form ", form);
+
+                $scope.place = res;
+                console.log('$scope.place: ', $scope.place);
+                $ionicSlideBoxDelegate.update();
+                //$scope.$apply();
                 $ionicLoading.hide();
-                $ionicPopup.alert({
-                    title: 'Error',
-                    template: 'Got invalid form'
-                });
-            }
-        };
-
-        $ionicModal.fromTemplateUrl('templates/add-to-quarky.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal;
-        });
-        $scope.openModal = function() {
-            $scope.modal.show();
-        };
-        $scope.closeModal = function() {
-            $scope.modal.hide();
-            $ionicLoading.hide();
-        };
-        //Cleanup the modal when we're done with it!
-        $scope.$on('$destroy', function() {
-            $scope.modal.remove();
-            $ionicLoading.hide();
-        });
-        // Execute action on hide modal
-        $scope.$on('modal.hidden', function() {
-            // Execute action
-            $ionicLoading.hide();
-        });
-        // Execute action on remove modal
-        $scope.$on('modal.removed', function() {
-            // Execute action
-            $ionicLoading.hide();
-        });
-
+            })
+            .catch(function(err){
+                console.log('$scope.place error: ', err);
+                $ionicLoading.hide();
+                $state.go('app.places-master');
+            });
 
     })
     .service('PlacesService', ['$http', 'PlacesConfig', PlacesService]);

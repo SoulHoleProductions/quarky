@@ -8,63 +8,56 @@ Enables user to open the Place separately in a google map webpage
 -->
 
 <ion-view title="{{place.name}}">
-	
-	<ion-content class="category-bg">
 
-		<div class="list card">
+    <ion-content scroll=true class="category-bg no-margin no-padding">
+        <div class="list card">
+            <div class="item item-stable item-avatar">
+                <img data-ng-src="{{place.icon}}">
+                <h2>{{place.name}}</h2>
+                <p>{{place.formatted_address}}</p>
+            </div>
+            <div class="item item-body">
+                <div class="item no-padding">
+                    <p ng-show="place.description">{{place.description}}</p>
+                    <div class="item item-icon-left">
+                        <i class="icon ion-pricetags"></i>
+                        <button class="button button-outline button-stable button-small" ng-repeat="foo in place.tags">
+                            {{foo}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="item tabs tabs-secondary tabs-dark tabs-icon-top">
+                <a ng-show="place.formatted_phone_number" class="tab-item" href="tel:{{place.formatted_phone_number}}">
+                    <i class="icon ion-ios-telephone"></i> {{place.formatted_phone_number}}
+                </a>
+                <a ng-show="place.website" class="tab-item" ng-click="showPage(place.website)">
+                    <i class="icon ion-link"></i> Visit Website
+                </a>
+                <a class="tab-item"
+                   ng-click="showPage('https://google.com/maps/place/'+place.coordinates.lat+','+place.coordinates.lng+'/@'+place.coordinates.lat+','+place.coordinates.lng+',17z')">
 
-			<div class="item item-avatar">
-				<img data-ng-src="{{place.icon}}">
-				<h2>{{place.name}}</h2>
-				<p>{{place.formatted_address}}</p>
-			</div>
+                    <i class="icon ion-map"></i> View Map
+                </a>
+                <a ng-show="hasOpen" ng-click="showHours(place.formatted_hours_array)" class="tab-item">
+                    <i class="icon ion-clock"></i> Hours
+                </a>
+            </div>
+            <div ng-show="!hasPhotos" class="item item-image">
+                <img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{place.coordinates.lat}},{{place.coordinates.lng}}&zoom=14&markers=color:blue%7C{{place.coordinates.lat}},{{place.coordinates.lng}}&size=310x310&scale=2"
+                     width="100%"/>
+            </div>
+            <div ng-show="hasPhotos" class="item item-image">
+                <ion-slide-box show-pager="true">
 
-			<div class="item item-body">
-                <button ng-show="auth.profile.can_add_places" ng-click="openModal()" class="button button-block button-positive icon-left ion-plus-round">
-                    Add to Quarky Places
-                </button>
-				<p>
-				<span ng-show="hasOpen">
-					This Place is currently
-						<span ng-show="place.opening_hours.open_now">open.</span>
-						<span ng-hide="place.opening_hours.open_now">closed.</span>
-						<br/>
-				</span>
-				<span ng-show="price">
-					Items here are generally priced "{{price}}".<br/>
-				</span>
-				</p>
-
-				<div ng-show="hasPhotos">
-
-					<ion-slide-box show-pager="true">
-
-						<ion-slide ng-repeat="photo in place.photos">
-							<img width="300" data-ng-src="{{photo.url}}">
-						</ion-slide>
-
-					</ion-slide-box>	
-
-				</div>
-
-				<div class="item item-image" ng-show="!hasPhotos">
-				<img data-ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{place.position.latitude}},{{place.position.longitude}}&zoom=14&markers=color:blue%7C{{place.position.latitude}},{{place.position.longitude}}&size=310x310&scale=2" width="100%"/>
-				</div>
-
-
-			</div>
-
-			<div class="item tabs tabs-secondary tabs-icon-left">
-				<a class="tab-item" href="tel:{{place.formatted_phone_number}}"> 
-					<i class="icon ion-ios-telephone"></i> {{place.formatted_phone_number}}
-				</a>	
-				<a class="tab-item" ng-click="showPage(place.website)">
-					<i class="icon ion-link"></i> Visit Website
-				</a>	
-				<a class="tab-item" ng-click="showPage('https://maps.google.com/maps?z=12&t=m&q=loc:'+place.position.latitude+'+'+place.position.longitude+'')">
-					<i class="icon ion-map"></i> View Map
-				</a>	
-			</div>
-		</div>
-	</ion-content>
+                    <ion-slide ng-repeat="photo in place.photos track by $index">
+                        <img ng-src="{{photo.url}}">
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+            <div ng-show="place.formatted_address" class="item item-body">
+                <p>{{place.formatted_address}}</p>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

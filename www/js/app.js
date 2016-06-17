@@ -249,8 +249,8 @@ angular.module('quarky', ['ionic', 'ngCordova',
             "want_add_places": false,
             "gender": "male",
             "searchModel": {
-                "radius": "25",
-                "per_page": "15",
+                "radius": "10",
+                "per_page": "3",
                 "showCategories": false,
                 "showGooglePlaces": false,
                 "lastPlaceSearch": "",
@@ -571,6 +571,7 @@ angular.module('quarky', ['ionic', 'ngCordova',
         ionicDatePickerProvider.configDatePicker(datePickerObj);
 
         LoopBackResourceProvider.setUrlBase('https://q-api.mybluemix.net/api');
+//        LoopBackResourceProvider.setUrlBase('http://localhost:6001/api');
 
         $stateProvider
             .state('app', {

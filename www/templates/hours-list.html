@@ -1,0 +1,7 @@
+
+<div>
+    <!-- iterate thru each item in the list, use $index as item identifier -->
+    <p class="item-text-wrap" ng-repeat="hours in place.formatted_hours_array track by $index">
+       {{hours.name}}
+    </p>
+</div>
