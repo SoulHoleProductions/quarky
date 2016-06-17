@@ -214,8 +214,8 @@ angular.module('places',
                 template:
                 '<li class="item item-toggle">Show categories first:<label class="toggle"><input ng-model="$parent.searchModel.showCategories" type="checkbox">'+
                 '<div class="track"> <div class="handle"></div> </div> </label></li>'+
-                '<li class="item item-toggle" ng-show="auth.profile.app_metadata.can_add_places">Show Google Places:<label class="toggle"><input ng-model="$parent.searchModel.showGooglePlaces" type="checkbox">'+
-                '<div class="track"> <div class="handle"></div> </div> </label></li>'+
+                //'<li class="item item-toggle" ng-show="auth.profile.app_metadata.can_add_places">Show Google Places:<label class="toggle"><input ng-model="$parent.searchModel.showGooglePlaces" type="checkbox">'+
+                //'<div class="track"> <div class="handle"></div> </div> </label></li>'+
                 '<div class="padding range range-dark"><i class="icon ion-android-walk"></i>'+
                 '<input type="range" ng-model="$parent.searchModel.radius" name="distance" min="1" max="25">'+
                 '<i class="icon ion-android-car"></i> {{ searchModel.radius}} miles </div>'+
@@ -302,8 +302,8 @@ angular.module('places',
             if($scope.searchModel.showCategories) { // we have a category result
                 $scope.doSearch(callback.item.name);
             }
-
-            $state.go('app.place-detail', { placeId: callback.item.id} );
+            else
+                $state.go('app.place-detail', { placeId: callback.item.id} );
 
         }
 
@@ -508,7 +508,7 @@ angular.module('places',
         //};
 
     })
-    .controller('PlacesArticlesCtrl', function ($scope, $rootScope, $state,
+    .controller('PlacesArticlesCtrl', function ($scope, $rootScope, $state, Place,
                                                 $ionicScrollDelegate, $stateParams,
                                                 $ionicLoading, $ionicPopup, OhanaAPI, auth) {
 
@@ -624,7 +624,59 @@ angular.module('places',
         }
         // Google Places list -----------------|
 
-        $scope.searchOhanaPlaces(_search);
+        $scope.searchQPlaces = function(search) {
+            $ionicLoading.show({template: 'Loading...'});
+
+            var request = {};
+            request.search = search.text;
+            request.lat = $rootScope.geolat;
+            request.lng = $rootScope.geolong;
+            request.radius = search.radius ? (search.radius * 1609) : 5 * 1609;
+            if(search.per_page)
+                request.limit = search.per_page;
+
+            Place.nearBy(request)
+                .$promise
+                .then(function(res){
+
+                    $scope.quarkyMatches = [];
+
+                    var matches = angular.forEach(res.places, function(o, x){
+
+                        var icon = JSON.parse(o.photos);
+                        var ret = {};
+                        ret.id = o.id;
+                        ret.name = o.name;
+                        ret.description = o.description;
+                        ret.formatted_address = o.formatted_address;
+                        if(icon.length < 1)
+                            ret.iconurl = 'img/quarkycon.png';
+                        else ret.iconurl = icon[0];
+
+                        console.log('searchQPlaces ret:  ', ret);
+                        $scope.quarkyMatches.push(ret);
+                    });
+
+
+                    console.log('received matches: ', matches);
+
+                    $ionicLoading.hide();
+                    $ionicScrollDelegate.resize();
+                    if (matches.length === 0) {
+                        $scope.noresult = "No Places for this category, check back soon";
+                    }
+                })
+                .catch(function(err){
+                    console.log('ERROR calling q-api: ', err);
+                    $ionicLoading.hide();
+                    $ionicPopup.alert({
+                        title: 'Error',
+                        template: 'error calling q-api: '+err.statusText
+                    });
+                });
+        }
+
+        $scope.searchQPlaces(_search);
     })
     .controller('PlacesOhanaDetailCtrl', function ($scope, $stateParams, $rootScope,
                                                    $ionicSlideBoxDelegate, $ionicLoading,

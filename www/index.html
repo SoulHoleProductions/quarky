@@ -30,6 +30,11 @@
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
 
+    <script>
+        var console = {};
+        console.log = function(){};
+        window.console = console;
+    </script>
     <!-- ionic, ionic.io, auth0, cordova, pouch -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/auth0-lock/build/auth0-lock.min.js"></script>
@@ -64,7 +69,7 @@
 <!--<body ng-app="quarky">-->
 <body>
 <ion-nav-view></ion-nav-view>
-<script>
+<script type="text/javascript">
     angular.element(document).ready(function () {
         if (window.cordova) {
             console.log("Running in Cordova, will bootstrap AngularJS once 'deviceready' event fires.");
@@ -80,6 +85,5 @@
 </script>
 <!--for Google places and autocomplete-->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyCaRME5c_7KiryZt-77DDBRo0KM6ldD3o0" async defer></script>
-
 </body>
 </html>

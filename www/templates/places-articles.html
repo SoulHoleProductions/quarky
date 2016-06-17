@@ -7,35 +7,17 @@ TODO: add infinite scroll
 -->
 <ion-view title="{{placeHeader}}">
     <ion-content class="category-bg">
-        <div ng-show="auth.profile.can_add_places" class="button-bar">
-            <!--<a class="button button-positive button- icon-left ion-ios-list" ng-click="searchOhanaPlaces()">Quarky Places</a>-->
-            <a class="button button-positive icon-left ion-social-google" ng-click="searchGooglePlaces()">{{auth.profile.name}}, tap to see Google Places</a>
-        </div>
         <!-- QUARKY Places -->
         <div class="list">
             <ion-list class="list">
-                <ion-item class="item-avatar" ng-repeat="match in quarkyMatches" href="#/app/place-ohana-detail/{{match.reference}}">
-                    <img data-ng-src="{{match.icon}}">
+                <ion-item class="item-avatar" ng-repeat="match in quarkyMatches" href="#/app/place-detail/{{match.id}}">
+                    <img data-ng-src="{{match.iconurl}}">
                     <h2 data-ng-bind-html="match.name"></h2>
                     <p data-ng-bind-html="match.formatted_address"></p>
                 </ion-item>
-
             </ion-list>
         </div>
         <!-- QUARKY Places -->
-
-        <!-- Google Places -->
-        <div ng-show="auth.profile.can_add_places" class="list">
-            <ion-list class="list">
-                <ion-item class="item-avatar" ng-repeat="match in googleMatches" href="#/app/place-detail/{{match.place_id}}">
-                    <img data-ng-src="{{match.icon}}">
-                    <h2 data-ng-bind-html="match.name"></h2>
-                    <p data-ng-bind-html="match.formatted_address || match.address"></p>
-                </ion-item>
-
-            </ion-list>
-        </div>
-        <!-- Google Places -->
 
         <div ng-if="noresult" class="card no-margin">
             <div class="item item-icon-left item-text-wrap item-balanced gloria-h">
