@@ -1069,7 +1069,7 @@ angular.module('places', [
                 $ionicPopup.alert({
                     title: 'Hours / Availability',
                     scope: $scope,
-                    templateUrl: 'templates/hours-list.html'
+                    templateUrl: 'hours-list.html'
                 });
             };
             $ionicLoading.show({template: 'Loading...'});

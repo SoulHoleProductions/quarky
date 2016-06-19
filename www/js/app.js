@@ -1,5 +1,6 @@
 angular.module('quarky', [
     'ionic',
+    'templates',
     'ngCordova',
     'about-module',
     'home-module',
@@ -547,13 +548,13 @@ angular.module('quarky', [
             $stateProvider.state('app', {
                 url: '/app',
                 abstract: true,
-                templateUrl: 'templates/menu.html',
+                templateUrl: 'menu.html',
                 controller: 'MenuCtrl'
             }).state('app.profile', {
                 url: '/profile',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/profile.html',
+                        templateUrl: 'profile.html',
                         controller: 'ProfileCtrl'
                     }
                 },
@@ -567,7 +568,7 @@ angular.module('quarky', [
                 url: '/bookmarks',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/bookmarks.html',
+                        templateUrl: 'bookmarks.html',
                         controller: 'BookmarksCtrl'
                     }
                 },
@@ -581,7 +582,7 @@ angular.module('quarky', [
                 url: '/guru',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/guru-nav.html',
+                        templateUrl: 'guru-nav.html',
                         controller: 'GuruCtrl'
                     }
                 },
@@ -595,7 +596,7 @@ angular.module('quarky', [
                 url: '/guru/list/:id',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/guru-list.html',
+                        templateUrl: 'guru-list.html',
                         controller: 'GuruListCtrl'
                     }
                 }
@@ -603,7 +604,7 @@ angular.module('quarky', [
                 url: '/guru/detail/:id',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/guru-detail.html',
+                        templateUrl: 'guru-detail.html',
                         controller: 'GuruDetailCtrl'
                     }
                 },
@@ -617,7 +618,7 @@ angular.module('quarky', [
                 url: '/home-list',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/home-list.html',
+                        templateUrl: 'home-list.html',
                         controller: 'HomeListCtrl'
                     }
                 },
@@ -626,7 +627,7 @@ angular.module('quarky', [
                 url: '/about-master',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/about-master.html',
+                        templateUrl: 'about-master.html',
                         controller: 'AboutMasterCtrl'
                     }
                 },
@@ -645,7 +646,7 @@ angular.module('quarky', [
                 url: '/about-list/:postId',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/about-list.html',
+                        templateUrl: 'about-list.html',
                         controller: 'AboutListCtrl'
                     }
                 },
@@ -659,7 +660,7 @@ angular.module('quarky', [
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/places-master.html',
+                        templateUrl: 'places-master.html',
                         controller: 'PlacesMasterCtrl'
                     }
                 },
@@ -675,7 +676,7 @@ angular.module('quarky', [
                 params: {searchParams: null},
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/places-articles.html',
+                        templateUrl: 'places-articles.html',
                         controller: 'PlacesArticlesCtrl'
                     }
                 },
@@ -691,7 +692,7 @@ angular.module('quarky', [
                 params: {galleryParams: null},
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/places-gallery.html',
+                        templateUrl: 'places-gallery.html',
                         controller: 'PlacesGalleryCtrl'
                     }
                 },
@@ -706,7 +707,7 @@ angular.module('quarky', [
                 url: '/place-detail/:placeId',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/place-detail.html',
+                        templateUrl: 'place-detail.html',
                         controller: 'PlacesDetailCtrl'
                     }
                 }
@@ -715,13 +716,13 @@ angular.module('quarky', [
                 url: '/place-ohana-detail/:placeId',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/place-ohana-detail.html',
+                        templateUrl: 'place-ohana-detail.html',
                         controller: 'PlacesOhanaDetailCtrl'
                     }
                 }
             }).state('login', {
                 url: '/login',
-                templateUrl: 'templates/login.html',
+                templateUrl: 'login.html',
                 controller: 'LoginCtrl'
             });
             // if none of the above states are matched, use this as the fallback

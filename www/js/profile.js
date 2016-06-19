@@ -121,7 +121,7 @@ angular.module('profile', [
                     }
                 }
             };
-            $ionicModal.fromTemplateUrl('templates/article-modal.html', function ($ionicModal) {
+            $ionicModal.fromTemplateUrl('article-modal.html', function ($ionicModal) {
                 $scope.modal = $ionicModal;
             }, {
                 // Use our scope for the scope of the modal to keep it simple
