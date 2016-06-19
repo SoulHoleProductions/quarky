@@ -6,22 +6,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
   //   import lbServices from './lb-services';
   //   angular.module('app', [lbServices]);
   //
-  module.exports = "lbServices";
+  module.exports = 'lbServices';
 }
-
-(function(window, angular, undefined) {'use strict';
-
-var urlBase = "/api";
-var authHeader = 'authorization';
-
-function getHost(url) {
-  var m = url.match(/^(?:https?:)?\/\/([^\/]+)/);
-  return m ? m[1] : null;
-}
-
-var urlBaseHost = getHost(urlBase) || location.host;
-
-/**
+(function (window, angular, undefined) {
+  'use strict';
+  var urlBase = '/api';
+  var authHeader = 'authorization';
+  function getHost(url) {
+    var m = url.match(/^(?:https?:)?\/\/([^\/]+)/);
+    return m ? m[1] : null;
+  }
+  var urlBaseHost = getHost(urlBase) || location.host;
+  /**
  * @ngdoc overview
  * @name lbServices
  * @module
@@ -31,9 +27,8 @@ var urlBaseHost = getHost(urlBase) || location.host;
  * the models exposed by the LoopBack server via the REST API.
  *
  */
-var module = angular.module("lbServices", ['ngResource']);
-
-/**
+  var module = angular.module('lbServices', ['ngResource']);
+  /**
  * @ngdoc object
  * @name lbServices.User
  * @header lbServices.User
@@ -50,14 +45,12 @@ var module = angular.module("lbServices", ['ngResource']);
  * for an example of using this object.
  *
  */
-module.factory(
-  "User",
-  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
-    var R = Resource(
-      urlBase + "/Users/:id",
-      { 'id': '@id' },
-      {
-
+  module.factory('User', [
+    'LoopBackResource',
+    'LoopBackAuth',
+    '$injector',
+    function (Resource, LoopBackAuth, $injector) {
+      var R = Resource(urlBase + '/Users/:id', { 'id': '@id' }, {
         /**
          * @ngdoc method
          * @name lbServices.User#prototype$__findById__accessTokens
@@ -88,14 +81,11 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "prototype$__findById__accessTokens": {
-          params: {
-          'fk': '@fk'
-          },
-          url: urlBase + "/Users/:id/accessTokens/:fk",
-          method: "GET"
+        'prototype$__findById__accessTokens': {
+          params: { 'fk': '@fk' },
+          url: urlBase + '/Users/:id/accessTokens/:fk',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#prototype$__destroyById__accessTokens
@@ -123,14 +113,11 @@ module.factory(
          *
          * This method returns no data.
          */
-        "prototype$__destroyById__accessTokens": {
-          params: {
-          'fk': '@fk'
-          },
-          url: urlBase + "/Users/:id/accessTokens/:fk",
-          method: "DELETE"
+        'prototype$__destroyById__accessTokens': {
+          params: { 'fk': '@fk' },
+          url: urlBase + '/Users/:id/accessTokens/:fk',
+          method: 'DELETE'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#prototype$__updateById__accessTokens
@@ -165,14 +152,11 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "prototype$__updateById__accessTokens": {
-          params: {
-          'fk': '@fk'
-          },
-          url: urlBase + "/Users/:id/accessTokens/:fk",
-          method: "PUT"
+        'prototype$__updateById__accessTokens': {
+          params: { 'fk': '@fk' },
+          url: urlBase + '/Users/:id/accessTokens/:fk',
+          method: 'PUT'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#prototype$__get__accessTokens
@@ -203,12 +187,11 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "prototype$__get__accessTokens": {
+        'prototype$__get__accessTokens': {
           isArray: true,
-          url: urlBase + "/Users/:id/accessTokens",
-          method: "GET"
+          url: urlBase + '/Users/:id/accessTokens',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#prototype$__create__accessTokens
@@ -241,11 +224,10 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "prototype$__create__accessTokens": {
-          url: urlBase + "/Users/:id/accessTokens",
-          method: "POST"
+        'prototype$__create__accessTokens': {
+          url: urlBase + '/Users/:id/accessTokens',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#prototype$__delete__accessTokens
@@ -271,11 +253,10 @@ module.factory(
          *
          * This method returns no data.
          */
-        "prototype$__delete__accessTokens": {
-          url: urlBase + "/Users/:id/accessTokens",
-          method: "DELETE"
+        'prototype$__delete__accessTokens': {
+          url: urlBase + '/Users/:id/accessTokens',
+          method: 'DELETE'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#prototype$__count__accessTokens
@@ -305,11 +286,10 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        "prototype$__count__accessTokens": {
-          url: urlBase + "/Users/:id/accessTokens/count",
-          method: "GET"
+        'prototype$__count__accessTokens': {
+          url: urlBase + '/Users/:id/accessTokens/count',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#create
@@ -343,11 +323,10 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "create": {
-          url: urlBase + "/Users",
-          method: "POST"
+        'create': {
+          url: urlBase + '/Users',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#createMany
@@ -381,12 +360,11 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "createMany": {
+        'createMany': {
           isArray: true,
-          url: urlBase + "/Users",
-          method: "POST"
+          url: urlBase + '/Users',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#upsert
@@ -420,11 +398,10 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "upsert": {
-          url: urlBase + "/Users",
-          method: "PUT"
+        'upsert': {
+          url: urlBase + '/Users',
+          method: 'PUT'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#exists
@@ -452,11 +429,10 @@ module.factory(
          *
          *  - `exists` – `{boolean=}` - 
          */
-        "exists": {
-          url: urlBase + "/Users/:id/exists",
-          method: "GET"
+        'exists': {
+          url: urlBase + '/Users/:id/exists',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#findById
@@ -487,11 +463,10 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "findById": {
-          url: urlBase + "/Users/:id",
-          method: "GET"
+        'findById': {
+          url: urlBase + '/Users/:id',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#find
@@ -520,12 +495,11 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "find": {
+        'find': {
           isArray: true,
-          url: urlBase + "/Users",
-          method: "GET"
+          url: urlBase + '/Users',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#findOne
@@ -554,11 +528,10 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "findOne": {
-          url: urlBase + "/Users/findOne",
-          method: "GET"
+        'findOne': {
+          url: urlBase + '/Users/findOne',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#updateAll
@@ -588,11 +561,10 @@ module.factory(
          *
          * The number of instances updated
          */
-        "updateAll": {
-          url: urlBase + "/Users/update",
-          method: "POST"
+        'updateAll': {
+          url: urlBase + '/Users/update',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#deleteById
@@ -621,11 +593,10 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "deleteById": {
-          url: urlBase + "/Users/:id",
-          method: "DELETE"
+        'deleteById': {
+          url: urlBase + '/Users/:id',
+          method: 'DELETE'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#count
@@ -653,11 +624,10 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        "count": {
-          url: urlBase + "/Users/count",
-          method: "GET"
+        'count': {
+          url: urlBase + '/Users/count',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#prototype$updateAttributes
@@ -690,11 +660,10 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "prototype$updateAttributes": {
-          url: urlBase + "/Users/:id",
-          method: "PUT"
+        'prototype$updateAttributes': {
+          url: urlBase + '/Users/:id',
+          method: 'PUT'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#createChangeStream
@@ -727,11 +696,10 @@ module.factory(
          *
          *  - `changes` – `{ReadableStream=}` - 
          */
-        "createChangeStream": {
-          url: urlBase + "/Users/change-stream",
-          method: "POST"
+        'createChangeStream': {
+          url: urlBase + '/Users/change-stream',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#login
@@ -771,12 +739,10 @@ module.factory(
          * 
          *
          */
-        "login": {
-          params: {
-            include: "user"
-          },
+        'login': {
+          params: { include: 'user' },
           interceptor: {
-            response: function(response) {
+            response: function (response) {
               var accessToken = response.data;
               LoopBackAuth.setUser(accessToken.id, accessToken.userId, accessToken.user);
               LoopBackAuth.rememberMe = response.config.params.rememberMe !== false;
@@ -784,10 +750,9 @@ module.factory(
               return response.resource;
             }
           },
-          url: urlBase + "/Users/login",
-          method: "POST"
+          url: urlBase + '/Users/login',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#logout
@@ -818,18 +783,17 @@ module.factory(
          *
          * This method returns no data.
          */
-        "logout": {
+        'logout': {
           interceptor: {
-            response: function(response) {
+            response: function (response) {
               LoopBackAuth.clearUser();
               LoopBackAuth.clearStorage();
               return response.resource;
             }
           },
-          url: urlBase + "/Users/logout",
-          method: "POST"
+          url: urlBase + '/Users/logout',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#confirm
@@ -859,11 +823,10 @@ module.factory(
          *
          * This method returns no data.
          */
-        "confirm": {
-          url: urlBase + "/Users/confirm",
-          method: "GET"
+        'confirm': {
+          url: urlBase + '/Users/confirm',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#resetPassword
@@ -894,11 +857,10 @@ module.factory(
          *
          * This method returns no data.
          */
-        "resetPassword": {
-          url: urlBase + "/Users/reset",
-          method: "POST"
+        'resetPassword': {
+          url: urlBase + '/Users/reset',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.User#getCurrent
@@ -919,30 +881,29 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          */
-        "getCurrent": {
-           url: urlBase + "/Users" + "/:id",
-           method: "GET",
-           params: {
-             id: function() {
+        'getCurrent': {
+          url: urlBase + '/Users' + '/:id',
+          method: 'GET',
+          params: {
+            id: function () {
               var id = LoopBackAuth.currentUserId;
-              if (id == null) id = '__anonymous__';
+              if (id === null) {
+                  id = '__anonymous__';
+              }
+
               return id;
-            },
+            }
           },
           interceptor: {
-            response: function(response) {
+            response: function (response) {
               LoopBackAuth.currentUserData = response.data;
               return response.resource;
             }
           },
-          __isGetCurrentUser__ : true
+          __isGetCurrentUser__: true
         }
-      }
-    );
-
-
-
-        /**
+      });
+      /**
          * @ngdoc method
          * @name lbServices.User#updateOrCreate
          * @methodOf lbServices.User
@@ -975,9 +936,8 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
+      R.updateOrCreate = R.upsert;
+      /**
          * @ngdoc method
          * @name lbServices.User#update
          * @methodOf lbServices.User
@@ -1006,9 +966,8 @@ module.factory(
          *
          * The number of instances updated
          */
-        R["update"] = R["updateAll"];
-
-        /**
+      R.update = R.updateAll;
+      /**
          * @ngdoc method
          * @name lbServices.User#destroyById
          * @methodOf lbServices.User
@@ -1036,9 +995,8 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        R["destroyById"] = R["deleteById"];
-
-        /**
+      R.destroyById = R.deleteById;
+      /**
          * @ngdoc method
          * @name lbServices.User#removeById
          * @methodOf lbServices.User
@@ -1066,9 +1024,8 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        R["removeById"] = R["deleteById"];
-
-        /**
+      R.removeById = R.deleteById;
+      /**
          * @ngdoc method
          * @name lbServices.User#getCachedCurrent
          * @methodOf lbServices.User
@@ -1083,34 +1040,31 @@ module.factory(
          *
          * @returns {Object} A User instance.
          */
-        R.getCachedCurrent = function() {
-          var data = LoopBackAuth.currentUserData;
-          return data ? new R(data) : null;
-        };
-
-        /**
+      R.getCachedCurrent = function () {
+        var data = LoopBackAuth.currentUserData;
+        return data ? new R(data) : null;
+      };
+      /**
          * @ngdoc method
          * @name lbServices.User#isAuthenticated
          * @methodOf lbServices.User
          *
          * @returns {boolean} True if the current user is authenticated (logged in).
          */
-        R.isAuthenticated = function() {
-          return this.getCurrentId() != null;
-        };
-
-        /**
+      R.isAuthenticated = function () {
+        return this.getCurrentId() !== null;
+      };
+      /**
          * @ngdoc method
          * @name lbServices.User#getCurrentId
          * @methodOf lbServices.User
          *
          * @returns {Object} Id of the currently logged-in user or null.
          */
-        R.getCurrentId = function() {
-          return LoopBackAuth.currentUserId;
-        };
-
-    /**
+      R.getCurrentId = function () {
+        return LoopBackAuth.currentUserId;
+      };
+      /**
     * @ngdoc property
     * @name lbServices.User#modelName
     * @propertyOf lbServices.User
@@ -1118,13 +1072,11 @@ module.factory(
     * The name of the model represented by this $resource,
     * i.e. `User`.
     */
-    R.modelName = "User";
-
-
-    return R;
-  }]);
-
-/**
+      R.modelName = 'User';
+      return R;
+    }
+  ]);
+  /**
  * @ngdoc object
  * @name lbServices.Place
  * @header lbServices.Place
@@ -1141,14 +1093,12 @@ module.factory(
  * for an example of using this object.
  *
  */
-module.factory(
-  "Place",
-  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
-    var R = Resource(
-      urlBase + "/Places/:id",
-      { 'id': '@id' },
-      {
-
+  module.factory('Place', [
+    'LoopBackResource',
+    'LoopBackAuth',
+    '$injector',
+    function (Resource, LoopBackAuth, $injector) {
+      var R = Resource(urlBase + '/Places/:id', { 'id': '@id' }, {
         /**
          * @ngdoc method
          * @name lbServices.Place#create
@@ -1182,11 +1132,10 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        "create": {
-          url: urlBase + "/Places",
-          method: "POST"
+        'create': {
+          url: urlBase + '/Places',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#createMany
@@ -1220,12 +1169,11 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        "createMany": {
+        'createMany': {
           isArray: true,
-          url: urlBase + "/Places",
-          method: "POST"
+          url: urlBase + '/Places',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#upsert
@@ -1259,11 +1207,10 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        "upsert": {
-          url: urlBase + "/Places",
-          method: "PUT"
+        'upsert': {
+          url: urlBase + '/Places',
+          method: 'PUT'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#exists
@@ -1291,11 +1238,10 @@ module.factory(
          *
          *  - `exists` – `{boolean=}` - 
          */
-        "exists": {
-          url: urlBase + "/Places/:id/exists",
-          method: "GET"
+        'exists': {
+          url: urlBase + '/Places/:id/exists',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#findById
@@ -1326,11 +1272,10 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        "findById": {
-          url: urlBase + "/Places/:id",
-          method: "GET"
+        'findById': {
+          url: urlBase + '/Places/:id',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#find
@@ -1359,12 +1304,11 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        "find": {
+        'find': {
           isArray: true,
-          url: urlBase + "/Places",
-          method: "GET"
+          url: urlBase + '/Places',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#findOne
@@ -1393,11 +1337,10 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        "findOne": {
-          url: urlBase + "/Places/findOne",
-          method: "GET"
+        'findOne': {
+          url: urlBase + '/Places/findOne',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#updateAll
@@ -1427,11 +1370,10 @@ module.factory(
          *
          * The number of instances updated
          */
-        "updateAll": {
-          url: urlBase + "/Places/update",
-          method: "POST"
+        'updateAll': {
+          url: urlBase + '/Places/update',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#deleteById
@@ -1460,11 +1402,10 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        "deleteById": {
-          url: urlBase + "/Places/:id",
-          method: "DELETE"
+        'deleteById': {
+          url: urlBase + '/Places/:id',
+          method: 'DELETE'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#count
@@ -1492,11 +1433,10 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        "count": {
-          url: urlBase + "/Places/count",
-          method: "GET"
+        'count': {
+          url: urlBase + '/Places/count',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#prototype$updateAttributes
@@ -1529,11 +1469,10 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        "prototype$updateAttributes": {
-          url: urlBase + "/Places/:id",
-          method: "PUT"
+        'prototype$updateAttributes': {
+          url: urlBase + '/Places/:id',
+          method: 'PUT'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#createChangeStream
@@ -1566,11 +1505,10 @@ module.factory(
          *
          *  - `changes` – `{ReadableStream=}` - 
          */
-        "createChangeStream": {
-          url: urlBase + "/Places/change-stream",
-          method: "POST"
+        'createChangeStream': {
+          url: urlBase + '/Places/change-stream',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#nearLocation
@@ -1610,11 +1548,10 @@ module.factory(
          *
          *  - `places` – `{Object=}` - 
          */
-        "nearLocation": {
-          url: urlBase + "/Places/nearLocation",
-          method: "GET"
+        'nearLocation': {
+          url: urlBase + '/Places/nearLocation',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.Place#nearBy
@@ -1650,16 +1587,12 @@ module.factory(
          *
          *  - `places` – `{Object=}` - 
          */
-        "nearBy": {
-          url: urlBase + "/Places/nearBy",
-          method: "GET"
-        },
-      }
-    );
-
-
-
-        /**
+        'nearBy': {
+          url: urlBase + '/Places/nearBy',
+          method: 'GET'
+        }
+      });
+      /**
          * @ngdoc method
          * @name lbServices.Place#updateOrCreate
          * @methodOf lbServices.Place
@@ -1692,9 +1625,8 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
+      R.updateOrCreate = R.upsert;
+      /**
          * @ngdoc method
          * @name lbServices.Place#update
          * @methodOf lbServices.Place
@@ -1723,9 +1655,8 @@ module.factory(
          *
          * The number of instances updated
          */
-        R["update"] = R["updateAll"];
-
-        /**
+      R.update = R.updateAll;
+      /**
          * @ngdoc method
          * @name lbServices.Place#destroyById
          * @methodOf lbServices.Place
@@ -1753,9 +1684,8 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        R["destroyById"] = R["deleteById"];
-
-        /**
+      R.destroyById = R.deleteById;
+      /**
          * @ngdoc method
          * @name lbServices.Place#removeById
          * @methodOf lbServices.Place
@@ -1783,10 +1713,8 @@ module.factory(
          * This usually means the response is a `Place` object.)
          * </em>
          */
-        R["removeById"] = R["deleteById"];
-
-
-    /**
+      R.removeById = R.deleteById;
+      /**
     * @ngdoc property
     * @name lbServices.Place#modelName
     * @propertyOf lbServices.Place
@@ -1794,13 +1722,11 @@ module.factory(
     * The name of the model represented by this $resource,
     * i.e. `Place`.
     */
-    R.modelName = "Place";
-
-
-    return R;
-  }]);
-
-/**
+      R.modelName = 'Place';
+      return R;
+    }
+  ]);
+  /**
  * @ngdoc object
  * @name lbServices.OETaxonomy
  * @header lbServices.OETaxonomy
@@ -1817,14 +1743,12 @@ module.factory(
  * for an example of using this object.
  *
  */
-module.factory(
-  "OETaxonomy",
-  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
-    var R = Resource(
-      urlBase + "/OETaxonomies/:id",
-      { 'id': '@id' },
-      {
-
+  module.factory('OETaxonomy', [
+    'LoopBackResource',
+    'LoopBackAuth',
+    '$injector',
+    function (Resource, LoopBackAuth, $injector) {
+      var R = Resource(urlBase + '/OETaxonomies/:id', { 'id': '@id' }, {
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#create
@@ -1858,11 +1782,10 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        "create": {
-          url: urlBase + "/OETaxonomies",
-          method: "POST"
+        'create': {
+          url: urlBase + '/OETaxonomies',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#createMany
@@ -1896,12 +1819,11 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        "createMany": {
+        'createMany': {
           isArray: true,
-          url: urlBase + "/OETaxonomies",
-          method: "POST"
+          url: urlBase + '/OETaxonomies',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#upsert
@@ -1935,11 +1857,10 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        "upsert": {
-          url: urlBase + "/OETaxonomies",
-          method: "PUT"
+        'upsert': {
+          url: urlBase + '/OETaxonomies',
+          method: 'PUT'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#exists
@@ -1967,11 +1888,10 @@ module.factory(
          *
          *  - `exists` – `{boolean=}` - 
          */
-        "exists": {
-          url: urlBase + "/OETaxonomies/:id/exists",
-          method: "GET"
+        'exists': {
+          url: urlBase + '/OETaxonomies/:id/exists',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#findById
@@ -2002,11 +1922,10 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        "findById": {
-          url: urlBase + "/OETaxonomies/:id",
-          method: "GET"
+        'findById': {
+          url: urlBase + '/OETaxonomies/:id',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#find
@@ -2035,12 +1954,11 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        "find": {
+        'find': {
           isArray: true,
-          url: urlBase + "/OETaxonomies",
-          method: "GET"
+          url: urlBase + '/OETaxonomies',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#findOne
@@ -2069,11 +1987,10 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        "findOne": {
-          url: urlBase + "/OETaxonomies/findOne",
-          method: "GET"
+        'findOne': {
+          url: urlBase + '/OETaxonomies/findOne',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#updateAll
@@ -2103,11 +2020,10 @@ module.factory(
          *
          * The number of instances updated
          */
-        "updateAll": {
-          url: urlBase + "/OETaxonomies/update",
-          method: "POST"
+        'updateAll': {
+          url: urlBase + '/OETaxonomies/update',
+          method: 'POST'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#deleteById
@@ -2136,11 +2052,10 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        "deleteById": {
-          url: urlBase + "/OETaxonomies/:id",
-          method: "DELETE"
+        'deleteById': {
+          url: urlBase + '/OETaxonomies/:id',
+          method: 'DELETE'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#count
@@ -2168,11 +2083,10 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        "count": {
-          url: urlBase + "/OETaxonomies/count",
-          method: "GET"
+        'count': {
+          url: urlBase + '/OETaxonomies/count',
+          method: 'GET'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#prototype$updateAttributes
@@ -2205,11 +2119,10 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        "prototype$updateAttributes": {
-          url: urlBase + "/OETaxonomies/:id",
-          method: "PUT"
+        'prototype$updateAttributes': {
+          url: urlBase + '/OETaxonomies/:id',
+          method: 'PUT'
         },
-
         /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#createChangeStream
@@ -2242,16 +2155,12 @@ module.factory(
          *
          *  - `changes` – `{ReadableStream=}` - 
          */
-        "createChangeStream": {
-          url: urlBase + "/OETaxonomies/change-stream",
-          method: "POST"
-        },
-      }
-    );
-
-
-
-        /**
+        'createChangeStream': {
+          url: urlBase + '/OETaxonomies/change-stream',
+          method: 'POST'
+        }
+      });
+      /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#updateOrCreate
          * @methodOf lbServices.OETaxonomy
@@ -2284,9 +2193,8 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
+      R.updateOrCreate = R.upsert;
+      /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#update
          * @methodOf lbServices.OETaxonomy
@@ -2315,9 +2223,8 @@ module.factory(
          *
          * The number of instances updated
          */
-        R["update"] = R["updateAll"];
-
-        /**
+      R.update = R.updateAll;
+      /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#destroyById
          * @methodOf lbServices.OETaxonomy
@@ -2345,9 +2252,8 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        R["destroyById"] = R["deleteById"];
-
-        /**
+      R.destroyById = R.deleteById;
+      /**
          * @ngdoc method
          * @name lbServices.OETaxonomy#removeById
          * @methodOf lbServices.OETaxonomy
@@ -2375,10 +2281,8 @@ module.factory(
          * This usually means the response is a `OETaxonomy` object.)
          * </em>
          */
-        R["removeById"] = R["deleteById"];
-
-
-    /**
+      R.removeById = R.deleteById;
+      /**
     * @ngdoc property
     * @name lbServices.OETaxonomy#modelName
     * @propertyOf lbServices.OETaxonomy
@@ -2386,86 +2290,82 @@ module.factory(
     * The name of the model represented by this $resource,
     * i.e. `OETaxonomy`.
     */
-    R.modelName = "OETaxonomy";
-
-
-    return R;
-  }]);
-
-
-module
-  .factory('LoopBackAuth', function() {
-    var props = ['accessTokenId', 'currentUserId', 'rememberMe'];
+      R.modelName = 'OETaxonomy';
+      return R;
+    }
+  ]);
+  module.factory('LoopBackAuth', function () {
+    var props = [
+      'accessTokenId',
+      'currentUserId',
+      'rememberMe'
+    ];
     var propsPrefix = '$LoopBack$';
-
     function LoopBackAuth() {
       var self = this;
-      props.forEach(function(name) {
+      props.forEach(function (name) {
         self[name] = load(name);
       });
       this.currentUserData = null;
     }
-
-    LoopBackAuth.prototype.save = function() {
+    LoopBackAuth.prototype.save = function () {
       var self = this;
       var storage = this.rememberMe ? localStorage : sessionStorage;
-      props.forEach(function(name) {
+      props.forEach(function (name) {
         save(storage, name, self[name]);
       });
     };
-
-    LoopBackAuth.prototype.setUser = function(accessTokenId, userId, userData) {
+    LoopBackAuth.prototype.setUser = function (accessTokenId, userId, userData) {
       this.accessTokenId = accessTokenId;
       this.currentUserId = userId;
       this.currentUserData = userData;
-    }
-
-    LoopBackAuth.prototype.clearUser = function() {
+    };
+    LoopBackAuth.prototype.clearUser = function () {
       this.accessTokenId = null;
       this.currentUserId = null;
       this.currentUserData = null;
-    }
-
-    LoopBackAuth.prototype.clearStorage = function() {
-      props.forEach(function(name) {
+    };
+    LoopBackAuth.prototype.clearStorage = function () {
+      props.forEach(function (name) {
         save(sessionStorage, name, null);
         save(localStorage, name, null);
       });
     };
-
+      // Note: LocalStorage converts the value to string
+      // We are using empty string as a marker for null/undefined values.
+      function save(storage, name, value) {
+          try {
+              var key = propsPrefix + name;
+              if (value === null) {
+                  value = '';
+              }
+              storage[key] = value;
+          } catch (err) {
+              console.log('Cannot access local/session storage:', err);
+          }
+      }
+      function load(name) {
+          var key = propsPrefix + name;
+          return localStorage[key] || sessionStorage[key] || null;
+      }
     return new LoopBackAuth();
 
-    // Note: LocalStorage converts the value to string
-    // We are using empty string as a marker for null/undefined values.
-    function save(storage, name, value) {
-      try {
-        var key = propsPrefix + name;
-        if (value == null) value = '';
-        storage[key] = value;
-      } catch(err) {
-        console.log('Cannot access local/session storage:', err);
-      }
+  }).config([
+    '$httpProvider',
+    function ($httpProvider) {
+      $httpProvider.interceptors.push('LoopBackAuthRequestInterceptor');
     }
-
-    function load(name) {
-      var key = propsPrefix + name;
-      return localStorage[key] || sessionStorage[key] || null;
-    }
-  })
-  .config(['$httpProvider', function($httpProvider) {
-    $httpProvider.interceptors.push('LoopBackAuthRequestInterceptor');
-  }])
-  .factory('LoopBackAuthRequestInterceptor', [ '$q', 'LoopBackAuth',
-    function($q, LoopBackAuth) {
+  ]).factory('LoopBackAuthRequestInterceptor', [
+    '$q',
+    'LoopBackAuth',
+    function ($q, LoopBackAuth) {
       return {
-        'request': function(config) {
-
+        'request': function (config) {
           // filter out external requests
           var host = getHost(config.url);
           if (host && host !== urlBaseHost) {
             return config;
           }
-
           if (LoopBackAuth.accessTokenId) {
             config.headers[authHeader] = LoopBackAuth.accessTokenId;
           } else if (config.__isGetCurrentUser__) {
@@ -2475,16 +2375,17 @@ module
               body: { error: { status: 401 } },
               status: 401,
               config: config,
-              headers: function() { return undefined; }
+              headers: function () {
+                return undefined;
+              }
             };
             return $q.reject(res);
           }
           return config || $q.when(config);
         }
-      }
-    }])
-
-  /**
+      };
+    }
+  ])  /**
    * @ngdoc object
    * @name lbServices.LoopBackResourceProvider
    * @header lbServices.LoopBackResourceProvider
@@ -2503,8 +2404,7 @@ module
    *     LoopBackResourceProvider.setAuthHeader('X-Access-Token');
    *  });
    * ```
-   */
-  .provider('LoopBackResource', function LoopBackResourceProvider() {
+   */.provider('LoopBackResource', function LoopBackResourceProvider() {
     /**
      * @ngdoc method
      * @name lbServices.LoopBackResourceProvider#setAuthHeader
@@ -2515,10 +2415,9 @@ module
      * the authentication token. It is sent in the `Authorization` header
      * by default.
      */
-    this.setAuthHeader = function(header) {
+    this.setAuthHeader = function (header) {
       authHeader = header;
     };
-
     /**
      * @ngdoc method
      * @name lbServices.LoopBackResourceProvider#setUrlBase
@@ -2528,11 +2427,10 @@ module
      * Change the URL of the REST API server. By default, the URL provided
      * to the code generator (`lb-ng` or `grunt-loopback-sdk-angular`) is used.
      */
-    this.setUrlBase = function(url) {
+    this.setUrlBase = function (url) {
       urlBase = url;
       urlBaseHost = getHost(urlBase) || location.host;
     };
-
     /**
      * @ngdoc method
      * @name lbServices.LoopBackResourceProvider#getUrlBase
@@ -2541,26 +2439,26 @@ module
      * Get the URL of the REST API server. The URL provided
      * to the code generator (`lb-ng` or `grunt-loopback-sdk-angular`) is used.
      */
-    this.getUrlBase = function() {
+    this.getUrlBase = function () {
       return urlBase;
     };
-
-    this.$get = ['$resource', function($resource) {
-      return function(url, params, actions) {
-        var resource = $resource(url, params, actions);
-
-        // Angular always calls POST on $save()
-        // This hack is based on
-        // http://kirkbushell.me/angular-js-using-ng-resource-in-a-more-restful-manner/
-        resource.prototype.$save = function(success, error) {
-          // Fortunately, LoopBack provides a convenient `upsert` method
-          // that exactly fits our needs.
-          var result = resource.upsert.call(this, {}, this, success, error);
-          return result.$promise || result;
+    this.$get = [
+      '$resource',
+      function ($resource) {
+        return function (url, params, actions) {
+          var resource = $resource(url, params, actions);
+          // Angular always calls POST on $save()
+          // This hack is based on
+          // http://kirkbushell.me/angular-js-using-ng-resource-in-a-more-restful-manner/
+          resource.prototype.$save = function (success, error) {
+            // Fortunately, LoopBack provides a convenient `upsert` method
+            // that exactly fits our needs.
+            var result = resource.upsert.call(this, {}, this, success, error);
+            return result.$promise || result;
+          };
+          return resource;
         };
-        return resource;
-      };
-    }];
+      }
+    ];
   });
-
-})(window, window.angular);
+}(window, window.angular));
