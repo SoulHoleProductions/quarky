@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="664bda5d-0333-48b4-b4b8-f479426ea7f3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/guru-module.js" afterPath="$PROJECT_DIR$/www/js/guru-module.js" />
     </list>
     <ignored path="quarky.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -387,12 +385,6 @@
       <option name="number" value="Default" />
       <updated>1426126373942</updated>
     </task>
-    <task id="LOCAL-00017" summary="updated social login buttons">
-      <created>1448689403263</created>
-      <option name="number" value="00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1448689403263</updated>
-    </task>
     <task id="LOCAL-00018" summary="(re)added my custom icons">
       <created>1448689999485</created>
       <option name="number" value="00018" />
@@ -681,7 +673,13 @@
       <option name="project" value="LOCAL" />
       <updated>1466344818708</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="jshint fixes and dependency injection enforced">
+      <created>1466346870426</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1466346870426</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
