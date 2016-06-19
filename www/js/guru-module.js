@@ -428,7 +428,7 @@ function GuruService() {
     this.getNavName = function (id) {
         console.log('getnavname: ', id);
         for (var i = 0; i < _navdata.length; i++) {
-            if (_navdata[i].ID === id) {
+            if (_navdata[i].ID === Number(id)) {
                 console.log('get nav name returning: ', _navdata[i]);
                 return _navdata[i];
             }

@@ -15,7 +15,7 @@ angular.module('quarky', [
     'ion-autocomplete',
     'ionic-datepicker'
 ])
-    .constant('wordpressV2Config', [{
+    .constant('wordpressV2Config', {
         'FEED_URL': 'http://soul-hole.net/wp-json/wp/v2/',
         'PAGE_SIZE': -1,
         // get them all
@@ -24,7 +24,7 @@ angular.module('quarky', [
         'ORDER_BY': 'title',
         // author, title, name (slug), date, modified
         'ORDER': 'ASC'  // ASC or DESC
-    }])
+    })
     .factory('wordpressAPIv2', ['$resource', 'wordpressV2Config', function ($resource, wordpressV2Config) {
         'use strict';
         return $resource(wordpressV2Config.FEED_URL, {}, {
@@ -70,7 +70,7 @@ angular.module('quarky', [
             }
         });
     }])
-    .constant('wordpressConfig', [{
+    .constant('wordpressConfig', {
         'FEED_URL': 'https://quarkyapp.com/wp-json/',
         'PAGE_SIZE': 6,
         // 70 for guru, 6 for home
@@ -82,7 +82,7 @@ angular.module('quarky', [
         'ORDER_BY': 'modified',
         // author, title, name (slug), date, modified
         'ORDER': 'DESC'  // ASC or DESC
-    }])
+    })
     .factory('wordpressAPI', ['$resource', 'wordpressConfig', function ($resource, wordpressConfig) {
         'use strict';
 
