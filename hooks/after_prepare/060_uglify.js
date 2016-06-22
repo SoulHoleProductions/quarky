@@ -83,7 +83,7 @@ function compress(file) {
             console.log('minifying css file ' + file);
             var source = fs.readFileSync(file, 'utf8');
             var result = cssMinifier.minify(source).styles;
-            fs.writeFileSync(file, result.styles, 'utf8'); // overwrite the original unminified file
+            fs.writeFileSync(file, result, 'utf8'); // overwrite the original unminified file
             break;
         default:
             console.log('encountered a ' + ext + ' file, not compressing it');

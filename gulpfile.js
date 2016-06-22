@@ -7,31 +7,40 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var templateCache = require('gulp-angular-templatecache');
+var ngAnnotate = require('gulp-ng-annotate');
 var useref = require('gulp-useref');
 
 var paths = {
     sass: ['./scss/**/*.scss'],
     templatecache: ['./www/templates/**/*.html'],
+    ng_annotate: ['./www/js/*.js'],
     useref: ['./www/*.html']
 };
 
 gulp.task('templatecache', function (done) {
     gulp.src('./www/templates/**/*.html')
-        .pipe(templateCache({standalone:true}))
+        .pipe(templateCache({
+            standalone:true,
+            root: 'templates/'
+        }))
         .pipe(gulp.dest('./www/js'))
         .on('end', done);
 });
 
-gulp.task('default', ['sass', 'templatecache', 'useref']);
+gulp.task('ng_annotate', function (done) {
+    gulp.src('./www/js/*.js')
+        .pipe(ngAnnotate({single_quotes: true}))
+        .pipe(gulp.dest('./www/dist/dist_js/app'))
+        .on('end', done);
+});
 
 
-
-//gulp.task('templatecache', function (done) {
-//    gulp.src('./www/templates/**/*.html').pipe(templateCache({
-//        root: 'templates',
-//        standalone: true
-//    })).pipe(gulp.dest('./www/js')).on('end', done);
-//});
+gulp.task('default', [
+    'sass',
+    'templatecache',
+    'ng_annotate',
+    'useref'
+]);
 
 gulp.task('useref', function (done) {
     //var assets = useref.assets();
@@ -57,12 +66,14 @@ gulp.task('sass', function (done) {
         }))
         .pipe(rename({extname: '.min.css'}))
         .pipe(gulp.dest('./www/css/'))
+        //.pipe(gulp.dest('./www/dist/dist_css/')) // FIX per comment https://gist.github.com/agustinhaller/426351993c70a0329ad0
         .on('end', done);
 });
 
 gulp.task('watch', function () {
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.templatecache, ['templatecache']);
+    gulp.watch(paths.ng_annotate, ['ng_annotate']);
     gulp.watch(paths.useref, ['useref']);
 });
 

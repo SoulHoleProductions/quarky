@@ -28,17 +28,12 @@
 
 
     <!-- compiled css output -->
-    <!-- build:css dist_css/styles.css -->
+    <!-- build:css dist_css/ionic.app.min.css -->
     <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="lib/ion-autocomplete/dist/ion-autocomplete.css" rel="stylesheet">
     <!-- endbuild -->
 
-  <!--  <script>
-        var console = {};
-        console.log = function(){};
-        window.console = console;
-    </script>-->
-
-    <!-- ionic, ionic.io, auth0, cordova, pouch -->
+    <!-- build:js dist_js/app.js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/auth0-lock/build/auth0-lock.min.js"></script>
     <script src="lib/auth0-angular/build/auth0-angular.min.js"></script>
@@ -49,10 +44,6 @@
     <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
     <script src="lib/ionic-image-lazy-load.js"></script>
     <script src="lib/ion-autocomplete/dist/ion-autocomplete.js"></script>
-    <link href="lib/ion-autocomplete/dist/ion-autocomplete.css" rel="stylesheet">
-
-    <!-- Quarky js -->
-    <!-- build:js dist_js/app.js -->
     <script src="js/templates.js"></script>
     <script src="js/app.js"></script>
     <script src="js/about-module.js"></script>
@@ -62,13 +53,10 @@
     <script src="js/profile.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/lb-services.js"></script>
-
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <!-- endbuild -->
 
-    <!-- NGCORDOVA before cordova.js and after your AngularJS / Ionic file (since ngCordova depends on AngularJS) -->
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
-
     
 </head>
 
