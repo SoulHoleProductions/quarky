@@ -8,13 +8,8 @@
         </div>
 
         <div class="list card dark-bg">
-            <ion-item ng-show="auth.profile.app_metadata.can_add_places" class="item-icon-left item-positive">
-                <i class="icon ion-ribbon-a"></i>
-                You can add places!
-            </ion-item>
 
-            <ion-item ng-show="!auth.profile.app_metadata.can_add_places"
-                      ng-class="{ 'item-positive': want_add_places, 'item-assertive' : !want_add_places}"
+            <ion-item ng-class="{ 'item-positive': want_add_places, 'item-assertive' : !want_add_places}"
                       class="item-icon-left" ng-click="setVolForPlaces()">
                 <i class="icon ion-ribbon-a"></i>
                 Volunteer: {{want_add_places ? 'Yes' : 'No'}}
@@ -45,13 +40,12 @@
             </ion-item>-->
 
             <!--<ion-item ng-if="!angular.equals({}, $scope.lastPush)" class="item-avatar item-stable">-->
-            <ion-item class="item-avatar item-dark">
+           <!-- <ion-item class="item-avatar item-dark">
                 <img src="img/quarkycon.png">
                 <div>{{lastPush.title || 'No messages yet'}}</div>
                 <div>{{lastPush.text || ''}}</div>
                 <div>{{lastPush.date | date:'medium' || ''}}</div>
-            </ion-item>
-
+            </ion-item>-->
 
             <ion-item class="item-icon-right item-dark" ng-click="setGender()">
                 <i class="icon ion-edit positive"></i>

@@ -1,21 +1,21 @@
 angular.module('quarky', [
-    'ionic',
-    'templates',
-    'ngCordova',
-    'about-module',
-    'home-module',
-    'menu',
-    'profile',
-    'guru',
-    'places',
-    'auth0',
-    'angular-storage',
-    'angular-jwt',
-    'ngResource',
-    'lbServices',
-    'ion-autocomplete',
-    'ionic-datepicker'
-])
+        'ionic',
+        'templates',
+        'ngCordova',
+        'about-module',
+        'home-module',
+        'menu',
+        'profile',
+        'guru',
+        'places',
+        'auth0',
+        'angular-storage',
+        'angular-jwt',
+        'ngResource',
+        'lbServices',
+        'ion-autocomplete',
+        'ionic-datepicker'
+    ])
     .constant('wordpressV2Config', {
         'FEED_URL': 'http://soul-hole.net/wp-json/wp/v2/',
         'PAGE_SIZE': -1,
@@ -449,6 +449,7 @@ angular.module('quarky', [
                         });
                 }
             });
+
             // Listen for push notification events
             $rootScope.$on('event:push-notification', function (event, notification) {
                 console.log('event:push-notification: ', notification);
@@ -462,6 +463,7 @@ angular.module('quarky', [
                 }
                 PushWoosh.setApplicationIconBadgeNumber(0);
             });
+
             //-------------- global http loading
             $rootScope.$on('loading:show', function () {
                 $ionicLoading.show({template: 'Loading...'});
@@ -476,6 +478,20 @@ angular.module('quarky', [
                     template: 'You seem to be offline...'
                 });
             });
+            /*$rootScope.$on('$stateChangeStart', function () {
+                $ionicLoading.show({
+                    delay: 200,
+                    template: 'Loading...'
+                });
+            });
+            $rootScope.$on('$stateChangeSuccess', function () {
+                    $ionicLoading.hide();
+                });
+            $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+                $ionicLoading.hide();
+                console.error('Error loading the page: %o', error);
+            });*/
+
             //-------------- auth0
             var refreshingToken = null;
             $rootScope.$on('$locationChangeStart', function () {

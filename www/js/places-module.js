@@ -1103,6 +1103,11 @@ angular.module('places', [
                     analytics.trackEvent('Places', 'Open', res.name, 25);
                     console.log('GA tracking Places Open event for: ', res.name);
                 }
+                $scope.placePhone = null;
+                if (res.formatted_phone_number) {
+                    var foo = res.formatted_phone_number;
+                    $scope.placePhone = Number(foo.replace( /\D+/g, ''));
+                }
                 $scope.place = res;
                 console.log('$scope.place: ', $scope.place);
                 $ionicSlideBoxDelegate.update();

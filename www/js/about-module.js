@@ -131,6 +131,7 @@ angular.module('about-module', [
             };
             // --------------- modal from the given template URL
             // Bookmarking
+
             $scope.bookmarks = UserSettings.bookmarks;
             function checkBookmark(id) {
                 var keys;

@@ -28,7 +28,7 @@ Enables user to open the Place separately in a google map webpage
                 </div>
             </div>
             <div class="item tabs tabs-secondary tabs-dark tabs-icon-top">
-                <a ng-show="place.formatted_phone_number" class="tab-item" href="tel:{{place.formatted_phone_number}}">
+                <a ng-show="placePhone" class="tab-item" href="tel:{{placePhone}}">
                     <i class="icon ion-ios-telephone"></i> {{place.formatted_phone_number}}
                 </a>
                 <a ng-show="place.website" class="tab-item" ng-click="showPage(place.website)">

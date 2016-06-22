@@ -5,9 +5,6 @@
                              ng-controller="HomeCtrl">
         -->
         <ion-refresher
-                class="spinner-positive"
-                spinner = "lines"
-                refreshing-icon = "lines"
                 pulling-icon = "ion-arrow-down-c positive"
                 on-refresh="initRemoteFeed()">
         </ion-refresher>
@@ -31,7 +28,6 @@
         </span>
 
         <ion-infinite-scroll on-infinite="getRemoteFeed()"
-                             spinner = "lines"
                              immediate-check="false"
                              distance="1%"
                              data-ng-if="infiniteLoad">
