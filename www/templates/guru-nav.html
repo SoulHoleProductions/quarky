@@ -1,4 +1,21 @@
 <ion-view title="Guru">
+    <ion-header-bar class="bar-royal bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input ion-autocomplete type="text"
+                   placeholder="Search Guru..."
+                   template-url="templates/search.html"
+                   select-items-label="Choose one: "
+                   cancel-label="Cancel"
+                   loading-icon="lines"
+                   ng-model="guru.search"
+                   readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                   items-method="autocompleteCallback(query, isInitializing)"
+                   item-value-key="title" item-view-value-key="title"
+                   items-clicked-method="autocompleteSelectedItem(callback)"
+                   max-selected-items="1" />
+        </label>
+    </ion-header-bar>
     <ion-content class="flex-gallery text-center padding category-bg" ng-init="bootstrapFeed()" ng-controller="GuruCtrl">
         <span ng-repeat="p in posts">
             <a href="#/app/guru/list/{{p.ID}}">

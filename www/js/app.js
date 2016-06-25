@@ -73,7 +73,7 @@ angular.module('quarky', [
     }])
     .constant('wordpressConfig', {
         'FEED_URL': 'https://quarkyapp.com/wp-json/',
-        'PAGE_SIZE': 6,
+        'PAGE_SIZE': 10,
         // 70 for guru, 6 for home
         'CATEGORY': 'eGuru',
         // 'eGuru' vs 'Home'
@@ -673,7 +673,7 @@ angular.module('quarky', [
                 }
             }).state('app.places-master', {
                 url: '/places-master',
-                cache: false,
+                //cache: false,
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/places-master.html',
@@ -688,7 +688,7 @@ angular.module('quarky', [
                 }
             }).state('app.places-articles', {
                 url: '/places-articles',
-                cache: false,
+                //cache: false,
                 params: {searchParams: null},
                 views: {
                     'menuContent': {
@@ -704,7 +704,7 @@ angular.module('quarky', [
                 }
             }).state('app.places-gallery', {
                 url: '/places/gallery',
-                cache: false,
+                //cache: false,
                 params: {galleryParams: null},
                 views: {
                     'menuContent': {
@@ -719,21 +719,12 @@ angular.module('quarky', [
                     requiresLogin: false
                 }
             }).state('app.place-detail', {
-                cache: false,
+                //cache: false,
                 url: '/place-detail/:placeId',
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/place-detail.html',
                         controller: 'PlacesDetailCtrl'
-                    }
-                }
-            }).state('app.place-ohana-detail', {
-                cache: false,
-                url: '/place-ohana-detail/:placeId',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/place-ohana-detail.html',
-                        controller: 'PlacesOhanaDetailCtrl'
                     }
                 }
             }).state('login', {

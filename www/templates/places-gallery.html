@@ -4,7 +4,7 @@ This is the secondary view when coming from a filter in app.places-master
 It shows the gallery of images for a selected filter from Master
 -->
 
-<ion-view title="{{postName}}">
+<ion-view title="{{postName | capitalize}}">
     <ion-content class="flex-gallery text-center padding category-bg">
 
         <div ng-if="!posts.length">

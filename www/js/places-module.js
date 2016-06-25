@@ -194,6 +194,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3854,
             'name': 'Work',
+            'search': 'work',
             'order': 10,
             'featured_image': {
                 'ID': 3835,
@@ -204,6 +205,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3852,
             'name': 'Transit',
+            'search': 'transit',
             'order': 6,
             'featured_image': {
                 'ID': 4367,
@@ -214,6 +216,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3850,
             'name': 'Money',
+            'search': 'money',
             'order': 4,
             'featured_image': {
                 'ID': 3832,
@@ -224,6 +227,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3848,
             'name': 'Legal',
+            'search': 'legal',
             'order': 11,
             'featured_image': {
                 'ID': 3831,
@@ -244,6 +248,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3844,
             'name': 'Health',
+            'search': 'health',
             'order': 7,
             'featured_image': {
                 'ID': 3829,
@@ -254,6 +259,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3842,
             'name': 'Goods',
+            'search': 'goods',
             'order': 5,
             'featured_image': {
                 'ID': 3828,
@@ -264,6 +270,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3840,
             'name': 'Food',
+            'search': 'food',
             'order': 2,
             'featured_image': {
                 'ID': 4363,
@@ -274,6 +281,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3838,
             'name': 'Education',
+            'search': 'education',
             'order': 9,
             'featured_image': {
                 'ID': 3825,
@@ -284,6 +292,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3836,
             'name': 'Care',
+            'search': 'care',
             'order': 8,
             'featured_image': {
                 'ID': 3824,
@@ -294,6 +303,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 2855,
             'name': 'Emergency',
+            'search': 'emergency',
             'order': 1,
             'featured_image': {
                 'ID': 3826,
@@ -306,6 +316,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3106,
             'name': 'Worship',
+            'search': 'worship',
             'order': 4,
             'featured_image': {
                 'ID': 3107,
@@ -316,6 +327,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3104,
             'name': 'Recycle',
+            'search': 'recycle',
             'order': 3,
             'featured_image': {
                 'ID': 3095,
@@ -326,6 +338,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3102,
             'name': 'Volunteer',
+            'search': 'volunteer',
             'order': 2,
             'featured_image': {
                 'ID': 3096,
@@ -336,6 +349,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3100,
             'name': 'Donate',
+            'search': 'donate',
             'order': 1,
             'featured_image': {
                 'ID': 4365,
@@ -397,14 +411,9 @@ angular.module('places', [
     'ionic',
     'ngResource',
     'ngMessages'
-]).constant('PlacesConfig', {
+])
+    .constant('PlacesConfig', {
         'FEED_URL': 'https://quarkyapp.com/wp-json/posts/',
-        'OHANA_URL': 'https://soulhole-api.herokuapp.com/api/',
-        // Production
-        'OHANA_TOKEN': 'db8473ec53916f6dad2be7fad3f38d5c',
-        // Production
-        //'OHANA_URL': 'http://localhost:8080/api/',                  // Dev TODO: CAN NOT USE HTTP
-        //'OHANA_TOKEN': '219c7eaef3f68dac0b0849033d64b059',          // Dev
         'PAGE_SIZE': 70,
         'CATEGORY': 'eGuru',
         'STATUS': 'publish',
@@ -780,138 +789,17 @@ angular.module('places', [
                         'per_page': $scope.searchModel.per_page
                     }
                 });
-            };  //$scope.doSearch = function (srch) {
-                //    // search the category specified by the gallery item
-                //    if (srch && srch.length) $scope.search.text = srch;
-                //    if (!$scope.search) return; // hit 'go' but nothing to do
-                //
-                //    console.log('gallery doSearch() with: ', $scope.search);
-                //
-                //    if (!$rootScope.myPosition) {
-                //        $ionicPopup.alert({
-                //            title: 'Location',
-                //            template: 'Getting position, try again shortly'
-                //        });
-                //        return;
-                //    }
-                //
-                //    console.log('PlacesGallery search: ', $scope.search)
-                //
-                //    $state.go('app.places-articles', {searchParams: {'text': $scope.search.text, 'radius': $scope.search.radius}});
-                //};
+            };
         }])
     .controller('PlacesArticlesCtrl', ['$scope', '$rootScope', '$state', 'Place', '$ionicScrollDelegate',
-        '$stateParams', '$ionicLoading', '$ionicPopup', 'OhanaAPI', 'auth',
+        '$stateParams', '$ionicLoading', '$ionicPopup', 'auth',
         function ($scope, $rootScope, $state, Place, $ionicScrollDelegate,
-                  $stateParams, $ionicLoading, $ionicPopup, OhanaAPI, auth) {
+                  $stateParams, $ionicLoading, $ionicPopup, auth) {
             'use strict';
             var _search = $stateParams.searchParams;
             $scope.placeHeader = $stateParams.searchParams.text;
             $scope.auth = auth;
             console.log('stateParams: ', $stateParams);
-            // Quarky(Ohana) Places list ----------------->
-            $scope.searchOhanaPlaces = function (search) {
-                $scope.noresult = null;
-                var lat_lng = $rootScope.geolat + ',' + $rootScope.geolong;
-                if (!search || search === null) {
-                    search = _search;
-                }
-                var request = {};
-                request.keyword = search.text;
-                request.lat_lng = lat_lng;
-                request.radius = search.radius;
-                if (search.per_page) {
-                    request.per_page = search.per_page;
-                }
-                console.log('searchOhanaPlaces request: ', request);
-                $ionicLoading.show({template: 'Loading...'});
-                OhanaAPI.locations(request).$promise.then(function (result) {
-                    console.log('Ohana Promise result: ', result);
-                    var matches = result.map(function (o) {
-                        o.formatted_address = null;
-                        if (o.address) {
-                            /*o.formatted_address =
-                             (o.address.address_1 || '') + ', ' +
-                             (o.address.address_2 || '') + ', ' +
-                             (o.address.city || '') +', ' +
-                             (o.address.state_province || '') +', '+
-                             (o.address.postal_code || '');*/
-                            o.formatted_address = '';
-                            o.formatted_address += o.address.address_1 ? o.address.address_1 + ', ' : '';
-                            o.formatted_address += o.address.address_2 ? o.address.address_2 + ', ' : '';
-                            o.formatted_address += o.address.city ? o.address.city + ', ' : '';
-                            o.formatted_address += o.address.state_province ? o.address.state_province + ', ' : '';
-                            o.formatted_address += o.address.postal_code ? o.address.postal_code : '';
-                        }
-                        return {
-                            id: o.id,
-                            reference: o.id,
-                            name: o.name,
-                            description: o.description,
-                            formatted_address: o.formatted_address || 'no address given',
-                            icon: 'img/quarkycon.png'  //location: {longitude: o.geometry.location.lng(), latitude: o.geometry.location.lat()}
-                        };
-                    });
-                    //console.log('received matches: ', matches);
-                    $scope.quarkyMatches = matches;
-                    $ionicLoading.hide();
-                    $ionicScrollDelegate.resize();
-                    if (matches.length === 0) {
-                        $scope.noresult = 'No Quarky Places for this category, check back soon';
-                    }
-                }).catch(function (err) {
-                    console.log('ERROR calling Ohana: ', err);
-                    $ionicLoading.hide();
-                    $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'error calling Ohana: ' + err.statusText
-                    });
-                });
-            };
-            // Google Places list ----------------->
-            $scope.searchGooglePlaces = function (search) {
-                $scope.noresult = null;
-                var lat = $rootScope.geolat;
-                var lng = $rootScope.geolong;
-                if (!search || search === null) {
-                    search = _search;
-                }
-                var request = {};
-                request.location = new google.maps.LatLng(lat, lng);
-                request.radius = search.radius ? search.radius * 1609 : 5 * 1609;
-                request.keyword = search.text || 'Fun';
-                request.rankby = google.maps.places.RankBy.DISTANCE;
-                console.log('searchGooglePlaces request: ', request);
-                var service = new google.maps.places.PlacesService(document.createElement('div'));
-                $ionicLoading.show({template: 'Loading...'});
-                service.nearbySearch(request, googleCallback);
-            };
-            function googleCallback(result) {
-                var matches = result.map(function (o) {
-                    console.log('received google match: ', o);
-                    return {
-                        id: o.id,
-                        reference: o.reference,
-                        place_id: o.place_id,
-                        name: o.name,
-                        address: o.vicinity,
-                        formatted_address: o.formatted_address,
-                        icon: o.icon,
-                        location: {
-                            longitude: o.geometry.location.lng(),
-                            latitude: o.geometry.location.lat()
-                        }
-                    };
-                });
-                $scope.googleMatches = matches;
-                $ionicLoading.hide();
-                $ionicScrollDelegate.resize();
-                //console.log("Matches", $scope.matches.length, $scope.matches);
-                if (matches.length === 0) {
-                    $scope.noresult = 'Sorry, there are no Google matches.';
-                }
-                $scope.$apply();
-            }
 
             // Google Places list -----------------|
             $scope.searchQPlaces = function (search) {
@@ -958,6 +846,10 @@ angular.module('places', [
                 });
             };
             $scope.searchQPlaces(_search);
+            $scope.$on('$ionicView.beforeEnter', function(event, data){
+                console.log('State Params: ', data.stateParams);
+            });
+
         }])
     .controller('PlacesOhanaDetailCtrl', ['$scope', '$stateParams', '$rootScope', '$ionicSlideBoxDelegate', '$ionicLoading',
         '$cordovaInAppBrowser', 'OhanaAPI', '$ionicScrollDelegate', '$ionicPopup',
@@ -1035,14 +927,14 @@ angular.module('places', [
 
     .controller('PlacesDetailCtrl', ['$scope', '$stateParams', '$rootScope', '$state',
         '$ionicSlideBoxDelegate', '$ionicLoading', '$cordovaInAppBrowser',
-        '$ionicModal', 'Place', 'OETaxonomy', '$filter', '$ionicPopup',
+        '$ionicModal', 'Place', 'OETaxonomy', '$filter', '$ionicPopup', 'UserSettings',
         function ($scope, $stateParams, $rootScope, $state,
                   $ionicSlideBoxDelegate, $ionicLoading, $cordovaInAppBrowser,
-                  $ionicModal, Place, OETaxonomy, $filter, $ionicPopup) {
+                  $ionicModal, Place, OETaxonomy, $filter, $ionicPopup, UserSettings) {
             'use strict';
             $rootScope.notHome = true;
             $scope.placeId = $stateParams.placeId;
-            console.log('placeId is: ', $scope.placeId);
+            console.log('PlacesDetail $stateParams is: ', $stateParams);
             $scope.options = {
                 loop: false,
                 effect: 'fade',
@@ -1072,6 +964,8 @@ angular.module('places', [
                     templateUrl: 'templates/hours-list.html'
                 });
             };
+
+
             $ionicLoading.show({template: 'Loading...'});
             Place.findById({id: $scope.placeId}).$promise.then(function (res) {
                 if (res.formatted_hours_array && res.formatted_hours_array.length > 0) {
