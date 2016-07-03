@@ -4,12 +4,12 @@
         <div class="title" data-ng-bind-html="aPost.title"></div>
         <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close-round"></span></div>
     </ion-header-bar>
-    <ion-content>
+    <ion-content lazy-scroll>
         <div class="list card no-margin">
             <div class="item no-padding text-center">
                 <div data-ng-if="aPost.featured_image.source">
-                    <img width="100%" data-ng-src="{{aPost.featured_image.source}}">
-                    <!--<img image-lazy-src="{{aPost.featured_image.source || 'img/coming-soon.png'}}" image-lazy-loader="lines" width="100%">-->
+                    <!--<img width="100%" data-ng-src="{{aPost.featured_image.source}}">-->
+                    <img image-lazy-src="{{aPost.featured_image.source || 'img/coming-soon.png'}}" image-lazy-loader="lines" width="100%">
 
                 </div>
             </div>

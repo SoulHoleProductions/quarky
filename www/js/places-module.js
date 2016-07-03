@@ -407,11 +407,11 @@ function PlacesService($http, PlacesConfig) {
 }
 
 angular.module('places', [
-    'ngCordova',
-    'ionic',
-    'ngResource',
-    'ngMessages'
-])
+        'ngCordova',
+        'ionic',
+        'ngResource',
+        'ngMessages'
+    ])
     .constant('PlacesConfig', {
         'FEED_URL': 'https://quarkyapp.com/wp-json/posts/',
         'PAGE_SIZE': 70,
@@ -846,7 +846,7 @@ angular.module('places', [
                 });
             };
             $scope.searchQPlaces(_search);
-            $scope.$on('$ionicView.beforeEnter', function(event, data){
+            $scope.$on('$ionicView.beforeEnter', function (event, data) {
                 console.log('State Params: ', data.stateParams);
             });
 
@@ -964,6 +964,21 @@ angular.module('places', [
                     templateUrl: 'templates/hours-list.html'
                 });
             };
+            $scope.makeCall = function (num) {
+                console.log('makeCall() with: ', num);
+
+                if (angular.isUndefined(num) || num === null) {
+                    return;
+                }
+
+                if (angular.isNumber(num)) {
+                    window.open('tel:' + num.toString(), '_system');
+                } else if (angular.isString(num)) {
+                    window.open('tel:' + num, '_system');
+                } else {
+                    console.log('makeCall() received invalid input');
+                }
+            };
 
 
             $ionicLoading.show({template: 'Loading...'});
@@ -1000,7 +1015,7 @@ angular.module('places', [
                 $scope.placePhone = null;
                 if (res.formatted_phone_number) {
                     var foo = res.formatted_phone_number;
-                    $scope.placePhone = Number(foo.replace( /\D+/g, ''));
+                    $scope.placePhone = Number(foo.replace(/\D+/g, ''));
                 }
                 $scope.place = res;
                 console.log('$scope.place: ', $scope.place);

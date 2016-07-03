@@ -4,10 +4,10 @@ angular.module('home-module', [
 ])
     .controller('HomeListCtrl', ['$scope', '$rootScope', '$window', '$sce', 'auth', '$sanitize',
     'wordpressAPI', 'wordpressConfig', '$ionicPlatform', 'UserSettings', 'UserStorageService',
-    '$ionicPopup', '$ionicModal', '$cordovaSocialSharing',
+    '$ionicPopup', '$ionicModal', '$cordovaSocialSharing', 'ArticleModalService',
     function ($scope, $rootScope, $window, $sce, auth, $sanitize,
                                         wordpressAPI, wordpressConfig, $ionicPlatform, UserSettings, UserStorageService,
-                                        $ionicPopup, $ionicModal, $cordovaSocialSharing) {
+                                        $ionicPopup, $ionicModal, $cordovaSocialSharing, ArticleModalService) {
     'use strict';
     $scope.posts = [];
     $scope.pagenum = null;
@@ -89,112 +89,18 @@ angular.module('home-module', [
     $scope.toTrusted = function (text) {
         return $sce.trustAsHtml(text);
     };
-    // Social Sharing
-    // -------------------------------------
-    $scope.shareNative = function (message, subject, image, url) {
-        function htmlToPlaintext(text) {
-            return text ? String(text).replace(/<[^>]+>/gm, '') : '';
-        }
 
-        console.log('shareNative, message: ', message, ' subject: ', subject, ' image: ', image, ' url: ', url);
-        if (message) {
-            message = htmlToPlaintext($sanitize(message));
-        } else {
-            message = 'I am using QuarkyApp, maybe you should too :)';
-        }
-        if (subject) {
-            subject = htmlToPlaintext($sanitize(subject));
-        } else {
-            subject = 'Found this on Quarky App!';
-        }
-        if (!image) {
-            image = 'https://quarkyapp.com/wp-content/uploads/2015/06/quarkycon1.jpg';
-        }
+        $scope.openModal2 = function (aPost) {
+            $scope.aPost = aPost;
+            //$scope.bookmarked = checkBookmark(aPost.ID.toString());
+            ArticleModalService.init($scope).then(function(modal){
+                modal.show();
+                // Google Analytics
+                if (typeof analytics !== 'undefined') {
+                    analytics.trackEvent('Article', 'Open', aPost.title, 15);
+                    console.log('GA tracking Article Open event for: ', aPost.title);
+                }
+            });
+        };
 
-        if (!url) {
-            url = 'https://quarkyapp.com';
-        }
-
-        console.log('shareNative, message: ', message, ' subject: ', subject, ' image: ', image, ' url: ', url);
-        if (ionic.Platform.isWebView()) {
-            // cordova app
-            // Google Analytics
-            if (typeof analytics !== 'undefined') {
-                analytics.trackEvent('Article', 'Share', subject, 100);
-                console.log('GA tracking Article Share event: ', subject);
-            }
-            $cordovaSocialSharing.share(message, subject, image, url);
-        }
-    };
-    // --------------- modal from the given template URL
-    // Bookmarking
-    $scope.bookmarks = UserSettings.bookmarks;
-    function checkBookmark(id) {
-        var keys;
-        try {
-            keys = Object.keys($scope.bookmarks);
-        } catch (e) {
-            keys = [];
-        }
-        console.log('bookmark keys: ', keys);
-        var index = keys.indexOf(id);
-        if (index >= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function changeSetting(type, value) {
-        $scope[type] = value;
-        UserSettings[type] = value;
-        UserStorageService.serializeSettings();
-    }
-
-    $scope.bookmarkItem = function (id) {
-        var change;
-        if ($scope.bookmarked) {
-            change = $scope.bookmarks;
-            delete change[id];
-            changeSetting('bookmarks', change);
-            $scope.bookmarked = false;
-        } else {
-            change = $scope.bookmarks;
-            change[id] = 'bookmarked';
-            changeSetting('bookmarks', change);
-            $scope.bookmarked = true;
-            // Google Analytics
-            if (typeof analytics !== 'undefined') {
-                analytics.trackEvent('Article', 'Bookmark', id.toString(), 50);
-                console.log('GA tracking Article Bookmark event for: ', id.toString());
-            }
-        }
-    };
-    $ionicModal.fromTemplateUrl('templates/article-modal.html', function ($ionicModal) {
-        $scope.modal = $ionicModal;
-    }, {
-        // Use our scope for the scope of the modal to keep it simple
-        scope: $scope,
-        // The animation we want to use for the modal entrance
-        animation: 'slide-in-up'
-    });
-    $scope.openModal = function (aPost) {
-        $scope.aPost = aPost;
-        $scope.bookmarked = checkBookmark(aPost.ID.toString());
-        $scope.modal.show();
-        // Google Analytics
-        if (typeof analytics !== 'undefined') {
-            analytics.trackEvent('Article', 'Open', aPost.title, 15);
-            console.log('GA tracking Article Open event for: ', aPost.title);
-        }
-    };
-    $scope.closeModal = function () {
-        $scope.modal.hide();
-    };
-    $scope.$on('$destroy', function () {
-        $scope.modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hidden', function () {
-    });  // ----------------- modal
 }]);

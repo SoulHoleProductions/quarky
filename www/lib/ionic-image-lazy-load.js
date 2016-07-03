@@ -56,6 +56,17 @@ angular.module('ionicLazyLoad')
                             if ($attributes.imageLazyLoader) {
                                 loader.remove();
                             }
+                          /*  // Derek added here per: https://github.com/paveisistemas/ionic-image-lazy-load/issues/13
+                            $attributes.$observe('imageLazySrc', function(value){
+                                var deregistration = $scope.$on('lazyScrollEvent', function(){
+                                        if (isInView()) {
+                                            loadImage();
+                                            deregistration();
+                                        }
+                                    }
+                                );
+                            });
+                            // ------------------------------*/
                             if ($scope.lazyScrollResize == "true") {
 //Call the resize to recalculate the size of the screen
                                 $ionicScrollDelegate.resize();

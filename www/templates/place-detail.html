@@ -17,19 +17,21 @@ Enables user to open the Place separately in a google map webpage
                 <h2>{{place.name}}</h2>
                 <p>{{place.formatted_address}}</p>
             </div>
-            <div class="item item-body">
-                <div class="item no-padding">
-                    <p ng-show="place.description">{{place.description}}</p>
-                    <div class="item item-icon-left">
-                        <i class="icon ion-pricetags"></i>
-                        <button class="button button-outline button-stable button-small" ng-repeat="foo in place.tags">
-                            {{foo}}
-                        </button>
-                    </div>
-                </div>
+            <div class="item item-body item-text-wrap">
+                <p ng-show="place.description">{{place.description}}</p>
             </div>
+            <div class="item item-icon-left item-text-wrap">
+                <i class="icon ion-pricetags"></i>
+
+                <button class="button button-small button-dark" ng-repeat="foo in place.tags" ng-disabled="true">
+                    {{foo}}
+                </button>
+
+
+            </div>
+
             <div class="item tabs tabs-secondary tabs-dark tabs-icon-top">
-                <a ng-show="placePhone" class="tab-item" href="tel:{{placePhone}}">
+                <a ng-show="placePhone" class="tab-item" ng-click="makeCall(placePhone)">
                     <i class="icon ion-ios-telephone"></i> {{place.formatted_phone_number}}
                 </a>
                 <a ng-show="place.website" class="tab-item" ng-click="showPage(place.website)">

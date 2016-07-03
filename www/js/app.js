@@ -14,7 +14,8 @@ angular.module('quarky', [
         'ngResource',
         'lbServices',
         'ion-autocomplete',
-        'ionic-datepicker'
+        'ionic-datepicker',
+        'ionicLazyLoad'
     ])
     .constant('wordpressV2Config', {
         'FEED_URL': 'http://soul-hole.net/wp-json/wp/v2/',
@@ -334,6 +335,130 @@ angular.module('quarky', [
 
 
     }])
+    .service('ArticleModalService', ['$ionicModal', '$rootScope', '$sanitize', '$cordovaSocialSharing', 'UserSettings', 'UserStorageService',
+        function ($ionicModal, $rootScope, $sanitize, $cordovaSocialSharing, UserSettings, UserStorageService) {
+            'use strict';
+
+            var _scope = null;
+
+            // Social Sharing
+            // -------------------------------------
+            function _shareNative(message, subject, image, url) {
+                function htmlToPlaintext(text) {
+                    return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+                }
+
+                if (message) {
+                    message = htmlToPlaintext($sanitize(message));
+                } else {
+                    message = 'I am using QuarkyApp, maybe you should too :)';
+                }
+                if (subject) {
+                    subject = htmlToPlaintext($sanitize(subject));
+                } else {
+                    subject = 'Found this on Quarky App!';
+                }
+                if (!image) {
+                    image = 'https://quarkyapp.com/wp-content/uploads/2015/06/quarkycon1.jpg';
+                }
+
+                if (!url) {
+                    url = 'https://quarkyapp.com';
+                }
+
+                console.log('shareNative, message: ', message, ' subject: ', subject, ' image: ', image, ' url: ', url);
+                if (ionic.Platform.isWebView()) {
+                    // Google Analytics
+                    if (typeof analytics !== 'undefined') {
+                        analytics.trackEvent('Article', 'Share', subject, 100);
+                        console.log('GA tracking Article Share event: ', subject);
+                    }
+                    $cordovaSocialSharing.share(message, subject, image, url);
+                }
+            }
+
+            function _checkBookmark(id) {
+                var keys;
+                try {
+                    keys = Object.keys(_scope.bookmarks);
+                } catch (e) {
+                    keys = [];
+                }
+                console.log('bookmark keys: ', keys);
+                var index = keys.indexOf(id);
+                if (index >= 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function _changeSetting(type, value) {
+                _scope[type] = value;
+                UserSettings[type] = value;
+                UserStorageService.serializeSettings();
+            }
+
+            function _bookmarkItem(id) {
+                var change;
+                if (_scope.bookmarked) {
+                    change = _scope.bookmarks;
+                    delete change[id];
+                    _changeSetting('bookmarks', change);
+                    _scope.bookmarked = false;
+                } else {
+                    change = _scope.bookmarks;
+                    change[id] = 'bookmarked';
+                    _changeSetting('bookmarks', change);
+                    _scope.bookmarked = true;
+                    // Google Analytics
+                    if (typeof analytics !== 'undefined') {
+                        analytics.trackEvent('Article', 'Bookmark', id.toString(), 50);
+                        console.log('GA tracking Article Bookmark event for: ', id.toString());
+                    }
+                }
+            }
+
+            var init = function ($scope) {
+
+                var promise;
+                var tpl = 'templates/article-modal.html';
+                $scope = $scope || $rootScope.$new();
+                _scope = $scope;
+
+                promise = $ionicModal.fromTemplateUrl(tpl, {
+                    scope: $scope,
+                    animation: 'slide-in-up'
+                }).then(function (modal) {
+                    $scope.modal = modal;
+                    $scope.shareNative = _shareNative;
+                    $scope.bookmarks = UserSettings.bookmarks;
+                    $scope.checkBookmark = _checkBookmark;
+                    $scope.changeSetting = _changeSetting;
+                    $scope.bookmarkItem = _bookmarkItem;
+                    if($scope.aPost) {
+                        $scope.bookmarked = _checkBookmark($scope.aPost.ID.toString());
+                    }
+                    return modal;
+                });
+
+                $scope.openModal = function () {
+                    $scope.modal.show();
+                };
+                $scope.closeModal = function () {
+                    $scope.modal.hide();
+                };
+                $scope.$on('$destroy', function () {
+                    $scope.modal.remove();
+                });
+
+                return promise;
+            };
+
+            return {
+                init: init
+            };
+        }])
     .run(['$ionicPlatform', 'auth', 'UserSettings', '$rootScope', 'store', '$state', '$ionicPopup', '$window', 'jwtHelper', '$location', '$ionicLoading', 'PushWoosh',
         function ($ionicPlatform, auth, UserSettings, $rootScope, store, $state, $ionicPopup, $window, jwtHelper, $location, $ionicLoading, PushWoosh) {
             'use strict';
@@ -343,49 +468,6 @@ angular.module('quarky', [
                  ionic.Platform.isIOS() ? console.log("quarky is iOS") : console.log("quarky is NOT iOS");
                  ionic.Platform.isAndroid() ? console.log("quarky is Android") : console.log("quarky is NOT Android");
                  ionic.Platform.isWebView() ? console.log("quarky is Cordova") : console.log("quarky is NOT Cordova");*/
-                // Ionic.io push only if on cordova
-                /* if(window.cordova) {
-
-                 $ionicPush.init({
-                 "debug": false,
-                 "onNotification": function(notification) {
-                 var payload = notification.payload;
-                 console.log('$ionicPush onNotification(): ', notification, payload);
-                 var lastPush = {
-                 title: notification.title || 'Message from Quarky:',
-                 text: notification.text || 'Just checking in...',
-                 date: new Date()
-                 };
-                 store.set('lastPush', lastPush);
-                 $ionicLoading.hide();
-                 $ionicPopup.alert({
-                 title: notification.title || 'Message from Quarky:',
-                 template: notification.text || 'Just checking in...'
-                 });
-                 },
-                 "onRegister": function(data) {
-                 console.log('$ionicPush onRegister() token: ', data.token);
-                 $ionicPush.saveToken(data.token);
-                 $rootScope.myPushToken = data.token;
-                 },
-                 "onError": function(err) {
-                 console.log('$ionicPush onError(): ', err.message);
-                 },
-                 "pluginConfig": {
-                 "ios": {
-                 "alert": "true",
-                 "badge": "true",
-                 "sound": "true"
-                 },
-                 "android": {
-                 "senderID": "586634803974",
-                 "icon": "icon",
-                 "iconColor": "black"
-                 }
-                 }
-                 });
-                 $ionicPush.register();
-                 }*/
                 // Google Analytics
                 if (typeof analytics !== 'undefined') {
                     analytics.startTrackerWithId('UA-57113932-2');
@@ -478,19 +560,6 @@ angular.module('quarky', [
                     template: 'You seem to be offline...'
                 });
             });
-            /*$rootScope.$on('$stateChangeStart', function () {
-                $ionicLoading.show({
-                    delay: 200,
-                    template: 'Loading...'
-                });
-            });
-            $rootScope.$on('$stateChangeSuccess', function () {
-                    $ionicLoading.hide();
-                });
-            $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-                $ionicLoading.hide();
-                console.error('Error loading the page: %o', error);
-            });*/
 
             //-------------- auth0
             var refreshingToken = null;
