@@ -4,17 +4,12 @@ angular.module('profile', [
         'ngCordova',
     'quarky'
     ])
-    .controller('BookmarksCtrl', ['$scope', 'UserSettings', 'UserStorageService', '$sanitize', 'wordpressAPI', '$ionicModal', '$sce', '$cordovaSocialSharing',
-        function ($scope, UserSettings, UserStorageService, $sanitize, wordpressAPI, $ionicModal, $sce, $cordovaSocialSharing) {
+    .controller('BookmarksCtrl', ['$scope', 'UserSettings', 'UserStorageService', '$sanitize', 'wordpressAPI', '$ionicModal', '$sce', '$cordovaSocialSharing', 'ArticleModalService',
+        function ($scope, UserSettings, UserStorageService, $sanitize, wordpressAPI, $ionicModal, $sce, $cordovaSocialSharing, ArticleModalService) {
             'use strict';
             ionic.Platform.ready(function () {
             });
 
-            function changeSetting(type, value) {
-                $scope[type] = value;
-                UserSettings[type] = value;
-                UserStorageService.serializeSettings();
-            }
 
             function updateView() {
                 var bookmarkCacheKeys;
@@ -27,9 +22,11 @@ angular.module('profile', [
                 $scope.hasBookmarks = bookmarkCacheKeys.length > 0 ? true : false;
                 $scope.posts = [];
                 angular.forEach(bookmarkCacheKeys, function (value, key) {
-                    return wordpressAPI.getPost({'ID': value}).$promise.then(function (result) {
-                        $scope.posts.push(result);
-                        return result;
+                    //return wordpressAPI.getPost({'ID': value}).$promise.then(function (result) {
+                    //    $scope.posts.push(result);
+                    //    return result;
+                    wordpressAPI.getPost({'ID': value}).$promise.then(function (result) {
+                        return $scope.posts.push(result);
                     }).catch(function (err) {
                         console.log('error getting bookmark: ', err);
                         return err;  // remove the bookmark TODO: test err to get the right value
@@ -48,107 +45,20 @@ angular.module('profile', [
             $scope.$on('$ionicView.enter', function (e) {
                 updateView();
             });
-            // Social Sharing
-            // -------------------------------------
-            $scope.shareNative = function (message, subject, image, url) {
-                function htmlToPlaintext(text) {
-                    return text ? String(text).replace(/<[^>]+>/gm, '') : '';
-                }
 
-                if (message) {
-                    message = htmlToPlaintext($sanitize(message));
-                } else {
-                    message = 'I am using QuarkyApp, maybe you should too :)';
-                }
-                if (subject) {
-                    subject = htmlToPlaintext($sanitize(subject));
-                } else {
-                    subject = 'Found this on Quarky App!';
-                }
-                if (!image) {
-                    image = 'https://quarkyapp.com/wp-content/uploads/2015/06/quarkycon1.jpg';
-                }
-                if (!url) {
-                    url = 'https://quarkyapp.com';
-                }
-                console.log('shareNative, message: ', message, ' subject: ', subject, ' image: ', image, ' url: ', url);
-                if (ionic.Platform.isWebView()) {
-                    // cordova app
-                    // Google Analytics
-                    if (typeof analytics !== 'undefined') {
-                        analytics.trackEvent('Article', 'Share', subject, 100);
-                        console.log('GA tracking Article Share event: ', subject);
-                    }
-                    $cordovaSocialSharing.share(message, subject, image, url);
-                }
-            };
-            // --------------- modal from the given template URL
-            // Bookmarking
-            $scope.bookmarks = UserSettings.bookmarks;
-            function checkBookmark(id) {
-                var keys;
-                try {
-                    keys = Object.keys($scope.bookmarks);
-                } catch (e) {
-                    keys = [];
-                }
-                console.log('bookmark keys: ', keys);
-                var index = keys.indexOf(id);
-                if (index >= 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
-
-            $scope.bookmarkItem = function (id) {
-                var change;
-                if ($scope.bookmarked) {
-                    change = $scope.bookmarks;
-                    delete change[id];
-                    changeSetting('bookmarks', change);
-                    $scope.bookmarked = false;
-                } else {
-                    change = $scope.bookmarks;
-                    change[id] = 'bookmarked';
-                    changeSetting('bookmarks', change);
-                    $scope.bookmarked = true;
-                    // Google Analytics
-                    if (typeof analytics !== 'undefined') {
-                        analytics.trackEvent('Article', 'Bookmark', id.toString(), 50);
-                        console.log('GA tracking Article Bookmark event for: ', id.toString());
-                    }
-                }
-            };
-            $ionicModal.fromTemplateUrl('templates/article-modal.html', function ($ionicModal) {
-                $scope.modal = $ionicModal;
-            }, {
-                // Use our scope for the scope of the modal to keep it simple
-                scope: $scope,
-                // The animation we want to use for the modal entrance
-                animation: 'slide-in-up'
-            });
-            $scope.openModal = function (aPost) {
+            $scope.openModal2 = function (aPost) {
                 $scope.aPost = aPost;
-                $scope.bookmarked = checkBookmark(aPost.ID.toString());
-                $scope.modal.show();
-                // Google Analytics
-                if (typeof analytics !== 'undefined') {
-                    analytics.trackEvent('Article', 'Open', aPost.title, 15);
-                    console.log('GA tracking Article Open event for: ', aPost.title);
-                }
+                //$scope.bookmarked = checkBookmark(aPost.ID.toString());
+                ArticleModalService.init($scope).then(function(modal){
+                    modal.show();
+                    // Google Analytics
+                    if (typeof analytics !== 'undefined') {
+                        analytics.trackEvent('Article', 'Open', aPost.title, 15);
+                        console.log('GA tracking Article Open event for: ', aPost.title);
+                    }
+                });
             };
-            $scope.closeModal = function () {
-                $scope.modal.hide();
-            };
-            $scope.$on('$destroy', function () {
-                $scope.modal.remove();
-            });
-            // Execute action on hide modal
-            $scope.$on('modal.hidden', function () {
-                updateView();
-            });  // ----------------- modal
+
         }])
 
     .controller('ProfileCtrl', ['$scope', '$rootScope', '$ionicPlatform', 'auth', '$window', 'store', '$ionicLoading',
