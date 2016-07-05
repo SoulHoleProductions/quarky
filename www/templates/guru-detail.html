@@ -30,7 +30,7 @@
                 <img
                         image-lazy-src="{{post.featured_image.attachment_meta.sizes.thumbnail.url || post.featured_image.source || 'img/coming-soon.png'}}"
                         image-lazy-loader="lines">
-                <h2>{{post.title}}</h2>
+                <h2 data-ng-bind-html="post.title"></h2>
                 <div data-ng-bind-html="toTrusted(post.excerpt)"></div>
                 <h5>{{post.modified | date: 'fullDate'}}</h5>
             </ion-item>

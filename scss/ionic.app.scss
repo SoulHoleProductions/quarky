@@ -30,16 +30,48 @@ $assertive: #ef473a !default;
 $royal: #000000 !default;
 $dark: #444 !default;
 
+
 .spinner svg {
   stroke: $positive;
   fill: $positive;
 }
 
-//$dark:                            #6e6c6c !default; //username
-/*$positive:                        #457cfa !default; //facebook
-$calm:                            #87acff !default; //twitter
-$assertive:                       #ff7959 !default; //google
-$balanced:                        #66cc33 !default;*/
+
+// style.scss
+
+@mixin gradient($from, $to, $height, $pie:"false") {
+  background-color: $to;
+
+  background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+  background-image: -ms-linear-gradient($from, $to);
+  background-image: linear-gradient($from, $to);
+
+  @if $pie == "true" {
+    // For CSS3PIE
+    -pie-background: linear-gradient(90deg, $from,$to);
+  }
+
+  background-repeat: repeat-x;
+
+  -webkit-background-size: 100% $height;
+  -moz-background-size: 100% $height;
+  -o-background-size: 100% $height;
+  background-size: 100% $height;
+}
+
+
+.gradient {
+  @include gradient(#387ef5, #11c1f3, 100%);
+}
+
+//.div1 {
+//  @extend .gradient;
+//  color:white;
+//}
+
 
 // Fonts
 // -------------------------------
@@ -162,30 +194,47 @@ body, p, h1, h2, h3, h4, h5 {
 // backgrounds
 // -------------------------------
 
-$big-bg: '../img/bg-black-paisley.jpg';
-$category-bg: '../img/bg-black-texture.jpg';
-$quarkycon: '../img/quarkycon.png';
 
 .intro-bg {
-  background: url($big-bg) no-repeat center center fixed;
-  background-size: cover;
+  @include gradient(black, #444, 100%);
 }
 
 .scroll-bg {
-  background: url($big-bg) no-repeat center center fixed;
-  background-size: cover;
+  @include gradient(#387ef5, #11c1f3, 100%);
 }
-
 .quarky-bg {
-  background: url($quarkycon) no-repeat center center fixed;
-  background-color: #708090;
+  @include gradient(#387ef5, #11c1f3, 100%);
+}
+.category-bg {
+  @include gradient(#387ef5, #11c1f3, 100%);
 }
 
-.category-bg {
-  background-color: #708090;
-  background: url($category-bg) no-repeat center center fixed;
-  background-size: cover;
-}
+
+//$big-bg: '../img/bg-black-paisley.jpg';
+//$category-bg: '../img/bg-black-texture.jpg';
+//$quarkycon: '../img/quarkycon.png';
+//
+//.intro-bg {
+//  background: url($big-bg) no-repeat center center fixed;
+//  background-size: cover;
+//}
+//
+//.scroll-bg {
+//  background: url($big-bg) no-repeat center center fixed;
+//  background-size: cover;
+//}
+//
+//.quarky-bg {
+//  background: url($quarkycon) no-repeat center center fixed;
+//  background-color: #708090;
+//}
+//
+//.category-bg {
+//  background-color: #708090;
+//  background: url($category-bg) no-repeat center center fixed;
+//  background-size: cover;
+//}
+
 
 // SOCIAL colors for buttons
 // ---------------------------------

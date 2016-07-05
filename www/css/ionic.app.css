@@ -19,10 +19,20 @@ $dark:                            #444 !default;
   stroke: #387ef5;
   fill: #387ef5; }
 
-/*$positive:                        #457cfa !default; //facebook
-$calm:                            #87acff !default; //twitter
-$assertive:                       #ff7959 !default; //google
-$balanced:                        #66cc33 !default;*/
+.gradient {
+  background-color: #11c1f3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#387ef5), to(#11c1f3));
+  background-image: -webkit-linear-gradient(#387ef5, #11c1f3);
+  background-image: -moz-linear-gradient(#387ef5, #11c1f3);
+  background-image: -o-linear-gradient(#387ef5, #11c1f3);
+  background-image: -ms-linear-gradient(#387ef5, #11c1f3);
+  background-image: linear-gradient(#387ef5, #11c1f3);
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%; }
+
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
@@ -103,21 +113,60 @@ body, p, h1, h2, h3, h4, h5 {
     top: 64px; } }
 
 .intro-bg {
-  background: url("../img/bg-black-paisley.jpg") no-repeat center center fixed;
-  background-size: cover; }
+  background-color: #444;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(#444));
+  background-image: -webkit-linear-gradient(black, #444);
+  background-image: -moz-linear-gradient(black, #444);
+  background-image: -o-linear-gradient(black, #444);
+  background-image: -ms-linear-gradient(black, #444);
+  background-image: linear-gradient(black, #444);
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%; }
 
 .scroll-bg {
-  background: url("../img/bg-black-paisley.jpg") no-repeat center center fixed;
-  background-size: cover; }
+  background-color: #11c1f3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#387ef5), to(#11c1f3));
+  background-image: -webkit-linear-gradient(#387ef5, #11c1f3);
+  background-image: -moz-linear-gradient(#387ef5, #11c1f3);
+  background-image: -o-linear-gradient(#387ef5, #11c1f3);
+  background-image: -ms-linear-gradient(#387ef5, #11c1f3);
+  background-image: linear-gradient(#387ef5, #11c1f3);
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%; }
 
 .quarky-bg {
-  background: url("../img/quarkycon.png") no-repeat center center fixed;
-  background-color: #708090; }
+  background-color: #11c1f3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#387ef5), to(#11c1f3));
+  background-image: -webkit-linear-gradient(#387ef5, #11c1f3);
+  background-image: -moz-linear-gradient(#387ef5, #11c1f3);
+  background-image: -o-linear-gradient(#387ef5, #11c1f3);
+  background-image: -ms-linear-gradient(#387ef5, #11c1f3);
+  background-image: linear-gradient(#387ef5, #11c1f3);
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%; }
 
 .category-bg {
-  background-color: #708090;
-  background: url("../img/bg-black-texture.jpg") no-repeat center center fixed;
-  background-size: cover; }
+  background-color: #11c1f3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#387ef5), to(#11c1f3));
+  background-image: -webkit-linear-gradient(#387ef5, #11c1f3);
+  background-image: -moz-linear-gradient(#387ef5, #11c1f3);
+  background-image: -o-linear-gradient(#387ef5, #11c1f3);
+  background-image: -ms-linear-gradient(#387ef5, #11c1f3);
+  background-image: linear-gradient(#387ef5, #11c1f3);
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%; }
 
 .button.button-dark.quarky-instagram {
   background-color: #25537B;

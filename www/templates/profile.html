@@ -1,5 +1,5 @@
 <ion-view cache-view="false" title="Your Profile">
-    <ion-content padding="true" class="category-bg">
+    <ion-content padding="true" class="scroll-bg">
 
         <div>
             <img id="profile-image" data-ng-src="{{auth.profile.picture}}">
@@ -9,12 +9,16 @@
 
         <div class="list card dark-bg">
 
-            <ion-item ng-class="{ 'item-positive': want_add_places, 'item-assertive' : !want_add_places}"
-                      class="item-icon-left" ng-click="setVolForPlaces()">
-                <i class="icon ion-ribbon-a"></i>
+            <ion-item class="item-dark item-icon-right" ng-click="setVolForPlaces()">
+                <i class="icon ion-edit positive"></i>
                 Volunteer: {{want_add_places ? 'Yes' : 'No'}}
             </ion-item>
-
+   <!--         <ion-item ng-class="{ 'item-dark': want_add_places, 'item-assertive' : !want_add_places}"
+                      class="item-icon-right" ng-click="setVolForPlaces()">
+                <i class="icon ion-edit positive"></i>
+                Volunteer: {{want_add_places ? 'Yes' : 'No'}}
+            </ion-item>
+-->
 <!--
             <ion-item
                       class="item-icon-left" ng-click="WPgetUser('1')">
@@ -47,12 +51,12 @@
                 <div>{{lastPush.date | date:'medium' || ''}}</div>
             </ion-item>-->
 
-            <ion-item class="item-icon-right item-dark" ng-click="setGender()">
+            <ion-item class="item item-icon-right item-dark" ng-click="setGender()">
                 <i class="icon ion-edit positive"></i>
                 Gender: {{gender | capitalize}}
             </ion-item>
 
-            <ion-item class="item-icon-right item-dark" ng-click="openDatePicker()">
+            <ion-item class="item item-icon-right item-dark" ng-click="openDatePicker()">
                     <i class="icon ion-edit positive"></i>
                     Birthday: {{birthday | date:'MMM d, y'}}
             </ion-item>
@@ -76,13 +80,11 @@
 
         </div>
 
-        <div class="button-bar bar-stable item-text-wrap">
-            <a class="button icon-left ion-locked" ng-click="launch('https://quarkyapp.com/app-privacy-policy/')">Privacy
+        <div class="button-bar item-text-wrap">
+            <a class="button button-dark icon-left ion-locked" ng-click="launch('https://quarkyapp.com/app-privacy-policy/')">Privacy
                 Policy</a>
-            <a class="button icon-left ion-log-out" ng-click="logout()">Logout</a>
+            <a class="button button-dark icon-left ion-log-out" ng-click="logout()">Logout</a>
         </div>
-
-        <hr>
 
     </ion-content>
 </ion-view>
