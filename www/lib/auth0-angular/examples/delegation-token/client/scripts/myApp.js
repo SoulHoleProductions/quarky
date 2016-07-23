@@ -16,15 +16,15 @@ myApp.config(function ($routeProvider, authProvider, $httpProvider,
   .when('/', {
     templateUrl: 'views/root.html',
     controller: 'RootCtrl',
-    /* isAuthenticated will prevent user access to forbidden routes */
+    /* requiresLogin will prevent user access to forbidden routes */
     requiresLogin: true
   });
 
   $locationProvider.hashPrefix('!');
 
   authProvider.init({
-    clientID: 'BUIJSW9x60sIHBw8Kd9EmCbj8eDIFxDC',
-    domain: 'samples.auth0.com',
+    clientID: 'DyG9nCwIEofSy66QM3oo5xU6NFs3TmvT',
+    domain: 'contoso.auth0.com',
     callbackURL: location.href,
     loginUrl: '/login'
   });
@@ -42,7 +42,7 @@ myApp.config(function ($routeProvider, authProvider, $httpProvider,
     } else {
       return store.get('token');
     }
-  }
+  };
 
   // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
   // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might

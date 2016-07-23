@@ -818,6 +818,11 @@ angular.module('places', [
                         var icon = JSON.parse(o.photos);
                         var ret = {};
                         ret.id = o.id;
+                        if(o.distance) {
+                            ret.distance = o.distance / 1609;
+                        } else {
+                            ret.distance = 777;
+                        }
                         ret.name = o.name;
                         ret.description = o.description;
                         ret.formatted_address = o.formatted_address;

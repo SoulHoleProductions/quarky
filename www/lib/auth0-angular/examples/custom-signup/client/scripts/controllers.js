@@ -42,11 +42,11 @@ myApp.controller('LoginCtrl', function (auth, $scope, $location, $http, store) {
   };
 
   $scope.doSignup = function () {
-    $http({method: 'POST', url: '/custom-signup',
+    $http({method: 'POST', url: 'http://localhost:3001/custom-signup',
     data: {
       email:    $scope.signup.user,
       password:     $scope.signup.pass,
-      favColor: $scope.signup.favColor
+      user_metadata: { favColor: $scope.signup.favColor }
     }})
     .success(function (data, status, headers, config) {
       if (status === 200) {

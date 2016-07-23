@@ -56,7 +56,7 @@ define(['angular', './myApp'], function (angular, myApp) {
     };
   });
 
-  myApp.controller('LogoutCtrl', function (auth, $scope, $location) {
+  myApp.controller('LogoutCtrl', function (auth, $scope, $location, store) {
     auth.signout();
     store.remove('profile');
     store.remove('token');

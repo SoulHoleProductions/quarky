@@ -168,3 +168,5 @@ $RECYCLE.BIN/
 
 # generated when running grunt:copy
 examples/**/auth0-angular.js
+
+coverage

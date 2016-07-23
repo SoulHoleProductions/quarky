@@ -271,9 +271,12 @@ angular.module('quarky', [
     .service('UserStorageService', ['UserSettings', 'auth', 'auth0metadata', '$ionicPopup', function (UserSettings, auth, auth0metadata, $ionicPopup) {
         'use strict';
         function getAuth0User() {
-            var userid = auth.profile.user_id;
-            console.log('getAuth0User: ', userid);
-            return userid;
+            if(angular.isDefined(auth)) {
+                var userid = auth.profile.user_id;
+                console.log('getAuth0User: ', userid);
+                return userid;
+            }
+
         }
 
         function updateAuth0() {
@@ -297,33 +300,36 @@ angular.module('quarky', [
         }
 
         function deserializeSettings() {
-            auth0metadata.getUser({user: getAuth0User()}).$promise.then(function (o) {
-                //console.log('deserialize got o: ', o);
-                if (o.user_metadata) {
-                    angular.extend(UserSettings, o.user_metadata);
-                    console.log('User Settings restored: ', o.user_metadata);
-                    console.log('UserSettings: ', UserSettings);
-                } else {
-                    // we don't have user_metadata, so create them
-                    console.log('we don\'t have user_metadata, so create them...');
-                    serializeSettings();
-                }
-                /*var newSettings, rawSettings = o;
-                 if (rawSettings) {
-                 newSettings = JSON.parse(rawSettings);
-                 if (newSettings) {
-                 // use extend since it copies one property at a time
-                 angular.extend(UserSettings, newSettings);
-                 console.log("User Settings restored");
-                 }
-                 }*/
-            }).catch(function (err) {
-                console.log('Unable to restore settings: ', err);
-                $ionicPopup.alert({
-                    title: 'Error',
-                    template: 'Could not restore your settings'
+            if (angular.isDefined(auth)) {
+                auth0metadata.getUser({user: getAuth0User()}).$promise.then(function (o) {
+                    //console.log('deserialize got o: ', o);
+                    if (o.user_metadata) {
+                        angular.extend(UserSettings, o.user_metadata);
+                        console.log('User Settings restored: ', o.user_metadata);
+                        console.log('UserSettings: ', UserSettings);
+                    } else {
+                        // we don't have user_metadata, so create them
+                        console.log('we don\'t have user_metadata, so create them...');
+                        serializeSettings();
+                    }
+                    /*var newSettings, rawSettings = o;
+                     if (rawSettings) {
+                     newSettings = JSON.parse(rawSettings);
+                     if (newSettings) {
+                     // use extend since it copies one property at a time
+                     angular.extend(UserSettings, newSettings);
+                     console.log("User Settings restored");
+                     }
+                     }*/
+                }).catch(function (err) {
+                    console.log('Unable to restore settings: ', err);
+                    $ionicPopup.alert({
+                        title: 'Error',
+                        template: 'Could not restore your settings'
+                    });
                 });
-            });
+
+            }
         }
 
         deserializeSettings();

@@ -32,7 +32,7 @@ myApp.config(function ($routeProvider, authProvider, $httpProvider,
 
   jwtInterceptorProvider.tokenGetter = function(store) {
     return store.get('token');
-  }
+  };
 
   // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
   // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might

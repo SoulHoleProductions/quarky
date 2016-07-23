@@ -200,14 +200,24 @@ body, p, h1, h2, h3, h4, h5 {
 }
 
 .scroll-bg {
-  @include gradient(#387ef5, #11c1f3, 100%);
+  @include gradient(black, lightgray, 100%);
 }
 .quarky-bg {
-  @include gradient(#387ef5, #11c1f3, 100%);
+  @include gradient(black, lightgray, 100%);
 }
 .category-bg {
-  @include gradient(#387ef5, #11c1f3, 100%);
+  @include gradient(black, lightgray, 100%);
 }
+//
+//.scroll-bg {
+//  @include gradient(#387ef5, #11c1f3, 100%);
+//}
+//.quarky-bg {
+//  @include gradient(#387ef5, #11c1f3, 100%);
+//}
+//.category-bg {
+//  @include gradient(#387ef5, #11c1f3, 100%);
+//}
 
 
 //$big-bg: '../img/bg-black-paisley.jpg';

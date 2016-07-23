@@ -46,10 +46,11 @@ For that, open `/etc/hosts` and edits as follows:
 ::1             localhost
 # ...
 127.0.0.1 app1.com
+127.0.0.1 app2.com
 ````
 
 Once that's done, just start this project twice in different ports. For that, we recommend using `serve` which is installed with `npm`by doing `npm i -g serve`.
-
+Then just run these commands on separate terminals.
 ````
 serve --port 3001
 serve --port 3000

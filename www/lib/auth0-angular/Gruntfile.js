@@ -54,17 +54,20 @@ module.exports = function (grunt) {
       ]
     },
 
-    ngmin: {
-      dist: {
-        files: [ { expand: true, cwd: 'src', src: '**/*.js', dest: 'build/' } ]
-      }
-    },
-
     concat: {
       options: {
         banner: '<%= meta.banner %>'
       },
-      dist: { dest: 'build/auth0-angular.js', src: ['build/auth0-angular.js'] }
+      dist: {
+        dest: 'build/auth0-angular.js',
+        src: [
+          'src/auth0.js',
+          'src/services/auth0.utils.js',
+          'src/services/auth0.service.js',
+          'src/directives/auth0.directive.js',
+          'src/directives/ifUser.directive.js'
+        ]
+      }
     },
 
     uglify: {
@@ -102,19 +105,37 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          src: 'build/*',
+          src: 'build/auth0-angular.js',
           dest: 'release/',
           rename: renameRelease(pkg.version)
         }, {
           expand: true,
           flatten: true,
-          src: 'build/*',
+          src: 'build/auth0-angular.js',
           dest: 'release/',
           rename: renameRelease(minorVersion)
         }, {
           expand: true,
           flatten: true,
-          src: 'build/*',
+          src: 'build/auth0-angular.js',
+          dest: 'release/',
+          rename: renameRelease(majorVersion)
+        }, {
+          expand: true,
+          flatten: true,
+          src: 'build/auth0-angular.min.js',
+          dest: 'release/',
+          rename: renameRelease(pkg.version)
+        }, {
+          expand: true,
+          flatten: true,
+          src: 'build/auth0-angular.min.js',
+          dest: 'release/',
+          rename: renameRelease(minorVersion)
+        }, {
+          expand: true,
+          flatten: true,
+          src: 'build/auth0-angular.min.js',
           dest: 'release/',
           rename: renameRelease(majorVersion)
         }]
@@ -156,35 +177,39 @@ module.exports = function (grunt) {
         }
       }
     },
-
-    s3: {
+    aws_s3: {
       options: {
-        key:    process.env.S3_KEY,
-        secret: process.env.S3_SECRET,
-        bucket: process.env.S3_BUCKET,
-        access: 'public-read',
-        headers: {
-          'Cache-Control':  'public, max-age=300'
-        }
+        accessKeyId:     process.env.S3_KEY,
+        secretAccessKey: process.env.S3_SECRET,
+        bucket:          process.env.S3_BUCKET,
+        region:          process.env.S3_REGION,
+        uploadConcurrency: 5,
+        params: {
+          CacheControl: 'public, max-age=300'
+        },
+        // debug: true <<< use this option to test changes
       },
       clean: {
-        del: [
-          { src:     'w2/auth0-angular-' + pkg.version + '.js', },
-          { src:     'w2/auth0-angular-' + pkg.version + '.min.js', },
-          { src:     'w2/auth0-angular-' + majorVersion + '.js', },
-          { src:     'w2/auth0-angular-' + majorVersion + '.min.js', },
-          { src:     'w2/auth0-angular-' + minorVersion + '.js', },
-          { src:     'w2/auth0-angular-' + minorVersion + '.min.js', },
-          { src:     'w2/auth0-angular-' + minorVersion + '.min.js', }
+        files: [
+          { action: 'delete', dest: 'w2/auth0-angular-' + pkg.version + '.js', },
+          { action: 'delete', dest: 'w2/auth0-angular-' + pkg.version + '.min.js', },
+          { action: 'delete', dest: 'w2/auth0-angular-' + majorVersion + '.js', },
+          { action: 'delete', dest: 'w2/auth0-angular-' + majorVersion + '.min.js', },
+          { action: 'delete', dest: 'w2/auth0-angular-' + minorVersion + '.js', },
+          { action: 'delete', dest: 'w2/auth0-angular-' + minorVersion + '.min.js', },
+          { action: 'delete', dest: 'w2/auth0-angular-' + minorVersion + '.min.js', }
         ]
       },
       publish: {
-        upload: [{
-          src:    'release/*',
-          dest:   'w2/',
-          options: { gzip: false }
-        }]
-      }
+        files: [
+          {
+            expand: true,
+            cwd:    'release/',
+            src:    ['*'],
+            dest:   'w2/'
+          }
+        ]
+      },
     },
     http: {
       purge_js: {
@@ -226,12 +251,12 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('build', ['clean', 'jshint', 'ngmin', 'concat', 'uglify', 'karma', 'copy']);
+  grunt.registerTask('build', ['clean', 'jshint', 'concat', 'uglify', 'karma', 'copy']);
   grunt.registerTask('test', ['build', 'karma']);
   grunt.registerTask('scenario', ['build', 'connect:scenario_custom_login', 'protractor:local']);
 
   grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min']);
-  grunt.registerTask('cdn', ['build', 's3', 'purge_cdn']);
+  grunt.registerTask('cdn', ['build', 'aws_s3', 'purge_cdn']);
 
   grunt.registerTask('default', ['build', 'watch']);
 

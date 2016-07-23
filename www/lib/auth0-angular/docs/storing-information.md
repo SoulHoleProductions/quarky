@@ -43,7 +43,15 @@ angular.module('myApp', ['auth0', 'angular-storage', 'angular-jwt'])
     if (token) {
       if (!jwtHelper.isTokenExpired(token)) {
         if (!auth.isAuthenticated) {
-          auth.authenticate(store.get('profile'), token);
+          auth.authenticate(store.get('profile'), token).then(function (profile) {
+
+                    console.log("Logged in via refresh token and got profile");
+
+                    console.log(profile);
+                    
+                    // Successful login, now redirect to secured content.
+
+                }, function (err) { });;
         }
       } else {
         // Either show Login page or use the refresh token to get a new idToken

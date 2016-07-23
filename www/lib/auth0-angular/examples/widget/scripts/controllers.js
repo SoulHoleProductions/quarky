@@ -8,7 +8,7 @@ myApp.controller('MenuCtrl', function ($scope, $location, auth, store) {
   var saveUserInfo = function(profile, token) {
     store.set('profile', profile);
     store.set('token', token);
-  }
+  };
 
   $scope.signup = function() {
     auth.signup({popup:  true, auto_login: false})
@@ -17,7 +17,7 @@ myApp.controller('MenuCtrl', function ($scope, $location, auth, store) {
         $location.path('/');
 
       })
-  }
+  };
 
   $scope.reset = function () {
     auth.reset({}, function () {

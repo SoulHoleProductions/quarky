@@ -1,3 +1,31 @@
+## [9.2.2] - 2016-07-19
+
+### Fixed
+
+- [] Merge pull request #491 from auth0/temp-split-browser-tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/95796e839fa70448af32cd3bb9b10639300a7718
+- [] Upgrade zuul-ngrok (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/6a96d518ba17a4c175c685a38b78ac3c806d8c10
+- [] Run IE test in separate tasks (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/7d533332cadef270c4a71ba1c7f31c2e8a8cc4d0
+- [] Merge pull request #486 from nicosabena/toomanyattempts (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0a1b87bc91babfe8753a64925ce5d46090345f22
+- [] Show error message for brute force protection blocked accounts (`Nico Sabena`)
+  https://github.com/auth0/lock/commit/5485b6da3b4b676af1b07717a44d1facc7e80471
+
+## [9.2.1] - 2016-05-14
+
+### Fixed
+
+- [] Merge pull request #387 from ramasilveyra/fix-lock-height (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b7d0a2247afdc99d0b41e8acc49d4a12b83f635d
+- [] Fix overlap elements on devices with small vh (`Ramiro Silveyra d'Avila`)
+  https://github.com/auth0/lock/commit/8b74993cbee4f680e635dc60ec95c9911a27af23
+- [] Merge pull request #386 from ramasilveyra/optimised-image (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/6661f72f7c4178e4339cbcf6cb8181beaeb1b9d6
+- [] Use optimised version of our logo (badge) (`Ramiro Silveyra d'Avila`)
+  https://github.com/auth0/lock/commit/b997f68f32b2620bdd0ce53a67d50cde09e22961
+
 ## [9.2.0] - 2016-05-12
 
 ### Fixed

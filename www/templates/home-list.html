@@ -6,10 +6,10 @@
         -->
         <ion-refresher
                 pulling-icon = "ion-arrow-down-c positive"
-                on-refresh="initRemoteFeed()">
+                on-refresh="refreshPosts()">
         </ion-refresher>
 
-        <div ng-if="!infiniteLoad" class="text-center color:white">
+        <div ng-if="showWelcome" class="text-center color:white">
             <div class="card">
                 <div class="item item-icon-left item-text-wrap item-stable">
                     <i class="icon ion-arrow-down-c"></i>
@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <img data-ng-click="initRemoteFeed()" width="300px" src="img/quarkyIcon512.png">
+            <img data-ng-click="refreshPosts()" width="300px" src="img/quarkyIcon512.png">
 
         </div>
 
@@ -27,10 +27,10 @@
                      width="300px" alt="">
         </span>
 
-        <ion-infinite-scroll on-infinite="getRemoteFeed()"
+        <ion-infinite-scroll on-infinite="loadMore()"
+                             data-ng-if="infiniteScroll"
                              immediate-check="false"
-                             distance="1%"
-                             data-ng-if="infiniteLoad">
+                             distance="1%">
         </ion-infinite-scroll>
     </ion-content>
 </ion-view>

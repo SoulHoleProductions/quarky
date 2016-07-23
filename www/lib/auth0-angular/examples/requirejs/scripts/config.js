@@ -2,10 +2,10 @@ require.config({
     paths: {
         'angular':          '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular',
         'angular-route':    '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route',
-        'auth-angular':     '//cdn.auth0.com/w2/auth0-angular-4.js',
+        'auth0-angular':     '//cdn.auth0.com/w2/auth0-angular-4',
         'angular-jwt':     '//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt',
         'angular-storage': '//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage',
-        'auth0':            '//cdn.auth0.com/w2/auth0-6.7.js'
+        'auth0':            '//cdn.auth0.com/w2/auth0-6.7'
     },
     shim: {
         'angular':{ exports:'angular' },

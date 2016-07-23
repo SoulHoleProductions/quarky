@@ -29,7 +29,7 @@ If you are using [browserify](http://browserify.org/) install with `npm i auth0-
 Construct a new instance of the Auth0 client as follows:
 
 ```html
-<script src="//cdn.auth0.com/w2/auth0-7.0.0.min.js"></script>
+<script src="//cdn.auth0.com/w2/auth0-7.0.2.min.js"></script>
 <script type="text/javascript">
   var auth0 = new Auth0({
     domain:       'mine.auth0.com',
@@ -278,7 +278,7 @@ auth0.verifySMSCode({
 
 ### User Profile
 
-The `getProfile` method allows you to obtain the user information after a successful login, and validates the JSON Web Token.
+The `getProfile` method allows you to obtain the user information after a successful login.
 
 ```js
 auth0.getProfile(idToken, function (err, profile) {
@@ -290,6 +290,7 @@ auth0.getProfile(idToken, function (err, profile) {
   alert('hello ' + profile.name);
 });
 ```
+
 
 How do you get hold of the `idToken` depends on the mode you are using to log in. See below for examples for [redirect](#single-page-apps) and [popup](#popup-mode) modes.
 

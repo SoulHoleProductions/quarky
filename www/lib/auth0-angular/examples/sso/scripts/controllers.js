@@ -20,9 +20,13 @@ myApp.controller('LoginCtrl', function (auth, $scope) {
   }
 });
 
-myApp.controller('LogoutCtrl', function (auth, $location, store) {
+myApp.controller('LogoutCtrl', function (auth, $window, store) {
   auth.signout();
   store.remove('profile');
   store.remove('token');
-  $location.path('/login');
+  $window.location.href = 'https://samples.auth0.com/v2/logout?returnTo=' + $window.location.origin + $window.location.pathname;
+});
+
+myApp.controller('SecureCtrl', function (auth, $window, store) {
+  
 });

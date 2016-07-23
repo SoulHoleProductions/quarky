@@ -14,6 +14,11 @@ myApp.config(function ($routeProvider, authProvider, $httpProvider, jwtIntercept
     templateUrl: 'views/login.html',
     controller: 'LoginCtrl',
   })
+  .when('/secure',   {
+    templateUrl: 'views/secure.html',
+    controller: 'SecureCtrl',
+    requiresLogin: true
+  })
   .when('/', {
     templateUrl: 'views/root.html',
     controller: 'RootCtrl',
@@ -28,7 +33,7 @@ myApp.config(function ($routeProvider, authProvider, $httpProvider, jwtIntercept
     loginUrl: '/login'
   });
 
-  authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
+  authProvider.on('loginSuccess', function($location, profilePromise, idToken, store, state) {
     $location.path('/');
     profilePromise.then(function(profile) {
       store.set('profile', profile);
@@ -42,24 +47,25 @@ myApp.config(function ($routeProvider, authProvider, $httpProvider, jwtIntercept
 
   jwtInterceptorProvider.tokenGetter = function(store) {
     return store.get('token');
-  }
+  };
 
   // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
   // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might
   // want to check the delegation-token example
   $httpProvider.interceptors.push('jwtInterceptor');
 }).run(function($rootScope, auth, store, jwtHelper, $location) {
-  $rootScope.$on('$locationChangeStart', function() {
+  function checkForToken() {
     if (!auth.isAuthenticated) {
       var token = store.get('token');
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
           auth.authenticate(store.get('profile'), token);
-        } else {
-          $location.path('/login');
         }
       }
     }
+  }
+  
+  checkForToken();
 
-  });
+  $rootScope.$on('$locationChangeStart', checkForToken);
 });

@@ -15,7 +15,7 @@ angular.module( 'sample.home', [
     }, function() {
       alert("Please download the API seed so that you can call it.");
     });
-  }
+  };
 
   $scope.logout = function() {
     auth.signout();

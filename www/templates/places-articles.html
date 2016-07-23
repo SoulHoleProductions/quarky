@@ -13,7 +13,9 @@ TODO: add infinite scroll
                 <ion-item class="item-avatar" ng-repeat="match in quarkyMatches" href="#/app/place-detail/{{match.id}}">
                     <img data-ng-src="{{match.iconurl}}">
                     <h2 data-ng-bind-html="match.name"></h2>
-                    <p data-ng-bind-html="match.formatted_address"></p>
+                    <p ng-if="match.distance != 777"> {{match.distance | number:1}} mi.</p>
+                    <p ng-if="match.distance == 777" data-ng-bind-html="match.formatted_address"></p>
+                    <!--<span ng-if="match.distance != 777" class="badge badge-dark">{{match.distance | number:1}} mi.</span>-->
                 </ion-item>
             </ion-list>
         </div>
