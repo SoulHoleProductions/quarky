@@ -271,11 +271,9 @@ angular.module('quarky', [
     .service('UserStorageService', ['UserSettings', 'auth', 'auth0metadata', '$ionicPopup', function (UserSettings, auth, auth0metadata, $ionicPopup) {
         'use strict';
         function getAuth0User() {
-            if(angular.isDefined(auth)) {
-                var userid = auth.profile.user_id;
-                console.log('getAuth0User: ', userid);
-                return userid;
-            }
+            var userid = auth.profile.user_id;
+            //console.log('getAuth0User: ', userid);
+            return userid;
 
         }
 
@@ -300,40 +298,40 @@ angular.module('quarky', [
         }
 
         function deserializeSettings() {
-            if (angular.isDefined(auth)) {
-                auth0metadata.getUser({user: getAuth0User()}).$promise.then(function (o) {
-                    //console.log('deserialize got o: ', o);
-                    if (o.user_metadata) {
-                        angular.extend(UserSettings, o.user_metadata);
-                        console.log('User Settings restored: ', o.user_metadata);
-                        console.log('UserSettings: ', UserSettings);
-                    } else {
-                        // we don't have user_metadata, so create them
-                        console.log('we don\'t have user_metadata, so create them...');
-                        serializeSettings();
-                    }
-                    /*var newSettings, rawSettings = o;
-                     if (rawSettings) {
-                     newSettings = JSON.parse(rawSettings);
-                     if (newSettings) {
-                     // use extend since it copies one property at a time
-                     angular.extend(UserSettings, newSettings);
-                     console.log("User Settings restored");
-                     }
-                     }*/
-                }).catch(function (err) {
-                    console.log('Unable to restore settings: ', err);
-                    $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'Could not restore your settings'
-                    });
+            //console.log('deserializeSettings() auth is: ', auth);
+            auth0metadata.getUser({user: getAuth0User()}).$promise.then(function (o) {
+                //console.log('deserialize got o: ', o);
+                if (o.user_metadata) {
+                    angular.extend(UserSettings, o.user_metadata);
+                    console.log('User Settings restored: ', o.user_metadata);
+                    console.log('UserSettings: ', UserSettings);
+                } else {
+                    // we don't have user_metadata, so create them
+                    console.log('we don\'t have user_metadata, so create them...');
+                    serializeSettings();
+                }
+                /*var newSettings, rawSettings = o;
+                 if (rawSettings) {
+                 newSettings = JSON.parse(rawSettings);
+                 if (newSettings) {
+                 // use extend since it copies one property at a time
+                 angular.extend(UserSettings, newSettings);
+                 console.log("User Settings restored");
+                 }
+                 }*/
+            }).catch(function (err) {
+                console.log('Unable to restore settings: ', err);
+                $ionicPopup.alert({
+                    title: 'Error',
+                    template: 'Could not restore your settings'
                 });
+            });
 
-            }
         }
 
-        deserializeSettings();
-        // API
+        //deserializeSettings();
+
+        //API
         return {
             serializeSettings: serializeSettings,
             deserializeSettings: deserializeSettings
@@ -442,7 +440,7 @@ angular.module('quarky', [
                     $scope.checkBookmark = _checkBookmark;
                     $scope.changeSetting = _changeSetting;
                     $scope.bookmarkItem = _bookmarkItem;
-                    if($scope.aPost) {
+                    if ($scope.aPost) {
                         $scope.bookmarked = _checkBookmark($scope.aPost.ID.toString());
                     }
                     return modal;
@@ -465,9 +463,12 @@ angular.module('quarky', [
                 init: init
             };
         }])
-    .run(['$ionicPlatform', 'auth', 'UserSettings', '$rootScope', 'store', '$state', '$ionicPopup', '$window', 'jwtHelper', '$location', '$ionicLoading', 'PushWoosh',
-        function ($ionicPlatform, auth, UserSettings, $rootScope, store, $state, $ionicPopup, $window, jwtHelper, $location, $ionicLoading, PushWoosh) {
+    .run(['$ionicPlatform', 'auth', 'UserSettings', 'UserStorageService', '$rootScope', 'store', '$state', '$ionicPopup', '$window', 'jwtHelper', '$location', '$ionicLoading', 'PushWoosh',
+        function ($ionicPlatform, auth, UserSettings, UserStorageService, $rootScope, store, $state, $ionicPopup, $window, jwtHelper, $location, $ionicLoading, PushWoosh) {
             'use strict';
+
+            console.log('.run auth is: ', auth);
+
             $ionicPlatform.ready(function () {
                 console.log('Device Ready for Quarky');
                 /*ionic.Platform.isFullScreen ? console.log("quarky is fullscreen") : console.log("quarky is NOT fullscreen");
@@ -568,6 +569,18 @@ angular.module('quarky', [
             });
 
             //-------------- auth0
+
+            // This hooks all auth events to check everything as soon as the app starts
+            auth.hookEvents();
+
+            $rootScope.$on('auth0.authenticated', function() {
+                // Store user or do something
+                //console.log('auth0.authenticated, auth is:', auth);
+                UserStorageService.deserializeSettings();
+            });
+
+
+            //This event gets triggered on URL change
             var refreshingToken = null;
             $rootScope.$on('$locationChangeStart', function () {
                 var token = store.get('token');
@@ -589,12 +602,13 @@ angular.module('quarky', [
                             }
                             return refreshingToken;
                         } else {
-                            $location.path('/login');  // Notice: this url must be the one defined
-                        }  // in your login state. Refer to step 5.
+                            $state.go('login');
+                            //$location.path('/login');// Notice: this url must be the one defined
+                        }                            // in your login state. Refer to step 5.
                     }
                 }
             });
-            auth.hookEvents();
+
         }])
     .config(['$stateProvider', '$urlRouterProvider', 'ionicDatePickerProvider', 'LoopBackResourceProvider', 'authProvider', '$httpProvider', 'jwtInterceptorProvider',
         function ($stateProvider, $urlRouterProvider, ionicDatePickerProvider, LoopBackResourceProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
@@ -809,33 +823,46 @@ angular.module('quarky', [
             });
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('/app/home-list');
-            $urlRouterProvider.otherwise(function ($injector, $location) {
-                return '/app/home-list';
-            });
+
             //-------------- auth0
             authProvider.init({
                 domain: 'quarky.auth0.com',
                 clientID: 'DoMMtmruuSqicU4qjeyvZTXEB0TImsqy',
                 loginState: 'login' // This is the name of the state where you'll show the login, which is defined above...
             });
+
+            var refreshingToken = null;
             jwtInterceptorProvider.tokenGetter = ['store', 'jwtHelper', 'auth', function (store, jwtHelper, auth) {
                 var idToken = store.get('token');
                 var refreshToken = store.get('refreshToken');
-                // If no token return null
                 if (!idToken || !refreshToken) {
                     return null;
                 }
-                // If token is expired, get a new one
+
                 if (jwtHelper.isTokenExpired(idToken)) {
-                    return auth.refreshIdToken(refreshToken).then(function (idToken) {
-                        store.set('token', idToken);
-                        return idToken;
-                    });
+
+                    if (refreshToken) {
+                        if (refreshingToken === null) { // avoid hitting rate limit
+                            refreshingToken = auth.refreshIdToken(refreshToken).then(function (idToken) {
+                                store.set('token', idToken);
+                                return idToken;
+                            }).finally(function () {
+                                refreshingToken = null;
+                            });
+                        }
+                        return refreshingToken;
+                    } else {
+                        return null; // for some reason the token expired and there's no refreshToken
+                    }
                 } else {
-                    return idToken;
+                    return idToken; // token not expired yet
                 }
+
             }];
+
             $httpProvider.interceptors.push('jwtInterceptor');
+
+
             //-------------- global http loading
             $httpProvider.interceptors.push(['$rootScope', '$q', function ($rootScope, $q) {
                 var handleError = function (response) {

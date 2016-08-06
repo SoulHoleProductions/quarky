@@ -1,213 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="3" />
+    <option name="SCOPE_TYPE" value="2" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664bda5d-0333-48b4-b4b8-f479426ea7f3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/img/guru-nav/eSkills/Research.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/scripts/controllers.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/scripts/myApp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/views/login.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/views/logout.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/views/root.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/src/auth0-angular.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/img/guru-nav/ElevateYourInfo.png" afterPath="$PROJECT_DIR$/www/img/guru-nav/ElevateYourInfo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js.gzip" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js.gzip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/fonts/ionicons.eot" afterPath="$PROJECT_DIR$/www/lib/ionic/fonts/ionicons.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/fonts/ionicons.ttf" afterPath="$PROJECT_DIR$/www/lib/ionic/fonts/ionicons.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/fonts/ionicons.woff" afterPath="$PROJECT_DIR$/www/lib/ionic/fonts/ionicons.woff" />
+    <list default="true" id="664bda5d-0333-48b4-b4b8-f479426ea7f3" name="Default" comment="bug fixes for 1.0 release">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hooks/after_platform_add/010_install_plugins.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hooks/after_plugin_add/010_register_plugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hooks/after_plugin_rm/010_deregister_plugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hooks/after_prepare/010_add_platform_class.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hooks/before_platform_add/init_directories.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/ionic.app.scss" afterPath="$PROJECT_DIR$/scss/ionic.app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic.app.css" afterPath="$PROJECT_DIR$/www/css/ionic.app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic.app.min.css" afterPath="$PROJECT_DIR$/www/css/ionic.app.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/home-module.js" afterPath="$PROJECT_DIR$/www/js/home-module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/menu.js" afterPath="$PROJECT_DIR$/www/js/menu.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/places-module.js" afterPath="$PROJECT_DIR$/www/js/places-module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/templates.js" afterPath="$PROJECT_DIR$/www/js/templates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-animate/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.js" afterPath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular-animate/angular-animate.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-animate/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-animate/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-animate/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-messages/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.js" afterPath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular-messages/angular-messages.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-messages/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-messages/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-messages/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-resource/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.js" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular-resource/angular-resource.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-resource/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-resource/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-resource/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.js" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.min.js" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/angular-sanitize.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular-sanitize/package.json" afterPath="$PROJECT_DIR$/www/lib/angular-sanitize/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/.bower.json" afterPath="$PROJECT_DIR$/www/lib/angular/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.js" afterPath="$PROJECT_DIR$/www/lib/angular/angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/angular.min.js.map" afterPath="$PROJECT_DIR$/www/lib/angular/angular.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/bower.json" afterPath="$PROJECT_DIR$/www/lib/angular/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/angular/package.json" afterPath="$PROJECT_DIR$/www/lib/angular/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/.bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/.gitignore" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/Gruntfile.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/build/auth0-angular.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/build/auth0-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/build/auth0-angular.min.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/build/auth0-angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/docs/link-accounts.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/docs/link-accounts.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/docs/storing-information.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/docs/storing-information.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/scripts/controllers.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/scripts/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/views/login.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-login/views/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/scripts/controllers.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/scripts/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/views/root.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/client/views/root.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/nodejs/app.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/custom-signup/nodejs/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/client/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/delegation-token/client/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/html5mode/public/app.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/html5mode/public/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/html5mode/public/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/html5mode/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/redirect/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/redirect/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/app.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/home/home.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/home/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/refresh-token/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/config.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/controllers.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/requirejs/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/controllers.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/sso/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/ui-router/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/ui-router/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/ui-router/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/ui-router/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-redirect/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/app.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/home/home.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/home/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/home/home.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/home/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-api/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/app.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget-with-thirdparty-api/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/index.html" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/scripts/controllers.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/scripts/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/scripts/myApp.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/examples/widget/scripts/myApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/karma.conf.js" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/karma.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-angular/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0-angular/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/.bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/.zuul.yml" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/.zuul.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/Gruntfile.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.min.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ar.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ar.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/da.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/da.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/de.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/de.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/en.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/en.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/es.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/es.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/fr-FR.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/fr-FR.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/he.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/he.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/it.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/it.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ja.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ja.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ko.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ko.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nb-NO.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nb-NO.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nl-NL.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/nl-NL.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pl.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pt-BR.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pt-BR.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pt.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/pt.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ru.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/ru.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/sv.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/sv.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/tlh.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/tlh.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/tr.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/tr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh-TW.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh-TW.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/i18n/zh.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.css" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.min.css" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/main.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/themes/default.less" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/css/themes/default.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-reset/reset.ejs" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-reset/reset.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signin/signin.ejs" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signin/signin.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signup/signup.ejs" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/mode-signup/signup.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/lib/options-manager/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/lib/options-manager/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0-lock/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0-lock/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/.bower.json" afterPath="$PROJECT_DIR$/www/lib/auth0.js/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/.zuul.yml" afterPath="$PROJECT_DIR$/www/lib/auth0.js/.zuul.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/auth0.js/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/Gruntfile.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/README.md" afterPath="$PROJECT_DIR$/www/lib/auth0.js/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.min.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/build/auth0.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/index.js" afterPath="$PROJECT_DIR$/www/lib/auth0.js/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/auth0.js/package.json" afterPath="$PROJECT_DIR$/www/lib/auth0.js/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/README.md" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/gulpfile.js" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/package.json" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-modal.html" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-popup.html" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker-popup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.styles.css" afterPath="$PROJECT_DIR$/www/lib/ionic-datepicker/src/ionic-datepicker.styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/bower.json" afterPath="$PROJECT_DIR$/www/lib/ionic/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/css/ionic.css" afterPath="$PROJECT_DIR$/www/lib/ionic/css/ionic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/css/ionic.min.css" afterPath="$PROJECT_DIR$/www/lib/ionic/css/ionic.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/css/ionicons.css" afterPath="$PROJECT_DIR$/www/lib/ionic/css/ionicons.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/css/ionicons.min.css" afterPath="$PROJECT_DIR$/www/lib/ionic/css/ionicons.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/fonts/ionicons.svg" afterPath="$PROJECT_DIR$/www/lib/ionic/fonts/ionicons.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic-angular.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic-angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic-angular.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic-angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic.bundle.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic.bundle.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic.bundle.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/js/ionic.min.js" afterPath="$PROJECT_DIR$/www/lib/ionic/js/ionic.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_bar.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_bar.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_button-bar.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_button-bar.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_button.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_button.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_checkbox.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_checkbox.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_form.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_form.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_grid.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_grid.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_items.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_items.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_menu.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_menu.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_mixins.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_mixins.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_popover.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_popover.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_range.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_range.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_scaffolding.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_scaffolding.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_tabs.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_tabs.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_toggle.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_toggle.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_type.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_type.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_variables.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/ionic.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/ionic.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-icons.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-icons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-variables.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/ionicons/_ionicons-variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/.bower.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/CHANGELOG.md" afterPath="$PROJECT_DIR$/www/lib/ngCordova/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/README.md" afterPath="$PROJECT_DIR$/www/lib/ngCordova/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/bower.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.min.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova-mocks.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.min.js" afterPath="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ngCordova/package.json" afterPath="$PROJECT_DIR$/www/lib/ngCordova/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/home-list.html" afterPath="$PROJECT_DIR$/www/templates/home-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/login.html" afterPath="$PROJECT_DIR$/www/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/menu.html" afterPath="$PROJECT_DIR$/www/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/places-articles.html" afterPath="$PROJECT_DIR$/www/templates/places-articles.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/profile.js" afterPath="$PROJECT_DIR$/www/js/profile.js" />
     </list>
     <ignored path="quarky.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -228,7 +37,18 @@
     <favorites_list name="quarky" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2109375">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -263,7 +83,6 @@
         <option value="$PROJECT_DIR$/hooks/before_prepare/01_jshint.js" />
         <option value="$PROJECT_DIR$/www/js/lb-services.js" />
         <option value="$PROJECT_DIR$/.jshintrc" />
-        <option value="$PROJECT_DIR$/www/js/menu.js" />
         <option value="$PROJECT_DIR$/ionic.project" />
         <option value="$PROJECT_DIR$/hooks/after_prepare/060_uglify.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
@@ -278,7 +97,6 @@
         <option value="$PROJECT_DIR$/www/js/about-module.js" />
         <option value="$PROJECT_DIR$/www/templates/about-list.html" />
         <option value="$PROJECT_DIR$/www/templates/bookmarks.html" />
-        <option value="$PROJECT_DIR$/www/js/profile.js" />
         <option value="$PROJECT_DIR$/www/templates/guru-detail.html" />
         <option value="$PROJECT_DIR$/www/templates/article-modal.html" />
         <option value="$PROJECT_DIR$/www/templates/profile.html" />
@@ -287,11 +105,13 @@
         <option value="$PROJECT_DIR$/scss/ionic.app.scss" />
         <option value="$PROJECT_DIR$/www/templates/home-list.html" />
         <option value="$PROJECT_DIR$/www/js/home-module.js" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/templates/menu.html" />
-        <option value="$PROJECT_DIR$/www/js/places-module.js" />
         <option value="$PROJECT_DIR$/www/templates/places-articles.html" />
         <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/www/js/menu.js" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/www/js/profile.js" />
+        <option value="$PROJECT_DIR$/www/js/places-module.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/config.xml" />
       </list>
@@ -303,8 +123,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-92" />
-    <option name="y" value="-1053" />
+    <option name="x" value="71" />
+    <option name="y" value="23" />
     <option name="width" value="1552" />
     <option name="height" value="978" />
   </component>
@@ -333,21 +153,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="quarky">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -366,37 +171,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quarky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quarky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quarky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quarky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="platforms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            <PATH_ELEMENT USER_OBJECT="quarky">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -410,7 +202,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="jsx.switch.disabled" value="true" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -487,12 +279,6 @@
       <created>1426126373942</created>
       <option name="number" value="Default" />
       <updated>1426126373942</updated>
-    </task>
-    <task id="LOCAL-00025" summary="new search with autocomplete">
-      <created>1451283833774</created>
-      <option name="number" value="00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1451283833774</updated>
     </task>
     <task id="LOCAL-00026" summary="new search with autocomplete">
       <created>1451283858799</created>
@@ -782,7 +568,13 @@
       <option name="project" value="LOCAL" />
       <updated>1467554476885</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="bug fixes for 1.0 release">
+      <created>1469281016523</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1469281016523</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -806,13 +598,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-92" y="-1053" width="1552" height="978" extended-state="0" />
+    <frame x="71" y="23" width="1552" height="978" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22664925" sideWeight="0.49946523" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22664925" sideWeight="0.49946523" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0342246" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22072072" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22072072" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24951012" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -826,6 +618,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954683" sideWeight="0.5005348" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Metrics" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32995495" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32545045" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -845,7 +638,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="pre-'open beta' for testing" />
     <MESSAGE value="initial ionic.io push notifications" />
     <MESSAGE value="second ionic.io push notifications" />
     <MESSAGE value="push notifications v2 - profile shows last notification" />
@@ -870,83 +662,16 @@
     <MESSAGE value="prerelease bug fixes" />
     <MESSAGE value="created ArticleModalService to show articles, bookmarks, social sharing etc..." />
     <MESSAGE value="final update for 1.0 release" />
-    <option name="LAST_COMMIT_MESSAGE" value="final update for 1.0 release" />
+    <MESSAGE value="bug fixes for 1.0 release" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixes for 1.0 release" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="60" />
+      <option name="time" value="61" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.jshintrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.083333">
-          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/lb-services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/ionic.app.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/templates.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/places-gallery.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1076555">
-          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/lib/ion-autocomplete/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46650717">
-          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/guru-nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12559809">
-          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/img/places/service/Volunteer-1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/place-detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38995215">
-          <caret line="32" column="74" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/lib/ionic-image-lazy-load.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45930234">
@@ -958,13 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6511628">
           <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="73" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -1010,13 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.bowerrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49698794">
@@ -1042,13 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-23.75">
           <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/home-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5795276">
-          <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1080,38 +784,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/places-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20331325">
-          <caret line="793" column="38" selection-start-line="793" selection-start-column="38" selection-end-line="793" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/guru-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.022590362">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.2109375">
           <caret line="0" column="50" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8358434">
-          <caret line="270" column="35" selection-start-line="270" selection-start-column="35" selection-end-line="270" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1171,17 +847,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/lib/auth0-lock/.bower.json">
+    <entry file="file://$PROJECT_DIR$/ionic.project">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13554217">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/ngCordova/bower.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
+    <entry file="file://$PROJECT_DIR$/www/lib/ngCordova/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8015625">
-          <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/ios/ios.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/ios/frameworks.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/ios/cordova/version">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/platforms.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/home-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36713287">
+          <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4676259">
+          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/auth0-lock/.bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1192,41 +931,325 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/platforms.json">
+    <entry file="file://$PROJECT_DIR$/www/lib/auth0-angular/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4921875">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ionic.project">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13554217">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5390625">
+        <state vertical-scroll-proportion="0.41366908">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hooks/after_plugin_add/010_register_plugin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hooks/before_platform_add/init_directories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hooks/after_platform_add/010_install_plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.506993">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/places-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.2447553">
+          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/guru-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.73426574">
+          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/lib/auth0-lock/build/auth0-lock.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3325062">
+          <caret line="7667" column="31" selection-start-line="7667" selection-start-column="17" selection-end-line="7667" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96511626">
+          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding>
+            <element signature="e#62#2564#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.2732558">
+          <caret line="184" column="14" selection-start-line="184" selection-start-column="14" selection-end-line="184" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="612" column="12" selection-start-line="612" selection-start-column="12" selection-end-line="612" selection-end-column="12" />
+          <folding>
+            <element signature="e#25#398#0" expanded="false" />
+            <element signature="e#435#738#0" expanded="false" />
+            <element signature="e#771#2473#0" expanded="false" />
+            <element signature="e#846#2472#0" expanded="false" />
+            <element signature="e#927#2464#0" expanded="false" />
+            <element signature="e#948#1099#0" expanded="false" />
+            <element signature="e#1122#1296#0" expanded="false" />
+            <element signature="e#1320#1836#0" expanded="false" />
+            <element signature="e#1467#1793#0" expanded="false" />
+            <element signature="e#1859#2062#0" expanded="false" />
+            <element signature="e#2088#2256#0" expanded="false" />
+            <element signature="e#2283#2454#0" expanded="false" />
+            <element signature="e#2508#2903#0" expanded="false" />
+            <element signature="e#2934#4452#0" expanded="false" />
+            <element signature="e#3005#4451#0" expanded="false" />
+            <element signature="e#3085#4443#0" expanded="false" />
+            <element signature="e#3109#3644#0" expanded="false" />
+            <element signature="e#3283#3601#0" expanded="false" />
+            <element signature="e#3673#4209#0" expanded="false" />
+            <element signature="e#3848#4166#0" expanded="false" />
+            <element signature="e#4232#4433#0" expanded="false" />
+            <element signature="e#4480#8125#0" expanded="false" />
+            <element signature="e#4547#8124#0" expanded="false" />
+            <element signature="e#4642#5209#0" expanded="false" />
+            <element signature="e#4795#4935#0" expanded="false" />
+            <element signature="e#4980#5123#0" expanded="false" />
+            <element signature="e#5227#8117#0" expanded="false" />
+            <element signature="e#5266#5985#0" expanded="false" />
+            <element signature="e#5335#5412#0" expanded="false" />
+            <element signature="e#5475#5562#0" expanded="false" />
+            <element signature="e#5568#5933#0" expanded="false" />
+            <element signature="e#5715#5813#0" expanded="false" />
+            <element signature="e#5833#5913#0" expanded="false" />
+            <element signature="e#6045#6273#0" expanded="false" />
+            <element signature="e#6091#6259#0" expanded="false" />
+            <element signature="e#6333#7252#0" expanded="false" />
+            <element signature="e#6405#6499#0" expanded="false" />
+            <element signature="e#6562#6649#0" expanded="false" />
+            <element signature="e#6655#7200#0" expanded="false" />
+            <element signature="e#6781#6881#0" expanded="false" />
+            <element signature="e#6934#7145#0" expanded="false" />
+            <element signature="e#6991#7121#0" expanded="false" />
+            <element signature="e#7294#8107#0" expanded="false" />
+            <element signature="e#7474#7972#0" expanded="false" />
+            <element signature="e#7561#7784#0" expanded="false" />
+            <element signature="e#7837#7906#0" expanded="false" />
+            <element signature="e#7992#8053#0" expanded="false" />
+            <element signature="e#8153#8920#0" expanded="false" />
+            <element signature="e#8166#8919#0" expanded="false" />
+            <element signature="e#8229#8912#0" expanded="false" />
+            <element signature="e#8263#8902#0" expanded="false" />
+            <element signature="e#8480#8857#0" expanded="false" />
+            <element signature="e#8569#8698#0" expanded="false" />
+            <element signature="e#8704#8839#0" expanded="false" />
+            <element signature="e#8946#9293#0" expanded="false" />
+            <element signature="e#8995#9292#0" expanded="false" />
+            <element signature="e#9050#9285#0" expanded="false" />
+            <element signature="e#9384#9758#0" expanded="false" />
+            <element signature="e#9517#9719#0" expanded="false" />
+            <element signature="e#9825#10370#0" expanded="false" />
+            <element signature="e#9947#10362#0" expanded="false" />
+            <element signature="e#9973#10137#0" expanded="false" />
+            <element signature="e#10160#10352#0" expanded="false" />
+            <element signature="e#10523#13088#0" expanded="false" />
+            <element signature="e#10751#11027#0" expanded="false" />
+            <element signature="e#11066#11469#0" expanded="false" />
+            <element signature="e#11112#11198#0" expanded="false" />
+            <element signature="e#11221#11457#0" expanded="false" />
+            <element signature="e#11325#11441#0" expanded="false" />
+            <element signature="e#11510#12900#0" expanded="false" />
+            <element signature="e#12224#12613#0" expanded="false" />
+            <element signature="e#12752#12871#0" expanded="false" />
+            <element signature="e#13127#17881#0" expanded="false" />
+            <element signature="e#13344#17880#0" expanded="false" />
+            <element signature="e#13417#13434#0" expanded="false" />
+            <element signature="e#13552#14928#0" expanded="false" />
+            <element signature="e#13601#13698#0" expanded="false" />
+            <element signature="e#13729#13815#0" expanded="false" />
+            <element signature="e#13821#13919#0" expanded="false" />
+            <element signature="e#13949#14035#0" expanded="false" />
+            <element signature="e#14041#14119#0" expanded="false" />
+            <element signature="e#14148#14262#0" expanded="false" />
+            <element signature="e#14290#14360#0" expanded="false" />
+            <element signature="e#14531#14914#0" expanded="false" />
+            <element signature="e#14631#14817#0" expanded="false" />
+            <element signature="e#14970#15414#0" expanded="false" />
+            <element signature="e#15018#15095#0" expanded="false" />
+            <element signature="e#15106#15156#0" expanded="false" />
+            <element signature="e#15289#15341#0" expanded="false" />
+            <element signature="e#15347#15400#0" expanded="false" />
+            <element signature="e#15465#15618#0" expanded="false" />
+            <element signature="e#15659#16479#0" expanded="false" />
+            <element signature="e#15728#15937#0" expanded="false" />
+            <element signature="e#15943#16465#0" expanded="false" />
+            <element signature="e#16240#16447#0" expanded="false" />
+            <element signature="e#16522#17805#0" expanded="false" />
+            <element signature="e#16759#16858#0" expanded="false" />
+            <element signature="e#16882#17420#0" expanded="false" />
+            <element signature="e#17257#17368#0" expanded="false" />
+            <element signature="e#17471#17531#0" expanded="false" />
+            <element signature="e#17581#17641#0" expanded="false" />
+            <element signature="e#17694#17756#0" expanded="false" />
+            <element signature="e#17827#17869#0" expanded="false" />
+            <element signature="e#17892#25394#0" expanded="false" />
+            <element signature="e#18441#18898#0" expanded="false" />
+            <element signature="e#18989#19698#0" expanded="false" />
+            <element signature="e#19148#19305#0" expanded="false" />
+            <element signature="e#19311#19452#0" expanded="false" />
+            <element signature="e#19535#19598#0" expanded="false" />
+            <element signature="e#19613#19678#0" expanded="false" />
+            <element signature="e#19704#19788#0" expanded="false" />
+            <element signature="e#19960#20294#0" expanded="false" />
+            <element signature="e#20432#20594#0" expanded="false" />
+            <element signature="e#20633#20755#0" expanded="false" />
+            <element signature="e#20831#20911#0" expanded="false" />
+            <element signature="e#20995#22234#0" expanded="false" />
+            <element signature="e#21145#22099#0" expanded="false" />
+            <element signature="e#21297#21917#0" expanded="false" />
+            <element signature="e#21451#21887#0" expanded="false" />
+            <element signature="e#21514#21851#0" expanded="false" />
+            <element signature="e#21934#22071#0" expanded="false" />
+            <element signature="e#22116#22214#0" expanded="false" />
+            <element signature="e#22388#22931#0" expanded="false" />
+            <element signature="e#22496#22607#0" expanded="false" />
+            <element signature="e#22664#22857#0" expanded="false" />
+            <element signature="e#23039#23116#0" expanded="false" />
+            <element signature="e#23174#23227#0" expanded="false" />
+            <element signature="e#23288#23496#0" expanded="false" />
+            <element signature="e#23362#23480#0" expanded="false" />
+            <element signature="e#24068#25380#0" expanded="false" />
+            <element signature="e#25408#37457#0" expanded="false" />
+            <element signature="e#25781#26738#0" expanded="false" />
+            <element signature="e#25992#26185#0" expanded="false" />
+            <element signature="e#26215#26564#0" expanded="false" />
+            <element signature="e#27269#27460#0" expanded="false" />
+            <element signature="e#27306#27442#0" expanded="false" />
+            <element signature="e#27484#27780#0" expanded="false" />
+            <element signature="e#27506#27576#0" expanded="false" />
+            <element signature="e#27819#28408#0" expanded="false" />
+            <element signature="e#27879#28074#0" expanded="false" />
+            <element signature="e#27916#28056#0" expanded="false" />
+            <element signature="e#28098#28394#0" expanded="false" />
+            <element signature="e#28120#28190#0" expanded="false" />
+            <element signature="e#28428#29006#0" expanded="false" />
+            <element signature="e#28483#28672#0" expanded="false" />
+            <element signature="e#28520#28654#0" expanded="false" />
+            <element signature="e#28696#28992#0" expanded="false" />
+            <element signature="e#28718#28788#0" expanded="false" />
+            <element signature="e#29031#29303#0" expanded="false" />
+            <element signature="e#29095#29289#0" expanded="false" />
+            <element signature="e#29132#29271#0" expanded="false" />
+            <element signature="e#29330#29929#0" expanded="false" />
+            <element signature="e#29396#29594#0" expanded="false" />
+            <element signature="e#29433#29576#0" expanded="false" />
+            <element signature="e#29618#29915#0" expanded="false" />
+            <element signature="e#29640#29710#0" expanded="false" />
+            <element signature="e#29954#30267#0" expanded="false" />
+            <element signature="e#30014#30208#0" expanded="false" />
+            <element signature="e#30051#30190#0" expanded="false" />
+            <element signature="e#30295#31076#0" expanded="false" />
+            <element signature="e#30358#30558#0" expanded="false" />
+            <element signature="e#30395#30540#0" expanded="false" />
+            <element signature="e#30582#30878#0" expanded="false" />
+            <element signature="e#30604#30674#0" expanded="false" />
+            <element signature="e#30905#31062#0" expanded="false" />
+            <element signature="e#30959#31044#0" expanded="false" />
+            <element signature="e#31102#31591#0" expanded="false" />
+            <element signature="e#31171#31367#0" expanded="false" />
+            <element signature="e#31208#31349#0" expanded="false" />
+            <element signature="e#31394#31577#0" expanded="false" />
+            <element signature="e#31461#31559#0" expanded="false" />
+            <element signature="e#31620#32252#0" expanded="false" />
+            <element signature="e#31716#31918#0" expanded="false" />
+            <element signature="e#31753#31900#0" expanded="false" />
+            <element signature="e#31942#32238#0" expanded="false" />
+            <element signature="e#31964#32034#0" expanded="false" />
+            <element signature="e#32283#32968#0" expanded="false" />
+            <element signature="e#32427#32633#0" expanded="false" />
+            <element signature="e#32464#32615#0" expanded="false" />
+            <element signature="e#32657#32954#0" expanded="false" />
+            <element signature="e#32679#32749#0" expanded="false" />
+            <element signature="e#32998#33681#0" expanded="false" />
+            <element signature="e#33142#33346#0" expanded="false" />
+            <element signature="e#33179#33328#0" expanded="false" />
+            <element signature="e#33370#33667#0" expanded="false" />
+            <element signature="e#33392#33462#0" expanded="false" />
+            <element signature="e#33709#34028#0" expanded="false" />
+            <element signature="e#33813#34014#0" expanded="false" />
+            <element signature="e#33850#33996#0" expanded="false" />
+            <element signature="e#34045#34184#0" expanded="false" />
+            <element signature="e#34394#34639#0" expanded="false" />
+            <element signature="e#34797#35895#0" expanded="false" />
+            <element signature="e#36331#36461#0" expanded="false" />
+            <element signature="e#36499#36629#0" expanded="false" />
+            <element signature="e#36768#37428#0" expanded="false" />
+            <element signature="e#36817#36942#0" expanded="false" />
+            <element signature="e#36994#37121#0" expanded="false" />
+            <element signature="e#37178#37266#0" expanded="false" />
+            <element signature="e#37322#37410#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23325358">
+          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.046875">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.2109375">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

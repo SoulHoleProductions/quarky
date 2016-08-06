@@ -88,6 +88,7 @@ angular.module('menu', ['auth0'])
                 }, function (profile, token, accessToken, state, refreshToken) {
                     store.set('profile', profile);
                     store.set('token', token);
+                    store.set('accessToken', accessToken);
                     store.set('refreshToken', refreshToken);
                     // put auth'd user settings into UserSettings
                     angular.extend(UserSettings, profile.user_metadata);
@@ -116,9 +117,12 @@ angular.module('menu', ['auth0'])
             };
             $scope.logout = function () {
                 auth.signout();
+
                 store.remove('profile');
                 store.remove('token');
+                store.remove('accessToken');
                 store.remove('refreshToken');
+
                 $ionicHistory.nextViewOptions({
                     disableAnimate: true,
                     disableBack: true

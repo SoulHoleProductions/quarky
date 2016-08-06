@@ -182,7 +182,7 @@ angular.module('profile', [
                 });
             };
             /**/
-            console.log('ProfileCtrl: UserSettings: ', UserSettings);
+            //console.log('ProfileCtrl: UserSettings: ', UserSettings);
             // when a widget is changed, come here an update the setting object too
             function changeSetting(type, value) {
                 $scope[type] = value;

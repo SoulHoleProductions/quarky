@@ -71,7 +71,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3941,
             'name': 'Sports and Rec',
-            'search': 'sports',
+            'search': 'sports and recreation',
             'order': 11,
             'featured_image': {
                 'ID': 3937,
@@ -82,7 +82,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3939,
             'name': 'Shop and Travel',
-            'search': 'shop',
+            'search': 'shopping and travel',
             'order': 10,
             'featured_image': {
                 'ID': 3936,
@@ -93,7 +93,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3933,
             'name': 'Random Fun',
-            'search': 'fun',
+            'search': 'random fun',
             'order': 9,
             'featured_image': {
                 'ID': 3934,
@@ -126,7 +126,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3927,
             'name': 'Hobbies',
-            'search': 'hobby',
+            'search': 'hobbies and interests',
             'order': 7,
             'featured_image': {
                 'ID': 3924,
@@ -137,7 +137,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3921,
             'name': 'Food and Events',
-            'search': 'food',
+            'search': 'food and events',
             'order': 5,
             'featured_image': {
                 'ID': 4366,
@@ -159,7 +159,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3917,
             'name': 'Clubs and Organizations',
-            'search': 'clubs',
+            'search': 'clubs and organizations',
             'order': 3,
             'featured_image': {
                 'ID': 3912,
@@ -170,7 +170,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3915,
             'name': 'Build Skills',
-            'search': 'skills',
+            'search': 'build skills',
             'order': 2,
             'featured_image': {
                 'ID': 4364,
@@ -181,7 +181,7 @@ function PlacesService($http, PlacesConfig) {
         {
             'ID': 3908,
             'name': 'A and E Venues',
-            'search': 'venues',
+            'search': 'arts & entertainment venues',
             'order': 1,
             'featured_image': {
                 'ID': 3910,
