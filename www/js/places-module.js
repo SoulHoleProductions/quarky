@@ -539,10 +539,10 @@ angular.module('places', [
     })
     .controller('PlacesMasterCtrl', ['$scope', '$rootScope', '$state', 'PlacesService', '$ionicScrollDelegate', '$ionicLoading',
         'auth', '$ionicHistory', '$ionicPopup', 'OhanaAPI', '$q', '$cordovaGeolocation', '$ionicPlatform',
-        'UserSettings', 'UserStorageService', 'Place', 'OETaxonomy',
+        'UserSettings', 'UserStorageService', 'Place', 'OETaxonomy', '$timeout',
         function ($scope, $rootScope, $state, PlacesService, $ionicScrollDelegate, $ionicLoading,
                   auth, $ionicHistory, $ionicPopup, OhanaAPI, $q, $cordovaGeolocation, $ionicPlatform,
-                  UserSettings, UserStorageService, Place, OETaxonomy) {
+                  UserSettings, UserStorageService, Place, OETaxonomy, $timeout) {
             'use strict';
             $scope.posts = [];
             //$scope.gPlace; // used with googleplace directive
@@ -675,12 +675,12 @@ angular.module('places', [
             //    });
             //};
             $scope.doGallery = function (aTopic) {
+                console.log('doGallery entry: ', aTopic);
                 if (!aTopic) {
+                    console.log('no topic: ', aTopic);
                     return;
                 }
-                // shouldn't happen
-                console.log('doGallery() with: ', aTopic);
-                //ensure we have a position
+
                 if (!$rootScope.myPosition) {
                     $ionicPopup.alert({
                         title: 'Location',
@@ -693,13 +693,17 @@ angular.module('places', [
                     $scope.search.text = aTopic.name;
                     $scope.search.radius = '25';
                 }
-                $state.go('app.places-gallery', {
-                    galleryParams: {
-                        'ID': aTopic.ID,
-                        'name': aTopic.name,
-                        'srch_text': $scope.search.text,
-                        'srch_radius': $scope.search.radius
-                    }
+
+                $timeout(function () {
+                    console.log('doGallery will go');
+                    $state.go('app.places-gallery', {
+                        galleryParams: {
+                            'ID': aTopic.ID,
+                            'name': aTopic.name,
+                            'srch_text': $scope.search.text,
+                            'srch_radius': $scope.search.radius
+                        }
+                    });
                 });
             };
             $scope.bootstrapFeed = function () {
@@ -760,6 +764,7 @@ angular.module('places', [
     .controller('PlacesGalleryCtrl', ['$scope', '$rootScope', 'PlacesService', 'UserSettings', '$state', '$stateParams', '$ionicPopup',
         function ($scope, $rootScope, PlacesService, UserSettings, $state, $stateParams, $ionicPopup) {
             'use strict';
+            console.log('app.places-gallery with GalleryParams: ', $stateParams.galleryParams);
             var postId = '';
             $scope.postName = null;
             $scope.posts = [];
@@ -818,7 +823,7 @@ angular.module('places', [
                         var icon = JSON.parse(o.photos);
                         var ret = {};
                         ret.id = o.id;
-                        if(o.distance) {
+                        if (o.distance) {
                             ret.distance = o.distance / 1609;
                         } else {
                             ret.distance = 777;

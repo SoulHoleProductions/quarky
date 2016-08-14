@@ -1,6 +1,6 @@
 angular.module('menu', ['auth0'])
-    .controller('MenuCtrl', ['store', '$scope', '$location', '$state', 'auth', '$ionicActionSheet',
-        function (store, $scope, $location, $state, auth, $ionicActionSheet) {
+    .controller('MenuCtrl', ['store', '$scope', '$location', '$state', 'auth', '$ionicActionSheet', '$ionicHistory', '$timeout',
+        function (store, $scope, $location, $state, auth, $ionicActionSheet, $ionicHistory, $timeout) {
             'use strict';
             $scope.auth = auth;
             $scope.showHotlineActionsheet = function () {
@@ -52,6 +52,16 @@ angular.module('menu', ['auth0'])
                         return true;
                     }
                 });
+            };
+            $scope.goPlaces = function() {
+                console.log('goPlaces viewHistory: ', $ionicHistory.viewHistory());
+                $ionicHistory.nextViewOptions({
+                    disableAnimate: true,
+                    disableBack: true,
+                    historyRoot: true
+                });
+                $state.go('app.places-master');
+                // $timeout(function() { $state.go('app.places-master'); });
             };
         }])
     .controller('LoginCtrl', ['$scope', 'auth', '$state', 'store', 'UserSettings', 'PushWoosh', '$ionicHistory', '$ionicSlideBoxDelegate',

@@ -20,8 +20,11 @@
             <i class="icon ion-minus-circled" style="cursor:pointer" ng-click="viewModel.removeItem(0)"></i>
             </ion-item>-->
         <ion-item class="item-divider" ng-if="viewModel.searchItems.length > 0">{{viewModel.selectItemsLabel}}</ion-item>
-        <ion-item ng-repeat="item in viewModel.searchItems track by $index" item-height="55px" item-width="100%" ng-click="viewModel.selectItem(item)" class="item-text-wrap">
-            {{viewModel.getItemValue(item, viewModel.itemViewValueKey)}}
+        <ion-item ng-repeat="item in viewModel.searchItems track by $index" item-height="55px" item-width="100%"
+                  ng-click="viewModel.selectItem(item)"
+                  ng-bind-html="viewModel.getItemValue(item, viewModel.itemViewValueKey)"
+                  class="item-text-wrap">
+            <!--{{viewModel.getItemValue(item, viewModel.itemViewValueKey)}}-->
             </ion-item>
         </ion-content>
     </div>

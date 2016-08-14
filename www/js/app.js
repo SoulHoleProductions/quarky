@@ -793,19 +793,13 @@ angular.module('quarky', [
                 }
             }).state('app.places-gallery', {
                 url: '/places/gallery',
-                //cache: false,
+                cache: false,
                 params: {galleryParams: null},
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/places-gallery.html',
                         controller: 'PlacesGalleryCtrl'
                     }
-                },
-                data: {
-                    // This tells Auth0 that this state requires the user to be logged in.
-                    // If the user isn't logged in and he tries to access this state
-                    // he'll be redirected to the login page
-                    requiresLogin: false
                 }
             }).state('app.place-detail', {
                 //cache: false,
