@@ -35,7 +35,8 @@
       "id": "nl.x-services.plugins.socialsharing"
     },
     "cordova-plugin-google-analytics",
-    "pushwoosh-cordova-plugin"
+    "pushwoosh-cordova-plugin",
+    "cordova-sms-plugin"
   ],
   "cordovaPlatforms": [
     "ios",

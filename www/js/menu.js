@@ -1,6 +1,6 @@
 angular.module('menu', ['auth0'])
-    .controller('MenuCtrl', ['$ionicPopup', '$cordovaSocialSharing', 'store', '$scope', '$location', '$state', 'auth', '$ionicActionSheet', '$ionicHistory', '$timeout',
-        function ($ionicPopup, $cordovaSocialSharing, store, $scope, $location, $state, auth, $ionicActionSheet, $ionicHistory, $timeout) {
+    .controller('MenuCtrl', ['$ionicPopup', '$cordovaSms', '$cordovaSocialSharing', 'store', '$scope', '$location', '$state', 'auth', '$ionicActionSheet', '$ionicHistory', '$timeout',
+        function ($ionicPopup, $cordovaSms, $cordovaSocialSharing, store, $scope, $location, $state, auth, $ionicActionSheet, $ionicHistory, $timeout) {
             'use strict';
             $scope.auth = auth;
             $scope.showHotlineActionsheet = function () {
@@ -37,33 +37,56 @@ angular.module('menu', ['auth0'])
                         if (index === 3) {
                             if (ionic.Platform.isWebView()) { // we're on cordova
 
-                                $cordovaSocialSharing
-                                    .canShareVia('sms', '', '', '')
-                                    .then(function(result) {
-                                        $cordovaSocialSharing
-                                            .shareViaSMS('START', '741741')
-                                            .then(function(result) {
-                                                console.log('share via SMS result: ', result);
-                                            }, function(err) {
-                                                // An error occurred. Show a message to the user
-                                                $ionicPopup.alert({
-                                                    title: 'SMS',
-                                                    template: 'Can not send SMS to Crisis Text Line, try again. Error: '+err
-                                                });
-                                            });
-                                    }, function(err) {
+                                //CONFIGURATION
+                                var options = {
+                                    replaceLineBreaks: false, // true to replace \n by a new line, false by default
+                                    android: {
+                                        intent: 'INTENT'  // send SMS with the native android SMS messaging
+                                        //intent: '' // send SMS without open any other app
+                                    }
+                                };
+
+                                $cordovaSms
+                                    .send('741741', 'START', options)
+                                    .then(function () {
+                                        //
+                                        console.log('Success! SMS was sent');
+                                    }, function (error) {
+                                        console.log('error $cordovaSms.send: ', error);
                                         $ionicPopup.alert({
-                                            title: 'Enable SMS',
-                                            template: 'You must enable SMS'
+                                            title: 'SMS',
+                                            template: 'Can not send SMS. Error: ' + error
                                         });
                                     });
+                                /*     $cordovaSocialSharing
+                                 .canShareVia('sms', '741741', null, null)
+                                 .then(function(result) {
+                                 console.log('success canShareVia: ', result);
+                                 $cordovaSocialSharing
+                                 .shareViaSMS('START', '741741')
+                                 .then(function(result) {
+                                 console.log('success shareViaSMS: ', result);
+                                 }, function(err) {
+                                 console.log('error shareViaSMS: ', err);
+                                 $ionicPopup.alert({
+                                 title: 'SMS',
+                                 template: 'Can not send SMS to Crisis Text Line, try again. Error: '+err
+                                 });
+                                 });
+                                 }, function(err) {
+                                 $ionicPopup.alert({
+                                 title: 'SMS not found',
+                                 template: 'Quarky unable to find SMS app on your device.'
+                                 });
+                                 console.log('error canShareVia: ', err);
+                                 }); */
 
-                            } else {
-                                $ionicPopup.alert({
-                                    title: 'Crisis Text Line',
-                                    template: 'You must be on a real phone or tablet'
-                                });
-                            }
+                                 } else {
+                                 $ionicPopup.alert({
+                                 title: 'Crisis Text Line',
+                                 template: 'You must be on a real phone or tablet'
+                                 });
+                                 }
                         }
                         if (index === 4) {
                             window.open('tel:1-888-233-1639', '_system');   // KC Youth Crisis
